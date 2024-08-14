@@ -1,0 +1,161 @@
+.enroll_content{
+    width: 100%;
+    margin-top: 350px;
+}
+
+.enroll_content .enroll_silde_area{
+    width: 700px;
+    height: 900px;
+    margin: auto;
+    border: 2px solid #FFA500;
+    border-radius: 5px;
+    overflow: hidden;
+
+}
+
+
+.enroll_content .enroll_silde_area .enroll_pages{
+    width: 1400px;
+    height: 900px;
+    display: flex;
+    transition: .4s;
+}
+
+
+.enroll_content .enroll_silde_area .enroll_pages .enroll_page{
+    width: 700px;
+    height: 900px;
+}
+
+.enroll_content .enroll_silde_area .enroll_pages .enroll_page_1{
+}
+
+.enroll_content .enroll_silde_area .enroll_pages .enroll_page_2{
+  
+}
+
+
+.enroll_content .enroll_silde_area .enroll_pages .enroll_page .enroll_area{
+    width: 660px;
+    height: 700px;
+    margin: auto;
+    margin-top: 40px;
+}
+
+.enroll_content .enroll_silde_area .enroll_pages .enroll_page .enroll_area>.check_table{
+    margin-left: 50px;
+    border-collapse: separate;
+    border-spacing: 10px 15px;
+}
+.enroll_content .enroll_silde_area .enroll_pages .enroll_page .enroll_area>.check_table td{
+    vertical-align: middle;
+}
+
+
+.enroll_content .enroll_silde_area .enroll_pages .enroll_page .enroll_area>.check_table input[type=radio]{
+    width: 20px;
+    height: 20px;
+    appearance: none;
+    border: 2px solid #FFA500;
+    border-radius: 50%;
+
+}
+.enroll_content .enroll_silde_area .enroll_pages .enroll_page .enroll_area>.check_table input[type=radio]:checked{
+    width: 20px;
+    height: 20px;
+    appearance: none;
+    border: 5px solid #FFA500;
+    border-radius: 50%;
+    
+}
+
+.enroll_content .enroll_silde_area .enroll_pages .enroll_page .enroll_area>.check_table label{
+    font-weight: 700;
+
+}
+
+.enroll_content .enroll_silde_area .enroll_pages .enroll_page .enroll_area>.check_table label>span{
+    color: #FFA500;
+    margin: 0 10px;
+}
+
+.enroll_content .enroll_silde_area .enroll_pages .enroll_page .enroll_area>.check_table textarea{
+    resize: none;
+    width: 520px;
+    height: 70px;
+}
+
+
+
+
+.enroll_content .enroll_silde_area .enroll_pages .enroll_page .enroll_area>.form_table{
+    margin-left: 40px;
+    border-collapse: separate;
+    border-spacing: 30px 30px;
+}
+.enroll_content .enroll_silde_area .enroll_pages .enroll_page .enroll_area>.form_table td{
+    vertical-align: middle;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.enroll_content .enroll_silde_area .enroll_pages .enroll_page .enroll_area>.form_table td .star{
+    vertical-align: middle;
+    color: #ffe600;
+    font-size: 18px;
+}
+
+
+.enroll_content .enroll_silde_area .enroll_pages .enroll_page .enroll_area>.form_table input{
+    border-radius: 5px;
+    border: 1px solid #FFA500;
+}
+
+.enroll_content .enroll_silde_area .enroll_pages .enroll_page .enroll_area>.form_table input:focus{
+    border-radius: 5px;
+    border: 1px solid #FFA500;
+    outline: #FFA500;
+}
+
+.enroll_content .enroll_silde_area .enroll_pages .enroll_page .enroll_area>.form_table select{
+    border-radius: 5px;
+    border: 1px solid #FFA500;
+}
+
+.enroll_content .enroll_silde_area .enroll_pages .enroll_page .enroll_area>.form_table .email input{
+    width: 100px;
+    border-radius: 5px;
+    border: 1px solid #FFA500;
+}
+
+
+
+
+
+.enroll_content .enroll_silde_area .enroll_pages .enroll_page .enroll_btn_area{
+    width: 660px;
+    height: 100px;
+    margin: auto;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 5px;
+}
+
+.enroll_content .enroll_silde_area .enroll_pages .enroll_page .enroll_btn_area button{
+    width: 150px;
+    height: 50px;
+    border: 1px solid #FFA500;
+    border-radius: 5px;
+    background-color: transparent;
+    color: #333;
+    font-weight: 800;
+    font-size: 20px;
+    cursor: pointer;
+    transition: .4s;
+}
+
+.enroll_content .enroll_silde_area .enroll_pages .enroll_page .enroll_btn_area button:hover{
+    background-color: #FFA500;
+}

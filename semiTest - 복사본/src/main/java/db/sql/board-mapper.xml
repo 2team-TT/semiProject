@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<entry key="mainSelectBoardBestList">
+		SELECT 
+           BOARD_NO
+         , BOARD_TITLE 
+         , VIEW_COUNT
+  FROM(  
+       SELECT 
+		       BOARD_NO
+		     , BOARD_TITLE 
+		     , VIEW_COUNT
+		 FROM BOARD
+		WHERE STATUS ='Y'
+          AND TAG_NO IN(110,120)
+		ORDER BY VIEW_COUNT DESC)
+WHERE ROWNUM BETWEEN 1 AND 5
+</entry>
+
+<entry key="mainSelectHoneyList">
+		SELECT 
+           BOARD_NO
+         , BOARD_TITLE 
+         , VIEW_COUNT
+  FROM(  
+       SELECT 
+		       BOARD_NO
+		     , BOARD_TITLE 
+		     , VIEW_COUNT
+		 FROM BOARD
+		WHERE STATUS ='Y'
+          AND TAG_NO=110
+		ORDER BY VIEW_COUNT DESC)
+WHERE ROWNUM BETWEEN 1 AND 5
+</entry>
+
+
+<entry key="mainSelectNoticeList">
+SELECT 
+           BOARD_NO
+         , BOARD_TITLE 
+         , CREATE_DATE
+  FROM(  
+       SELECT 
+		       BOARD_NO
+		     , BOARD_TITLE 
+		     , TO_CHAR(CREATE_DATE,'YYYY-MM-DD') AS "CREATE_DATE"
+		 FROM BOARD
+		WHERE STATUS ='Y'
+          AND TAG_NO=500
+		ORDER BY BOARD_NO DESC)
+WHERE ROWNUM BETWEEN 1 AND 5
+</entry>
+
+
+
+</properties>
