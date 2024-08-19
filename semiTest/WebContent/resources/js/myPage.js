@@ -9,40 +9,42 @@
 
 // 게시글, 댓글, 좋아요 글 테이블 체크박스 전체 선택 js
 // 8월19일 기준 삭제, 취소버튼 js 구현까지
-    // 모든 테이블을 반복
+// 모든 테이블을 반복
 document.querySelectorAll('.mytable').forEach(function(table) {
     // 'selectAll' 클래스가 있는 체크박스 가져오기
     const selectAllCheckbox = table.querySelector('thead .selectAll');
-    // 'rowCheckbox' 클래스가 있는 모든 체크박스 가져오기
-    const rowCheckboxes = table.querySelectorAll('tbody .rowCheckbox');
-
-    // 'selectAll' 체크박스를 클릭했을 때의 동작
-    selectAllCheckbox.addEventListener('change', function() {
-        rowCheckboxes.forEach(function(checkbox) {
-            checkbox.checked = selectAllCheckbox.checked;
+    if(selectAllCheckbox){ // selectAll 클래스가 존재하는지 확인        
+        // 'rowCheckbox' 클래스가 있는 모든 체크박스 가져오기
+        const rowCheckboxes = table.querySelectorAll('tbody .rowCheckbox');
+    
+        // 'selectAll' 체크박스를 클릭했을 때의 동작
+        selectAllCheckbox.addEventListener('change', function() {
+            rowCheckboxes.forEach(function(checkbox) {
+                checkbox.checked = selectAllCheckbox.checked;
+            });
         });
-    });
+    }
 
     
 });
 
-    // 삭제 버튼 클릭 이벤트
-    // 삭제 버튼 이벤트는 onclick이벤트로 빼서 함수로 만들 예정
-    // 공통적으로 선택된 행을 삭제하는 함수 사용하여 코드 줄일 생각
-    // btn 버튼에 공통적인 onclick 이벤트를 수행할 class가 필요해서 commonBtn으로 만들 생각
-    // 결론적으로 commonBtn 클래스는 필요 없다 생각하여 삭제
-    /*
-    table.closest('.myinfo--page').querySelectorAll('.btn1').forEach(function(btn) {
-        btn.addEventListener('click', function() {
-            // 체크된 row들을 가져와 삭제
-            rowCheckboxes.forEach(function(checkbox) {
-                if (checkbox.checked) {
-                    checkbox.closest('tr').remove();
-                }
-            });
+// 삭제 버튼 클릭 이벤트
+// 삭제 버튼 이벤트는 onclick이벤트로 빼서 함수로 만들 예정
+// 공통적으로 선택된 행을 삭제하는 함수 사용하여 코드 줄일 생각
+// btn 버튼에 공통적인 onclick 이벤트를 수행할 class가 필요해서 commonBtn으로 만들 생각
+// 결론적으로 commonBtn 클래스는 필요 없다 생각하여 삭제
+/*
+table.closest('.myinfo--page').querySelectorAll('.btn1').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+        // 체크된 row들을 가져와 삭제
+        rowCheckboxes.forEach(function(checkbox) {
+            if (checkbox.checked) {
+                checkbox.closest('tr').remove();
+            }
         });
     });
-    */
+});
+*/
 
 
 // 선택된 행을 삭제하는 함수

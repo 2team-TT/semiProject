@@ -7,8 +7,9 @@ img {
 
 /* 마이페이지 섹션 - 내정보 공통화면 */
 .myinfo {
-    height: 220px;
-    background-color: orange;
+    background-color: #eee4db7e;
+    border: 1px solid orange;
+    height: 80px;
     padding: 15px;
     border-radius: 15px;
     display: flex;
@@ -16,15 +17,34 @@ img {
     justify-content: center;
     flex-wrap: wrap;
     margin-top: 350px;
+    margin-right: 450px;
+    margin-left: 350px;
 }
-
+/* 마이페이지 bar css */
 .myinfo .info--group{
     display: flex;
     width: 1150px;
     justify-content: space-between;
+    flex-wrap: wrap;
+    /* margin-right: 100px; */
 }
-.myinfo .info--base{
-    
+/* 마이페이지 bar div list css */
+.myinfo .info--group .info--list a {
+    /* 기본 스타일 */
+    text-decoration: none;
+    color: #333;
+    font-weight: bolder;
+    display: inline-block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease; /* 애니메이션 추가 */
+    padding: 10px 15px; /* 패딩 추가로 여백 확보 */
+    border-radius: 5px; /* 부드러운 모서리 */
+}
+/* div list hover css */
+.myinfo .info--group .info--list a:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
+    background-color: #ecafaf; /* 배경색 변경 */
+    color: #000; /* 글자색 변경 */
+    transform: translateY(-3px); /* 살짝 위로 이동 */
 }
 
 .myinfo .info--base p{
