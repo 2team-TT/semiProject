@@ -130,7 +130,7 @@
                                 <%} %>
                                 <div class="a__box">
                                     <a href="">쪽지</a>
-                                    <a href="">마이페이지</a>
+                                    <a href="<%= contextPath %>/myPageInfo.me">마이페이지</a>
                                     <a href="">로그아웃</a>
                                 </div>
                                 

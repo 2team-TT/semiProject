@@ -1,0 +1,539 @@
+
+/* 공통 css */
+img {
+    display: block;
+}
+
+
+/* 마이페이지 섹션 - 내정보 공통화면 */
+.myinfo {
+    height: 220px;
+    background-color: orange;
+    padding: 15px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 350px;
+}
+
+.myinfo .info--group{
+    display: flex;
+    width: 1150px;
+    justify-content: space-between;
+}
+.myinfo .info--base{
+    
+}
+
+.myinfo .info--base p{
+    font-family: "roboto", sans-serif;
+    margin: 5px 0;
+}
+.myinfo .info--base .info--id{
+    font-weight: bolder;
+    font-size: 30px;
+}
+
+.myinfo .info--base .info--grade{
+    background-color: #d9d9d980;
+    border: 1px solid #333;
+    font-size: 12px;
+    display: inline-block;
+    padding: 2px;
+    
+}
+
+.myinfo .info--btn{
+    display: flex;
+    flex-direction: column;
+    margin-right: 100px;
+}
+
+.myinfo .info--btn .btn1{
+    background-color: orange;
+    width: 160px;
+    height: 48px;
+    border: 1px solid white;
+    border-radius: 8px;
+    color: white;
+    padding: 0;
+    margin-bottom: 15px;
+
+}
+
+.myinfo .info--btn .btn2{
+    background-color: black;
+    width: 160px;
+    height: 48px;
+    border: 1px solid 333;
+    border-radius: 8px;
+    color: white;
+    padding: 0;    
+
+}
+
+/* 마이페이지 섹션 타이틀 공통 */
+
+/* 컨텐츠 영역 width */
+.myinfo--info{
+    display: flex;
+    width: 1150px;
+}
+
+.myinfo--page .myinfo--common{
+    /* display: flex; */
+    flex-wrap: wrap;
+    width: 100%;
+    /* justify-content: space-between; */
+}
+
+.myinfo--common .common--title{
+    font-family: "roboto", sans-serif;
+    font-size: 40px;
+    font-weight: bolder;
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+/* 마이페이지 내정보 페이지 섹션 */
+
+.myinfo--page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.myinfo--page .myinfo--info{
+   
+}
+
+/* .myinfo--info--info{
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
+} */
+.myinfo--baseinfo{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-right: 100px;
+}
+
+.myinfo--page .baseinfo--group{
+    border: 1px dotted gray;
+    width: 394px;
+    height: 96px;
+    padding: 5px;
+    margin: 5px;
+    overflow: hidden;
+}
+
+.myinfo--page .info--annotation{
+    font-family: "roboto", sans-serif;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 12px;
+}
+
+.myinfo--page .info--content{
+    margin-top: 15px;
+    font-size: 28px;
+}
+
+/* 마이페이지 알림 기능 설정 섹션 */
+.myinfo--page .myinfo--alarm{
+    
+}
+
+.myinfo--page .alarm--list{
+    margin-top: 25px;
+}
+
+
+/* 마이페이지 결제 정보 설정 섹션 */
+.myinfo--page .myinfo--info .myinfo--common .info--annotation{
+    font-size: 14px;
+}
+/* 결제관련 버튼이지만 마이페이지 내에서 공통적으로 쓰일 버튼 css */
+.myinfo--page .myinfo--info .myinfo--common .payment--btn{
+    background-color: black;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    width: 160px;
+    height: 48px;
+    border: 1px solid 333;
+    border-radius: 8px;
+    color: white;
+    padding: 0;
+    cursor: pointer;
+}
+
+/* 내 게시글 테이블 css
+   bootstrap 활용
+*/
+.mytable *{
+    /* border: 1px solid #333; */
+    /* margin: 5px; */
+}
+.mytable thead{
+    background-color: rgb(223, 202, 164);
+    text-align: center;
+}
+
+/* 내 게시글 페이징 css
+   내 게시글, 내 댓글, 좋아요 한 글 공통
+*/
+
+.myinfo--page .page-btn{
+    width: 25px;
+    height: 25px;
+    padding: 0;
+}
+
+/* .myinfo--page .myinfo--info .myinfo--common .btn1{
+    background-color: #333;
+    width: 40px;
+    height: 40px;
+    border: 1px solid 333;
+    border-radius: 8px;
+    color: white;
+    padding: 0;    
+} */
+
+.myinfo--page .myinfo--info .myinfo--common .btn1{
+    border-radius: 8px;
+    border: 1px solid #333;
+    background-color: #dbd6b560;
+}
+
+/* 테이블에 마진을 줘서 페이지 간격 맞춤 css */
+.table--margin{
+    margin-right: 100px;
+}
+
+/* css 리셋 후 테이블 내 글자 정렬 */
+.myinfo--page .myinfo--info .mytable td,
+.myinfo--page .myinfo--info .mytable th {
+    text-align:justify
+}
+
+/* 제목테이블 헤드 센터로 하는 css */
+.myinfo--page .myinfo--info .mytable .th--align--center{
+    text-align: center;
+}
+
+/* 테이블 호버 css */
+.myinfo--page .myinfo--info .mytable tbody tr:hover {
+    cursor: pointer;
+    color: #000;
+    opacity: 0.6;
+}
+
+
+/* 주문 조회 관련 css */
+.myinfo--page .myinfo--info .myproduct--inner{
+    /* border: 1px solid black; */
+    /* width: 1050px; */
+    margin-right: 100px;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+}
+.myinfo--page .myinfo--info .myproduct--inner .myproduct--ordercheck {
+    width: 450px;
+    height: 150px;
+    border: 1px dotted gray;
+    /* margin: 15px; */
+    margin-bottom: 10px;
+    display: flex;
+    justify-content:flex-start;
+}
+.myinfo--page .myinfo--info .myproduct--inner .myproduct--ordercheck .product--img{
+    width: 40%;
+    /* height: 100%; */
+    /* box-sizing: border-box; */
+}
+.myinfo--page .myinfo--info .myproduct--inner .myproduct--ordercheck .product--img img{
+    width: 100%;
+    height: 100%;
+}
+
+.myinfo--page .myinfo--info .myproduct--inner .product--explanation {
+    align-content: center;
+    margin-left: 15px;
+}
+
+.myinfo--page .myinfo--info .myproduct--inner .product--explanation a{
+    text-decoration: none;
+    color: #333;
+    
+}
+
+.myinfo--page .myinfo--info .myproduct--inner .product--explanation a p{
+ 
+    margin: auto;
+}
+
+/* 마일리지와 포인트 섹션 */
+/* 마일리지와 포인트 div를 감싸는 div */
+.myinfo--page .myinfo--info .myinfo--common .common--inner{
+    display: flex;
+    justify-content: space-between;
+    margin-right: 100px;
+    flex-wrap: wrap;
+}
+/* 마일리지와 포인트 div */
+.myinfo--page .myinfo--info .myinfo--common .common--inner .inner--section{
+    width: 500px;
+    /* border: 1px solid #000; */
+}
+/* 마일리지와 포인트 약관 버튼은 payment--btn을 재활용 */
+
+/* 사용 가능 마일리지와 포인트 css */
+.myinfo--page .myinfo--info .myinfo--common .common--inner .inner--section h2{
+    font-weight: bold;
+    font-size: 25px;
+}
+/* 마일리지 & 포인트 css */
+.myinfo--page .myinfo--info .myinfo--common .common--inner .inner--section span{
+    display: block;
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+
+/* 마이페이지 고객센터부분 css */
+
+/* 고객센터용 소제목 css */
+.myinfo--page .myinfo--info .myinfo--common .subheading{
+    /* border: 1px solid #000; */
+    background-color: #E3C4A7;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 70px;
+    display: block;
+    width: 200px;
+    text-align: center;
+    font-size: 17px;
+}
+
+
+/* 컨텐츠를 둘러싸는 div */
+.myinfo--page .myinfo--info .myinfo--common .slide--group{
+    display: flex;
+    flex-wrap: wrap;
+    /* flex-direction: column; */
+}
+/* QNA타이틀 css */
+.myinfo--page .myinfo--info .myinfo--common .slide--group h5{
+    background-color: #b9b9b92f;
+    margin: 0;
+    width: 100%;
+    margin-right: 100px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 17px;
+}
+
+/* 고객센터 slide용 div css */
+.myinfo--page .myinfo--info .myinfo--common .slide--group .slide--div{
+    background-color: rgba(236, 189, 57, 0.103);
+    border: 1px solid rgba(69, 70, 66, 0.548);
+    width: 100%;
+    margin-right: 100px;
+    /* height: 30px; */
+    line-height: 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    padding-left: 15px;
+}
+
+/* 고객센터 slide용 p(답변부분) css */
+.myinfo--page .myinfo--info .myinfo--common .slide--group .slide--p{
+    border: 1px solid lightgray;
+    width: 100%;
+    margin-right: 100px;
+    /* height: 100px; */
+    border-radius: 10px;
+    /* margin-top: 5px; */
+    margin-bottom: 0;
+    padding: 15px;
+    text-align: justify;
+    box-sizing: border-box;
+    display: none;
+}
+
+/* 문의 내역 테이블 css는 마이테이블 결제내역 css 재활용 */
+.myinfo--page .myinfo--info .myinfo--common .table--margin .p--question{
+    transition: transform 2s;
+}
+
+/* 문의 tr 클릭시 나올 답변 css */
+.myinfo--page .myinfo--info .myinfo--common .table--margin .p--answer{
+    display: none;
+    cursor: default;
+}
+
+/* 장바구니 css */
+
+/* 기본 정보와 상세 정보를 가르기 위한 css 구간
+   기존 틀과는 다르게 타이틀을 감싸는 div를 만들고 반으로 나눔
+   basket--basicgroup div는 장바구니 타이틀, 전체보기 버튼, 기본 장바구니 리스트
+   아래에 기본 장바구니 정보가 담길 예정.
+*/
+/* 반으로 나누기 위한 basket--basicgroup css */
+.myinfo--page .myinfo--info .myinfo--common .basket--group{
+    width: 100%;
+    display: flex;
+    justify-content:flex-start;
+    flex-wrap: wrap;
+}
+/* 장바구니 상품 기본 정보를 묶어두기 위한 div css */
+.myinfo--page .myinfo--info .myinfo--common .basket--group .basic--group{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+/* 장바구니 기본 상품 정보 css */
+.myinfo--page .myinfo--info .myinfo--common .basket--group .basic--group .basicbasket{
+    border: 1px solid white;
+    display: inline-block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 15px;
+}
+/* 장바구니 기본 상품 호버시 연출될 css */
+.myinfo--page .myinfo--info .myinfo--common .basket--group .basic--group .basicbasket:hover{
+    cursor: pointer;
+    opacity: 0.7;
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+
+}
+/* 기본 상품 정보의 고정 이미지 크기 */
+.myinfo--page .myinfo--info .myinfo--common .basket--group img{
+    width: 250px;
+    height: 250px;
+}
+/* 기본 상품 정보 호버시 나타날 상품 상세정보 css */
+.myinfo--page .myinfo--info .myinfo--common .basket--group .detail--group{
+    width: 400px;
+    margin-right: 100px;
+    /* display: none; */
+    background-color: #33333317;
+    margin-left: 50px;
+    text-wrap: wrap;
+}
+
+/* 찜 한 상품 섹션 css */
+
+/* 찜 한 상품의 경우 장바구니와는 다르게 구매 의사는 있으나 
+   당장 구매 할 의향이 없을 수 있음. 1년 이상 찜 목록에만
+   존재 할 가능성도 충분. 찜 목록에 대해서 가격을 합산한다던가
+   잡다한 기능을 넣을 필요 없이 단순히 썸네일과 단순 상품정보만
+   보여주고 체크박스를 통해서 체크된 상품에 대한 삭제만 해도 무방
+*/
+
+/* 찜하기의 리스트들을 담을 div css */
+.myinfo--page .myinfo--info .myinfo--common .wishlist--group{
+    margin-right: 100px;
+    /* display: flex; */
+    flex-wrap: wrap;
+}
+
+/* 이미지가 들어가서 커진 td의 글자를 가운데이 맞추기 위한 css */
+.myinfo--page .myinfo--info .myinfo--common .wishlist--group .mytable td{
+    vertical-align:middle;
+}
+
+/* 상품명 안에 이미지와 텍스트를 묶기 위한 div */
+.myinfo--page .myinfo--info .myinfo--common .wishlist--group .mytable .item--description {
+    display: flex;
+    align-items: center; /* 이미지와 텍스트를 세로로 가운데 정렬 */
+}
+
+/* 이미지가 내 맘대로 크기조절이 안되서 만든 div */
+.myinfo--page .myinfo--info .myinfo--common .wishlist--group .mytable .forImage{
+    width: 180px;
+    height: 80px;
+    margin-right: 10px;
+}
+/* 상품명 안에 들아가는 상품 이미지 css */
+.myinfo--page .myinfo--info .myinfo--common .wishlist--group .mytable .forImage .item--image {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    /* display: inline; */
+    /* object-fit:fill; */
+}
+
+.myinfo--page .myinfo--info .myinfo--common .wishlist--group .mytable .item--text {
+    flex-grow: 1; /* 텍스트가 남은 공간을 채우도록 설정 */
+}
+
+/* 찜하기 테이블의 리스트를 삭제할 버튼 css */
+.myinfo--page .myinfo--info .myinfo--common .wishlist--group .wishlistBtn {
+    float: right;
+}
+
+/* 최근 본 상품 섹션 css */
+/* 반응형 웹을 위한 전체를 감싸는 div 생성
+   그 안에 item을 담을 div 생성
+   item 안에는 이미지, 상품명, 가격을 보여줄 생각
+   이미지 호버시 이펙트 구현 할 예정
+*/
+
+/* 최근본 상품 전체를 감싸는 div css */
+.myinfo--page .myinfo--info .myinfo--common .rvp--group {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-right: 100px;
+    flex-grow: 1;
+}
+
+/* 각 item의 정보를 담을 div css */
+.myinfo--page .myinfo--info .myinfo--common .rvp--group .rvp--item {
+    width: 300px;
+    height: 500px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    overflow: hidden;
+}
+
+/* item img에 관한 css */
+.myinfo--page .myinfo--info .myinfo--common .rvp--group .rvp--item .rvp--img img {
+    width: 100%;
+    height: 300px;
+    /* border-radius: 10px; */
+    transition: 0.3s;
+}
+.myinfo--page .myinfo--info .myinfo--common .rvp--group .rvp--item .rvp--img{
+    position: relative;
+}
+/* item img 호버시 css */
+.myinfo--page .myinfo--info .myinfo--common .rvp--group .rvp--item .rvp--img img:hover {
+    cursor: pointer;
+    opacity: 0.7;
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+/* item img 내에 X표시 넣기 css */
+.myinfo--page .myinfo--info .myinfo--common .rvp--group .rvp--item .rvp--img span {
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    color: gray;
+}
+
+/* item img내 X표시 호버시 css */
+.myinfo--page .myinfo--info .myinfo--common .rvp--group .rvp--item .rvp--img span:hover {
+    cursor: pointer;
+}
