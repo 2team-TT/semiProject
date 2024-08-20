@@ -73,14 +73,8 @@
             <!-- 네비 -->
             <ul class="navi">
                 <li>
-                    <a href="">커뮤니티</a>
-                    <ul>
-                        <li><a href="">꿀팁</a></li>
-                        <li><a href="">자유게시판</a></li>
-                        <li><a href="">너의 레시피</a></li>
-                        <li><a href="">중고</a></li>
-
-                    </ul>
+                    <a href="<%=contextPath%>/freeBoardList.bo?cpage=1">커뮤니티</a>
+                  
                 </li>
                 <li>
                     <a href="">쇼핑</a>
@@ -131,7 +125,7 @@
                                 <div class="a__box">
                                     <a href="">쪽지</a>
                                     <a href="<%= contextPath %>/myPageInfo.me">마이페이지</a>
-                                    <a href="">로그아웃</a>
+                                    <a href="<%=contextPath%>/logOut.mo">로그아웃</a>
                                 </div>
                                 
                             </div>
@@ -441,8 +435,8 @@
             <div class="profile__container">
                 <div class="profile__id">asdf 님 반갑습니다.</div>
                 <div class="profile__menu">
-                    <a href="">마이페이지</a>
-                    <a href="">로그아웃</a>
+                    <a href="<%= contextPath %>/myPageInfo.me">마이페이지</a>
+                    <a href="<%=contextPath%>/logOut.mo">로그아웃</a>
                 </div>
             </div>
 			<%} %>
@@ -451,7 +445,7 @@
         </div>
 
 
-		<%if(u!=null) {%>
+		<%if(u==null) {%>
         <div class="side_content">
 
            <a href="">알림</a>
@@ -460,6 +454,15 @@
            <a href="">채팅</a>
 
         </div>
+        <%}else{ %>
+            <div class="side_content">
+
+                <a href="">알림</a>
+                <a href="">스계줄관리</a>
+                <a href="">가계부</a>
+                <a href="">채팅</a>
+     
+             </div>
 
 		<%} %>
         
@@ -468,24 +471,24 @@
 
             <div class="side__navi__main">
                 <li>
-                    <div class="side__btn__community">커뮤니티</div>
+                    <a class="side__btn__community" href="<%=contextPath%>/freeBoardList.bo?cpage=1">커뮤니티</a>
                     
                 </li>
                 <li>
-                    <div class="side__btn__shopping">쇼핑</div>
+                    <a class="side__btn__shopping" href="">쇼핑</a>
                 </li>
                 <li>
-                    <div class="side__btn__house">부동산 / 이사</div>
+                    <a class="side__btn__house" href="">부동산 / 이사</a>
                 </li>
                 <li>
-                    <div>이벤트</div>
+                    <a>이벤트</a>
                 </li>
                 <li>
-                    <div>정책</div>
+                    <a>정책</a>
                 </li>
             </div>
                 
-            <div class="side__navi__community">
+            <!-- <div class="side__navi__community">
                 <li>
                     <div>꿀팁</div>
                     
@@ -532,7 +535,7 @@
                     <div>이사업체</div>
                 </li>
                 
-            </div>
+            </div> -->
 
 
         </ul>

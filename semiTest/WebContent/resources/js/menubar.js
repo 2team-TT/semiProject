@@ -82,71 +82,71 @@ search__click.addEventListener('click',function(){
 
 
 
-side__menu__btn.addEventListener('click',out_btn_function)
+// side__menu__btn.addEventListener('click',out_btn_function)
 
 
-const side__btn__community = document.querySelector('.side__navi__main .side__btn__community');
-const side__btn__shopping = document.querySelector('.side__navi__main .side__btn__shopping');
-const side__btn__house = document.querySelector('.side__navi__main .side__btn__house');
+// const side__btn__community = document.querySelector('.side__navi__main .side__btn__community');
+// const side__btn__shopping = document.querySelector('.side__navi__main .side__btn__shopping');
+// const side__btn__house = document.querySelector('.side__navi__main .side__btn__house');
 
-const side__navi__community = document.querySelector('.side__navi__main .side__navi__community');
-const side__navi__shopping = document.querySelector('.side__navi__main .side__navi__shopping');
-const side__navi__house = document.querySelector('.side__navi__main .side__navi__house');
+// const side__navi__community = document.querySelector('.side__navi__main .side__navi__community');
+// const side__navi__shopping = document.querySelector('.side__navi__main .side__navi__shopping');
+// const side__navi__house = document.querySelector('.side__navi__main .side__navi__house');
 
 
-const out__category =function(){
-    gsap.to('.side__navi__main',.1,{
-        display:"block",
-    });
-    gsap.to('.side__navi__community',0,{
-        display:"none",
-    });
-    gsap.to('.side__navi__shopping',0,{
-        display:"none",
-    });
-    gsap.to('.side__navi__house',0,{
-        display:"none",
-    });
-    side__menu__btn.removeEventListener('click',out__category)
-    side__menu__btn.addEventListener('click',out_btn_function)
-}
+// const out__category =function(){
+//     gsap.to('.side__navi__main',.1,{
+//         display:"block",
+//     });
+//     gsap.to('.side__navi__community',0,{
+//         display:"none",
+//     });
+//     gsap.to('.side__navi__shopping',0,{
+//         display:"none",
+//     });
+//     gsap.to('.side__navi__house',0,{
+//         display:"none",
+//     });
+//     side__menu__btn.removeEventListener('click',out__category)
+//     side__menu__btn.addEventListener('click',out_btn_function)
+// }
 
-side__btn__community.addEventListener('click',function(){
-    gsap.to('.side__navi__community',0,{
-        display:"block",
-    });
-    gsap.to('.side__navi__main',0,{
-        display:"none",
-    });
-    side__menu__btn.removeEventListener('click',out_btn_function)
-    side__menu__btn.addEventListener('click',out__category)
+// side__btn__community.addEventListener('click',function(){
+//     gsap.to('.side__navi__community',0,{
+//         display:"block",
+//     });
+//     gsap.to('.side__navi__main',0,{
+//         display:"none",
+//     });
+//     side__menu__btn.removeEventListener('click',out_btn_function)
+//     side__menu__btn.addEventListener('click',out__category)
     
-})
+// })
 
 
-side__btn__shopping.addEventListener('click',function(){
-    gsap.to('.side__navi__shopping',0,{
-        display:"block",
-    });
-    gsap.to('.side__navi__main',0,{
-        display:"none",
-    });
-    side__menu__btn.removeEventListener('click',out_btn_function)
-    side__menu__btn.addEventListener('click',out__category)
+// side__btn__shopping.addEventListener('click',function(){
+//     gsap.to('.side__navi__shopping',0,{
+//         display:"block",
+//     });
+//     gsap.to('.side__navi__main',0,{
+//         display:"none",
+//     });
+//     side__menu__btn.removeEventListener('click',out_btn_function)
+//     side__menu__btn.addEventListener('click',out__category)
     
-})
+// })
 
-side__btn__house.addEventListener('click',function(){
-    gsap.to('.side__navi__house',0,{
-        display:"block",
-    });
-    gsap.to('.side__navi__main',0,{
-        display:"none",
-    });
-    side__menu__btn.removeEventListener('click',out_btn_function)
-    side__menu__btn.addEventListener('click',out__category)
+// side__btn__house.addEventListener('click',function(){
+//     gsap.to('.side__navi__house',0,{
+//         display:"block",
+//     });
+//     gsap.to('.side__navi__main',0,{
+//         display:"none",
+//     });
+//     side__menu__btn.removeEventListener('click',out_btn_function)
+//     side__menu__btn.addEventListener('click',out__category)
     
-})
+// })
 
 
 

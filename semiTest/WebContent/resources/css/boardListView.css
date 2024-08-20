@@ -1,5 +1,6 @@
 .board_navi{
     width: 100%;
+    margin-top: 370px;
 
 }
 
@@ -46,9 +47,20 @@
     right: 20px;
 }
 .Board_list .list_area .list_choose>span{
-    font-weight: 600;
+    font-weight: 700;
     font-size: 15px;
     cursor: pointer;
+    color: #858585;
+}
+
+.Board_list .list_area .list_choose>span:hover{
+ 
+    color: #333;
+}
+
+.Board_list .list_area .list_choose>.lately_board_choose{
+ 
+    color: #333;
 }
 
 .Board_list .list_area .list_choose>span:last-child::before{
@@ -73,12 +85,15 @@
 .Board_list .board_table>tbody>tr{
     
 }
+.Board_list .board_table>tbody>tr>td:hover{
+    background-color: #ffb52b;
+    cursor: pointer;
+}
 
 
 
-.Board_list .board_table.honey_board,
-.Board_list .board_table.cook_board,
-.Board_list .board_table.free_board{
+
+.Board_list .board_table.best_board{
     
     
     display: none;
@@ -142,13 +157,13 @@
 
 .Board_list .board_table>tbody>tr>td .content_icons span{
     font-size: 15px;
+    margin-bottom: 5px;
  }
 .Board_list .board_table>tbody>tr>td .content_icons .m_icon{
     height: 20px;
     margin-top: 3px;
     font-size: 15px;
     font-weight: 600;
-    vertical-align: top;
     line-height: 15px;
 }
 
@@ -238,7 +253,7 @@
    display: none;
 }
 
-.Board_list .btn_area>.board_search input{
+.Board_list .btn_area>.board_search #search_input{
     margin-left: 5px;
     transform: translateY(-8px);
     border-radius: 5px;

@@ -1,5 +1,30 @@
+<%@page import="com.kh.board.model.vo.Reply"%>
+<%@page import="com.kh.board.model.vo.PageInfo"%>
+<%@page import="com.kh.board.model.vo.Board"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	// 내 게시글 페이징 바
+	PageInfo rPi = (PageInfo)request.getAttribute("replyPi");
+	// 내 댓글 페이징 바
+	ArrayList<Board> list = (ArrayList<Board>)request.getAttribute("list");
+	// 게시글 번호, 태그이름(카테고리명), 게시글제목, 유저아이디, 조회수, 댓글수, 작성일
+	ArrayList<Reply> rList = (ArrayList<Reply>)request.getAttribute("rList");
+	
+	// 내 게시글 페이징 변수
+	int currentPage= pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
+	
+	// 내 댓글 페이징 변수
+	int replyCurrentPage= rPi.getCurrentPage();
+	int replyStartPage = rPi.getStartPage();
+	int replyEndPage = rPi.getEndPage();
+	int replyMaxPage = rPi.getMaxPage();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,69 +54,47 @@
                              </tr>
                          </thead>
                          <tbody>
-                             <tr>
-                                 <td><input type="checkbox" class="rowCheckbox"></td>
-                                 <td>999</td>
-                                 <td>상품구매리뷰</td>
-                                 <td>캣타워 사줬는데 박스만 가지고 놀지만 좋아하니 만족합니다.</td>
-                                 <td>123</td>
-                                 <td>0</td>
-                                 <td>2024-07-24</td>
-                             </tr>
-                             <tr>
-                                 <th><input type="checkbox" class="rowCheckbox"></th>
-                                 <td>787</td>
-                                 <td>자유게시판</td>
-                                 <td>자유게시판인데 제목이 곧 내용입니다.</td>
-                                 <td>345</td>
-                                 <td>0</td>
-                                 <td>2024-07-21</td>
-                             </tr>
-                             <tr>
-                                 <th><input type="checkbox" class="rowCheckbox"></th>
-                                 <td>566</td>
-                                 <td>자유게시판</td>
-                                 <td>나랏말싸미 듕귁에 달아 문자와로 서로 사맛디 아니할세</td>
-                                 <td>678</td>
-                                 <td>0</td>
-                                 <td>2024-07-18</td>
-                             </tr>
-                             <tr>
-                                 <td><input type="checkbox" class="rowCheckbox"></td>
-                                 <td>454</td>
-                                 <td>아무게시판</td>
-                                 <td>아무 게시판에는 아무 글이나 쓰면 됩니다.</td>
-                                 <td>901</td>
-                                 <td>0</td>
-                                 <td>2024-07-15</td>
-                             </tr>
-                             <tr>
-                                 <td><input type="checkbox" class="rowCheckbox"></td>
-                                 <td>333</td>
-                                 <td>상품구매리뷰</td>
-                                 <td>사자마자 망가져서 세상이 무너진 기분입니다.</td>
-                                 <td>234</td>
-                                 <td>0</td>
-                                 <td>2024-07-10</td>
-                             </tr> 
+                         	<% if(list.isEmpty()) { %>
+                         		<!-- 게시글 존재하지 않을경우 -->
+                         		<tr>
+			                    	<td colspan="7">조회된 게시글이 없습니다.</td>
+			                	</tr>
+			                <%}else { %>
+			                
+			                	<!-- 게시글 존재 할 경우 -->
+			                	<% for(Board b : list) { %>
+	                             <tr>
+	                                 <td><input type="checkbox" class="rowCheckbox"></td>
+	                                 <td><%= b.getBoardNo() %></td>
+	                                 <td><%= b.getTagNo() %></td>
+	                                 <td><%= b.getBoardTitle() %></td>
+	                                 <td><%= b.getViewCount() %></td>
+	                                 <td><%= b.getReplyCount() %></td>
+	                                 <td><%= b.getCreateDate() %></td>
+	                             </tr>
+	                             <% } %>
+	                         <% } %>
+                             
                          </tbody>
                      </table>
-                     <div align="center">
-     
-                         <button type="button" class="page-btn btn btn-outline-secondary">&lt;</button>
-                         <button type="button" class="page-btn btn btn-outline-secondary">1</button>
-                         <button type="button" class="page-btn btn btn-outline-secondary">2</button>
-                         <button type="button" class="page-btn btn btn-outline-secondary">3</button>
-                         <button type="button" class="page-btn btn btn-outline-secondary">4</button>
-                         <button type="button" class="page-btn btn btn-outline-secondary">5</button>
-                         <button type="button" class="page-btn btn btn-outline-secondary">6</button>
-                         <button type="button" class="page-btn btn btn-outline-secondary">7</button>
-                         <button type="button" class="page-btn btn btn-outline-secondary">8</button>
-                         <button type="button" class="page-btn btn btn-outline-secondary">9</button>
-                         <button type="button" class="page-btn btn btn-outline-secondary">10</button>
-                         <button type="button" class="page-btn btn btn-outline-secondary">&gt</button>
-                         
-                     </div>
+                     <div>
+			              <% if(currentPage !=1){ %>
+			            	<button class="page-btn btn btn-outline-secondary" onclick = "location.href ='<%=contextPath %>/myPageBoard.me?cpage=<%= currentPage-1 %>'">&lt;</button>
+						  <%} %>
+											
+						  <%for(int p = startPage; p<= endPage ; p++){ %>
+			            	<%if(p==currentPage) {%>
+			            		<button class="page-btn btn btn-outline-secondary" disabled><%= p %></button>
+			            	<%}else{ %>
+			            		<button class="page-btn btn btn-outline-secondary" onclick="location.href='<%=contextPath%>/myPageBoard.me?cpage=<%= p %>'"><%= p %></button>
+			            	<%} %>
+			         	  <%} %>
+			            
+			            <% if(currentPage != maxPage){ %>
+			            <button class="page-btn btn btn-outline-secondary" onclick = "location.href ='<%=contextPath %>/myPageBoard.me?cpage=<%= currentPage+1 %>'">&gt</button>
+						<%} %>
+			
+			        </div>
                      <div align="right">
                          <button class="btn btn-outline-secondary btn-sm">수정</button>
                          <button class="btn btn-outline-secondary btn-sm" onclick="deleteSelectedRows()">삭제</button>
@@ -117,57 +120,34 @@
                                 <th>카테고리</th>
                                 <th class="th--align--center">댓글 내용</th>
                                 <th>게시글 작성자</th>
-                                <th>조회수</th>
-                                <th>답글수</th>
+                                <th>좋아요 수</th>
                                 <th>작성일</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td><input type="checkbox" class="rowCheckbox"></td>
-                                <td>상품구매리뷰</td>
-                                <td>그건 님이 몰라서 하는 말임</td>
-                                <td>아는만큼 보인다</td>
-                                <td>123</td>
-                                <td>4</td>
-                                <td>2024-07-24</td>
-                            </tr>
-                            <tr>
-                                <th><input type="checkbox" class="rowCheckbox"></th>
-                                <td>자유게시판</td>
-                                <td>누구 물어보신분?</td>
-                                <td>TMI생성기</td>
-                                <td>345</td>
-                                <td>44</td>
-                                <td>2024-07-21</td>
-                            </tr>
-                            <tr>
-                                <th><input type="checkbox" class="rowCheckbox"></th>
-                                <td>자유게시판</td>
-                                <td>나랏말싸미 듕귁에 달아 문자와로 서로 사맛디 아니할세</td>
-                                <td>고전문학좋아</td>
-                                <td>678</td>
-                                <td>33</td>
-                                <td>2024-07-18</td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox" class="rowCheckbox"></td>
-                                <td>아무게시판</td>
-                                <td>Do you wanna build a snowman?</td>
-                                <td>ANNA</td>
-                                <td>121</td>
-                                <td>18</td>
-                                <td>2024-07-15</td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox" class="rowCheckbox"></td>
-                                <td>상품구매리뷰</td>
-                                <td>고양이가 마치 개같네요</td>
-                                <td>사실개만키움</td>
-                                <td>234</td>
-                                <td>0</td>
-                                <td>2024-07-10</td>
-                            </tr> 
+                        	<% if(list.isEmpty()) { %>
+                         		<!-- 게시글 존재하지 않을경우 -->
+                         		<tr>
+			                    	<td colspan="6">조회된 게시글이 없습니다.</td>
+			                	</tr>
+			                <%}else { %>
+			                	<!-- 게시글 존재 할 경우 -->
+			                	<% for(Reply r : rList) { %>
+		                            <tr>
+		                                <td><input type="checkbox" class="rowCheckbox"></td>
+		                                <td><%= r.getTagName() %></td>
+		                                <td><%=r.getReplyContent() %></td>
+		                                <%if(r.getUserNick() != null) { %>
+		                                	<td><%= r.getUserNick() %></td>
+		                                <%}else { %>
+		                                	<td><%= r.getUser_id() %></td>
+		                                <%} %>
+		                                <td><%= r.getLikesCount() %></td>
+		                                <td><%= r.getCreateDate() %></td>
+		                            </tr>
+		                        <%} %>
+		                    <%} %>
+                            
                         </tbody>
                     </table>
                     <div align="center">

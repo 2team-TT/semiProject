@@ -38,6 +38,19 @@ public class User {
 	}
 
 
+	public User(String userId, String userPwd, String userName, String userNick, String address, String phone,
+			String email) {
+		super();
+		this.userId = userId;
+		this.userPwd = userPwd;
+		this.userName = userName;
+		this.userNick = userNick;
+		this.address = address;
+		this.phone = phone;
+		this.email = email;
+	}
+
+
 	public int getUserNo() {
 		return userNo;
 	}

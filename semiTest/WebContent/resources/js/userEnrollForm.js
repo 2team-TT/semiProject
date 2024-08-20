@@ -62,6 +62,7 @@ const select_email_direct = document.querySelector('.email select option:nth-chi
 const select_email_naver = document.querySelector('.email select option:nth-child(2)')
 const select_email_google = document.querySelector('.email select option:nth-child(3)')
 const email_2 = document.querySelector('.email #email_2')
+const email_1 = document.querySelector('.email #email_1')
 
 
 select_email.addEventListener('change',function(){
@@ -108,7 +109,6 @@ const userName = document.querySelector('.form_area #userName')
 
 
 
-
 //아이디 정규식
 const regExp_id= /^[a-zA-Z][0-9a-zA-Z]{7,16}$/g
 
@@ -120,13 +120,13 @@ const regExp_pwd= /^[a-zA-Z\\d`~!@#$%^&*()-_=+]{7,15}$/;
 const regExp_name=/^[가-힣]{2,}$/;
 
 //전화번호 정규식
-const regExp_phone=/\d{2,3}-\d{3,4}-\d{4}/g
+const regExp_phone=/\d{3}-\d{4}-\d{4}/g
 
 function enroll(){
 
-    if(!regExp_id.test(userId.value)){
+    if(userId.value==""){
 
-        alert('아이디 형식에 맞지 않습니다. 다시 입력해주세요')
+        alert('아이디는 필수 입력입니다.')
         userId.select();
         
         return false;
@@ -140,7 +140,7 @@ function enroll(){
         return false;
     }
 
-    if(userPwd.value==check_pwd.value){
+    if(userPwd.value!=check_pwd.value){
         alert('비밀번호가 일치하지 않습니다. 다시 입력해주세요')
         check_pwd.select();
         return false;
@@ -159,6 +159,12 @@ function enroll(){
         alert('전화번호 형식에 맞지 않습니다. 다시 입력해주세요')
         phone.select();
         
+        return false;
+    }
+
+    if(email_1.value!="" && email_2.value==""){
+        alert('도메인을 입력해주시기 바랍니다.')
+        email_2.select();
         return false;
     }
 

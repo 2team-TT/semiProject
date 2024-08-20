@@ -182,4 +182,27 @@ public class UserService {
 	}
 	
 	
+	
+	
+	public int insertUser(User u) {
+		
+		Connection conn = getConnection();
+		
+		int result = new UserDao().insertUser(conn, u);
+		
+		if(result==0) {
+			rollback(conn);
+		}else {
+			commit(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
+	
+	
+	
+	
+	
 }

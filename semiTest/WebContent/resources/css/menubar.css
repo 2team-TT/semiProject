@@ -3,9 +3,13 @@ body *{
 }
 body{
     height: 3000000px;
+    margin: 0;
+    padding: 0;
 }
 
 
+ol, ul {list-style:none}
+ol, ul, li {margin:0;padding:0}
 
 /* a 속성 삭제 */
 a{
@@ -533,33 +537,17 @@ header .small__main .icon{
 
 .side_menu .side_navi li{
 }
-.side_menu .side_navi li>div{
+.side_menu .side_navi li>a{
     padding: 20px;
     cursor: pointer;
     font-size: 18px;
     font-weight: 700;
 }
-.side_menu .side_navi li>div:hover{
+.side_menu .side_navi li>a:hover{
     color: #6d6863;
 }
 
-.side_menu .side_navi .side__navi__community{
-    display: none;
-    transition:  .5s;
 
-}
-
-.side_menu .side_navi .side__navi__shopping{
-    display: none;
-    transition:  .5s;
-
-}
-
-.side_menu .side_navi .side__navi__house{
-    display: none;
-    transition: .5s;
-
-}
 
 /* 사이드 풋터 */
 .side_menu .side_footer{

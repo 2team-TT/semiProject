@@ -373,6 +373,41 @@ public class UserDao {
 	
 	
 	
+	public int insertUser(Connection conn, User u) {
+		
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("insertUser");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, u.getUserId());
+			pstmt.setString(2, u.getUserPwd());
+			pstmt.setString(3, u.getUserName());
+			pstmt.setString(4, u.getUserNick());
+			pstmt.setString(5, u.getAddress());
+			pstmt.setString(6, u.getPhone());
+			pstmt.setString(7, u.getEmail());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+		
+		
+		
+		
+		
+	}
 	
 	
 	

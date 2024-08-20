@@ -28,6 +28,19 @@ public class Board {
 		this.createDate = createDate;
 		this.status = status;
 	}
+	
+	
+
+	public Board(int boardNo, String tagNo, String boardTitle, String boardWriter, int viewCount, int replyCount, String createDate) {
+		super();
+		this.boardNo = boardNo;
+		this.tagNo = tagNo;
+		this.boardTitle = boardTitle;
+		this.boardWriter = boardWriter;
+		this.viewCount = viewCount;
+		this.replyCount = replyCount;
+		this.createDate = createDate;
+	}
 
 	public int getBoardNo() {
 		return boardNo;

@@ -123,6 +123,30 @@ SELECT
  
 </entry>
 
-
+<entry key="insertUser">
+INSERT 
+  INTO USER1 
+     ( 
+       USER_NO
+     , USER_ID
+     , USER_PWD
+     , USER_NAME
+     , USER_NICK
+     , ADDRESS
+     , PHONE
+     , EMAIL
+     )
+VALUES
+    (
+      SEQ_USERNO.NEXTVAL
+    , ?
+    , ?
+    , ?
+    , ?
+    , ?
+    , ?
+    , ?
+    )
+</entry>
 
 </properties>
