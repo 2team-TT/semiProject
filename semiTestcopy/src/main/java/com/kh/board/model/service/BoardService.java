@@ -1,0 +1,55 @@
+package com.kh.board.model.service;
+
+import java.sql.Connection;
+import java.util.ArrayList;
+
+import com.kh.board.model.dao.BoardDao;
+import com.kh.board.model.vo.Board;
+import static com.kh.common.JDBCTemplate.*;
+
+public class BoardService {
+
+	public ArrayList<Board> mainSelectBoardBestList(){
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Board> list = new BoardDao().mainSelectBoardBestList(conn);
+		
+		close(conn);
+		
+		return list;
+		
+		
+	}
+	
+	public ArrayList<Board> mainSelectHoneyList(){
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Board> list = new BoardDao().mainSelectHoneyList(conn);
+		
+		close(conn);
+		
+		return list;
+		
+		
+	}
+	
+	
+	public ArrayList<Board> mainSelectNoticeList(){
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Board> list = new BoardDao().mainSelectNoticeList(conn);
+		
+		close(conn);
+		
+		return list;
+		
+		
+	}
+	
+	
+	
+	
+}
