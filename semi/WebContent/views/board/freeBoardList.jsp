@@ -150,7 +150,7 @@
                 <a href="">내글</a>
             </div>
             <div class="board_write">
-                <a href="">글쓰기</a>
+                <a href="<%=contextPath%>/BoardcreateForm.bo">글쓰기</a>
             </div>
             <%} %>
             

@@ -1,0 +1,39 @@
+b, strong {font-weight:bolder;}
+i,em {font-style: italic;}
+body{
+    height: 3000000px;
+    margin: 0;
+    padding: 0;
+}
+
+
+ol, ul {list-style:none}
+ol, ul, li {margin:0;padding:0}
+
+.input_section{
+    width: 100%;
+    margin-top: 370px;
+}
+
+.input_section .input_area{
+    width: 700px;
+    min-height: 900px;
+    margin: auto;
+    border: 2px solid #FFA500;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.input_section .input_area .input_table{
+    border: 1px solid #FFA500;
+    width: 600px;
+}
+
+
+.input_section .input_area .input_table tr td #editor{
+    height: 700px;
+}
