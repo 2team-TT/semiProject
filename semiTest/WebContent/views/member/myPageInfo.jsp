@@ -34,7 +34,7 @@
                     <div class="baseinfo--group">
                         <p class="info--annotation">Address</p>
                         <% if(u.getAddress() != null) { %>
-                        	<p class="info--content"><%= u.getAddress() %></p>
+                        	<p class="info--content addressInfo"><%= u.getAddress() %></p>
                         <%} else{ %>
                         	<p> 해당 정보가 존재하지 않습니다. </p>
                         <%} %>

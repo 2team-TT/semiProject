@@ -160,6 +160,9 @@ img {
     margin-top: 15px;
     font-size: 28px;
 }
+.myinfo--page .info--content.addressInfo{
+    font-size: 15px;
+}
 
 /* 마이페이지 알림 기능 설정 섹션 */
 .myinfo--page .myinfo--alarm{

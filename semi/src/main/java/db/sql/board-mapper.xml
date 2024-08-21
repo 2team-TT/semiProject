@@ -223,14 +223,45 @@
 		                  FROM REPLY
 		                  JOIN BOARD USING(BOARD_NO)
 		                  JOIN TAG USING(TAG_NO)
-		                  JOIN RE_REPLY USING(REPLY_NO)
-		                  JOIN USER1 ON(REPLY_WRITER = USER_NO)
+		                  JOIN USER1 ON(BOARD_WRITER = USER_NO)
 		                 WHERE REPLY.STATUS = 'Y'
 		                   AND REPLY_WRITER = ?
 		                 ORDER
 		                    BY REPLY_NO DESC
 		              ) MYREPLY   
 		        )
+		 WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<!-- 좋아요 글 갯수 카운트 쿼리문 -->
+	<entry key="selectMyLikesCount">
+		SELECT COUNT(*) AS "COUNT"
+		  FROM LIKES_BOARD
+		 WHERE USER_NO = ?
+	</entry>
+	
+	<!-- 마이페이지 좋아요 한 글 불러올 쿼리문 -->
+	<entry key="selectMyLikesList">
+		SELECT *
+		  FROM ( SELECT ROWNUM RNUM, LIKES.*
+		           FROM (SELECT TAG_NAME
+		                      , BOARD_NO
+		                      , BOARD_TITLE
+		                      , BOARD_WRITER
+		                      , USER_NICK
+		                      , USER_ID
+		                      , VIEW_COUNT
+		                      , TO_CHAR(CREATE_DATE, 'YYYY-MM-DD') AS "CREATE_DATE"
+		                   FROM BOARD
+		                   JOIN USER1 ON (BOARD_WRITER = USER_NO)
+		                   JOIN TAG USING(TAG_NO)
+		                   JOIN LIKES_BOARD USING (BOARD_NO)
+		                  WHERE LIKES_BOARD.USER_NO = ?
+		                    AND BOARD.STATUS = 'Y'
+		                  ORDER
+		                     BY BOARD_NO DESC
+		               ) LIKES
+		     )
 		 WHERE RNUM BETWEEN ? AND ?
 	</entry>
 
