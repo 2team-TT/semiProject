@@ -4,15 +4,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	PageInfo fPi = (PageInfo)request.getAttribute("freePi");
+	PageInfo Pi = (PageInfo)request.getAttribute("Pi");
 	ArrayList<Board> fList = (ArrayList<Board>)request.getAttribute("fList");
 	ArrayList<Board> bfList = (ArrayList<Board>)request.getAttribute("bfList");
 	
-	
-	int currentPage= fPi.getCurrentPage();
-	int startPage = fPi.getStartPage();
-	int endPage =fPi.getEndPage();
-	int maxPage = fPi.getMaxPage();
+	int currentPage= Pi.getCurrentPage();
+	int startPage = Pi.getStartPage();
+	int endPage =Pi.getEndPage();
+	int maxPage = Pi.getMaxPage();
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,32 +65,35 @@
                 <tbody>
                 	<%for(Board b : fList){ %>
 	                	<tr>
-	                        <td>
-	                        	<input type="hidden" name="bNo" value="<%=b.getBoardNo() %>">
-	                            <div class="tt">
-	                                <div class="content_title">
-	                                    <%=b.getBoardTitle() %>
-	                                </div>
-	                                <div class="content_icons">
-	                                    <div class="icon">
-	                                        <span class="material-icons m_icon">visibility</span>
-	                                        <span><%=b.getViewCount() %></span>
-	                                    </div>
-	                                    <div class="icon">
-	                                        <img src="./resources/img/foot.png" alt="">
-	                                        <span><%=b.getLikesCount() %></span>
-	                                    </div>
-	                                    <div class="icon">
-	                                        <span class="material-icons m_icon">textsms</span>
-	                                        <span><%=b.getReplyCount() %></span>
-	        
-	                                    </div>
-	                                    <div class="date">
-	                                        <%=b.getCreateDate() %>
-	                                    </div>
-	                                </div>
-	                            </div>
-	                        </td>
+	                      <td>
+	                       		<input type="hidden" name="bNo" value="<%=b.getBoardNo() %>">
+                                <div class="img">
+                                    <img src="<%=contextPath %><%=b.getTitleImg() %>" alt="">
+                                </div>
+                                <div class="tt">
+                                    <div class="content_title">
+                                        <%=b.getBoardTitle() %>
+                                    </div>
+                                    <div class="content_icons">
+                                        <div class="icon">
+                                            <span class="material-icons m_icon">visibility</span>
+                                            <span><%=b.getViewCount() %></span>
+                                        </div>
+                                        <div class="icon">
+                                            <img src="./resources/img/foot.png" alt="">
+                                            <span><%=b.getLikesCount() %></span>
+                                        </div>
+                                        <div class="icon">
+                                            <span class="material-icons m_icon">textsms</span>
+                                            <span><%=b.getReplyCount() %></span>
+            
+                                        </div>
+                                        <div class="date">
+                                            <%=b.getCreateDate() %>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
 	                    </tr>
                 	<%} %>
                     
@@ -107,31 +109,34 @@
                 	<%for(Board b : bfList){ %>
 	                	<tr>
 	                        <td>
-	                        	<input type="hidden" name="bNo"  value="<%=b.getBoardNo() %>">
-	                            <div class="tt">
-	                                <div class="content_title">
-	                                    <%=b.getBoardTitle() %>
-	                                </div>
-	                                <div class="content_icons">
-	                                    <div class="icon">
-	                                        <span class="material-icons m_icon">visibility</span>
-	                                        <span><%=b.getViewCount() %></span>
-	                                    </div>
-	                                    <div class="icon">
-	                                        <img src="./resources/img/foot.png" alt="">
-	                                        <span><%=b.getLikesCount() %></span>
-	                                    </div>
-	                                    <div class="icon">
-	                                        <span class="material-icons m_icon">textsms</span>
-	                                        <span><%=b.getReplyCount() %></span>
-	        
-	                                    </div>
-	                                    <div class="date">
-	                                        <%=b.getCreateDate() %>
-	                                    </div>
-	                                </div>
-	                            </div>
-	                        </td>
+	                       		<input type="hidden" name="bNo" value="<%=b.getBoardNo() %>">
+                                <div class="img">
+                                     <img src="<%=contextPath %><%=b.getTitleImg() %>" alt="">
+                                </div>
+                                <div class="tt">
+                                    <div class="content_title">
+                                        <%=b.getBoardTitle() %>
+                                    </div>
+                                    <div class="content_icons">
+                                        <div class="icon">
+                                            <span class="material-icons m_icon">visibility</span>
+                                            <span><%=b.getViewCount() %></span>
+                                        </div>
+                                        <div class="icon">
+                                            <img src="./resources/img/foot.png" alt="">
+                                            <span><%=b.getLikesCount() %></span>
+                                        </div>
+                                        <div class="icon">
+                                            <span class="material-icons m_icon">textsms</span>
+                                            <span><%=b.getReplyCount() %></span>
+            
+                                        </div>
+                                        <div class="date">
+                                            <%=b.getCreateDate() %>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
 	                    </tr>
                 	<%} %>
                     
@@ -203,28 +208,31 @@ const cook_choose_board = document.querySelector('.board_navi .navi_content .coo
 const used_choose_board = document.querySelector('.board_navi .navi_content .used_choose_board');
 
 free_choose_board.addEventListener('click',function(){
-	console.log('dd')
-	location.href="<%=contextPath%>/freeBoardList.bo?cpage=1"
+    console.log('dd')
+    location.href="<%=contextPath%>/freeBoardList.bo?cpage=1"
 
 })
 
 honey_choose_board.addEventListener('click',function(){
-	
-	location.href="<%=contextPath%>/honeyBoardList.bo?cpage=1"
+    
+    location.href="<%=contextPath%>/honeyBoardList.bo?cpage=1"
 
 })
 
 cook_choose_board.addEventListener('click',function(){
-	
-	location.href="<%=contextPath%>/foodBoardList.bo?cpage=1"
+    
+    location.href="<%=contextPath%>/foodBoardList.bo?cpage=1"
 
 })
 
 used_choose_board.addEventListener('click',function(){
-	
-	location.href="<%=contextPath%>/usedBoardList.bo?cpage=1"
+    
+    location.href="<%=contextPath%>/usedBoardList.bo?cpage=1"
 
 })
+
+
+
 
 
 
@@ -233,6 +241,7 @@ $(function(){
 		console.log($(this).children().children('input').val())
 	})
 })
+
 
 
 

@@ -1,6 +1,11 @@
+<%@page import="com.kh.common.model.vo.Tag"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%
+	ArrayList<Tag> list = (ArrayList<Tag>)request.getAttribute("tagList");
+	//태그번호. 이름   100번대만 있음
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,48 +51,128 @@
 
         <div class="input_area">
 
-            <form action="">
-                <input type="hidden" name="userNo" value="">
-                <table class="input_table">
-
-                    <tbody>
-                        <tr>
-                            <td>제목</td>
-                            <td>
-                                <input type="text" name="title" required>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>게시글 유형</td>
-                            <td>
-                                <select name="" id="tag">
-                                    <option value="asdf">asdfasdf</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
+           
+            <form action="insertBoard.bo" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="userNo" value="<%=u.getUserNo()%>">
+                
 
 
-                              <div id="editor" style="height: 400px"></div>
+                <div class="input_area_inLine">
+                    <table class="input_table">
+    
+                        <tbody>
+                            <tr>
+                                <td>제목</td>
+                                <td colspan="3">
+                                    <input type="text" name="title" required >
+                                </td>
+                            </tr>
+                            <tr>
+                                <td >게시글 유형</td>
+                                <td colspan="3">
+                                    <select name="tag" id="tag">
+                                        <%for(Tag t : list){ %>
+                                            <option value="<%=t.getTagNo()%>"><%=t.getTagName() %></option>
+                                        <%} %>
+                                    </select>
+                                </td>
+                              
+                            </tr>
+                            <tr class="food used hidden">
+                                <td >대표 이미지</td>
+                                <td colspan="3">
+                                    <input type="file" name="Thumbnail" disabled required  class="disabled food_dis used_dis">
+                                </td>
+                            </tr>
+                            <tr class="used hidden">
+                                <td>모델명</td>
+                                <td colspan="3">
+                                    <input type="text" name="model" disabled required  class="disabled used_dis">
+                                </td>
+                                
+                            </tr>
+                            <tr class="used hidden">
+                                <td>가격</td>
+                                <td>
+                                    <input type="number" name="price" disabled required  class="disabled used_dis">원
+                                </td>
+                                <td>거래지역</td>
+                                <td>
+                                    <input type="text" id="trading" placeholder="직접 입력" name="trading">
+                                    <select id="trading_area">
+                                        <option value="">직접입력</option>
+                                        <option value="서울">서울</option>
+                                        <option value="경기도">경기도</option>
+                                        <option value="인천">인천</option>
+                                        <option value="강원도">강원도</option>
+                                        <option value="충청북도">충청북도</option>
+                                        <option value="충청남도">충청남도</option>
+                                        <option value="대전">대전</option>
+                                        <option value="경상북도">경상북도</option>
+                                        <option value="경상남도">경상남도</option>
+                                        <option value="대구">대구</option>
+                                        <option value="부산">부산</option>
+                                        <option value="전라북도">전라북도</option>
+                                        <option value="전라남도">전라남도</option>
+                                        <option value="광주">광주</option>
+                                        <option value="제주도">제주도</option>
+                                        <option value="울릉도">울릉도</option>
+    
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr class="used hidden">
+                                <td>상태</td>
+                                <td>
+                                    <select name="status">
+                                        <option value="">선택안함</option>
+                                        <option value="미개봉">미개봉</option>
+                                        <option value="상">상</option>
+                                        <option value="중">중</option>
+                                        <option value="하">하</option>
+                                    </select>
+                                </td>
+                                <td>거래방법</td>
+                                <td>
+                                    <input type="checkbox" name="tradingMathod" id="parcel">
+                                    <label for="parcel">택배</label>
+                                    <input type="checkbox" name="tradingMathod" id="direct_transaction">
+                                    <label for="direct_transaction">직거래</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">
+    
+    
+                                  <div id="editor" ></div>
+    
+    
+    
+    
+    
+                                </td>
+                            </tr>
+    
+    
+                        </tbody>
+    
+                    </table>
+    
+    
+                </div>
 
 
 
 
 
-                            </td>
-                        </tr>
 
 
-                    </tbody>
-
-                </table>
 
 
                 <input type="hidden" name="content" id="boardContnent">
 
                 <div class="btn_area">
-                    <button type="button" onclick="return contnetInput()">글 올리기</button>
+                    <button type="submit" onclick="return contnetInput()">글 올리기</button>
                 </div>
 
 
@@ -239,6 +324,84 @@
       }
       
       
+
+
+  
+      const trading_select  = document.querySelector('#trading_area')
+      const trading_input = document.querySelector('#trading')
+      
+
+ 
+      trading_select.addEventListener("change",function(){
+
+        if(document.querySelector('#trading_area>option:nth-child(1)').selected){
+            trading_input.value = ""
+            trading_input.disabled =false
+        }
+
+        for(let i=2 ; i<=trading_select.childElementCount ; i++){
+            if(document.querySelector('#trading_area>option:nth-child('+i+')').selected){
+                trading_input.value = document.querySelector('#trading_area>option:nth-child('+i+')').value
+                trading_input.disabled =true
+
+            }
+        }
+
+
+      })
+
+
+
+      const tag_select = document.querySelector('#tag')
+
+      document.querySelector('#tag>option:nth-child(2)').selected= true
+
+
+      tag_select.addEventListener('change',function(){
+        
+        const val = tag_select.value
+
+        if(val === '130'){
+
+            $('.used').addClass('hidden')
+            $('.disabled.used_dis').attr('disabled', true)
+          $('.food').removeClass('hidden')
+          $('.food_dis').attr('disabled', false)
+        }else if(val === '140'){
+            $('.food').addClass('hidden')
+            $('.disabled.food_dis').attr('disabled', true)
+
+            $('.used').removeClass('hidden')
+            $('.disabled.used_dis').attr('disabled', false)
+        }else{
+            $('.used').addClass('hidden')
+            $('.food').addClass('hidden')
+            $('.disabled').attr('disabled', true)
+        }
+
+        
+      })
+
+
+
+
+
+      function contnetInput(){
+        let str = $('.ql-editor').html();
+        console.log(str)
+        if(str ===""){
+            alert("내용을 입력해주세요")
+            return false;
+        }
+
+        if(str.length>4000){
+            alert("내용이 너무 많습니다.")
+            return false;
+        }
+
+
+        $('#boardContnent').val(str)
+      }
       
       </script>
       

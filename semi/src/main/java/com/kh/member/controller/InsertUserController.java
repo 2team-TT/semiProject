@@ -64,7 +64,7 @@ public class InsertUserController extends HttpServlet {
 //		System.out.println(email);
 		
 		
-		User u = new User(userId, userPwd, userName, userName, address, phone, email);
+		User u = new User(userId, userPwd, userName, nickName, address, phone, email);
 		
 		
 		int result = new UserService().insertUser(u);

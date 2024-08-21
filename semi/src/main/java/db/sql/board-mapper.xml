@@ -58,6 +58,7 @@
 	SELECT COUNT(*) AS "COUNT"
 	FROM BOARD
 	WHERE TAG_NO = 120
+	  AND STATUS = 'Y'
 	</entry>
 	
 	<entry key="selectFreeBoardList">
@@ -233,5 +234,221 @@
 		        )
 		 WHERE RNUM BETWEEN ? AND ?
 	</entry>
+	
+	
+	
+	<!-- 커뮤니티 게시판 태그 리스트  -->
+	<entry key="selectBoardTagList">
+		SELECT 
+	        TAG_NO
+	      , TAG_NAME
+		FROM TAG
+		WHERE TAG_NO BETWEEN 101 AND 190
+	</entry>
+	
+	
+		<!--  board 테이블 insert  -->
+	<entry key="insertBoard">
+		INSERT 
+		  INTO BOARD
+		     ( 
+		       BOARD_NO
+		     , TAG_NO
+		     , BOARD_TITLE
+		     , BOARD_CONTENT
+		     , BOARD_WRITER
+		     )
+		VALUES
+		     ( 
+		       SEQ_BNO.NEXTVAL
+		     , ?
+		     , ?
+		     , ?
+		     , ?
+		     )
+					
+	</entry>
+	
+	
+			<!--  board_img 테이블 insert  -->
+	<entry key="insertAttachment">
+	INSERT 
+	  INTO BOARD_IMG
+	     ( 
+	       B_IMG_NO
+	     , BOARD_NO
+	     , ORIGIN_NAME
+	     , CHANGE_NAME
+	     , FILEPATH
+	     , FILE_LEVEL
+	     )
+	VALUES
+	     ( 
+	       SEQ_BINO.NEXTVAL
+	     , SEQ_BNO.CURRVAL
+	     , ?
+	     , ?
+	     , ?
+	     , ?
+	     )
+						
+	</entry>
+	
+	
+	
+		<!--  BOARD_USED 테이블 insert  -->
+	<entry key="insertUsed">
+	INSERT 
+	  INTO BOARD_USED
+	     ( 
+	       USED_NO
+	     , BOARD_NO
+	     , MODEL_NO
+	     , PRICE
+	     , MODEL_STATUS
+	     , TRADING_AREA
+	     , TRADING_METHOD
+	     )
+	VALUES
+	     ( 
+	       SEQ_USEDNO.NEXTVAL
+	     , SEQ_BNO.CURRVAL
+	     , ?
+	     , ?
+	     , ?
+	     , ?
+	     , ?
+	     )
+						
+	</entry>
+	
+	
+	
+	<entry key="selectFoodBoardListCount">
+	SELECT COUNT(*) AS "COUNT"
+	FROM BOARD
+	WHERE TAG_NO = 130
+	  AND STATUS = 'Y'
+	</entry>
+	
+	
+	<entry key="selectHoneyBoardListCount">
+	SELECT COUNT(*) AS "COUNT"
+	FROM BOARD
+	WHERE TAG_NO = 110
+	  AND STATUS = 'Y'
+	</entry>
+
+
+
+	<entry key="selectFoodBoardList">
+	SELECT *
+	FROM(SELECT ROWNUM AS "RNUM", A.*
+	FROM (SELECT 
+			       BOARD_NO
+			     , BOARD_TITLE
+			     , VIEW_COUNT
+			     , REPLY_COUNT
+			     , LIKES_COUNT
+			     , TO_CHAR(CREATE_DATE, 'YYYY-MM-DD') AS "CREATE_DATE"
+			     , FILEPATH ||  CHANGE_NAME AS "TITLE_IMG"
+			FROM BOARD
+			JOIN BOARD_IMG USING(BOARD_NO) 
+			WHERE TAG_NO = 130
+			  AND BOARD.STATUS = 'Y'
+			ORDER 
+			   BY BOARD_NO DESC) A)
+	 WHERE RNUM BETWEEN ? AND ?
+	
+	</entry>
+
+
+
+
+	<entry key="selectBestFoodBoardList">
+	SELECT *
+	FROM(SELECT ROWNUM AS "RNUM", A.*
+	FROM (SELECT 
+			       BOARD_NO
+			     , BOARD_TITLE
+			     , VIEW_COUNT
+			     , REPLY_COUNT
+			     , LIKES_COUNT
+			     , TO_CHAR(CREATE_DATE, 'YYYY-MM-DD') AS "CREATE_DATE"
+			     , FILEPATH ||  CHANGE_NAME AS "TITLE_IMG"
+			FROM BOARD
+			JOIN BOARD_IMG USING(BOARD_NO) 
+			WHERE TAG_NO = 130
+			  AND BOARD.STATUS = 'Y'
+	        ORDER 
+	           BY VIEW_COUNT DESC) A)
+	 WHERE RNUM BETWEEN ? AND ?
+	
+	</entry>
+
+
+
+<entry key="selectUsedBoardListCount">
+	SELECT COUNT(*) AS "COUNT"
+	FROM BOARD
+	WHERE TAG_NO = 140
+	  AND STATUS = 'Y'
+	</entry>
+
+
+
+	<entry key="selectUsedBoardList">
+	SELECT *
+	FROM(SELECT ROWNUM AS "RNUM", A.*
+	FROM (SELECT 
+			       BOARD_NO
+			     , BOARD_TITLE
+			     , MODEL_NO
+			     , PRICE
+			     , MODEL_STATUS
+                 , TRADING_AREA
+                 , TRADING_METHOD
+			     , TO_CHAR(CREATE_DATE, 'YYYY-MM-DD') AS "CREATE_DATE"
+			     , FILEPATH ||  CHANGE_NAME AS "TITLE_IMG"
+			FROM BOARD
+			JOIN BOARD_IMG USING(BOARD_NO) 
+            JOIN BOARD_USED USING(BOARD_NO)
+			WHERE TAG_NO = 140
+			  AND BOARD.STATUS = 'Y'
+			ORDER 
+			   BY BOARD_NO DESC) A)
+	 WHERE RNUM BETWEEN ? AND ?
+	
+	</entry>
+
+
+
+
+	<entry key="selectBestUsedBoardList">
+	SELECT *
+	FROM(SELECT ROWNUM AS "RNUM", A.*
+	FROM (SELECT 
+			       BOARD_NO
+			     , BOARD_TITLE
+			     , MODEL_NO
+			     , PRICE
+			     , MODEL_STATUS
+                 , TRADING_AREA
+                 , TRADING_METHOD
+			     , TO_CHAR(CREATE_DATE, 'YYYY-MM-DD') AS "CREATE_DATE"
+			     , FILEPATH ||  CHANGE_NAME AS "TITLE_IMG"
+			FROM BOARD
+			JOIN BOARD_IMG USING(BOARD_NO) 
+            JOIN BOARD_USED USING(BOARD_NO)
+			WHERE TAG_NO = 140
+			  AND BOARD.STATUS = 'Y'
+	        ORDER 
+	           BY VIEW_COUNT DESC) A)
+	 WHERE RNUM BETWEEN ? AND ?
+	
+	</entry>
+
+
+
 
 </properties>

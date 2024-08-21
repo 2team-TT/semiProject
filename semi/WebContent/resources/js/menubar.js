@@ -6,41 +6,47 @@ const small = document.querySelector('header .small__main');
 const menu__click = document.querySelector('.menu__click')
 
 window.addEventListener('scroll',_.throttle(function(){
-    if(window.scrollY<=5){
-        gsap.to(big,0,{
-            height:'100%',
-            display:"block",
-        })
-        gsap.to(small,0,{
-            height:0,
-            display:"none",
-        })
-        gsap.to('.side_content',.5,{
-            width:0,
-            display:"none",
-        })
-        gsap.to('.first',.5,{
-            marginTop: "370px",
-        })
-    }else{
-        gsap.to(big,0,{
-            height:0,
-            display:"none",
-        })
-        gsap.to(small,0,{
-            height:"100px",
-            display:"flex",
-        })
-        gsap.to('.first',.5,{
-            marginTop: "220px",
-        })
+    if(window.innerWidth>1160){
+        if(window.scrollY<=5){
+            gsap.to(big,0,{
+                height:'100%',
+                display:"block",
+            })
+            gsap.to(small,0,{
+                height:0,
+                display:"none",
+            })
+            gsap.to('.side_content',.5,{
+                width:0,
+                display:"none",
+            })
+            gsap.to('.first',.5,{
+                marginTop: "370px",
+            })
+    
+            console.log(window.innerWidth)
+        }else{
+            gsap.to(big,0,{
+                height:0,
+                display:"none",
+            })
+            gsap.to(small,0,{
+                height:"100px",
+                display:"flex",
+            })
+            gsap.to('.first',.5,{
+                marginTop: "230px",
+            })
+        }
     }
+   
 }))
 
 const search__click = document.querySelector('.search__click');
 
 const side__menu__btn = document.querySelector('.side_menu .side__btn')
 const side__search__btn = document.querySelector('.side__search .side__btn')
+const width = window.innerWidth;
 
 
 const out_btn_function = function(){

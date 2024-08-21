@@ -11,6 +11,14 @@ public class Board {
 	private int likesCount;
 	private String createDate;
 	private String status;
+	//사진
+	private String titleImg;
+	//중고
+	private String modelName;
+	private int price;
+	private String modelStatus;
+	private String tradingArea;
+	private String tradingMethod;
 	
 	public Board() {}
 
@@ -120,6 +128,59 @@ public class Board {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+	
+	
+	
+
+	public String getTitleImg() {
+		return titleImg;
+	}
+
+	public void setTitleImg(String titleImg) {
+		this.titleImg = titleImg;
+	}
+	
+	
+
+	public String getModelName() {
+		return modelName;
+	}
+
+	public void setModelName(String modelName) {
+		this.modelName = modelName;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	public String getModelStatus() {
+		return modelStatus;
+	}
+
+	public void setModelStatus(String modelStatus) {
+		this.modelStatus = modelStatus;
+	}
+
+	public String getTradingArea() {
+		return tradingArea;
+	}
+
+	public void setTradingArea(String tradingArea) {
+		this.tradingArea = tradingArea;
+	}
+
+	public String getTradingMethod() {
+		return tradingMethod;
+	}
+
+	public void setTradingMethod(String tradingMethod) {
+		this.tradingMethod = tradingMethod;
 	}
 
 	@Override

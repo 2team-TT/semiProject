@@ -28,12 +28,104 @@ ol, ul, li {margin:0;padding:0}
 
 }
 
-.input_section .input_area .input_table{
+
+.input_section .input_area_inLine{
+    width: 650px;
+    min-height: 880px;
+    margin-top: 30px;
     border: 1px solid #FFA500;
-    width: 600px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
 }
 
 
+
+
+.input_section .input_area .input_table{
+    /* width: 600px; */
+    margin-top: 30px;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+.input_section .input_area .input_table .hidden {
+    display: none;
+}
+
+
+
+.input_section .input_area .input_table tr:nth-child(1) td:nth-child(1){
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.input_section .input_area .input_table tr:nth-child(1) td input{
+    width: 500px;
+    box-sizing: border-box;
+}
+
+
+.input_section .input_area .input_table tr td:nth-child(1),
+.input_section .input_area .input_table tr td:nth-child(3){
+    width: 100px;
+    font-size: 16px;
+    font-weight: 600;
+}
+.input_section .input_area .input_table tr:nth-child(3) td #file-upload-button{
+    color: #FFA500;
+}
+
+
+
+.input_section .input_area .input_table tr:nth-child(4) td input{
+    width: 500px;
+    box-sizing: border-box;
+}
+
+
+.input_section .input_area .input_table tr:nth-child(5) td input{
+    width: 120px;
+    box-sizing: border-box;
+}
+
+.input_section .input_area .input_table tr:nth-child(6) td:nth-child(4) input{
+   margin-top: 10px;
+    
+}
+
+
+
+
+
+
 .input_section .input_area .input_table tr td #editor{
-    height: 700px;
+    min-height: 700px;
+}
+
+
+.input_section .input_area .btn_area{
+   display: flex;
+   justify-content: flex-end;
+}
+
+
+.input_section .input_area .btn_area>button{
+    margin-top: 10px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    background-color: transparent;
+    border: 2px solid #FFA500;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 18px;
+    transition-duration: .3s;
+}
+
+.input_section .input_area .btn_area>button:hover{
+  
+    background-color: #FFA500;
+
 }

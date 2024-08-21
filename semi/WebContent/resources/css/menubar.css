@@ -798,6 +798,10 @@ header .small__main .icon{
     color: #fff;
 }
 
+
+
+
+
 @media(max-width:1160px){
    
     header .big{
@@ -806,6 +810,10 @@ header .small__main .icon{
     header .small__main{
         display: flex;
         height: 100px;
+    }
+
+    .first{
+        margin-top: 230px;
     }
   
     

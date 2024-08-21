@@ -4,9 +4,12 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import com.kh.board.model.dao.BoardDao;
+import com.kh.board.model.vo.Attachment;
 import com.kh.board.model.vo.Board;
 import com.kh.board.model.vo.PageInfo;
 import com.kh.board.model.vo.Reply;
+import com.kh.board.model.vo.Used;
+import com.kh.common.model.vo.Tag;
 
 import static com.kh.common.JDBCTemplate.*;
 
@@ -165,4 +168,168 @@ public class BoardService {
 		
 		return rList;
 	}
+	
+	
+	// 커뮤니티 게시판 태그 조회
+	public ArrayList<Tag> selectBoardTagList(){
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Tag> list = new BoardDao().selectBoardTagList(conn);
+		
+		close(conn);
+		
+		return list;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	// 커뮤니티 insert
+	public int insertBoard(Board b, Attachment at , Used ud) {
+		
+		
+		Connection conn = getConnection();
+		
+		int result1 = new BoardDao().insertBoard(conn, b);
+		
+		int result2 = 1;
+		
+		if(at!= null) {
+			result2 = new BoardDao().insertAttachment(conn, at);
+		}
+		
+		int result3 =1;
+		
+		if(ud != null) {
+			result3 = new BoardDao().insertUsed(conn, ud);
+		}
+		
+		int result = result1 * result2 *result3;
+		if(result==1) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+		
+		
+		
+		
+	}
+	
+	
+	public int selectFoodBoardListCount() {
+		
+		Connection conn = getConnection();
+		
+		int count = new BoardDao().selectFoodBoardListCount(conn);
+		
+		close(conn);
+		
+		return count;
+	}
+	
+	public int selectHoneyBoardListCount() {
+		
+Connection conn = getConnection();
+		
+		int count = new BoardDao().selectHoneyBoardListCount(conn);
+		
+		close(conn);
+		
+		return count;
+	}
+	
+	
+	
+	
+	
+	
+	
+//	요리게시판 리스트 조회 최신순 인기순
+	public ArrayList<Board> selectFoodBoardList(PageInfo pi) {
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Board> list = new BoardDao().selectFoodBoardList(conn, pi);
+		
+		close(conn);
+	
+		
+		return list;
+	}
+	
+	public ArrayList<Board> selectBestFoodBoardList(PageInfo pi) {
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Board> list = new BoardDao().selectBestFoodBoardList(conn, pi);
+		
+		close(conn);
+	
+		
+		return list;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public int selectUsedBoardListCount() {
+		
+		Connection conn = getConnection();
+		
+		int count = new BoardDao().selectHoneyBoardListCount(conn);
+		
+		close(conn);
+		
+		return count;
+	}
+	
+	
+	
+	
+	
+	
+	
+//	요리게시판 리스트 조회 최신순 인기순
+	public ArrayList<Board> selectUsedBoardList(PageInfo pi) {
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Board> list = new BoardDao().selectUsedBoardList(conn, pi);
+		
+		close(conn);
+	
+		
+		return list;
+	}
+	
+	public ArrayList<Board> selectBestUsedBoardList(PageInfo pi) {
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Board> list = new BoardDao().selectBestUsedBoardList(conn, pi);
+		
+		close(conn);
+	
+		
+		return list;
+	}
+	
 }

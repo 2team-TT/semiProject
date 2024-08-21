@@ -139,7 +139,7 @@
    margin-top: 5px;
    margin-left: 10px;
    margin-bottom: 5px;
-   
+   flex-wrap: wrap;
 }
 
 .Board_list .board_table>tbody>tr>td .content_icons .icon{
@@ -181,20 +181,28 @@
     
 }
 .Board_list .board_table>tbody>tr>td .content_icons .used_span{
-    margin: 0;
-
+    margin-top: 8px;
+    font-size: 12px;
+    font-weight: 600;
 }
 
-.Board_list .board_table>tbody>tr>td .content_icons .used_span::after{
+.Board_list .board_table>tbody>tr>td .content_icons .used_span:first-child{
+  max-width:  160px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.Board_list .board_table>tbody>tr>td .content_icons .used_span::before{
     content: "";
     display: inline-block;
     border: 1px solid #333;
     height: 10px;
     opacity: .7;
-    margin-left: 8px;
+    margin: 0 10px;
 }
 
-.Board_list .board_table>tbody>tr>td .content_icons .used_span:last-child:after{
+.Board_list .board_table>tbody>tr>td .content_icons .used_span:first-child::before{
     content: "";
     display: none;
    
@@ -299,6 +307,9 @@
         width: 90%;
        
         
+    }
+    .Board_list .board_table>tbody>tr>td .content_icons .used_span.size_hid{
+        display: none;
     }
 }
 

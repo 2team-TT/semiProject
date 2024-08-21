@@ -9,9 +9,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import com.kh.board.model.vo.Attachment;
 import com.kh.board.model.vo.Board;
 import com.kh.board.model.vo.PageInfo;
 import com.kh.board.model.vo.Reply;
+import com.kh.board.model.vo.Used;
+import com.kh.common.model.vo.Tag;
 
 import static com.kh.common.JDBCTemplate.*;
 
@@ -517,6 +520,458 @@ public ArrayList<Board> selectHoneyBoardList(Connection conn, PageInfo pi){
 		
 		return rList;
 	}
+	
+	
+	
+	
+	
+	public ArrayList<Tag> selectBoardTagList(Connection conn){
+		
+		ArrayList<Tag> list = new ArrayList<Tag>();
+		
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectBoardTagList");
+		
+		try {
+			pstmt =conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Tag(rset.getInt("tag_no"),rset.getString("tag_name")));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}
+	
+	
+	
+	
+	
+	public int insertBoard(Connection conn , Board b) {
+		
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("insertBoard");
+		
+		try {
+			pstmt= conn.prepareStatement(sql);
+			pstmt.setString(1, b.getTagNo());
+			pstmt.setString(2, b.getBoardTitle());
+			pstmt.setString(3, b.getBoardContent());
+			pstmt.setString(4, b.getBoardWriter());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+		
+	}
+	
+	
+	
+	public int insertAttachment(Connection conn , Attachment at) {
+		
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("insertAttachment");
+		
+		try {
+			pstmt= conn.prepareStatement(sql);
+			pstmt.setString(1,at.getOriginName());
+			pstmt.setString(2, at.getNewName());
+			pstmt.setString(3, at.getFilePath());
+			pstmt.setString(4, at.getFileLevel());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+		
+	}
+	
+	public int insertUsed(Connection conn , Used ud) {
+		
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("insertUsed");
+		
+		try {
+			pstmt= conn.prepareStatement(sql);
+			pstmt.setString(1, ud.getModelName());
+			pstmt.setInt(2, ud.getPrice());
+			pstmt.setString(3, ud.getModelStatus());
+			pstmt.setString(4, ud.getTradingArea());
+			pstmt.setString(5, ud.getTradingMethod());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+		
+	}
+	
+	
+	
+	
+	
+	
+	public int selectFoodBoardListCount(Connection conn) {
+		
+		int count = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectFoodBoardListCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				count = rset.getInt("count");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+			
+		}
+		
+		return count;
+		
+		
+	}
+	
+	
+	
+	public int selectHoneyBoardListCount(Connection conn) {
+		
+		int count = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectHoneyBoardListCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				count = rset.getInt("count");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+			
+		}
+		
+		return count;
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+//	요리게시판 리스트 조회 최신순 인기순
+	public ArrayList<Board> selectFoodBoardList(Connection conn, PageInfo pi){
+		
+		ArrayList<Board> list = new ArrayList<Board>();
+		
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectFoodBoardList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			int startRow =(pi.getCurrentPage()-1)* pi.getBoardLimit()+1;
+			int endRow = startRow + pi.getBoardLimit() -1;
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+		
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Board b = new Board();
+				
+				b.setBoardNo(rset.getInt("Board_no"));
+				b.setBoardTitle(rset.getString("board_title"));
+				b.setViewCount(rset.getInt("view_count"));
+				b.setReplyCount(rset.getInt("REPLY_COUNT"));
+				b.setLikesCount(rset.getInt("LIKES_COUNT"));
+				b.setCreateDate(rset.getString("create_date"));
+				b.setTitleImg(rset.getString("title_img"));
+				
+				list.add(b);
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+		
+		
+	}
+	
+	
+	public ArrayList<Board> selectBestFoodBoardList(Connection conn, PageInfo pi){
+		
+		ArrayList<Board> list = new ArrayList<Board>();
+		
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectBestFoodBoardList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			int startRow =(pi.getCurrentPage()-1)* pi.getBoardLimit()+1;
+			int endRow = startRow + pi.getBoardLimit() -1;
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+		
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Board b = new Board();
+				
+				b.setBoardNo(rset.getInt("Board_no"));
+				b.setBoardTitle(rset.getString("board_title"));
+				b.setViewCount(rset.getInt("view_count"));
+				b.setReplyCount(rset.getInt("REPLY_COUNT"));
+				b.setLikesCount(rset.getInt("LIKES_COUNT"));
+				b.setCreateDate(rset.getString("create_date"));
+				b.setTitleImg(rset.getString("title_img"));
+				
+				list.add(b);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	public int selectUsedBoardListCount(Connection conn) {
+		
+		int count = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectUsedBoardListCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				count = rset.getInt("count");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+			
+		}
+		
+		return count;
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+//	중고 리스트 조회 최신순 인기순
+	public ArrayList<Board> selectUsedBoardList(Connection conn, PageInfo pi){
+		
+		ArrayList<Board> list = new ArrayList<Board>();
+		
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectUsedBoardList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			int startRow =(pi.getCurrentPage()-1)* pi.getBoardLimit()+1;
+			int endRow = startRow + pi.getBoardLimit() -1;
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+		
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Board b = new Board();
+				
+				b.setBoardNo(rset.getInt("Board_no"));
+				b.setBoardTitle(rset.getString("board_title"));
+				
+				b.setModelName(rset.getString("model_no"));
+				b.setPrice(rset.getInt("price"));
+				b.setModelStatus(rset.getString("model_status"));
+				b.setTradingArea(rset.getString("trading_area"));
+				b.setTradingMethod(rset.getString("trading_method"));
+				
+				
+				b.setCreateDate(rset.getString("create_date"));
+				b.setTitleImg(rset.getString("title_img"));
+				
+				list.add(b);
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+		
+		
+	}
+	
+	
+	public ArrayList<Board> selectBestUsedBoardList(Connection conn, PageInfo pi){
+		
+		ArrayList<Board> list = new ArrayList<Board>();
+		
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectBestUsedBoardList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			int startRow =(pi.getCurrentPage()-1)* pi.getBoardLimit()+1;
+			int endRow = startRow + pi.getBoardLimit() -1;
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+		
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Board b = new Board();
+				
+				b.setBoardNo(rset.getInt("Board_no"));
+				b.setBoardTitle(rset.getString("board_title"));
+				
+				b.setModelName(rset.getString("model_no"));
+				b.setPrice(rset.getInt("price"));
+				b.setModelStatus(rset.getString("model_status"));
+				b.setTradingArea(rset.getString("trading_area"));
+				b.setTradingMethod(rset.getString("trading_method"));
+				
+				
+				b.setCreateDate(rset.getString("create_date"));
+				b.setTitleImg(rset.getString("title_img"));
+				
+				list.add(b);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+		
+		
+	}
+	
+	
+	
+	
 	
 	
 	

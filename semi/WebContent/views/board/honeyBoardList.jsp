@@ -215,17 +215,23 @@ int maxPage = hPi.getMaxPage();
 		
 		cook_choose_board.addEventListener('click',function(){
 		   
-		   location.href="<%=contextPath%>/honeyBoardList.bo?cpage=1"
+		   location.href="<%=contextPath%>/foodBoardList.bo?cpage=1"
 		
 		})
 		
 		used_choose_board.addEventListener('click',function(){
 		   
-		   location.href="<%=contextPath%>/honeyBoardList.bo?cpage=1"
+		   location.href="<%=contextPath%>/usedBoardList.bo?cpage=1"
 		
 		})
 		
 		
+$(function(){
+    $('.board_table tr').on('click',function(){
+		console.log($(this).children().children('input').val())
+	})
+})
+
 		
 		
 		</script>
