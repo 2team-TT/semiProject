@@ -20,6 +20,11 @@ public class Board {
 	private String tradingArea;
 	private String tradingMethod;
 	
+	// 마이페이지 좋아요 테이블을 위한 변수 선언
+	private String tagName;
+	private String userNick;
+	private String userId;
+	
 	public Board() {}
 
 	public Board(int boardNo, String tagNo, String boardTitle, String boardContent, String boardWriter, int viewCount,
@@ -48,6 +53,21 @@ public class Board {
 		this.viewCount = viewCount;
 		this.replyCount = replyCount;
 		this.createDate = createDate;
+	}
+	
+	
+
+	public Board(int boardNo, String boardTitle, String boardWriter, int viewCount, String createDate, String tagName,
+			String userNick, String userId) {
+		super();
+		this.boardNo = boardNo;
+		this.boardTitle = boardTitle;
+		this.boardWriter = boardWriter;
+		this.viewCount = viewCount;
+		this.createDate = createDate;
+		this.tagName = tagName;
+		this.userNick = userNick;
+		this.userId = userId;
 	}
 
 	public int getBoardNo() {
@@ -131,6 +151,7 @@ public class Board {
 	}
 	
 	
+<<<<<<< HEAD
 	
 
 	public String getTitleImg() {
@@ -181,6 +202,31 @@ public class Board {
 
 	public void setTradingMethod(String tradingMethod) {
 		this.tradingMethod = tradingMethod;
+=======
+
+	public String getTagName() {
+		return tagName;
+	}
+
+	public void setTagName(String tagName) {
+		this.tagName = tagName;
+	}
+
+	public String getUserNick() {
+		return userNick;
+	}
+
+	public void setUserNick(String userNick) {
+		this.userNick = userNick;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+>>>>>>> 06faa3d6a16f989c910847687497fbfb3765950b
 	}
 
 	@Override

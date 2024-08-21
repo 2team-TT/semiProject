@@ -14,13 +14,13 @@ public class Reply {
 	private String tagName;
 	private String boardWriter;
 	private String userNick;
-	private String user_id;
+	private String userId;
 	public Reply() {}
 	
 	
 
 	public Reply(int replyNo, int boardNo, String replyWriter, String replyContent, int likesCount, String createDate,
-			String status, String tagName, String boardWriter, String userNick, String user_id) {
+			String status, String tagName, String boardWriter, String userNick, String userId) {
 		super();
 		this.replyNo = replyNo;
 		this.boardNo = boardNo;
@@ -32,7 +32,7 @@ public class Reply {
 		this.tagName = tagName;
 		this.boardWriter = boardWriter;
 		this.userNick = userNick;
-		this.user_id = user_id;
+		this.userId = userId;
 	}
 	
 	
@@ -41,7 +41,7 @@ public class Reply {
 	
 
 	public Reply(int replyNo, int boardNo, String replyWriter, String replyContent, int likesCount, String createDate,
-			String tagName, String boardWriter, String userNick, String user_id) {
+			String tagName, String boardWriter, String userNick, String userId) {
 		super();
 		this.replyNo = replyNo;
 		this.boardNo = boardNo;
@@ -52,7 +52,7 @@ public class Reply {
 		this.tagName = tagName;
 		this.boardWriter = boardWriter;
 		this.userNick = userNick;
-		this.user_id = user_id;
+		this.userId = userId;
 	}
 
 
@@ -161,14 +161,14 @@ public class Reply {
 
 
 
-	public String getUser_id() {
-		return user_id;
+	public String getuserId() {
+		return userId;
 	}
 
 
 
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+	public void setuserId(String userId) {
+		this.userId = userId;
 	}
 
 

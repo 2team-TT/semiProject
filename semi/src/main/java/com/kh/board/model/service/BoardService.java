@@ -163,12 +163,35 @@ public class BoardService {
 		Connection conn = getConnection();
 		
 		ArrayList<Reply> rList = new BoardDao().selectMyReplyList(conn, replyPi, userNo);
-		
 		close(conn);
 		
 		return rList;
 	}
+
+	//selectMyReplyList() end
 	
+	public int selectMyLikesCount(int userNo) {
+		Connection conn = getConnection();
+		
+		int count = new BoardDao().selectMyLikesCount(conn, userNo);
+		
+		close(conn);
+		
+		return count;
+	}//selectMyLikesCount() end
+	
+	public ArrayList<Board> selectMyLikesList(PageInfo likesPi, int userNo){
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Board> lList = new BoardDao().selectMyLikesList(conn, likesPi, userNo);
+		
+		close(conn);
+		
+		return lList;
+	}//selectMyLikesList() end
+
+		
 	
 	// 커뮤니티 게시판 태그 조회
 	public ArrayList<Tag> selectBoardTagList(){
@@ -333,3 +356,4 @@ Connection conn = getConnection();
 	}
 	
 }
+

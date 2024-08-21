@@ -509,7 +509,6 @@ public ArrayList<Board> selectHoneyBoardList(Connection conn, PageInfo pi){
 								));
 			}
 			
-			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -519,7 +518,79 @@ public ArrayList<Board> selectHoneyBoardList(Connection conn, PageInfo pi){
 		}
 		
 		return rList;
-	}
+	}//selectMyReplyCount() end
+	
+	public int selectMyLikesCount(Connection conn, int userNo) {
+		
+		int count = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectMyLikesCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, userNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				count = rset.getInt("count");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return count;
+	}//selectMyLikesCount() end
+	
+	public ArrayList<Board> selectMyLikesList(Connection conn, PageInfo likesPi, int userNo){
+		
+		ArrayList<Board> lList = new ArrayList<Board>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectMyLikesList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			int startRow = (likesPi.getCurrentPage() - 1) * likesPi.getBoardLimit() + 1;
+			int endRow = startRow + likesPi.getBoardLimit() - 1;
+			pstmt.setInt(1, userNo);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				
+				lList.add(new Board(rset.getInt("board_no")
+								  , rset.getString("board_title")
+								  , rset.getString("board_writer")
+								  , rset.getInt("view_count")
+								  , rset.getString("create_date")
+								  , rset.getString("tag_name") 
+								  , rset.getString("user_nick")
+								  , rset.getString("user_id")
+						));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return lList;
+		
+	}//selectMyLikesList() end
 	
 	
 	
