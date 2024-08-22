@@ -70,6 +70,10 @@ public class Board {
 		this.userId = userId;
 	}
 
+	
+	
+	
+	
 	public int getBoardNo() {
 		return boardNo;
 	}
@@ -150,8 +154,7 @@ public class Board {
 		this.status = status;
 	}
 	
-	
-<<<<<<< HEAD
+
 	
 
 	public String getTitleImg() {
@@ -202,7 +205,7 @@ public class Board {
 
 	public void setTradingMethod(String tradingMethod) {
 		this.tradingMethod = tradingMethod;
-=======
+	}
 
 	public String getTagName() {
 		return tagName;
@@ -226,7 +229,7 @@ public class Board {
 
 	public void setUserId(String userId) {
 		this.userId = userId;
->>>>>>> 06faa3d6a16f989c910847687497fbfb3765950b
+
 	}
 
 	@Override

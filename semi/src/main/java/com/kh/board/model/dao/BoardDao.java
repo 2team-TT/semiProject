@@ -1043,6 +1043,254 @@ public ArrayList<Board> selectHoneyBoardList(Connection conn, PageInfo pi){
 	
 	
 	
+	public Board selectBoardDeteil(Connection conn, int boardNo) {
+		
+		Board b =null;
+		
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectBoardDeteil");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, boardNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				
+				b = new Board();
+				b.setBoardNo(rset.getInt("board_no"));
+				b.setTagNo(rset.getString("tag_no"));
+				b.setBoardTitle(rset.getString("board_title"));
+				b.setBoardContent(rset.getString("board_content"));
+				b.setBoardWriter(rset.getString("user_id"));
+				b.setUserNick(rset.getString("user_nick"));
+				b.setViewCount(rset.getInt("view_count"));
+				b.setReplyCount(rset.getInt("reply_count"));
+				b.setLikesCount(rset.getInt("likes_count"));
+				b.setCreateDate( rset.getString("create_date"));
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return b;
+		
+		
+	}
+	
+	
+	// 게시글조회시 카운트업
+	public int boardCountUp(Connection conn, int boardNo) {
+		
+		int result =0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("boardCountUp");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, boardNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+		
+	}
+	
+	
+	// 좋아요 테이블 조회
+	public int selectLikesBoard(Connection conn, int userNo, int boardNo) {
+		
+		int count = 0;
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectLikesBoard");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, userNo);
+			pstmt.setInt(2, boardNo);
+			
+			rset =pstmt.executeQuery();
+			
+			if(rset.next()) {
+				count = rset.getInt("count");
+				System.out.println("dd");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+			
+		}
+		
+		return count;
+	}
+	
+	// 좋아요 테이블 insert
+	public int insertLikesBoard(Connection conn, int userNo, int boardNo) {
+		
+		int result =0;
+		
+		PreparedStatement pstmt = null;
+		
+		
+		
+		String sql = prop.getProperty("insertLikesBoard");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, userNo);
+			pstmt.setInt(2, boardNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+		
+		
+	}
+	
+	// 좋아요 테이블 delete
+	public int deleteLikesBoard(Connection conn, int userNo, int boardNo) {
+		
+		int result =0;
+		
+		PreparedStatement pstmt = null;
+		
+		
+		
+		String sql = prop.getProperty("deleteLikesBoard");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, userNo);
+			pstmt.setInt(2, boardNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+		
+		
+	}
+	
+	
+	
+	
+	
+	// 댓글 리스트 조회 - 조건 게시글번호
+	public ArrayList<Reply> selectBoardReplyList(Connection conn, int BoardNo){
+		
+		ArrayList<Reply> rList = new ArrayList<Reply>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectBoardReplyList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, BoardNo);
+			
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				
+				Reply r = new Reply();
+				r.setReplyNo(rset.getInt("reply_no"));
+				r.setBoardNo(rset.getInt("board_no"));
+				r.setReplyWriter(rset.getString("USER_ID"));
+				r.setUserNick(rset.getString("user_nick"));
+				r.setReplyContent(rset.getString("reply_content"));
+				r.setReReplyCount(rset.getInt("RE_REPLY_COUNT"));
+				r.setLikesCount(rset.getInt("LIKES_COUNT"));
+				r.setCreateDate(rset.getString("create_date"));
+				
+				rList.add(r);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return rList;
+	}
+	
+	
+	
+	
+	
+	public int insertBoardReply(Connection conn, Reply r) {
+		
+		int result =0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("insertBoardReply");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, r.getBoardNo());
+			pstmt.setInt(2, Integer.parseInt(r.getReplyWriter()));
+			pstmt.setString(3, r.getReplyContent());
+			
+			result = pstmt.executeUpdate();
+			
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			
+		}
+		
+		return result;
+		
+		
+	}
+	
+	
+	
+	
+	
 	
 	
 	

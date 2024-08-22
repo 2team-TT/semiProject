@@ -15,6 +15,10 @@ public class Reply {
 	private String boardWriter;
 	private String userNick;
 	private String userId;
+	
+	private int reReplyCount;
+	
+	
 	public Reply() {}
 	
 	
@@ -173,12 +177,41 @@ public class Reply {
 
 
 
+	public String getUserId() {
+		return userId;
+	}
+
+
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+
+
+	public int getReReplyCount() {
+		return reReplyCount;
+	}
+
+
+
+	public void setReReplyCount(int reReplyCount) {
+		this.reReplyCount = reReplyCount;
+	}
+
+
+
 	@Override
 	public String toString() {
 		return "Reply [replyNo=" + replyNo + ", boardNo=" + boardNo + ", replyWriter=" + replyWriter + ", replyContent="
 				+ replyContent + ", likesCount=" + likesCount + ", createDate=" + createDate + ", status=" + status
-				+ "]";
+				+ ", tagName=" + tagName + ", boardWriter=" + boardWriter + ", userNick=" + userNick + ", userId="
+				+ userId + ", reReplyCount=" + reReplyCount + "]";
 	}
+
+
+
+	
 	
 	
 }

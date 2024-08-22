@@ -810,6 +810,7 @@ header .small__main .icon{
     header .small__main{
         display: flex;
         height: 100px;
+        
     }
 
     .first{

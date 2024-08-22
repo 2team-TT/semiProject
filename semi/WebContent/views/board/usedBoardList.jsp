@@ -247,9 +247,14 @@ const used_choose_board = document.querySelector('.board_navi .navi_content .use
 
 
 
-        $(function(){
+
+
+$(function(){
     $('.board_table tr').on('click',function(){
 		console.log($(this).children().children('input').val())
+		
+		location.href="<%=contextPath%>/boardDeteil.bo?bno="+$(this).children().children('input').val()
+		
 	})
 })
 

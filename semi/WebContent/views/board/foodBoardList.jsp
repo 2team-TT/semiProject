@@ -239,6 +239,9 @@ used_choose_board.addEventListener('click',function(){
 $(function(){
     $('.board_table tr').on('click',function(){
 		console.log($(this).children().children('input').val())
+		
+		location.href="<%=contextPath%>/boardDeteil.bo?bno="+$(this).children().children('input').val()
+		
 	})
 })
 

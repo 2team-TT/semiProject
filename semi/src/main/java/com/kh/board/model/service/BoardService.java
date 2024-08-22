@@ -355,5 +355,124 @@ Connection conn = getConnection();
 		return list;
 	}
 	
+	
+	// board 한개 select
+	
+	public Board selectBoardDeteil(int boardNo) {
+		
+		Connection conn = getConnection();
+		
+		Board b = new BoardDao().selectBoardDeteil(conn, boardNo);
+		
+		close(conn);
+		
+		return b;
+	}
+
+	
+	
+	// 게시글조회시 카운트업
+	public int boardCountUp(int boardNo) {
+		
+		Connection conn = getConnection();
+		
+		int result = new BoardDao().boardCountUp(conn, boardNo);
+		
+		if(result >0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result;
+	}
+	
+	// 좋아요 테이블 조회
+	public int selectLikesBoard(int userNo, int boardNo) {
+		
+		Connection conn = getConnection();
+		
+		int count = new BoardDao().selectLikesBoard(conn, userNo, boardNo);
+		
+		close(conn);
+		
+		return count;
+		
+		
+		
+	}
+	
+	// 좋아요 테이블 insert
+	public int insertLikesBoard(int userNo, int boardNo ) {
+		
+		Connection conn = getConnection();
+		
+		int result = new BoardDao().insertLikesBoard(conn,userNo, boardNo);
+		
+		if(result >0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result;
+	}
+	
+	
+	// 좋아요 테이블 delete
+	public int deleteLikesBoard(int userNo, int boardNo ) {
+		
+		Connection conn = getConnection();
+		
+		int result = new BoardDao().deleteLikesBoard(conn,userNo, boardNo);
+		
+		if(result >0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result;
+	}
+	
+	// 댓글 테이블 조회 - 조건 게시글
+	public ArrayList<Reply> selectBoardReplyList(int boardNo) {
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Reply> list= new BoardDao().selectBoardReplyList(conn, boardNo);
+		
+		close(conn);
+		
+		return list;
+		
+		
+		
+	}
+	
+	
+	//댓글 insert
+	
+	public int insertBoardReply(Reply r) {
+		
+		Connection conn = getConnection();
+		
+		int result = new BoardDao().insertBoardReply(conn, r);
+		
+		if(result>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
+	
+
 }
 
