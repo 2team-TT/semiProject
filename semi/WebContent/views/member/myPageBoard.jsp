@@ -18,10 +18,10 @@
 	ArrayList<Board> lList = (ArrayList<Board>)request.getAttribute("lList");
 	// 글 번호, 글 제목, 글 작성자, 조회수, 작성일, 태그이름(카테고리명), 유저닉, 유저 아이디
 	// 내 게시글 페이징 변수
-	int currentPage= pi.getCurrentPage();
-	int startPage = pi.getStartPage();
-	int endPage = pi.getEndPage();
-	int maxPage = pi.getMaxPage();
+	int currentBoardPage= pi.getCurrentPage();
+	int boardStartPage = pi.getStartPage();
+	int boardEndPage = pi.getEndPage();
+	int boardMaxPage = pi.getMaxPage();
 	
 	// 내 댓글 페이징 변수
 	int replyCurrentPage= rPi.getCurrentPage();
@@ -88,19 +88,19 @@
                          </tbody>
                      </table>
                      <div align="center">
-                     <%if(maxPage !=0) { %>
-			           	<% if(currentPage !=1){ %>
-			           		<button class="page-btn btn btn-outline-secondary" onclick = "location.href ='<%=contextPath %>/myPageBoard.me?cpage=<%= currentPage-1 %>'">&lt;</button>
+                     <%if(boardMaxPage !=0) { %>
+			           	<% if(currentBoardPage !=1){ %>
+			           		<button class="page-btn btn btn-outline-secondary" onclick = "location.href ='<%=contextPath %>/myPageBoard.me?cBoardPage=<%= currentBoardPage-1 %>'">&lt;</button>
 					  	<%} %>
-					 		<%for(int p = startPage; p<= endPage ; p++){ %>
-			            		<%if(p==currentPage) {%>
+					 		<%for(int p = boardStartPage; p<= boardEndPage ; p++){ %>
+			            		<%if(p==currentBoardPage) {%>
 			            			<button class="page-btn btn btn-outline-secondary" disabled><%= p %></button>
 			            		<%}else{ %>
-			            			<button class="page-btn btn btn-outline-secondary" onclick="location.href='<%=contextPath%>/myPageBoard.me?cpage=<%= p %>'"><%= p %></button>
+			            			<button class="page-btn btn btn-outline-secondary" onclick="location.href='<%=contextPath%>/myPageBoard.me?cBoardPage=<%= p %>'"><%= p %></button>
 			            		<%} %>
 			         	  	<%} %>
-			            		<% if(currentPage != maxPage){ %>
-			            			<button class="page-btn btn btn-outline-secondary" onclick = "location.href ='<%=contextPath %>/myPageBoard.me?cpage=<%= currentPage+1 %>'">&gt</button>
+			            		<% if(currentBoardPage != boardMaxPage){ %>
+			            			<button class="page-btn btn btn-outline-secondary" onclick = "location.href ='<%=contextPath %>/myPageBoard.me?cBoardPage=<%= currentBoardPage+1 %>'">&gt</button>
 								<%} %>
 					<%} %>
 			
@@ -172,7 +172,7 @@
                     <div align="center">
                     <% if(replyMaxPage !=0){ %>
                     	<% if(replyCurrentPage != 1) {%>
-                        	<button class="page-btn btn btn-outline-secondary" onclick = "location.href ='<%=contextPath %>/myPageBoard.me?cpage=<%= replyCurrentPage-1 %>'">&lt;</button>
+                        	<button class="page-btn btn btn-outline-secondary" onclick = "location.href ='<%=contextPath %>/myPageBoard.me?cReplyPage=<%= replyCurrentPage-1 %>'">&lt;</button>
                     	<%} %>
                     
                     
@@ -180,11 +180,11 @@
                     		<%if( p == replyCurrentPage){ %>
                         		<button disabled class="page-btn btn btn-outline-secondary"><%= p %></button>
                      	    <%} else{ %>
-                       	 		<button class="page-btn btn btn-outline-secondary" onclick = "location.href ='<%=contextPath %>/myPageBoard.me?cpage=<%= p %>'"><%= p %></button>
+                       	 		<button class="page-btn btn btn-outline-secondary" onclick = "location.href ='<%=contextPath %>/myPageBoard.me?cReplyPage=<%= p %>'"><%= p %></button>
                       	  <%} %>
                    		<%} %>
                     		<% if(replyCurrentPage != replyMaxPage) { %>
-                       	 		<button class="page-btn btn btn-outline-secondary" onclick = "location.href ='<%=contextPath %>/myPageBoard.me?cpage=<%= replyCurrentPage+1 %>'">&gt</button>
+                       	 		<button class="page-btn btn btn-outline-secondary" onclick = "location.href ='<%=contextPath %>/myPageBoard.me?cReplyPage=<%= replyCurrentPage+1 %>'">&gt</button>
                     		<%} %>
                     <%} %>    
                     </div>
@@ -254,7 +254,7 @@
                     <div align="center">
                     <% if(likesMaxPage !=0){ %>
                     	<% if(likesCurrentPage != 1) {%>
-                        	<button class="page-btn btn btn-outline-secondary" onclick = "location.href ='<%=contextPath %>/myPageBoard.me?cpage=<%= likesCurrentPage-1 %>'">&lt;</button>
+                        	<button class="page-btn btn btn-outline-secondary" onclick = "location.href ='<%=contextPath %>/myPageBoard.me?cLikesPage=<%= likesCurrentPage-1 %>'">&lt;</button>
                     	<%} %>
                     
                     
@@ -262,11 +262,11 @@
                     		<%if( p == replyCurrentPage){ %>
                         		<button disabled class="page-btn btn btn-outline-secondary"><%= p %></button>
                      	    <%} else{ %>
-                       	 		<button class="page-btn btn btn-outline-secondary" onclick = "location.href ='<%=contextPath %>/myPageBoard.me?cpage=<%= p %>'"><%= p %></button>
+                       	 		<button class="page-btn btn btn-outline-secondary" onclick = "location.href ='<%=contextPath %>/myPageBoard.me?cLikesPage=<%= p %>'"><%= p %></button>
                       	  <%} %>
                    		<%} %>
                     		<% if(likesCurrentPage != likesMaxPage) { %>
-                       	 		<button class="page-btn btn btn-outline-secondary" onclick = "location.href ='<%=contextPath %>/myPageBoard.me?cpage=<%= likesCurrentPage+1 %>'">&gt</button>
+                       	 		<button class="page-btn btn btn-outline-secondary" onclick = "location.href ='<%=contextPath %>/myPageBoard.me?cLikesPage=<%= likesCurrentPage+1 %>'">&gt</button>
                     		<%} %>
                     <%} %>    
                     </div>

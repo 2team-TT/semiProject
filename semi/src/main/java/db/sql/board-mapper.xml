@@ -234,7 +234,7 @@
 		 WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
-<<<<<<< HEAD
+
 	
 	
 	<!-- 커뮤니티 게시판 태그 리스트  -->
@@ -450,7 +450,7 @@
 
 
 
-=======
+
 	<!-- 좋아요 글 갯수 카운트 쿼리문 -->
 	<entry key="selectMyLikesCount">
 		SELECT COUNT(*) AS "COUNT"
@@ -482,6 +482,6 @@
 		     )
 		 WHERE RNUM BETWEEN ? AND ?
 	</entry>
->>>>>>> 06faa3d6a16f989c910847687497fbfb3765950b
+
 
 </properties>
