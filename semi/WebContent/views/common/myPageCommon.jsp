@@ -36,7 +36,7 @@
             <a href="<%= contextPath %>/myPageInfo.me">기본 정보</a>
         </div>
         <div class="info--list">
-            <a href="<%= contextPath %>/myPageBoard.me?cpage=1">게시글 정보</a>
+            <a href="<%= contextPath %>/myPageBoard.me?cBoardPage=1">게시글 정보</a>
         </div>
         <div class="info--list">
             <a href="">찜하기/최근 본 상품</a>
@@ -45,7 +45,7 @@
             <a href="">결제 정보</a>
         </div>
         <div class="info--list">
-            <a href="">고객 센터</a>
+            <a href="<%= contextPath %>/myPageCS.me">고객 센터</a>
         </div>
     </div>
 </section>

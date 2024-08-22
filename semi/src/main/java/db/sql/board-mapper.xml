@@ -450,6 +450,7 @@
 
 
 
+
 	<!-- 좋아요 글 갯수 카운트 쿼리문 -->
 	<entry key="selectMyLikesCount">
 		SELECT COUNT(*) AS "COUNT"
