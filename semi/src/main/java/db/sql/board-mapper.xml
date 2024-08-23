@@ -41,7 +41,7 @@
 	           BOARD_NO
 	         , BOARD_TITLE 
 	         , CREATE_DATE
-	  FROM(  
+	  FROM (  
 	       SELECT 
 			       BOARD_NO
 			     , BOARD_TITLE 

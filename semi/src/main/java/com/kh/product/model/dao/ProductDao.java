@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.kh.board.model.vo.PageInfo;
+import com.kh.product.model.vo.Product;
 import com.kh.product.model.vo.ProductInquiry;
 
 import static com.kh.common.JDBCTemplate.*;
@@ -101,5 +102,74 @@ public class ProductDao {
 		
 		return qList;
 	}//selectMyProductQuestionList() end
+	
+	// 찜한 상품 리스트
+	public ArrayList<Product> selectMyProductsList(Connection conn, int userNo){
+		
+		ArrayList<Product> list = new ArrayList<Product>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectMyProductsList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, userNo);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Product(rset.getString("p_name")
+								   , rset.getString("p_seller")
+								   , rset.getInt("price")
+								   , rset.getDouble("rating")
+								   , rset.getString("p_content")
+								   , rset.getInt("user_no")
+								   , rset.getString("c_date")
+									 
+						));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+		
+	}//selectMyProductsList() end
+	
+	//최근 본 상품 리스트
+	public ArrayList<Product> selectMyRecentlyProductsList(Connection conn, int userNo){
+		
+		ArrayList<Product> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectMyRecentlyProductsList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, userNo);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Product(rset.getString("p_name")
+								   , rset.getInt("price")
+								   , rset.getString("lately_date")
+						));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}//selectMyRecentlyProductsList() end
+	
 
 }//Product 클래스 end
