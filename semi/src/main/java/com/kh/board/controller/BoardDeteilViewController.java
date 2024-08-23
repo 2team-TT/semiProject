@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.board.model.service.BoardService;
+import com.kh.board.model.vo.Attachment;
 import com.kh.board.model.vo.Board;
+import com.kh.board.model.vo.Used;
 
 /**
  * Servlet implementation class BoardDeteilViewController
@@ -41,9 +43,22 @@ public class BoardDeteilViewController extends HttpServlet {
 		if(result>0) {
 			Board b = new BoardService().selectBoardDeteil(boardNo);
 
-			request.setAttribute("b", b);
+			if(b.getTagNo().equals("140")) {
+				
+				Attachment at = new BoardService().selectBoardAttachment(b.getBoardNo());
+				Used ud = new BoardService().selectBoardUsed(b.getBoardNo());
+				
+				request.setAttribute("b", b);
+				request.setAttribute("at", at);
+				request.setAttribute("ud", ud);
+				request.getRequestDispatcher("views/board/boardUsedDetail.jsp").forward(request, response);
+			}else {
+				
+				request.setAttribute("b", b);
+				
+				request.getRequestDispatcher("views/board/boardDeteilView.jsp").forward(request, response);
+			}
 			
-			request.getRequestDispatcher("views/board/boardDeteilView.jsp").forward(request, response);
 			
 		}
 		

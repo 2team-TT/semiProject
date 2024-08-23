@@ -9,6 +9,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import javax.naming.spi.DirStateFactory.Result;
+
 import com.kh.board.model.vo.Attachment;
 import com.kh.board.model.vo.Board;
 import com.kh.board.model.vo.PageInfo;
@@ -1288,10 +1290,157 @@ public ArrayList<Board> selectHoneyBoardList(Connection conn, PageInfo pi){
 	}
 	
 	
+	// 대댓글 조회 조건 댓글 번호
+	
+	public ArrayList<Reply> selectReReplyList(Connection conn, int replyNo){
+		
+		ArrayList<Reply> list = new ArrayList<Reply>();
+		
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectReReplyList");
+		
+		try {
+			pstmt =conn.prepareStatement(sql);
+			pstmt.setInt(1, replyNo);
+			
+			rset = pstmt.executeQuery();
+			
+			
+			while(rset.next()) {
+				Reply r = new Reply();
+				r.setReplyNo(rset.getInt("RR_NO"));
+				r.setBoardNo(rset.getInt("REPLY_NO"));
+				r.setReplyWriter(rset.getString("USER_ID"));
+				r.setUserNick(rset.getString("user_nick"));
+				r.setReplyContent(rset.getString("RR_CONTENT"));
+				r.setCreateDate(rset.getString("create_date"));
+				
+				list.add(r);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+		
+	}
 	
 	
+
+	//대댓글 insert
+	public int insertReReply(Connection conn, Reply r) {
+		
+		int result =0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("insertReReply");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, r.getBoardNo());
+			pstmt.setInt(2, Integer.parseInt(r.getReplyWriter()));
+			pstmt.setString(3, r.getReplyContent());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			
+		}
+		
+		return result;
+		
+	}
 	
 	
+	//게시글 조회 조건 board no
+	public Attachment selectBoardAttachment(Connection conn, int bno) {
+		
+		Attachment at = null;
+		
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectBoardAttachment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bno);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				
+				at = new Attachment(rset.getInt("b_img_no")
+						, rset.getInt("board_no")
+						, rset.getString("origin_name")
+						, rset.getString("filepath"));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			close(rset);
+			close(pstmt);
+		}
+		
+		return at;
+		
+	}
+	
+	
+	public Used selectBoardUsed(Connection conn, int bno) {
+		
+		Used ud = null;
+		
+		PreparedStatement pstmt =null;
+		
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectBoardUsed");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bno);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				ud = new Used(rset.getInt("used_no")
+						, rset.getInt("board_no")
+						, rset.getString("model_no")
+						, rset.getInt("price")
+						, rset.getString("model_status")
+						, rset.getString("trading_area")
+						, rset.getString("trading_method")
+						, rset.getString("SELL_STATUS"));
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return ud;
+		
+	}
 	
 	
 	

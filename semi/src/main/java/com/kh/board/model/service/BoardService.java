@@ -474,5 +474,67 @@ Connection conn = getConnection();
 	}
 	
 
+	
+	
+	//대댓글 조회 조건 댓글 번호
+	
+	public ArrayList<Reply> selectReReplyList(int replyNo){
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Reply> list = new BoardDao().selectReReplyList(conn, replyNo);
+		
+		close(conn);
+		
+		return list;
+	}
+	
+	//대댓글 insert
+	public int insertReReply(Reply r) {
+		
+		Connection conn = getConnection();
+		
+		int result = new BoardDao().insertReReply(conn, r);
+		
+		if(result>0) {
+			commit(conn);
+			
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result;
+		
+		
+	}
+	
+	//게시글 사진 불려오기 조건 게시글 번호
+	public Attachment selectBoardAttachment(int bno) {
+		
+		Connection conn = getConnection();
+		
+		Attachment at = new BoardDao().selectBoardAttachment(conn, bno);
+		
+		close(conn);
+		
+		return at;
+		
+	}
+	
+	
+	//중고 상세 불려오기 조건 게시글 번호
+	public Used selectBoardUsed(int bno) {
+		
+		Connection conn = getConnection();
+		
+		Used ud = new BoardDao().selectBoardUsed(conn, bno);
+		
+		close(conn);
+		
+		return ud;
+		
+	}
+	
 }
 

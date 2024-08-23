@@ -586,4 +586,91 @@ VALUES
 
 	</entry>
 
+
+
+
+	<!-- 대댓글 조회 조건 댓글 번호-->
+	<entry key="selectReReplyList">
+
+SELECT
+       RR_NO
+     , REPLY_NO
+     , USER_ID
+     , USER_NICK
+     , RR_CONTENT
+     , TO_CHAR(CREATE_DATE, 'YYYY"년" MM"월" DD"일"') AS "CREATE_DATE"
+  FROM RE_REPLY
+  JOIN USER1 ON(RR_WRITER =USER_NO)
+ WHERE REPLY_NO = ?
+   AND RE_REPLY.STATUS='Y'
+ ORDER
+    BY RR_NO
+
+	</entry>
+
+
+	<!-- 대댓글 INSERT-->
+	<entry key="insertReReply">
+
+
+INSERT 
+  INTO RE_REPLY
+     (
+       RR_NO
+     , REPLY_NO
+     , RR_WRITER
+     , RR_CONTENT
+     )
+VALUES
+     (
+       SEQ_RRNO.NEXTVAL
+     , ?
+     , ?
+     , ?
+     )
+	</entry>
+
+
+
+
+	<!-- 사진 조건 board no-->
+	<entry key="selectBoardAttachment">
+
+SELECT  
+      B_IMG_NO
+    , BOARD_NO
+    , ORIGIN_NAME
+    , FILEPATH
+  FROM BOARD_IMG
+ WHERE BOARD_NO =?
+   AND FILE_LEVEL = 1
+   AND STATUS ='Y'
+
+	</entry>
+
+
+	<!--  USED 테이블조건 board no-->
+	<entry key="selectBoardUsed">
+
+
+
+SELECT
+       USED_NO
+     , BOARD_NO
+     , MODEL_NO
+     , PRICE
+     , MODEL_STATUS
+     , TRADING_AREA
+     , TRADING_METHOD
+     , SELL_STATUS
+  FROM BOARD_USED
+ WHERE BOARD_NO =?
+
+
+	</entry>
+
+
+
+
+
 </properties>

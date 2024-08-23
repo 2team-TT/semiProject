@@ -28,6 +28,16 @@ public class Attachment {
 		this.status = status;
 	}
 
+	
+
+	public Attachment(int atNo, int boardNo, String originName, String filePath) {
+		super();
+		this.atNo = atNo;
+		this.boardNo = boardNo;
+		this.originName = originName;
+		this.filePath = filePath;
+	}
+
 	public int getAtNo() {
 		return atNo;
 	}
