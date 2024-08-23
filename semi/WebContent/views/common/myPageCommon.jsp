@@ -39,7 +39,7 @@
             <a href="<%= contextPath %>/myPageBoard.me?cBoardPage=1">게시글 정보</a>
         </div>
         <div class="info--list">
-            <a href="">찜하기/최근 본 상품</a>
+            <a href="<%= contextPath %>/myPageProducts.me">찜하기/최근 본 상품</a>
         </div>
         <div class="info--list">
             <a href="">결제 정보</a>

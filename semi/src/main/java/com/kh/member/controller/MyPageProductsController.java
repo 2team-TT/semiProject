@@ -1,6 +1,8 @@
 package com.kh.member.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,18 +11,20 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.kh.member.model.vo.User;
+import com.kh.product.model.service.ProductService;
+import com.kh.product.model.vo.Product;
 
 /**
- * Servlet implementation class MyPageInfoController
+ * Servlet implementation class MyPageProductsController
  */
-@WebServlet("/myPageInfo.me")
-public class MyPageInfoController extends HttpServlet {
+@WebServlet("/myPageProducts.me")
+public class MyPageProductsController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MyPageInfoController() {
+    public MyPageProductsController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,6 +33,7 @@ public class MyPageInfoController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		HttpSession session = request.getSession();
 		User loginUser = (User) session.getAttribute("u");
 
@@ -39,7 +44,14 @@ public class MyPageInfoController extends HttpServlet {
 		    return; // 이후 코드를 실행하지 않도록 리턴
 		}
 		
-		request.getRequestDispatcher("views/member/myPageInfo.jsp").forward(request, response);
+		int userNo = loginUser.getUserNo(); //로그인 유저 번호 가져오기
+		
+		ArrayList<Product> list = new ProductService().selectMyProductsList(userNo); // 내가 찜한 상품 리스트 가져올 어레이 리스트
+		request.setAttribute("list", list);
+		
+		ArrayList<Product> recentlyList = new ProductService().selectMyRecentlyProductsList(userNo);// 최근 본 상품 리스트 가져올 어레이 리스트
+		request.setAttribute("recentlyList", recentlyList);
+		request.getRequestDispatcher("views/member/myPageProducts.jsp").forward(request, response);
 		
 	}
 

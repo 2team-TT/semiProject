@@ -10,7 +10,7 @@ public class Product {
 	 private int discount;
 	 private String sellStatus;
 	 private int stock;
-	 private int rating;
+	 private double rating;
 	 private String pContent;
 	 private String dPrice;
 	 private int groupCount;
@@ -20,10 +20,15 @@ public class Product {
 	 private String regDate; //to_char로 형식 변환할 예정이므로 String형을 쓸 것임
 	 private String status;
 	 
+	 private int userNo; // 마이페이지 찜하기 유저 넘버
+	 private String cDate; // 찜하기 등록 날짜
+	 
+	 private String latelyDate; // 최근 본 상품 날짜
+	 
 	 public Product() {}
 
 	public Product(int pNo, int tagNo, String pName, String pSeller, int price, int discount, String sellStatus,
-			int stock, int rating, String pContent, String dPrice, int groupCount, int prCount, int chooseCount,
+			int stock, double rating, String pContent, String dPrice, int groupCount, int prCount, int chooseCount,
 			int viewCount, String regDate, String status) {
 		super();
 		this.pNo = pNo;
@@ -43,6 +48,28 @@ public class Product {
 		this.viewCount = viewCount;
 		this.regDate = regDate;
 		this.status = status;
+	}
+	
+	
+
+	public Product(String pName, String pSeller, int price, double rating, String pContent, int userNo, String cDate) {
+		super();
+		this.pName = pName;
+		this.pSeller = pSeller;
+		this.price = price;
+		this.rating = rating;
+		this.pContent = pContent;
+		this.userNo = userNo;
+		this.cDate = cDate;
+	}
+	
+	
+
+	public Product(String pName, int price, String latelyDate) {
+		super();
+		this.pName = pName;
+		this.price = price;
+		this.latelyDate = latelyDate;
 	}
 
 	public int getpNo() {
@@ -109,11 +136,11 @@ public class Product {
 		this.stock = stock;
 	}
 
-	public int getRating() {
+	public double getRating() {
 		return rating;
 	}
 
-	public void setRating(int rating) {
+	public void setRating(double rating) {
 		this.rating = rating;
 	}
 
@@ -179,6 +206,36 @@ public class Product {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+	
+	
+
+	public int getUserNo() {
+		return userNo;
+	}
+
+	public void setUserNo(int userNo) {
+		this.userNo = userNo;
+	}
+	
+	
+
+	public String getcDate() {
+		return cDate;
+	}
+
+	public void setcDate(String cDate) {
+		this.cDate = cDate;
+	}
+	
+	
+
+	public String getLatelyDate() {
+		return latelyDate;
+	}
+
+	public void setLatelyDate(String latelyDate) {
+		this.latelyDate = latelyDate;
 	}
 
 	@Override

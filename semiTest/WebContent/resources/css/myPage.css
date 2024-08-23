@@ -519,19 +519,37 @@ img {
 /* 최근본 상품 전체를 감싸는 div css */
 .myinfo--page .myinfo--info .myinfo--common .rvp--group {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start; /* 왼쪽 정렬 */
     flex-wrap: wrap;
+    gap: 60px; /* 아이템 간의 간격 조정 */
     margin-right: 100px;
     flex-grow: 1;
 }
 
 /* 각 item의 정보를 담을 div css */
 .myinfo--page .myinfo--info .myinfo--common .rvp--group .rvp--item {
-    width: 300px;
+    flex-basis: calc(33.33% - 10px); /* 각 아이템의 너비를 3등분 */
+    margin-bottom: 20px; /* 아래쪽 간격 */
+    flex-grow: 1; /* 남은 공간을 채움 */
+    max-width: 300px; /* 최대 너비 설정 */
     height: 500px;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     overflow: hidden;
+}
+
+
+
+@media (max-width: 1200px) {
+    .myinfo--page .myinfo--info .myinfo--common .rvp--group .rvp--item {
+        flex-basis: calc(50% - 20px); /* 2개씩 배치 */
+    }
+}
+
+@media (max-width: 768px) {
+    .myinfo--page .myinfo--info .myinfo--common .rvp--group .rvp--item {
+        flex-basis: calc(100% - 20px); /* 1개씩 배치 */
+    }
 }
 
 /* item img에 관한 css */
