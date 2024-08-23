@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.kh.member.model.vo.User;
+
 /**
  * Servlet implementation class MyPageInfoController
  */
@@ -28,7 +30,14 @@ public class MyPageInfoController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		// 마이페이지 버튼은 로그인 해야만 나타나므로 로그인 안했을 경우가 필요 없음
+		User loginUser = (User) session.getAttribute("u");
+
+		if (loginUser == null) {
+		    // 로그인되지 않은 상태이므로 로그인 페이지로 리다이렉트하거나, 에러 메시지를 보여주기
+			session.setAttribute("alertMsg", "로그인 세션이 만료되었습니다!"); //alertMsg는 menubar.jsp를 include해서 추가 작성 필요 없음
+		    response.sendRedirect(request.getContextPath()); // 메인 페이지로 리다이렉트
+		    return; // 이후 코드를 실행하지 않도록 리턴
+		}
 		
 		request.getRequestDispatcher("views/member/myPageInfo.jsp").forward(request, response);
 		
