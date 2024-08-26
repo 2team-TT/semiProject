@@ -207,3 +207,81 @@ $('.rvp--span').click(function(){ // rvp내에 span태그를 클릭시 발생할
     const $span = $(this).closest('.rvp--item'); //선택한 span 태그에서 가장 가까운 rvp--item div를 선택
     $span.remove(); // 해당 div를 삭제
 })
+
+
+/*
+    마이페이지 각 테이블 페이징 처리 스크립트
+*/
+
+
+// 마이 페이지에서 게시글 페이징
+ function loadBoardPage(page) {
+    loadPage(page, 'board', '/myPageBoard.me', 'boardTable');
+}
+
+// 댓글 페이징
+function loadReplyPage(page) {
+    loadPage(page, 'reply', '/myPageBoard.me', 'replyTable');
+}
+
+// 좋아요 한 글 페이징
+function loadLikesPage(page) {
+    loadPage(page, 'likes', '/myPageBoard.me', 'likesTable');
+}
+
+// 문의 내역 페이징
+function loadQuestionPage(page) {
+    loadPage(page, 'question', '/myPageCS.me', 'questionTable');
+    console.log(page);
+}
+
+
+
+
+// 마이페이지 게시글 정보 페이징처리 ajax
+function loadPage(page, type, url, targetId) {
+    //const url = contextPath + '/myPageBoard.me'; // 요청을 보낼 URL
+    let data = {}; // 서버로 보낼 데이터를 담을 객체
+
+    // type에 따라 서버에 보낼 데이터 설정
+    if (type === 'board') {
+        data = { cBoardPage: page };
+    } else if (type === 'reply') {
+        data = { cReplyPage: page };
+    } else if (type === 'likes') {
+        data = { cLikesPage: page };
+    } else if (type === 'question') {
+        data = { cQuestionPage : page};
+    }
+
+    // Ajax 요청을 보내는 부분
+    $.ajax({
+        type: 'GET', // HTTP 요청 메소드: 'GET'을 사용하여 데이터를 가져옴
+        url: contextPath + url, // 요청을 보낼 서버의 URL
+        data: data, // 서버로 보낼 데이터 (페이지 번호 정보)
+        success: function(response) {
+
+            //console.log('Server response:', response); // 서버로부터 받은 전체 응답을 출력
+            //console.log('Selected element in response:', $(response).find('#' + targetId)); // 서버 응답에서 선택된 요소 출력
+            //console.log('HTML to be inserted:', $(response).find('#' + targetId).html()); // 삽입할 HTML 내용 출력
+            // 요청이 성공적으로 완료되면 실행되는 함수
+            $('#' + targetId).html($(response).find('#' + targetId).html());
+            console.log('페이징')
+            
+        },
+        error: function() {
+            // 요청이 실패하면 실행되는 함수
+            alert('페이지 로딩 중 오류가 발생했습니다.');
+        }
+    });
+}
+
+$(function(){
+    console.log('페이징11')
+})
+
+/* 마이페이지에서 게시글 '행' 클릭시 해당 게시글 페이지로 넘어가도록 */
+// $(".clickable-row").click(function() {
+//     window.location = $(this).data("href");
+//     console.log($(this).data("href"))
+// });

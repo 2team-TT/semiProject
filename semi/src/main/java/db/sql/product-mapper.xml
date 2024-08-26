@@ -23,6 +23,7 @@
 		                  JOIN PRODUCT USING (P_NO)
 		                  LEFT JOIN PRODUCT_ANSWER USING(PI_NO)
 		                 WHERE USER_NO = ?
+		                   AND PRODUCT_INQUIRY.STATUS = 'Y'
 		                 ORDER
 		                    BY CREATE_DATE DESC
 		                ) QNA

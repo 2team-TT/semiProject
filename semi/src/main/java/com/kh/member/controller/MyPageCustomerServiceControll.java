@@ -35,6 +35,7 @@ public class MyPageCustomerServiceControll extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		
 		int currentQuestionPage; //현재 내 문의글 페이지
 		int pageLimit; //페이징바 최대 갯수
 		int boardLimit; // 한 페이지 내 보여질 문의글 최대 갯수
@@ -58,7 +59,7 @@ public class MyPageCustomerServiceControll extends HttpServlet {
 		questionCount = new ProductService().selectMyProductQeustionCount(userNo); //내 문의 내역을 가져올 service
 		
 		try { // null값을 받아올 경우의 예외처리
-		currentQuestionPage = request.getParameter("cQuestionPage") != null ? Integer.parseInt(request.getParameter("cQuenstionPage")) : 1;
+		currentQuestionPage = request.getParameter("cQuestionPage") != null ? Integer.parseInt(request.getParameter("cQuestionPage")) : 1;
 		// 현재 나의 문의 내역 페이지 null일 경우 1로 받도록
 		} catch (NumberFormatException e) {
 			currentQuestionPage = 1; // 1로 받아줌 페이지 내에 단 하나의 테이블 값을 가져오는거라 굳이 할 필요 없어보이지만 안정성을 한 코드
