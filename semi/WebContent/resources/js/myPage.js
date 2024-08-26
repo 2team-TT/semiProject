@@ -266,7 +266,6 @@ function loadPage(page, type, url, targetId) {
             //console.log('HTML to be inserted:', $(response).find('#' + targetId).html()); // 삽입할 HTML 내용 출력
             // 요청이 성공적으로 완료되면 실행되는 함수
             $('#' + targetId).html($(response).find('#' + targetId).html());
-            console.log('페이징')
             
         },
         error: function() {
@@ -281,7 +280,13 @@ $(function(){
 })
 
 /* 마이페이지에서 게시글 '행' 클릭시 해당 게시글 페이지로 넘어가도록 */
-// $(".clickable-row").click(function() {
-//     window.location = $(this).data("href");
-//     console.log($(this).data("href"))
-// });
+$(".clickable-row").click(function() {
+    window.location = $(this).data("href");
+    console.log($(this).data("href"))
+});
+
+// 이벤트 위임을 통해 동적으로 생성된 요소에도 이벤트를 바인딩
+$(document).on('click', '.clickable-row', function() {
+    window.location = $(this).data("href");
+    console.log($(this).data("href"));
+});
