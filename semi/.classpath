@@ -17,5 +17,6 @@
 	<classpathentry kind="lib" path="C:/dev/commons-io-2.1.jar"/>
 	<classpathentry kind="lib" path="C:/dev/gson-2.8.5.jar"/>
 	<classpathentry kind="lib" path="C:/dev/apache-tomcat-9.0.91/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="C:/dev/cos.jar"/>
 	<classpathentry kind="output" path="WebContent/WEB-INF/classes"/>
 </classpath>

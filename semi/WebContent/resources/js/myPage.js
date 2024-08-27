@@ -10,22 +10,32 @@
 // 게시글, 댓글, 좋아요 글 테이블 체크박스 전체 선택 js
 // 8월19일 기준 삭제, 취소버튼 js 구현까지
 // 모든 테이블을 반복
-document.querySelectorAll(".mytable").forEach(function (table) {
-  // 'selectAll' 클래스가 있는 체크박스 가져오기
-  const selectAllCheckbox = table.querySelector("thead .selectAll");
-  if (selectAllCheckbox) {
-    // selectAll 클래스가 존재하는지 확인
-    // 'rowCheckbox' 클래스가 있는 모든 체크박스 가져오기
-    const rowCheckboxes = table.querySelectorAll("tbody .rowCheckbox");
+// document.querySelectorAll(".mytable").forEach(function (table) {
+//   // 'selectAll' 클래스가 있는 체크박스 가져오기
+//   const selectAllCheckbox = table.querySelector("thead .selectAll");
+//   if (selectAllCheckbox) {
+//     // selectAll 클래스가 존재하는지 확인
+//     // 'rowCheckbox' 클래스가 있는 모든 체크박스 가져오기
+//     const rowCheckboxes = table.querySelectorAll("tbody .rowCheckbox");
 
-    // 'selectAll' 체크박스를 클릭했을 때의 동작
-    selectAllCheckbox.addEventListener("change", function () {
-      rowCheckboxes.forEach(function (checkbox) {
-        checkbox.checked = selectAllCheckbox.checked;        
-      });
-    });
-  }
+//     // 'selectAll' 체크박스를 클릭했을 때의 동작
+//     selectAllCheckbox.addEventListener("change", function () {
+//       rowCheckboxes.forEach(function (checkbox) {
+//         checkbox.checked = selectAllCheckbox.checked;        
+//       });
+//     });
+//   }
+// });
+$(document).on("click", ".selectAll", function() {
+  // 현재 클릭된 헤더의 체크박스를 기준으로 해당 테이블 내에서만 적용되도록 범위를 한정합니다.
+  var $table = $(this).closest("table"); // 클릭된 체크박스가 속한 테이블 찾기
+  var isChecked = $(this).is(":checked"); // 헤더의 체크박스 상태를 확인
+  
+  // 해당 테이블 내에 있는 모든 .rowCheckbox 체크박스의 상태를 헤더 체크박스와 동일하게 설정
+  $table.find(".rowCheckbox").prop("checked", isChecked);
 });
+
+
 
 // 삭제 버튼 클릭 이벤트
 // 삭제 버튼 이벤트는 onclick이벤트로 빼서 함수로 만들 예정
