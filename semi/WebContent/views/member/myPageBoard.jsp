@@ -26,6 +26,7 @@
 	int likesStartPage = lPi.getStartPage();
 	int likesEndPage = lPi.getEndPage();
 	int likesMaxPage = lPi.getMaxPage();
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -84,13 +85,7 @@
                             </tbody>
                         </table>
                         
-                        <script>
-				            $(function(){
-				                $(".mytable>tbody>tr").click(function(){
-				                    location.href = '<%= contextPath %>/boardDeteil.bo?bno=' + $(this).children().eq(1).text();
-				                });
-				            });
-				        </script>
+                        
                         
                         <div align="center">
                             <%if(boardMaxPage !=0) { %>
@@ -111,7 +106,7 @@
                         </div>
                     </div>
                     <div align="right">
-                        <button class="btn btn-outline-secondary btn-sm" onclick="deleteSelectedRows()">삭제</button>
+                        <a class="btn btn-outline-secondary btn-sm" onclick="deleteSelectedRows()">삭제</a>
                     </div>
                 </div>
             </div>
@@ -269,23 +264,6 @@
         </div>
     </section>
 
-
-
-    <script>
-$(function(){
-    $(".clickable-row").click(function() {
-        console.log('ddddd')
-    window.location = $(this).data("href");
-    console.log($(this).data("href"))
-        const bb = $(this).children('input').val()
-        console.log(bb)
-});
-
-
-
-})
-
-    </script>
 </body>
 
 </html>
