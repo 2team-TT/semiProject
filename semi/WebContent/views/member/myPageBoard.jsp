@@ -72,7 +72,7 @@
                                     <% for(Board b : list) { %>
                                     <tr class="clickable-row" data-href="<%= request.getContextPath() %>/boardDeteil.bo?bno=<%= b.getBoardNo() %>" >
 
-                                        <td><input type="checkbox" class="rowCheckbox"></td>
+                                        <td><input type="checkbox" class="rowCheckbox" value="<%= b.getBoardNo() %>"></td>
                                         <td><%= b.getBoardNo() %></td>
                                         <td><%= b.getTagNo() %></td>
                                         <td><%= b.getBoardTitle() %></td>
@@ -265,5 +265,52 @@
     </section>
 
 </body>
+<script>
+	
+//선택된 행을 삭제하는 함수
+function deleteSelectedRows() {
+  // 선택된 체크박스에서 bno 값을 가져와 배열로 저장
+  var selectedBnos = [];
+  $(".rowCheckbox:checked").each(function() {
+      selectedBnos.push($(this).val()); // 체크된 각 체크박스의 bno 값을 배열에 추가
+  });
 
+  if (selectedBnos.length === 0) { // 삭제할 항목이 선택되지 않았을 경우
+      alert("삭제할 항목을 선택하세요.");
+      return; // 함수를 종료하여 더 이상 진행하지 않음
+  }
+  
+  var currentPage = '<%= currentBoardPage %>';
+
+  // 서버에 Ajax 요청을 보내 bno에 해당하는 게시글을 삭제
+  $.ajax({
+      type: "POST", // HTTP 메소드 POST 사용
+      url: contextPath + "/deleteMyBoard.me", // 요청을 보낼 서버의 URL
+      data: {
+          bnos: selectedBnos, // 삭제할 게시글의 bno 배열
+          currentPage: currentPage // 현재 페이지 번호도 함께 전송
+      },
+      success: function(response) {
+          alert("삭제가 완료되었습니다."); // 삭제 성공 시 사용자에게 알림
+
+          // 삭제 후 페이지 처리 로직
+          var remainingRows = $(".rowCheckbox").length - selectedBnos.length;
+
+          if (remainingRows > 0) { 
+              location.reload(); // 게시글이 남아있으면 페이지 새로고침
+          } else {
+              if (currentBoardPage > 1) {
+                  loadBoardPage(currentBoardPage - 1); // 이전 페이지로 이동
+              } else {
+                  location.reload(); // 첫 페이지라면 페이지 새로고침
+              }
+          }
+      },
+      error: function() {
+          alert("삭제 중 오류가 발생했습니다."); // 오류 발생 시 사용자에게 알림
+      }
+  });
+}
+
+</script>
 </html>

@@ -55,21 +55,18 @@ table.closest('.myinfo--page').querySelectorAll('.btn1').forEach(function(btn) {
 });
 */
 
-// 선택된 행을 삭제하는 함수
-function deleteSelectedRows() {
-  // event 매개변수를 통해 기본동작 방지
 
   // 클릭된 버튼과 가장 가까운 테이블 찾기
   //const table = target.closest('.myinfo--page').querySelector('mytable');
 
   // 해당 테이블 내에서 체크된 모든 체크박스 선택
-  const checkboxes = document.querySelectorAll("tbody .rowCheckbox:checked");
+  // const checkboxes = document.querySelectorAll("tbody .rowCheckbox:checked");
 
   // 각 체크된 체크박스를 반복하고 해당 행을 삭제
-  checkboxes.forEach(function (checkbox) {
-    checkbox.closest("tr").remove();
-  });
-}
+  // checkboxes.forEach(function (checkbox) {
+    // checkbox.closest("tr").remove();
+  // });
+
 
 /*
 // 모든 selectAll 체크박스를 우선 선택.

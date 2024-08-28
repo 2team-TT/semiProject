@@ -536,5 +536,18 @@ Connection conn = getConnection();
 		
 	}
 	
+	// 내 게시글 삭제
+	public int deleteMyBoard(int bno) {
+        Connection conn = getConnection();
+        int result = new BoardDao().deleteMyBoard(conn, bno);
+        if(result > 0) {
+            commit(conn);
+        } else {
+            rollback(conn);
+        }
+        close(conn);
+        return result;
+    }
+	
 }
 

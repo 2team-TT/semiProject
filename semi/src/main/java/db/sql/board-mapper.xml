@@ -165,7 +165,7 @@
 	
 	</entry>
 	
-	<!-- 내 게시글을 갯수 카운트 쿼리문 -->
+	<!-- 내 게시글 갯수 카운트 쿼리문 -->
 	<entry key="selectMyBoardListCount">
 	
 		SELECT COUNT(*) AS "COUNT"
@@ -667,6 +667,14 @@ SELECT
  WHERE BOARD_NO =?
 
 
+	</entry>
+	
+	<!-- 내 게시글 삭제 -->
+	<entry key="deleteMyBoard">
+		DELETE
+		  FROM BOARD
+		 WHERE BOARD_NO = ?
+	
 	</entry>
 
 

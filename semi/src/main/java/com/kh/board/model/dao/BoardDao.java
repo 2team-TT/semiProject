@@ -1441,6 +1441,26 @@ public ArrayList<Board> selectHoneyBoardList(Connection conn, PageInfo pi){
 		return ud;
 		
 	}
+	// 내 게시글 삭제
+	public int deleteMyBoard(Connection conn, int bno) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = prop.getProperty("deleteMyBoard");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bno);
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}//deleteMyBoard() end
 	
 	
 	
