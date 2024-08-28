@@ -1,6 +1,9 @@
 package com.kh.member.controller;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,32 +31,42 @@ public class MyPageBoardDeleteController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 클라이언트에서 선택된 게시글 bno 배열을 받아옴
-        String[] bnos = request.getParameterValues("bnos");
+		try {
+            // 클라이언트에서 전송된 파라미터 확인
+            String[] bnos = request.getParameterValues("bnos");
+            String currentPageStr = request.getParameter("currentPage");
 
-        if (bnos != null) { // 선택된 게시글 bno가 존재할 경우
+            // 파라미터 값 로그 출력
+            System.out.println("bnos: " + Arrays.toString(bnos));
+            System.out.println("currentPage: " + currentPageStr);
+
+            // 파라미터 유효성 검사
+            if (bnos == null || currentPageStr == null) {
+                response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                return;
+            }
+
+            int currentPage = Integer.parseInt(currentPageStr);
             BoardService boardService = new BoardService();
-            int currentPage = Integer.parseInt(request.getParameter("currentPage")); // 현재 페이지 번호를 받아옴
-            int result = 0; // 삭제된 게시글 수를 누적할 변수
+            int result = 0;
 
-            // 각각의 bno에 대해 삭제 작업을 수행
             for (String bno : bnos) {
-                result += boardService.deleteMyBoard(Integer.parseInt(bno)); // 삭제된 게시글 수 누적
+                result += boardService.deleteMyBoard(Integer.parseInt(bno));
             }
 
-            // 현재 페이지에 남아 있는 게시글 수를 조회
             int remainingPosts = boardService.selectMyBoardListCount(currentPage);
-            
-            // 만약 현재 페이지에 게시글이 남아 있지 않고, 현재 페이지가 1보다 크다면 (즉, 첫 페이지가 아니라면)
+
             if (remainingPosts == 0 && currentPage > 1) {
-                currentPage--; // 이전 페이지로 이동 (페이지 번호를 1 줄임)
+                currentPage--;
             }
 
-            // 최종적으로 현재 페이지 또는 이전 페이지로 리다이렉트
             response.sendRedirect(request.getContextPath() + "/myPageBoard.me?cBoardPage=" + currentPage);
-        } else {
-            // 선택된 게시글 bno가 없을 경우 잘못된 요청으로 처리
+        } catch (NumberFormatException e) {
+            e.printStackTrace(); // 로그로 예외 출력
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+        } catch (Exception e) {
+            e.printStackTrace(); // 기타 예외 처리
+            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
         }
     }
 
