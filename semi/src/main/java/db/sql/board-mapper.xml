@@ -671,8 +671,8 @@ SELECT
 	
 	<!-- 내 게시글 삭제 -->
 	<entry key="deleteMyBoard">
-		DELETE
-		  FROM BOARD
+		UPDATE BOARD
+		   SET STATUS = 'N'
 		 WHERE BOARD_NO = ?
 	
 	</entry>

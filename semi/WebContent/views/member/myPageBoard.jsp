@@ -49,6 +49,7 @@
         <div class="myinfo--info">
             <div class="myinfo--common">
                 <p class="common--title">내 게시글</p>
+                <input type="hidden" id="currentPage" value="<%= currentBoardPage %>">
                 <div class="table--margin">
                     <div id="boardTable">
                         <table class="mytable table table-striped">
@@ -105,6 +106,9 @@
                             <%} %>
                         </div>
                     </div>
+                     <!-- 자바스크립트 부분을 외부로 빼기 위해 만든 히든 상태의 현재 페이지 코드 -->
+                     <input type="hidden" id="currentPage" value="<%= currentBoardPage %>">
+                    
                     <div align="right">
                         <a class="btn btn-outline-secondary btn-sm" onclick="deleteSelectedRows()">삭제</a>
                     </div>
@@ -265,57 +269,5 @@
     </section>
 
 </body>
-<script>
-	
-//선택된 행을 삭제하는 함수
-function deleteSelectedRows() {
-  var selectedBnos = [];
-  $(".rowCheckbox:checked").each(function() {
-      selectedBnos.push($(this).val()); // 체크된 각 체크박스의 bno 값을 배열에 추가
-  });
 
-  if (selectedBnos.length === 0) { // 삭제할 항목이 선택되지 않았을 경우
-      alert("삭제할 항목을 선택하세요.");
-      return; // 함수를 종료하여 더 이상 진행하지 않음
-  }
-  
-  var currentPage = '<%= currentBoardPage %>';
-  console.log("bnos: ", selectedBnos);
-  console.log("currentPage: ", currentPage);
-
-  // 서버에 Ajax 요청을 보내 bno에 해당하는 게시글을 삭제
-  $.ajax({
-      type: "POST", // HTTP 메소드 POST 사용
-      url: contextPath + "/deleteMyBoard.me", // 요청을 보낼 서버의 URL
-      data: {
-          bnos: selectedBnos, // 삭제할 게시글의 bno 배열
-          currentPage: currentPage // 현재 페이지 번호도 함께 전송
-      },
-      traditional: true, // 배열 데이터를 전송할 때 사용
-      success: function(response) {
-          alert("삭제가 완료되었습니다."); // 삭제 성공 시 사용자에게 알림
-
-          // 삭제 후 페이지 처리 로직
-          var remainingRows = $(".rowCheckbox").length - selectedBnos.length;
-
-          if (remainingRows > 0) { 
-              location.reload(); // 게시글이 남아있으면 페이지 새로고침
-          } else {
-              if (currentPage > 1) {
-                  loadBoardPage(currentPage - 1); // 이전 페이지로 이동
-              } else {
-                  location.reload(); // 첫 페이지라면 페이지 새로고침
-              }
-          }
-      },
-      error: function(xhr, status, error) {
-    	    console.error("Error:", status, error); // 오류를 콘솔에 출력
-    	    console.log("Response:", xhr.responseText); // 서버 응답 텍스트를 출력
-    	    alert("삭제 중 오류가 발생했습니다."); // 오류 발생 시 사용자에게 알림
-    	}
-
-  });
-}
-
-</script>
 </html>
