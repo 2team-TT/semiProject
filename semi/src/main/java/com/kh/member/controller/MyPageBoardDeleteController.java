@@ -32,7 +32,7 @@ public class MyPageBoardDeleteController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
             // 클라이언트에서 전송된 파라미터 확인
-            String[] bnos = request.getParameterValues("bnos");
+            String[] bnos = request.getParameterValues("nos");
             String currentPageStr = request.getParameter("currentPage");
 
             // 파라미터 값 로그 출력

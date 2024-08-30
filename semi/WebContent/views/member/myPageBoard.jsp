@@ -35,7 +35,6 @@
 <title>마이페이지 - 게시글 정보</title>
 <script>
     var contextPath = '<%= request.getContextPath() %>';
-    
 </script>
 
 
@@ -43,7 +42,7 @@
 </head>
 <body>
     <%@ include file="../common/myPageCommon.jsp" %>
-
+	<input type="hidden" id="myPageUserNo" value="<%= u.getUserNo() %>">
     <!-- 내 게시글 섹션 -->
     <section class="myinfo--page">
         <div class="myinfo--info">
@@ -110,7 +109,7 @@
                      <input type="hidden" id="currentPage" value="<%= currentBoardPage %>">
                     
                     <div align="right">
-                        <a class="btn btn-outline-secondary btn-sm" onclick="deleteSelectedRows()">삭제</a>
+                        <a class="btn btn-outline-secondary btn-sm" onclick="deleteSelectedRows('board')">삭제</a>
                     </div>
                 </div>
             </div>
@@ -122,6 +121,8 @@
         <div class="myinfo--info">
             <div class="myinfo--common">
                 <p class="common--title">내 댓글</p>
+                <input type="hidden" id="replyCurrentPage" value="<%= replyCurrentPage %>">
+                
                 <div class="table--margin">
                     <div id="replyTable">
                         <table class="mytable table table-striped">
@@ -151,7 +152,7 @@
                                         }
                                     %>
                                     <tr class="clickable-row" data-href="<%= request.getContextPath() %>/boardDeteil.bo?bno=<%= r.getBoardNo() %>">
-                                        <td><input type="checkbox" class="rowCheckbox"></td>
+                                        <td><input type="checkbox" class="rowCheckbox" name="rnos" value="<%= r.getReplyNo() %>"></td>
                                         <td><%= r.getTagName() %></td>
                                         <td><%=r.getReplyContent() %></td>
                                         <%if(r.getUserNick() != null) { %>
@@ -185,7 +186,7 @@
                         </div>
                     </div>
                     <div align="right">
-                        <button class="btn btn-outline-secondary btn-sm" onclick="deleteSelectedRows()">삭제</button>
+                        <button class="btn btn-outline-secondary btn-sm" onclick="deleteSelectedRows('reply')">삭제</button>
                     </div>
                 </div>
             </div>
@@ -197,6 +198,7 @@
         <div class="myinfo--info">
             <div class="myinfo--common">
                 <p class="common--title">좋아요 한 글</p>
+                <input type="hidden" id="likesCurrentPage" value="<%= likesCurrentPage %>">
                 <div class="table--margin">
                     <div id="likesTable">
                         <table class="mytable table table-striped">
@@ -226,7 +228,7 @@
                                         }
                                     %>
                                     <tr class="clickable-row" data-href="<%= request.getContextPath() %>/boardDeteil.bo?bno=<%= lb.getBoardNo() %>" >
-                                        <td><input type="checkbox" class="rowCheckbox"></td>
+                                        <td><input type="checkbox" class="rowCheckbox" name="lnos" value="<%= lb.getBoardNo() %>"></td>
                                         <td><%= lb.getTagName() %></td>
                                         <td><%= lb.getBoardTitle() %></td>
                                         <%if(lb.getUserNick() != null) { %>
@@ -261,7 +263,7 @@
                         </div>
                     </div>
                     <div align="right">
-                        <button class="btn btn-outline-secondary btn-sm" onclick="deleteSelectedRows()">취소</button>
+                        <button class="btn btn-outline-secondary btn-sm" onclick="cancelLikes()">취소</button>
                     </div>
                 </div>
             </div>

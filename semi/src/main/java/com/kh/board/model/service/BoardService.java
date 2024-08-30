@@ -549,5 +549,30 @@ Connection conn = getConnection();
         return result;
     }
 	
+	// 내 댓글 삭제
+	public int deleteMyReply(int rno) {
+		Connection conn = getConnection();
+		int result = new BoardDao().deleteMyReply(conn, rno);
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+	
+	// 마이페이지 좋아요 한 글 취소
+	public int cancelLikes(int boardNo, int userNo) {
+		Connection conn = getConnection();
+		int result = new BoardDao().cancelLikes(conn, boardNo, userNo);
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
 }
 

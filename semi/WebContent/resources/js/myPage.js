@@ -1,33 +1,9 @@
-// 마이페이지 내 게시글 체크박스 전체 선택 js
-// document.querySelector('.selectAll').addEventListener('change', function() {
-//     const checkboxes = document.querySelectorAll('.rowCheckbox');
-//     const isChecked = this.checked;  // selectAll 체크박스의 상태를 변수에 저장.
-//     checkboxes.forEach(function(checkbox) {
-//         checkbox.checked = isChecked;  // 변수 isChecked를 사용하여 체크 상태를 설정.
-//     });
-// });
-
 // 게시글, 댓글, 좋아요 글 테이블 체크박스 전체 선택 js
-// 8월19일 기준 삭제, 취소버튼 js 구현까지
+// 8월30일 기준 삭제, 취소버튼 js 구현까지
 // 모든 테이블을 반복
-// document.querySelectorAll(".mytable").forEach(function (table) {
-//   // 'selectAll' 클래스가 있는 체크박스 가져오기
-//   const selectAllCheckbox = table.querySelector("thead .selectAll");
-//   if (selectAllCheckbox) {
-//     // selectAll 클래스가 존재하는지 확인
-//     // 'rowCheckbox' 클래스가 있는 모든 체크박스 가져오기
-//     const rowCheckboxes = table.querySelectorAll("tbody .rowCheckbox");
 
-//     // 'selectAll' 체크박스를 클릭했을 때의 동작
-//     selectAllCheckbox.addEventListener("change", function () {
-//       rowCheckboxes.forEach(function (checkbox) {
-//         checkbox.checked = selectAllCheckbox.checked;        
-//       });
-//     });
-//   }
-// });
 $(document).on("click", ".selectAll", function() {
-  // 현재 클릭된 헤더의 체크박스를 기준으로 해당 테이블 내에서만 적용되도록 범위를 한정합니다.
+  // 현재 클릭된 헤더의 체크박스를 기준으로 해당 테이블 내에서만 적용되도록 범위를 한정.
   var $table = $(this).closest("table"); // 클릭된 체크박스가 속한 테이블 찾기
   var isChecked = $(this).is(":checked"); // 헤더의 체크박스 상태를 확인
   
@@ -36,40 +12,53 @@ $(document).on("click", ".selectAll", function() {
 });
 
 
-//선택된 행을 삭제하는 함수
-function deleteSelectedRows() {
-  var selectedBnos = [];
-  $(".rowCheckbox:checked").each(function() {
-      selectedBnos.push($(this).val()); // 체크된 각 체크박스의 bno 값을 배열에 추가
-  });
+//  선택된 행을 삭제하는 함수(내 게시글, 내 댓글)
+//  좋아요 한 글의 경우 userNo와 boardNo를 비교해서 실제 삭제를 해야하므로 함수 재활용 불가
+function deleteSelectedRows(type) {
+  var selectedNos = []; // 선택된 항목의 번호들을 저장할 배열
+  var currentPageId; // 현재 페이지 번호를 저장할 변수
 
-  if (selectedBnos.length === 0) { // 삭제할 항목이 선택되지 않았을 경우
+  // 타입에 따라 삭제할 항목 설정
+  if (type === 'board') {
+    selectedNos = getSelectedNos('bnos'); // 게시글 번호들을 배열에 저장
+    currentPageId = '#currentPage'; // 게시글에 해당하는 현제 페이지 번호
+    //console.log("bnos: ", selectedNos); // 게시글 번호가 잘 나오는지 확인
+    //console.log("currentPage: ", currentPageId); // 페이지 번호가 잘 나오는지 확인
+  } else if (type === 'reply') {
+    selectedNos = getSelectedNos('rnos'); // 댓글 번호들을 배열에 저장
+    currentPageId = '#replyCurrentPage'; // 댓글에 해당하는 현재 페이지 번호
+    //console.log("rnos: ", selectedNos); // 댓글 번호가 잘 나오는지 확인
+    //console.log("currentPage: ", currentPageId); // 댓글 페이지가 잘 나오는지 확인
+  }
+
+  // selectedNos가 정의되지 않았거나 빈 배열인 경우를 처리 falsy를 이용
+  if (!selectedNos || selectedNos.length === 0) {
       alert("삭제할 항목을 선택하세요.");
       return; // 함수를 종료하여 더 이상 진행하지 않음
   }
   
-  var currentPage = parseInt($("#currentPage").val());
+  var currentPage = parseInt($(currentPageId).val());
 
-  console.log("bnos: ", selectedBnos);
-  console.log("currentPage: ", currentPage);
+  //console.log("bnos: ", selectedNos);
+  //console.log("currentPage: ", currentPageId);
 
   // 서버에 Ajax 요청을 보내 bno에 해당하는 게시글을 삭제
   $.ajax({
       type: "POST", // HTTP 메소드 POST 사용
-      url: contextPath + "/deleteMyBoard.me", // 요청을 보낼 서버의 URL
+      url: contextPath + "/deleteMy" + capitalizeFirstLetter(type) + ".me", // 요청을 보낼 서버의 URL
       data: {
-          bnos: selectedBnos, // 삭제할 게시글의 bno 배열
+          nos: selectedNos, // 서버로 보낼 선택된 항목 번호들
           currentPage: currentPage // 현재 페이지 번호도 함께 전송
       },
-      traditional: true, // 배열 데이터를 전송할 때 사용
-      success: function(response) {
+      traditional: true, // 배열 형태의 데이터를 전송하기 위한 옵션
+      success: function(response) { // 요청이 성공하면 실행되는 함수
           alert("삭제가 완료되었습니다."); // 삭제 성공 시 사용자에게 알림
 
           // 삭제 후 페이지 처리 로직
-          var remainingRows = $(".rowCheckbox").length - selectedBnos.length;
+          var remainingRows = $(".rowCheckbox").length - selectedNos.length; //남은 행의 수 계산
 
           if (remainingRows > 0) { 
-              location.reload(); // 게시글이 남아있으면 페이지 새로고침
+              location.reload(); // 행이 남아있으면 페이지 새로고침
           } else {
               if (currentPage > 1) {
                   loadBoardPage(currentPage - 1); // 이전 페이지로 이동
@@ -87,55 +76,67 @@ function deleteSelectedRows() {
   });
 }
 
+// **8월 30일 추가 코드
+// 내 게시글 페이지의 3가지 테이블에 대한 삭제, 취소 관련 함수
+// 체크된 항목의 번호를 배열로 반환하는 함수
+function getSelectedNos(name) {
+  var selectedNos = [];
+  $("input[name='" + name + "']:checked").each(function() { // 체크된 항목들을 반복 처리
+    selectedNos.push($(this).val()); // 체크된 항목의 값을 배열에 추가
+  
+  })
+  return selectedNos; // 수집한 행 번호 배열 반환
+}
+
+// 첫 글자를 대문자로 변환하는 함수
+function capitalizeFirstLetter(string){
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+// 페이지 로딩 함수
+function loadPage(page, type) {
+  if (type === 'board') {
+    loadBoardPage(page); // 게시글 페이지 로드
+  } else if( type === 'reply') {
+    loadReplyPage(page); // 댓글 페이지 로드
+  }
+}
+
+// 좋아요 취소 함수
+function cancelLikes(){
+  var selectedNos = getSelectedNos('lnos'); 
+  // 내 게시글, 내 댓글 삭제에 쓰였던 getSelectedNos함수 재활용
+  var userNo = parseInt($('#myPageUserNo').val());
+
+  if(selectedNos.length === 0){
+    alert("좋아요 취소 할 글목록을 선택하세요.");
+    return;
+  }
+  $.ajax({
+    type: "POST",
+    url: contextPath + "/cancelLikes.me",
+    data: {
+      boardNos: selectedNos,
+      userNo: userNo
+    },
+    traditional: true,
+    success: function(response) {
+      alert("좋아요가 취소되었습니다.");
+      location.reload(); // 페이지 새로고침
+    },
+    error: function(xhr, status, error){
+      console.error("Error:", status, error);
+      alert("좋아요 취소 중 오류가 발생하였습니다.")
+      
+    }
+  });
+
+}
 
 
-// 삭제 버튼 클릭 이벤트
-// 삭제 버튼 이벤트는 onclick이벤트로 빼서 함수로 만들 예정
-// 공통적으로 선택된 행을 삭제하는 함수 사용하여 코드 줄일 생각
-// btn 버튼에 공통적인 onclick 이벤트를 수행할 class가 필요해서 commonBtn으로 만들 생각
-// 결론적으로 commonBtn 클래스는 필요 없다 생각하여 삭제
-/*
-table.closest('.myinfo--page').querySelectorAll('.btn1').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-        // 체크된 row들을 가져와 삭제
-        rowCheckboxes.forEach(function(checkbox) {
-            if (checkbox.checked) {
-                checkbox.closest('tr').remove();
-            }
-        });
-    });
-});
-*/
 
 
-  // 클릭된 버튼과 가장 가까운 테이블 찾기
-  //const table = target.closest('.myinfo--page').querySelector('mytable');
 
-  // 해당 테이블 내에서 체크된 모든 체크박스 선택
-  // const checkboxes = document.querySelectorAll("tbody .rowCheckbox:checked");
-
-  // 각 체크된 체크박스를 반복하고 해당 행을 삭제
-  // checkboxes.forEach(function (checkbox) {
-    // checkbox.closest("tr").remove();
-  // });
-
-
-/*
-// 모든 selectAll 체크박스를 우선 선택.
-document.querySelectorAll('.selectAll').forEach(function(selectAllCheckbox) {
-    // quearySelectorAll을 사용하여 selectAll클래스를 모두 선택하여 forEach를 돌림
-    selectAllCheckbox.addEventListener('change', function() {
-        // 각 selectAll 체크박스에 change 이벤트 리스너를 추가.
-        const checkboxes = this.closest('table').querySelectorAll('.rowCheckbox');
-        // this.closest('table')는 현재 내가 선택한 이 테이블을 말함.
-        // 현재 내가 선택한 이 테이블에 속한 테이블 내의 rowCheckbox들을 선택.
-        const isChecked = this.checked;  // selectAll 체크박스의 상태를 저장.
-        checkboxes.forEach(function(checkbox) {
-            checkbox.checked = isChecked;  // 모든 rowCheckbox의 상태를 selectAll과 동일하게 설정합니다.
-        });
-    });
-});
-*/
 // 고객센터 섹션 자주 하는 질문, 처음 사용자 가이드 리스트 클릭시 구현되는 스크립트
 $(".slide--div").click(function () {
   // 클릭된 .slide--div 다음에 있는 .slide--p 요소를 가져옴
@@ -166,39 +167,7 @@ $(document).on("click", ".p--question", function () {
   }
 });
 
-// $(".p--question").click(function(){
 
-//     // 클릭된 질문 다음에 있는 답변 요소 찾기.
-//     const $p = $(this).next(".p--answer");
-
-//     // 모든 답변을 슬라이드 업.
-//     $(".p--answer").slideUp();
-
-//     // 클릭된 질문의 다음에 있는 답변이 숨겨져 있으면 슬라이드 다운.
-//     if($p.css("display") == "none") {
-//        $p.slideDown();
-//     }
-// });
-
-/* 기본 정보 호버시 디테일한 내용 보여주기 basic
-// 모든 basicbasket 요소들을 가져오기.
-const basicBaskets = document.querySelectorAll('.basicbasket');
-
-// 모든 basicbasket 요소에 이벤트 리스너를 추가.
-basicBaskets.forEach(basket => {
-    basket.addEventListener('mouseenter', () => {
-        // detail--group 요소를 찾아서 display 속성을 block으로 변경.
-        const detailGroup = document.querySelector('.detail--group');
-        detailGroup.style.display = 'block';
-    });
-
-    basket.addEventListener('mouseleave', () => {
-        // 마우스가 빠져나갔을 때 detail--group 요소를 숨김.
-        const detailGroup = document.querySelector('.detail--group');
-        detailGroup.style.display = 'none';
-    });
-});
-*/
 
 // 장바구니 섹션 기본 상품 호버시 실행될 상품 상세정보 나타나는 스크립트
 // 모든 basicbasket 요소들을 가져오기.

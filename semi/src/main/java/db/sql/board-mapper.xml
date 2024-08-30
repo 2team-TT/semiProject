@@ -676,6 +676,13 @@ SELECT
 		 WHERE BOARD_NO = ?
 	
 	</entry>
+	
+	<!-- 내 댓글 삭제 -->
+	<entry key="deleteMyReply">
+		UPDATE REPLY
+		   SET STATUS = 'N'
+		 WHERE REPLY_NO = ?
+	</entry>
 
 
 
