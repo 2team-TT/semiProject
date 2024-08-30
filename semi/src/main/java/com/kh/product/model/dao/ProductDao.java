@@ -80,8 +80,8 @@ public class ProductDao {
 			pstmt.setInt(2, startRow);
 			pstmt.setInt(3, endRow);
 			
-			rset = pstmt.executeQuery();
-			
+			rset= pstmt.executeQuery();
+
 			while(rset.next()) {
 				qList.add(new ProductInquiry(rset.getInt("user_no")
 										   , rset.getString("pi_title")
@@ -92,6 +92,7 @@ public class ProductDao {
 										   , rset.getString("pa_content")
 						));
 			}
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

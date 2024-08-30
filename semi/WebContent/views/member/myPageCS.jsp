@@ -14,14 +14,16 @@
 	int questionStartPage = qPi.getStartPage();
 	int questionEndPage = qPi.getEndPage();
 	int questionMaxPage = qPi.getMaxPage();
-	
 
  %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>마이페이지 - 고객센터</title>
+<script>
+    var contextPath = '<%= request.getContextPath() %>';
+</script>
 </head>
 <body>
 	<%@ include file="../common/myPageCommon.jsp" %>
@@ -77,65 +79,66 @@
                 <span class="subheading">문의 내역 확인</span>
                 <br><br>
                 <div class="table--margin"> <!-- 테이블 컨텐츠 사이즈 조절용 div클래스 -->
-
-                    <table class="mytable table table-striped">
-                        <thead>
-                            <tr>
-                                <th>결제상품</th>
-                                <th>문의제목</th>
-                                <th>답변상태</th>
-                                <th>문의날짜</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        <%if(qList.isEmpty()) {%>
-                        	<!-- 문의내역이 존재하지 않을 경우 -->
-                        		<tr>
-			                    	<td colspan="4">문의 내역이 없습니다.</td>
-			                	</tr>
-			            <%}else { %>
-			            	<!-- 게시글이 존재할 경우 -->
-			            	<%for(ProductInquiry pi : qList) {%>
-                            	<tr class="p--question">
-                                	<td><%= pi.getpName() %></td>
-                                	<td><%= pi.getPiTitle() %></td>
-                                	<td><%= pi.getAnswer() %></td>
-                                	<td><%= pi.getCreateDate() %></td>
-                            	</tr>
-                            	<tr class="p--answer">
-                                	<td colspan="4"><%= pi.getPiContent() %>
-                                	<br><br><br><br>
-                                	<hr>
-                                	<% if(pi.getPaContent() != null) { %>
-                                		<%= pi.getPaContent() %>
-                                	<%} else{ %>
-                                		아직 등록된 답변이 없습니다. 조금만 기다려주세요.
-                                	<%} %>
-                                	</td>
-                            	</tr>
-                            <%} %>
-                       <%} %>
-                        </tbody>
-                    </table>
-                    <div align="center">
-                    <% if(questionMaxPage !=0){ %>
-                    	<% if(currentQuestionPage != 1) {%>
-                        	<button class="page-btn btn btn-outline-secondary" onclick = "location.href ='<%=contextPath %>/myPageBoard.me?cQuestionPage=<%= currentQuestionPage-1 %>'">&lt;</button>
-                    	<%} %>
-                    
-                    
-                    	<%for(int p = questionStartPage; p<=questionEndPage; p++){ %>
-                    		<%if( p == currentQuestionPage){ %>
-                        		<button disabled class="page-btn btn btn-outline-secondary"><%= p %></button>
-                     	    <%} else{ %>
-                       	 		<button class="page-btn btn btn-outline-secondary" onclick = "location.href ='<%=contextPath %>/myPageBoard.me?cQuestionPage=<%= p %>'"><%= p %></button>
-                      	  <%} %>
-                   		<%} %>
-                    		<% if(currentQuestionPage != questionMaxPage) { %>
-                       	 		<button class="page-btn btn btn-outline-secondary" onclick = "location.href ='<%=contextPath %>/myPageBoard.me?cQuestionPage=<%= currentQuestionPage+1 %>'">&gt</button>
-                    		<%} %>
-                    <%} %>    
-                    </div>
+	                <div id="questionTable">
+	                    <table class="mytable table table-striped">
+	                        <thead>
+	                            <tr>
+	                                <th>결제상품</th>
+	                                <th>문의제목</th>
+	                                <th>답변상태</th>
+	                                <th>문의날짜</th>
+	                            </tr>
+	                        </thead>
+	                        <tbody>
+	                        <%if(qList.isEmpty()) {%>
+	                        	<!-- 문의내역이 존재하지 않을 경우 -->
+	                        		<tr>
+				                    	<td colspan="4">문의 내역이 없습니다.</td>
+				                	</tr>
+				            <%}else { %>
+				            	<!-- 게시글이 존재할 경우 -->
+				            	<%for(ProductInquiry pi : qList) {%>
+	                            	<tr class="p--question">
+	                                	<td><%= pi.getpName() %></td>
+	                                	<td><%= pi.getPiTitle() %></td>
+	                                	<td><%= pi.getAnswer() %></td>
+	                                	<td><%= pi.getCreateDate() %></td>
+	                            	</tr>
+	                            	<tr class="p--answer">
+	                                	<td colspan="4"><%= pi.getPiContent() %>
+	                                	<br><br><br><br>
+	                                	<hr>
+	                                	<% if(pi.getPaContent() != null) { %>
+	                                		<%= pi.getPaContent() %>
+	                                	<%} else{ %>
+	                                		아직 등록된 답변이 없습니다. 조금만 기다려주세요.
+	                                	<%} %>
+	                                	</td>
+	                            	</tr>
+	                            <%} %>
+	                       <%} %>
+	                        </tbody>
+	                    </table>
+	                    <div align="center">
+	                    <% if(questionMaxPage !=0){ %>
+	                    	<% if(currentQuestionPage != 1) {%>
+	                        	<button class="page-btn btn btn-outline-secondary" onclick="loadQuestionPage('<%= currentQuestionPage-1 %>')">&lt;</button>
+	                    	<%} %>
+	                    
+	                    
+	                    	<%for(int p = questionStartPage; p<=questionEndPage; p++){ %>
+	                    		<%if( p == currentQuestionPage){ %>
+	                        		<button disabled class="page-btn btn btn-outline-secondary"><%= p %></button>
+	                     	    <%} else{ %>
+	                       	 		<button class="page-btn btn btn-outline-secondary" onclick="loadQuestionPage('<%= p %>')"><%= p %></button>
+	                      	  <%} %>
+	                   		<%} %>
+	                    		<% if(currentQuestionPage != questionMaxPage) { %>
+	                       	 		<button class="page-btn btn btn-outline-secondary" onclick="loadQuestionPage('<%= currentQuestionPage +1 %>')">&gt</button>
+	                    		<%} %>
+	                    <%} %>    
+	                    </div>
+	                </div>
                 </div>
             </div>
         </div>

@@ -12,7 +12,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>마이페이지 - 상품</title>
 </head>
 <body>
 	<%@ include file="../common/myPageCommon.jsp" %>

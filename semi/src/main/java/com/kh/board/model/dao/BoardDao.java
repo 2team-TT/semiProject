@@ -1442,6 +1442,70 @@ public ArrayList<Board> selectHoneyBoardList(Connection conn, PageInfo pi){
 		return ud;
 		
 	}
+	// 마이페이지 내 게시글 삭제
+	public int deleteMyBoard(Connection conn, int bno) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = prop.getProperty("deleteMyBoard");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bno);
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}//deleteMyBoard() end
+	
+	// 마이페이지 내 댓글 삭제
+	
+	public int deleteMyReply(Connection conn, int rno) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = prop.getProperty("deleteMyReply");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, rno);
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}//deleteMyReply() end
+	
+	// 마이페이지 좋아요 한 글 취소
+	public int cancelLikes(Connection conn, int boardNo, int userNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = prop.getProperty("deleteLikesBoard"); // 이미 만들어진 좋아요 삭제 쿼리문 가져오기
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, userNo);
+			pstmt.setInt(2, boardNo);
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}// cancelLikes() end
 	
 	// 검색어로 board 조회
 	public ArrayList<Board> searchBoardList(Connection conn, String search){
