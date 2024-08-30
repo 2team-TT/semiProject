@@ -134,7 +134,7 @@
                         <div class="profile__container-down">
                             <a href="">가계부</a>
                             <a href="">스케줄 관리</a>
-                            <a href="">채팅</a>
+                            <a href="<%=contextPath%>/chatroom.ch?userNo=<%=u.getUserNo()%>">채팅</a>
                         </div>
 
                     </div>
@@ -560,9 +560,9 @@
         <h2>검색</h2>
 
         <div class="side__searchbar">
-            <form action="">
+            <form action="search.do">
                 <div class="side_input_search">
-                    <input type="search" name="search">
+                    <input type="search" name="search" id="side_search">
 
 
                     <button class="side_search__icon material-icons" >search</button>
@@ -579,50 +579,8 @@
         </div>
         
         <div class="auto__search">
-            <div class="lately__search">최근 검색</div>
-            <div class="cookie__search">
-                <div class="lately__searchs">
-                    <span class="searchs">asdf</span>
-                    <span class="material-icons">close</span>
-                    
-                </div>
-                <div class="lately__searchs">
-                    <span class="searchs">asdf</span>
-                    <span class="material-icons">close</span>
-                    
-                </div> <div class="lately__searchs">
-                    <span class="searchs">asdf</span>
-                    <span class="material-icons">close</span>
-                    
-                </div> <div class="lately__searchs">
-                    <span class="searchs">asdf</span>
-                    <span class="material-icons">close</span>
-                    
-                </div> <div class="lately__searchs">
-                    <span class="searchs">asdf</span>
-                    <span class="material-icons">close</span>
-                    
-                </div> <div class="lately__searchs">
-                    <span class="searchs">asdf</span>
-                    <span class="material-icons">close</span>
-                    
-                </div>
-                <div class="lately__searchs">
-                    <span class="searchs">asdf</span>
-                    <span class="material-icons">close</span>
-                    
-                </div> <div class="lately__searchs">
-                    <span class="searchs">asdf</span>
-                    <span class="material-icons">close</span>
-                    
-                </div> <div class="lately__searchs">
-                    <span class="searchs">asdf</span>
-                    <span class="material-icons">close</span>
-                    
-                </div>
-            </div>
-
-            <!-- 자동완성 넣을 곳 -->
+            <!-- <div class="lately__search">최근 검색</div> -->
+           <div class="auto_side_search"></div>
 
         </div>
 
@@ -780,6 +738,41 @@
                         $('.auto_searchList').html(value);
                         $('.auto_searchList>li').click(function(){
                             $('#search').val($(this).text())
+                            console.log($(this).text())
+                            
+                        })
+
+                    },
+                    error:function(){
+                        console.log("검색 통신 실패")
+                    },
+
+                })
+
+
+            })
+
+
+
+            $('#side_search').keyup(function(){
+
+                $.ajax({
+                    url:"searchLikeList.mo",
+                    data:{
+                        searchContent:$('#side_search').val()
+                    },
+                    type:"get",
+                    success:function(list){
+                        console.log(list)
+                        let value = ""
+
+                        for(let i =0 ;i< list.length; i++){
+                            value += "<div>"+list[i].sName + "</div>"
+                        }
+                        console.log(value)
+                        $('.auto_side_search').html(value);
+                        $('.auto_side_search>div').click(function(){
+                            $('#side_search').val($(this).text())
                             console.log($(this).text())
                             
                         })

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+<entry key="selectChatRoomList">
+SELECT 
+       CH_NO
+     , c.USER_NO AS "USER_NO"
+     , c.USER_NO2 AS "SEND_NO"
+     , DECODE(USER_NICK,NULL,USER_ID,USER_NICK) AS "SEND_ID"   
+     , DECODE(LAST_MESSAGE,NULL,'채팅 내용이 없습니다.',LAST_MESSAGE) AS "LAST_MESSAGE"
+     , TO_CHAR(CREATE_DATE,'YYYY"년" MM"월" DD"일"') AS "CREATE_DATE"
+     , TO_CHAR(C.MODIFY_DATE,'YYYY"년" MM"월" DD"일"') AS "MODIFY_DATE"
+     , c.STATUS
+FROM CHATROOM C
+JOIN USER1 u ON (c.USER_NO2 = u.USER_NO)
+WHERE C.STATUS = 'Y'
+  AND C.USER_NO = ?
+ORDER 
+   BY MODIFY_DATE DESC
+</entry>
+
+		
+		
+		
+<entry key="selectMessageList">
+SELECT
+       CM_NO
+     , CM_CONTENT
+     , CH_NO
+     , USER_NO
+     , DECODE(USER_NICK,NULL,USER_ID,USER_NICK) AS "SEND_ID" 
+     , TO_CHAR(SEND_DATE,'YYYY"년" MM"월" DD"일"') AS "SEND_DATE"
+FROM CHAT_MESSAGE 
+JOIN USER1 USING(USER_NO) 
+WHERE CH_NO = ?
+ORDER 
+   BY CM_NO DESC
+</entry>
+
+		
+		
+		
+		
+<entry key="insertChatMsg">
+INSERT 
+  INTO CHAT_MESSAGE
+     (
+       CM_NO
+     , CM_CONTENT
+     , CH_NO
+     , USER_NO
+     )
+VALUES
+     (
+       SEQ_MESSAGE.NEXTVAL
+     , ?
+     , ?
+     , ?
+     )
+</entry>
+
+
+<entry key="selectUserList">
+SELECT
+        USER_ID
+     , '아이디 : '|| USER_ID || DECODE(USER_NICK, NULL,'',' / 닉네임 : '|| USER_NICK) AS "USER"
+FROM USER1
+WHERE USER_NO NOT IN (?)
+</entry>
+		
+
+<entry key="selectUserId">
+SELECT
+        USER_NO
+FROM USER1
+WHERE USER_ID = ?
+  AND STATUS ='Y'
+</entry>
+				
+	
+</properties>

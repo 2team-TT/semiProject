@@ -175,8 +175,8 @@
             <div class="board_search">
                 <div class="material-icons" >search</div>
 
-                <form action="asdfas">
-                    <input type="hidden" name="tagNo" value="1">
+                <form action="<%=contextPath %>/searchBoardList.bo">
+                    <input type="hidden" name="cpage" value="1">
                     <input type="search" name="search" id="search_input">
                     <button class="material-icons" >search</button>
                 </form>

@@ -1,12 +1,16 @@
 package com.kh.member.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kh.board.model.service.BoardService;
+import com.kh.board.model.vo.Board;
 import com.kh.member.model.service.UserService;
 import com.kh.member.model.vo.Search;
 import com.kh.member.model.vo.User;
@@ -77,8 +81,16 @@ public class insertSearchController extends HttpServlet {
 		
 		if(result1*result2 == 0) {
 			System.out.println("실패");
+			
 		}else {
 			System.out.println("성공");
+			//나중에 상품이랑 부동산
+			
+			ArrayList<Board> bList = new BoardService().searchBoardList(search);
+			request.setAttribute("search", search);
+			request.setAttribute("blist", bList);
+			
+			request.getRequestDispatcher("views/common/searchListView.jsp").forward(request, response);
 		}
 		
 		

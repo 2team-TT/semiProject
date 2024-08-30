@@ -1069,6 +1069,7 @@ public ArrayList<Board> selectHoneyBoardList(Connection conn, PageInfo pi){
 				b.setBoardTitle(rset.getString("board_title"));
 				b.setBoardContent(rset.getString("board_content"));
 				b.setBoardWriter(rset.getString("user_id"));
+				b.setUserId(rset.getString("user_no"));
 				b.setUserNick(rset.getString("user_nick"));
 				b.setViewCount(rset.getInt("view_count"));
 				b.setReplyCount(rset.getInt("reply_count"));
@@ -1442,7 +1443,296 @@ public ArrayList<Board> selectHoneyBoardList(Connection conn, PageInfo pi){
 		
 	}
 	
+	// 검색어로 board 조회
+	public ArrayList<Board> searchBoardList(Connection conn, String search){
+		
+		ArrayList<Board> list = new ArrayList<Board>();
+		
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset =null;
+		
+		String sql = prop.getProperty("searchBoardList");
+		
+		try {
+			pstmt =conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+search+"%");
+			
+			rset= pstmt.executeQuery();
+			
+			while(rset.next()) {
+		Board b = new Board();
+				
+				b.setBoardNo(rset.getInt("Board_no"));
+				b.setTagNo(rset.getString("tag_name"));
+				b.setBoardTitle(rset.getString("board_title"));
+				b.setViewCount(rset.getInt("view_count"));
+				b.setReplyCount(rset.getInt("REPLY_COUNT"));
+				b.setLikesCount(rset.getInt("LIKES_COUNT"));
+				b.setCreateDate(rset.getString("create_date"));
+				
+				list.add(b);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+		
+		
+	}
 	
 	
+	public int selectsearchBoardCount(Connection conn, String search) {
+		
+		int count = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectsearchBoardCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+search+"%");
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				count = rset.getInt("count");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+			
+		}
+		
+		return count;
+		
+		
+	}
 	
+	// 검색어로 board 조회
+		public ArrayList<Board> selectsearchBoard(Connection conn,PageInfo pi, String search){
+			
+			ArrayList<Board> list = new ArrayList<Board>();
+			
+			PreparedStatement pstmt = null;
+			
+			ResultSet rset =null;
+			
+			String sql = prop.getProperty("selectsearchBoard");
+			
+			try {
+				pstmt =conn.prepareStatement(sql);
+				pstmt.setString(1, "%"+search+"%");
+				int startRow =(pi.getCurrentPage()-1)* pi.getBoardLimit()+1;
+				int endRow = startRow + pi.getBoardLimit() -1;
+				pstmt.setInt(2, startRow);
+				pstmt.setInt(3, endRow);
+				
+				rset= pstmt.executeQuery();
+				
+				while(rset.next()) {
+					Board b = new Board();
+					
+					b.setBoardNo(rset.getInt("Board_no"));
+					b.setTagNo(rset.getString("tag_name"));
+					b.setBoardTitle(rset.getString("board_title"));
+					b.setViewCount(rset.getInt("view_count"));
+					b.setReplyCount(rset.getInt("REPLY_COUNT"));
+					b.setLikesCount(rset.getInt("LIKES_COUNT"));
+					b.setCreateDate(rset.getString("create_date"));
+					
+					list.add(b);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				close(rset);
+				close(pstmt);
+			}
+			
+			return list;
+			
+			
+		}
+	
+	
+		
+		
+		public int updateBoard(Connection conn, Board b) {
+			
+			int result =0;
+			
+			PreparedStatement pstmt = null;
+			
+			String sql = prop.getProperty("updateBoard");
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, b.getBoardTitle());
+				pstmt.setInt(2, Integer.parseInt(b.getTagNo()));
+				pstmt.setString(3, b.getBoardContent());
+				pstmt.setInt(4, b.getBoardNo());
+				
+				result = pstmt.executeUpdate();
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				close(pstmt);
+			}
+			
+			return result;
+		}
+		
+		
+		
+		public int insertupdateAttachment(Connection conn,Attachment at) {
+			int result =0;
+			
+			PreparedStatement pstmt = null;
+			
+			String sql = prop.getProperty("insertupdateAttachment");
+			
+			try {
+				pstmt =conn.prepareStatement(sql);
+				pstmt.setInt(1, at.getBoardNo());
+				pstmt.setString(2,at.getOriginName());
+				pstmt.setString(3, at.getNewName());
+				pstmt.setString(4, at.getFilePath());
+				pstmt.setString(5, at.getFileLevel());
+				
+				result = pstmt.executeUpdate();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				close(pstmt);
+			}
+			
+			return result;
+		}
+		
+		
+		
+		public int updateAttachment(Connection conn, Attachment at) {
+			int result =0;
+			
+			PreparedStatement pstmt = null;
+			
+			String sql = prop.getProperty("updateAttachment");
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1,at.getOriginName());
+				pstmt.setString(2, at.getNewName());
+				pstmt.setString(3, at.getFilePath());
+				pstmt.setString(4, at.getFileLevel());
+				pstmt.setInt(5, at.getAtNo());
+				
+				result =pstmt.executeUpdate();
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				close(pstmt);
+			}
+			
+			return result;
+		}
+		
+		
+		public int insertupdateUsed(Connection conn,Used ud) {
+			int result =0;
+			
+			PreparedStatement pstmt = null;
+			
+			String sql = prop.getProperty("insertupdateUsed");
+			
+			try {
+				pstmt =conn.prepareStatement(sql);
+				pstmt.setInt(1, ud.getBoardNo());
+				pstmt.setString(2, ud.getModelName());
+				pstmt.setInt(3, ud.getPrice());
+				pstmt.setString(4, ud.getModelStatus());
+				pstmt.setString(5, ud.getTradingArea());
+				pstmt.setString(6, ud.getTradingMethod());
+				
+				result =pstmt.executeUpdate();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				close(pstmt);
+			}
+			return result;
+		}
+	
+		
+		public int updateUsed(Connection conn, Used ud) {
+			int result =0;
+			
+			PreparedStatement pstmt = null;
+			
+			String sql = prop.getProperty("updateUsed");
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, ud.getModelName());
+				pstmt.setInt(2, ud.getPrice());
+				pstmt.setString(3, ud.getModelStatus());
+				pstmt.setString(4, ud.getTradingArea());
+				pstmt.setString(5, ud.getTradingMethod());
+				pstmt.setInt(6, ud.getUsed());
+				
+				result = pstmt.executeUpdate();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				close(pstmt);
+			}
+			
+			return result;
+			
+		}
+		
+		
+		
+		public int deleteBoard(Connection conn, int BoardNo) {
+			int result =0;
+			
+			PreparedStatement pstmt = null;
+			
+			String sql = prop.getProperty("deleteBoard");
+			
+			try {
+				pstmt =conn.prepareStatement(sql);
+				pstmt.setInt(1, BoardNo);
+				
+				result = pstmt.executeUpdate();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				close(pstmt);
+			}
+			return result;
+		}
+		
+		
+		
 }

@@ -536,5 +536,111 @@ Connection conn = getConnection();
 		
 	}
 	
+	
+	
+	// 검색어로 board 조회
+	public ArrayList<Board> searchBoardList(String search){
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Board> list = new BoardDao().searchBoardList(conn,search);
+		
+		close(conn);
+		
+		return list;
+	}
+	
+	
+	// 검색어 조건으로 게시글 개수 조회
+	public int selectsearchBoardCount(String search) {
+		
+		Connection conn = getConnection();
+		
+		int count = new BoardDao().selectsearchBoardCount(conn,search);
+		
+		close(conn);
+		
+		return count;
+	}
+	
+	
+	public ArrayList<Board> selectsearchBoard(PageInfo pi, String search) {
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Board> list = new BoardDao().selectsearchBoard(conn, pi, search);
+		
+		close(conn);
+	
+		
+		return list;
+	}
+	
+	
+	
+	
+	public int updateBoard(Board b, Attachment at, Used ud) {
+		
+		Connection conn = getConnection();
+		
+		int result1 = new BoardDao().updateBoard(conn, b);
+		
+		int result2 =1;
+		
+		if(at!=null) {
+			
+			if(at.getAtNo()==0) {
+				//기존 사진이 없는 경우
+				result2= new BoardDao().insertupdateAttachment(conn, at);
+			}else {
+				result2 = new BoardDao().updateAttachment(conn, at);
+			}
+		}
+		
+		int result3 =1;
+		
+		if(ud!=null) {
+			if(ud.getUsed()==0) {
+				result3 = new BoardDao().insertupdateUsed(conn, ud);
+			}else {
+				result3 = new BoardDao().updateUsed(conn, ud);
+			}
+		}
+		
+		int result = result1 * result2 *result3;
+		
+		if(result>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+		
+		
+	}
+	
+	
+	
+	public int deleteBoard(int BoardNo) {
+		
+		Connection conn = getConnection();
+		
+		int result = new BoardDao().deleteBoard(conn,BoardNo);
+		
+		if(result>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
+
+	
 }
 

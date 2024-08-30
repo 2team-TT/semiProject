@@ -6,6 +6,7 @@
 .board_navi .navi_content{
     width: 50%;
     height: 50px;
+    min-width: 350px;
     border: 2px solid #FFA500;
     margin: auto;
     border-radius: 5px;
@@ -40,6 +41,7 @@
    display: flex;
    flex-direction: column;
    align-items: center;
+   padding: 30px;
 
 }
 
@@ -232,7 +234,7 @@
     width: 700px;
     border: 2px solid #FFA500;
     border-radius: 5px;
-    min-height: 200px;
+    min-height: 100px;
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -485,7 +487,7 @@
 
 
 .boardDetilView_section .deteil_area .used_navi .thumbImg{
-   width: 37%;
+   width: 217px;
    border: 2px solid #FFA500;
    height: 280px;
    border-radius: 5px;
@@ -586,3 +588,127 @@
 }
 
 
+
+
+@media(max-width:820px){
+
+
+
+
+   .board_navi .navi_content>li{
+      font-weight: 900;
+      font-size: 15px;
+      color: #333;
+      cursor: pointer;
+  }
+  
+
+}
+
+
+
+
+
+@media(max-width:720px){
+   .boardDetilView_section .deteil_area .deteil_content_area{
+      width: 460px;
+    
+   
+   }
+  
+   
+   .boardDetilView_section .deteil_area .deteil_content_area>.content{
+      width: 380px;
+
+   
+   }
+
+   .boardDetilView_section .deteil_area .deteil_content_area{
+      width: 410px;
+
+   
+   }
+
+   .boardDetilView_section .deteil_area{
+      width: 470px;
+      border: 2px solid #FFA500;
+      border-radius: 5px;
+      min-height: 800px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+   
+   }
+   
+   .boardDetilView_section .backList_btn_area{
+       width: 470px;
+       display: flex;
+       justify-content: flex-end;
+       margin: auto;
+       margin-top: 30px;
+   
+    }
+   
+    .boardDetilView_section .deteil_area .deteil_navi{
+      width: 410px;
+      border: 2px solid #FFA500;
+      margin-top: 20px;
+      height: 150px;
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+   
+   }
+
+   .reply_section .reply_area{
+      width: 470px;
+      
+  
+   }
+  
+
+   .reply_section .reply_area .reply_content .reply_writer>div:nth-child(2){
+      font-size: 8px;
+  }
+
+
+  .boardDetilView_section .deteil_area .used_navi{
+   width: 410px;
+   border: 2px solid #FFA500;
+   margin-top: 20px;
+   height: 600px;
+   border-radius: 5px;
+   display: flex;
+   row-gap: 10px;
+   flex-wrap: wrap-reverse;
+   justify-content: space-around;
+   align-items: center;
+
+}
+
+
+
+
+
+.boardDetilView_section .deteil_area .used_navi .thumbImg{
+   width: 390px;
+   
+   border: 2px solid #FFA500;
+   height: 280px;
+   border-radius: 5px;
+   overflow: hidden;
+
+}
+
+.boardDetilView_section .deteil_area .used_navi .used_text{
+   border: 2px solid #FFA500;
+   height: 280px;
+   width: 390px;
+
+   border-radius: 5px;
+   box-sizing: border-box;
+   padding: 10px;
+}
+}

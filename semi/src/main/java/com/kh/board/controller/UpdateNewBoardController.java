@@ -16,19 +16,18 @@ import com.kh.board.model.vo.Board;
 import com.kh.board.model.vo.Used;
 import com.kh.common.MyFileRenamePolicy;
 import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.MultipartParser;
 
 /**
- * Servlet implementation class InsertBoardController
+ * Servlet implementation class UpdateNewBoardController
  */
-@WebServlet("/insertBoard.bo")
-public class InsertBoardController extends HttpServlet {
+@WebServlet("/updateBoard.bo")
+public class UpdateNewBoardController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InsertBoardController() {
+    public UpdateNewBoardController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,7 +36,9 @@ public class InsertBoardController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		
+		
+		
 		request.setCharacterEncoding("utf-8");
 		
 		if(ServletFileUpload.isMultipartContent(request)) {
@@ -48,7 +49,7 @@ public class InsertBoardController extends HttpServlet {
 			
 			MultipartRequest mq = new MultipartRequest(request, filePath , maxSize, "utf-8", new MyFileRenamePolicy());
 			
-			
+			int boardNo = Integer.parseInt(mq.getParameter("boardNo"));
 			int userNo = Integer.parseInt(mq.getParameter("userNo"));
 			
 			String title = mq.getParameter("title");
@@ -58,11 +59,13 @@ public class InsertBoardController extends HttpServlet {
 			String content = mq.getParameter("content");
 			
 			Board b = new Board();
+			b.setBoardNo(boardNo);
 			b.setBoardTitle(title);
 			b.setTagNo(tagNo);
 			b.setBoardWriter(String.valueOf(userNo));
 			b.setBoardContent(content);
 			
+			System.out.println(b);
 			Attachment at = null;
 			
 			Used ud = null;
@@ -79,7 +82,13 @@ public class InsertBoardController extends HttpServlet {
 				at.setFilePath("/resources/bImg/");
 				at.setFileLevel("1");
 				
-				
+
+				if(mq.getParameter("originFileNo")!=null) {
+					at.setAtNo(Integer.parseInt(mq.getParameter("originFileNo")));
+					
+				}else {
+					at.setBoardNo(boardNo);
+				}
 				
 			}
 			
@@ -97,34 +106,58 @@ public class InsertBoardController extends HttpServlet {
 				ud.setModelStatus(mq.getParameter("status"));
 				
 				String[] arr = mq.getParameterValues("tradingMathod");
-				
+	
 				String tradingMathod ="";
 				if(arr != null) {
 					tradingMathod=String.join(",", arr);
 					ud.setTradingMethod(tradingMathod);
 				}
 				
+//				System.out.println(ud);
+				
+				
+				if(mq.getParameter("usedNo")!= null) {
+					ud.setUsed(Integer.parseInt(mq.getParameter("usedNo")));
+				}{
+					ud.setBoardNo(boardNo);
+				}
+				
+				
 				
 			}
 			
 			
-			int result = new BoardService().insertBoard(b,at,ud);
+			int result = new BoardService().updateBoard(b,at,ud);
 			
-			System.out.println(result);
-			
-			System.out.println(b);
-			System.out.println(at);
-			System.out.println(ud);
 			
 			HttpSession session = request.getSession();
 			
 			if(result>0) {
-				session.setAttribute("alertMsg", "정상적으로 등록되었습니다.");
-				response.sendRedirect(request.getContextPath()+"/freeBoardList.bo?cpage=1");
+				session.setAttribute("alertMsg", "정상적으로 수정되었습니다.");
+			}else {
+				session.setAttribute("alertMsg", "게시글 수정에 실패했습니다.");
 			}
+			response.sendRedirect(request.getContextPath()+"/freeBoardList.bo?cpage=1");
 			
 			
 		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 	}

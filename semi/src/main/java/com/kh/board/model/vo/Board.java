@@ -56,6 +56,7 @@ public class Board {
 	}
 	
 	
+	
 
 	public Board(int boardNo, String boardTitle, String boardWriter, int viewCount, String createDate, String tagName,
 			String userNick, String userId) {

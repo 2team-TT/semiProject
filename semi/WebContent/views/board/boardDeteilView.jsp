@@ -113,6 +113,10 @@
     </div>
 
     <div class="backList_btn_area">
+    	<%if(u !=null && u.getUserNo() ==Integer.parseInt(b.getUserId())){ %>
+        <a href="<%=contextPath%>/updateBoardForm.bo?bno=<%=b.getBoardNo()%>">수정하기</a>
+        <a href="<%=contextPath%>/delete.bo?bno=<%=b.getBoardNo()%>">삭제하기</a>
+        <%} %>
         <a href="">글목록</a>
     </div>
 

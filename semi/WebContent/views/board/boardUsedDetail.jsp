@@ -59,38 +59,36 @@
       <div class="used_navi">
 
         <div class="thumbImg">
-            <img src="./resources/img - 복사본/다운로드.jfif" alt="">
+            <img src="<%=contextPath %><%=at.getFilePath() %>" alt="">
         </div>
 
         <div class="used_text">
 
-            <div class="used_title">wpah</div>
+            <div class="used_title"><%=b.getBoardTitle() %></div>
 
             <div class="priceAndDate">
-                <div class="used_price">가격 :</div>
-                <div class="used_date">날짜</div>
+                <div class="used_price">가격 : <%=ud.getPrice() %></div>
+                <div class="used_date"><%=b.getCreateDate() %></div>
             </div>
 
-            <div class="used_writer">작성자</div>
-            <div class="used_model">모델 :</div>
-            <div class="used_trading">상태</div>
-            <div class="used_trading">거래방법</div>
-            <div class="used_trading">지역</div>
+            <div class="used_writer"><%=b.getBoardWriter() %></div>
+            <div class="used_model">모델 : <%=ud.getModelName() %></div>
+          
 				<%if(ud.getModelStatus() != null){ %>
-             		 <div class="used_span size_hid">상태: <%=b.getModelStatus() %></div>
+             		 <div class="used_trading">상태: <%=ud.getModelStatus() %></div>
              	<%} %>
              	<%if(ud.getTradingArea() != null){ %>
-             		 <div class="used_span size_hid"><%=b.getTradingArea() %></div>
+             		 <div class="used_trading">지역 : <%=ud.getTradingArea() %></div>
              	<%} %>
              	<%if(ud.getTradingMethod() != null){ %>
-             		 <div class="used_span size_hid"><%=ud.getTradingMethod() %></div>
+             		 <div class="used_trading">거래방법 : <%=ud.getTradingMethod() %></div>
              	<%} %>
             <a href="" class="used_chat">판매자 채팅</a>
 
 
             <div class="warring">직접결제 시 아래 사항에 유의해주세요.
                 카페 구매문의 채팅이나 전화 등을 이용해 연락하고 외부 메신저 이용 및 개인 정보 유출에 주의하세요.계좌이체 시 선입금을 유도할 경우 안전한 거래인지 다시 한번 확인하세요.불확실한 판매자(본인 미인증, 해외IP, 사기의심 전화번호)의 물건은 구매하지 말아주세요.
-                네이버에 등록된 판매 물품과 내용은 개별 판매자가 등록한 것으로서, 네이버카페는 등록을 위한 시스템만 제공하며 내용에 대하여 일체의 책임을 지지 않습니다.</div>
+                발자취에 등록된 판매 물품과 내용은 개별 판매자가 등록한 것으로서, 발자취는 등록을 위한 시스템만 제공하며 내용에 대하여 일체의 책임을 지지 않습니다.</div>
         </div>
 
 
@@ -109,6 +107,10 @@
     </div>
 
     <div class="backList_btn_area">
+    	<%if(u !=null && u.getUserNo() ==Integer.parseInt(b.getUserId())){ %>
+        <a href="<%=contextPath%>/updateBoardForm.bo?bno=<%=b.getBoardNo()%>">수정하기</a>
+        <a href="<%=contextPath%>/delete.bo?bno=<%=b.getBoardNo()%>">삭제하기</a>
+        <%} %>
         <a href="">글목록</a>
     </div>
 
