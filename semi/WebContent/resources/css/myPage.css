@@ -60,6 +60,28 @@ img {
     }
 }
 
+
+/* 페이지 업 css */
+#to-top{
+    width: 45px;
+    height: 45px;
+    background-color: rgb(241, 222, 185);
+    color: #333;
+    border: 2px solid #fff;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 9;
+    transform: translateX(100px);
+}
+
+
+
 /* 마이페이지 bar div list css */
 .myinfo .info--group .info--list a {
     /* 기본 스타일 */
@@ -726,3 +748,16 @@ img {
 .myinfo--page .myinfo--info .myinfo--common .rvp--group .rvp--item .rvp--img span:hover {
     cursor: pointer;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

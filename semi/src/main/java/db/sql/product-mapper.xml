@@ -32,7 +32,8 @@
 	</entry>
 	<!-- 마이페이지 찜 한 상품 조회 -->
 	<entry key="selectMyProductsList">
-		SELECT P_NAME
+		SELECT P_NO
+			 , P_NAME
              , PRICE
              , P_SELLER
              , RATING
@@ -47,13 +48,28 @@
 	
 	<!-- 마이페이지 최근 본 상품 조회 -->
 	<entry key="selectMyRecentlyProductsList">
-		SELECT P_NAME
-		     , PRICE
-		     , TO_CHAR(LATELY_DATE, 'YYYY-MM-DD') AS "LATELY_DATE"
-		  FROM PRODUCT P
-		  JOIN RECENTLY_PRODUCT USING(P_NO)
+	    SELECT P_NO
+	         , P_NAME
+	         , PRICE
+	         , TO_CHAR(LATELY_DATE, 'YYYY-MM-DD') AS "LATELY_DATE"
+	      FROM PRODUCT P
+	      JOIN RECENTLY_PRODUCT USING(P_NO)
+	     WHERE USER_NO = ?
+	     ORDER
+	        BY LATELY_DATE DESC
+</entry>
+
+	<!-- 마이페이지 찜한 상품 삭제 -->
+	<entry key="deleteMywishlistProduct">
+		DELETE CHOOSE
 		 WHERE USER_NO = ?
-		 ORDER
-		    BY LATELY_DATE DESC
+		   AND P_NO = ?
+	</entry>
+	
+	<!-- 마이페이지 최근 본 상품 삭제 -->
+	<entry key="deleteRecentlyViewedProduct">
+		DELETE RECENTLY_PRODUCT
+		 WHERE USER_NO = ?
+		   AND P_NO = ?
 	</entry>
 </properties>

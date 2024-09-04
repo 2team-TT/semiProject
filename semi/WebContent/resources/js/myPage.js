@@ -1,3 +1,73 @@
+// ScrollToPlugin을 GSAP에 등록
+// 이 코드는 ScrollToPlugin을 사용하기 위해 반드시 필요.
+gsap.registerPlugin(ScrollToPlugin);
+
+// '#to-top' ID를 가진 요소를 선택하여 toTopEl 변수에 저장
+// 이 요소는 페이지 상단으로 스크롤할 때 나타나는 버튼.
+const toTopEl = document.querySelector('#to-top');
+
+// 사용자가 스크롤을 할 때마다 이벤트가 발생하도록 설정
+// _.throttle()은 스크롤 이벤트의 빈도를 제한하여 성능을 최적화하는 역할을 함.
+window.addEventListener('scroll', _.throttle(function() {
+    // 현재 스크롤 위치를 콘솔에 출력하여 확인
+    console.log(window.scrollY);
+
+    // 스크롤 위치가 500픽셀을 넘으면 toTopEl 요소를 화면에 나타나도록 설정
+    if (window.scrollY > 500) {
+        // GSAP을 사용해 toTopEl 버튼을 x축으로 0 위치로 이동시켜 화면에 나타나게 함.
+        gsap.to(toTopEl, {
+            duration: 0.2, // 애니메이션 지속 시간 (0.2초)
+            x: 0 // x축 위치를 0으로 설정하여 버튼이 화면에 나타남.
+        });
+    } else {
+        // 스크롤 위치가 500픽셀 이하이면 toTopEl 요소를 화면에서 숨김.
+        // x축 위치를 100으로 이동시켜 화면 밖으로 사라지게 함.
+        gsap.to(toTopEl, {
+            duration: 0.2, // 애니메이션 지속 시간 (0.2초)
+            x: 100 // x축 위치를 100으로 설정하여 버튼이 화면 밖으로 이동.
+        });
+    }
+}, 300)); // 300ms(0.3초)마다 스크롤 이벤트를 처리하도록 제한
+
+// toTopEl 버튼이 클릭되었을 때의 이벤트 처리
+toTopEl.addEventListener('click', function() {
+    // 클릭 이벤트가 발생했음을 콘솔에 출력하여 확인
+    console.log('Button clicked'); 
+
+    // GSAP을 사용해 페이지를 상단으로 스크롤
+    gsap.to(window, {
+        duration: 0.7, // 애니메이션 지속 시간 (0.7초)
+        scrollTo: { y: 0, autoKill: false } // y축 위치를 0으로 설정하여 페이지 상단으로 스크롤
+        // autoKill: false는 사용자가 중간에 스크롤을 시도해도 애니메이션이 중단되지 않도록 함.
+    });
+});
+
+// 내 정보 셀렉트 박스 체크 상태 유지
+document.addEventListener('DOMContentLoaded', () => {
+  // 체크박스 요소를 선택
+  const checkboxes = document.querySelectorAll('.myinfo--alarm input[type=checkbox]');
+
+  // 페이지 로드 시 저장된 상태를 체크박스에 적용
+  checkboxes.forEach(checkbox => {
+      const savedState = localStorage.getItem(checkbox.id);
+      if (savedState !== null) {
+          checkbox.checked = (savedState === 'true');
+      }
+  });
+
+  // 체크박스 상태가 변경될 때마다 로컬 스토리지에 저장
+  checkboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', () => {
+          localStorage.setItem(checkbox.id, checkbox.checked);
+      });
+  });
+});
+
+
+
+
+
+
 // 게시글, 댓글, 좋아요 글 테이블 체크박스 전체 선택 js
 // 8월30일 기준 삭제, 취소버튼 js 구현까지
 // 모든 테이블을 반복
@@ -14,6 +84,8 @@ $(document).on("click", ".selectAll", function() {
 
 //  선택된 행을 삭제하는 함수(내 게시글, 내 댓글)
 //  좋아요 한 글의 경우 userNo와 boardNo를 비교해서 실제 삭제를 해야하므로 함수 재활용 불가
+//  9월 4일 기준 내가 찜한 상품에 대한 삭제 코드 추가
+
 function deleteSelectedRows(type) {
   var selectedNos = []; // 선택된 항목의 번호들을 저장할 배열
   var currentPageId; // 현재 페이지 번호를 저장할 변수
@@ -29,6 +101,9 @@ function deleteSelectedRows(type) {
     currentPageId = '#replyCurrentPage'; // 댓글에 해당하는 현재 페이지 번호
     //console.log("rnos: ", selectedNos); // 댓글 번호가 잘 나오는지 확인
     //console.log("currentPage: ", currentPageId); // 댓글 페이지가 잘 나오는지 확인
+  } else if (type === 'wishlist') {
+    selectedNos = getSelectedNos('pnos'); // 찜한 상품 번호들을 배열에 저장
+    currentPageId = null; // 찜한 상품의 경우 페이징 처리를 하지 않으므로 널 값을 줌
   }
 
   // selectedNos가 정의되지 않았거나 빈 배열인 경우를 처리 falsy를 이용
@@ -37,18 +112,18 @@ function deleteSelectedRows(type) {
       return; // 함수를 종료하여 더 이상 진행하지 않음
   }
   
-  var currentPage = parseInt($(currentPageId).val());
+  var currentPage = currentPageId ? parseInt($(currentPageId).val()) : null;
 
   //console.log("bnos: ", selectedNos);
   //console.log("currentPage: ", currentPageId);
 
-  // 서버에 Ajax 요청을 보내 bno에 해당하는 게시글을 삭제
+  // 서버에 Ajax 요청을 보내 각 테이블에 존재하는 nos에 해당하는 각종 글을 삭제
   $.ajax({
       type: "POST", // HTTP 메소드 POST 사용
       url: contextPath + "/deleteMy" + capitalizeFirstLetter(type) + ".me", // 요청을 보낼 서버의 URL
       data: {
           nos: selectedNos, // 서버로 보낼 선택된 항목 번호들
-          currentPage: currentPage // 현재 페이지 번호도 함께 전송
+          currentPage: currentPage ? currentPage : undefined // 페이지 번호가 필요하면 전송
       },
       traditional: true, // 배열 형태의 데이터를 전송하기 위한 옵션
       success: function(response) { // 요청이 성공하면 실행되는 함수
@@ -101,6 +176,32 @@ function loadPage(page, type) {
     loadReplyPage(page); // 댓글 페이지 로드
   }
 }
+
+
+// 최근 본 상품을 삭제하는 함수
+function deleteRecentProduct(pno) {
+  if (!confirm("정말로 이 상품을 최근 본 상품 목록에서 삭제하시겠습니까?")) {
+      return; // 사용자가 취소를 선택하면 함수 종료
+  }
+
+  $.ajax({
+      type: "POST",
+      url: contextPath + "/deleteRecentProduct.me", // 서버의 삭제 요청 URL
+      data: {
+          pno: pno // 삭제할 상품 번호
+      },
+      success: function(response) {
+          alert("상품이 성공적으로 삭제되었습니다.");
+          // 삭제 후 페이지 새로고침 또는 업데이트
+          location.reload(); // 페이지 새로고침
+      },
+      error: function(xhr, status, error) {
+          console.error("Error:", status, error);
+          alert("삭제 중 오류가 발생했습니다.");
+      }
+  });
+}
+
 
 // 좋아요 취소 함수
 function cancelLikes(){

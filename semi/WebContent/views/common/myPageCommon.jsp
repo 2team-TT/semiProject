@@ -20,6 +20,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 
+<!-- GSAP Core -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"></script>
+<!-- GSAP ScrollToPlugin -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/ScrollToPlugin.min.js"></script>
+
+
 <!-- 구글 아이콘 폰트 -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <!-- 마이페이지 css -->
@@ -42,12 +48,14 @@
             <a href="<%= contextPath %>/myPageProducts.me">찜하기/최근 본 상품</a>
         </div>
         <div class="info--list">
-            <a href="">결제 정보</a>
-        </div>
-        <div class="info--list">
             <a href="<%= contextPath %>/myPageCS.me">고객 센터</a>
         </div>
     </div>
 </section>
+
+
+<div id="to-top">
+    <div class="material-icons">arrow_upward</div>
+</div>
 </body>
 </html>

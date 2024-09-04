@@ -52,8 +52,14 @@ public class Product {
 	
 	
 
-	public Product(String pName, String pSeller, int price, double rating, String pContent, int userNo, String cDate) {
+	
+	
+	
+
+	public Product(int pNo, String pName, String pSeller, int price, double rating, String pContent, int userNo,
+			String cDate) {
 		super();
+		this.pNo = pNo;
 		this.pName = pName;
 		this.pSeller = pSeller;
 		this.price = price;
@@ -62,11 +68,10 @@ public class Product {
 		this.userNo = userNo;
 		this.cDate = cDate;
 	}
-	
-	
 
-	public Product(String pName, int price, String latelyDate) {
+	public Product(int pNo, String pName, int price, String latelyDate) {
 		super();
+		this.pNo = pNo;
 		this.pName = pName;
 		this.price = price;
 		this.latelyDate = latelyDate;

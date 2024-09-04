@@ -54,5 +54,29 @@ public class ProductService {
 		
 		return list;
 	}//selectMyRecentlyProductsList() end
+	
+	public int deleteMywishlistProduct(int userNo, int pno) {
+		Connection conn = getConnection();
+		int result = new ProductDao().deleteMywishlistProduct(conn, userNo, pno);
+		if (result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		return result;
+	}//deleteMywishlistProduct() end
+	
+	public int deleteRecentlyViewedProduct(int userNo, int pNo) {
+		Connection conn = getConnection();
+		int result = new ProductDao().deleteRecentlyViewedProduct(conn, userNo, pNo);
+		if(result>0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		return result;
+	}//deleteRecentlyViewedProduct() end
 
 }//ProductService 클래스 end
