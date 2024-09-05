@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class welFareController
+ * Servlet implementation class welFareMain
  */
-@WebServlet("/controller.wf")
-public class welFareController extends HttpServlet {
+@WebServlet("/mainTest.wf")
+public class welFareMainTest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public welFareController() {
+    public welFareMainTest() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,8 +26,9 @@ public class welFareController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.setContentType("application/json; charset=utf-8");
+		
+		request.getRequestDispatcher("views/welFare/welFareTest.jsp").forward(request, response);
 	}
 
 	/**

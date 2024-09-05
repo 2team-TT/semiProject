@@ -1,15 +1,16 @@
 body{
-
+    /* background-color: lightsteelblue; */
 }
-#section1 a,
-#section2 a{
+a{
     text-decoration: none;
     color: #333;
     display: block;
 }
 #section1{
     border: 3px solid #FFA500;
+    /* background-color: #FFEECC; */
     width: 1000px;
+    /* height: 100%; */
     margin: 0 auto;
 
     border-radius: 5px;
@@ -22,11 +23,13 @@ body{
 }
 #section1 ul{
     display: flex;
+    /* margin-top: 75px; */
     justify-content: center;
     list-style-type: none;
     margin: 10px;
 }
 #section1 ul li.section-nav{
+    /* position: relative; */
     overflow: hidden;
     margin-right: 22px;
     cursor: pointer;
@@ -36,6 +39,7 @@ body{
 }
 #section1 ul li.section-nav .section-nav__content{
     text-align: center;
+    /* background-color: #FECC88; */
     margin-bottom: 10px;
     border-radius: 10px;
     color: #333;
@@ -49,27 +53,41 @@ body{
     width: 100px;
     height: 100px;
     object-fit: cover;
+    /* opacity: 0; */
 }
 #section2{
     width: 1000px;
     height: 75%;
+    /* background-color: #FFEECC; */
     border: 3px solid #FFA500;
     border-radius: 10px;
+    /* margin: 50px; */
     margin: 0 auto;
     margin-top: 25px;
 }
 #section2 #main-contents{
     position: relative;
+    /* width: 30px; */
+    /* background-color: #FECC88; */
+    /* border: 5px solid blue; */
+    /* display: flex; */
+    /* justify-content: center; */
 }
 #section2 #main-contents__title{
+    /* position: absolute; */
     border-radius: 10px 10px 0 0;
     width: 30%;
+    /* height: 20px; */
     padding: 12px 24px;
     background-color: #FFB676;
     font-size: 22px;
     margin: 50px 0 0 75px;
 }
 #section2 #main-contents__detail{
+    /* display: flex; */
+    /* background-color: darksalmon; */
+    /* border: 1px solid #333; */
+    /* border-radius: 10px; */
     margin: 34px 5% 25% 5%;
 }
 #section2 #main-contents__detail:last-child{
@@ -85,6 +103,9 @@ body{
     cursor: pointer;
 }
 #section2 #main-contents__filter-place{
+    /* transition: all .2s; */
+    /* position: absolute; */
+    /* transition: .2s; */
     z-index: 1;
 
     top: 45px;
@@ -101,6 +122,8 @@ body{
 
     box-shadow: 0px 4px 6px rgba(0, 0, 0, .3);
     display: none;
+    /* display: flex; */
+    /* opacity: 0; */
     flex-direction: column;
 }
 #section2 #main-contents__filter-place .filter-inner{
@@ -123,6 +146,7 @@ body{
     font-weight: 550;
 
     left: 10px;
+    /* background-color: #FECC88; */
     padding: 0 20px;
     border-right: 3px solid #FFB676;
 }
@@ -133,6 +157,7 @@ body{
 }
 #section2 #main-contents__filter-place .filter-inner .filter-input{
     position: absolute;
+    /* margin: 35px; */
     padding: 15px 20px;
     left: 123px;
     border: 3px solid #FECC88;
@@ -140,13 +165,18 @@ body{
     font-size: 16px;
 }
 #section2 #main-contents__filter-place .filter-inner .filter-input:focus{
+    /* border: 3px solid #FFA500; */
     outline: none;
 }
 #section2 #main-contents__filter-place .filter-inner .filter-checkbox-wrapper{
     position: absolute;
     width: 350px;
+    /* height: %; */
     left: 123px;
+    /* background-color: red; */
     overflow: hidden;
+    /* display: flex; */
+    /* justify-content: space-around; */
 }
 #section2 #main-contents__filter-place .filter-checkbox-wrapper input{
     margin-left: 15px;
@@ -160,8 +190,10 @@ body{
     border-radius: 20px;
     width: 450px;
     height: 256px;
+    /* margin-top: 15px; */
 }
 #section2 #main-contents__filter-place .filter-inner-big .filter-title{
+    /* background-color: #FFA500; */
     padding: 15px;
     font-weight: 550;
     border-bottom: 3px solid #FFB676;
@@ -170,6 +202,8 @@ body{
     margin: 15px 5px;
 }
 #section2 #main-contents__filter-place .filter-exception .filter-subtitle{
+    /* background-color: antiquewhite; */
+    /* position: relative; */
     width: 100%;
     height: 0;
     margin: 15px 5px;
@@ -179,25 +213,27 @@ body{
     font-weight: 700;
 }
 #section2 #main-contents__filter-place .filter-exception .filter-checkbox-wrapper{
+    /* background-color: #333; */
+    /* position: absolute; */
     font-size: 12px;
+    /* display: flex; */
+    /* height: 40px; */
     overflow: auto;
 }
-#gaguFilter{
-    display: flex;
-    text-overflow: ellipsis;    
-}
-#gaguFilter div{
-    width: 110px;
-    height: 30px;
-}
-
 #section2 #main-contents__filter-place .filter-btns{
     position: absolute;
     left: 22px;
+    /* --bs-btn-color:#FECC88; */
 }
 #section2 #main-contents__filter-place .filter-btns .btn{
+    /* position: absolute; */
+    /* width: 50px; */
+    /* height: 50px; */
     margin: 15px 15px;
     border-radius: 1000px;
+    /* line-height: 50px; */
+    
+    /* right: 0; */
     
     background-color: #FECC88;
     border: 3px solid #FFB676;
@@ -206,6 +242,9 @@ body{
 }
 
 
+#section2 .welfare{
+    
+}
 #section2 .welfare .welfare__title{
     width: 30%;
     height: 20px;
@@ -229,9 +268,11 @@ body{
     height: 100%;
     margin-bottom: 30px;
     padding: 4% 2% 2% 2%;
+    /* padding-bottom: 5px; */
     
     border: 3px solid #FFA500;
     border-radius: 10px;
+    /* background-color: #FFEEAA; */
 }
 #section2 .welfare .welfare__detail .welfare__detail-description{
     width: 70%;
@@ -246,15 +287,19 @@ body{
     position: absolute;
     width: 23.5%;
     height: 100%;
+    /* background-color: red; */
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     top: 0;
+    /* bottom: 65%; */
     right: 0;
 }
 #section2 .welfare .welfare__detail .welfare__detail-wrapper .welfare__detail-enroll{
     width: 65px;
+    /* right: 20px; */
+    /* display: none; */
     
 
     text-align: center;
@@ -268,10 +313,15 @@ body{
     
 }
 #section2 .welfare .welfare__detail .welfare__detail-wrapper .welfare__detail-inquiry{
+    /* width: 10%; */
+    /* top: 70%; */
+    /* right: 3.5%; */
     font-size: 10px;
     margin-top: 20%;
 }
 #section2 .welfare .welfare__detail .welfare__detail-tags{
+    /* display: none; */
+    /* position: relative; */
     width: 76%;
     bottom: 10px;
     left: 30px;
@@ -287,8 +337,12 @@ body{
     margin-top: 15px;
 
     overflow: hidden;
+    /* overflow: auto; */
 }
 #section2 .welfare .welfare__detail .welfare__detail-tags .tags{
+    /* display: none; */
+    /* position: absolute; */
+    
     overflow: hidden;
     width: 50px;
     height: 10px;
