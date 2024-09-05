@@ -203,6 +203,28 @@ public class UserService {
 	
 	
 	
+	public ArrayList<Search> selectUserSearchLately(User u){
+		Connection conn = getConnection();
+		
+		ArrayList<Search> list = new UserDao().selectUserSearchLately(conn, u);
+		
+		close(conn);
+		
+		return list;
+	}
 	
-	
+	public int deleteSearch(int sNo, int userNo) {
+		Connection conn = getConnection();
+		
+		int result = new UserDao().deleteSearch(conn, sNo, userNo);
+		
+		if(result>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result;
+	}
 }

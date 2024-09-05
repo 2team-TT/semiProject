@@ -14,16 +14,16 @@ import com.kh.chatRoom.model.service.ChatService;
 import com.kh.chatRoom.model.vo.ChatRoom;
 
 /**
- * Servlet implementation class ChatRoomController
+ * Servlet implementation class SelectChatRoomListController
  */
-@WebServlet("/chatroom.ch")
-public class ChatRoomController extends HttpServlet {
+@WebServlet("/chatroomList.ch")
+public class SelectChatRoomListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ChatRoomController() {
+    public SelectChatRoomListController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,9 +33,15 @@ public class ChatRoomController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-	
 		
-		request.getRequestDispatcher("views/chatRoom/chatRoom.jsp").forward(request, response);
+		int userNo = Integer.parseInt(request.getParameter("userNo"));
+		
+		ArrayList<ChatRoom> list =new ChatService().selectChatRoomList(userNo);
+		
+		response.setContentType("application/json; charset=utf-8");
+		new Gson().toJson(list, response.getWriter());
+		
+		
 		
 	}
 

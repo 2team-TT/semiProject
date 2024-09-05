@@ -81,6 +81,7 @@ WHERE ROWNUM BETWEEN 1 AND 10
 <entry key="searchCountUp">
 UPDATE SEARCH
    SET S_COUNT= S_COUNT+1
+     , S_DATE=SYSDATE
  WHERE S_NAME=?
    AND USER_NO IS NULL
  
@@ -91,6 +92,7 @@ UPDATE SEARCH
 <entry key="searchCountUp-USERNO">
 UPDATE SEARCH
    SET S_COUNT= S_COUNT+1
+       , S_DATE=SYSDATE
  WHERE S_NAME=?
    AND USER_NO=?
  
@@ -148,5 +150,26 @@ VALUES
     , ?
     )
 </entry>
+
+
+
+<entry key="selectUserSearchLately">
+SELECT 
+       S_NO
+     , S_NAME
+FROM SEARCH
+WHERE USER_NO=?
+ORDER BY S_DATE DESC
+ 
+</entry>
+
+
+<entry key="deleteSearch">
+DELETE SEARCH
+WHERE S_NO = ?
+  AND USER_NO = ?
+ 
+</entry>
+
 
 </properties>

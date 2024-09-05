@@ -11,19 +11,20 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.kh.chatRoom.model.service.ChatService;
-import com.kh.chatRoom.model.vo.ChatRoom;
+import com.kh.chatRoom.model.vo.Expenses;
+import com.kh.chatRoom.model.vo.Income;
 
 /**
- * Servlet implementation class ChatRoomController
+ * Servlet implementation class selectExpensesController
  */
-@WebServlet("/chatroom.ch")
-public class ChatRoomController extends HttpServlet {
+@WebServlet("/selectExpenses.hh")
+public class selectExpensesController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ChatRoomController() {
+    public selectExpensesController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,10 +33,16 @@ public class ChatRoomController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-	
+		int userNo = Integer.parseInt(request.getParameter("userNo"));
+		String date = request.getParameter("date");
 		
-		request.getRequestDispatcher("views/chatRoom/chatRoom.jsp").forward(request, response);
+//		System.out.println(userNo + "       "+ date);
+		
+		ArrayList<Expenses> list = new ChatService().selectExpensesList(userNo, date);
+		
+		response.setContentType("application/json; charset=utf-8");
+		new Gson().toJson(list, response.getWriter());
+		
 		
 	}
 

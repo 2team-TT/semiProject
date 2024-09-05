@@ -3,7 +3,8 @@
 <properties>
 
 <entry key="selectChatRoomList">
-SELECT 
+select *
+from (SELECT 
        CH_NO
      , c.USER_NO AS "USER_NO"
      , c.USER_NO2 AS "SEND_NO"
@@ -16,6 +17,23 @@ FROM CHATROOM C
 JOIN USER1 u ON (c.USER_NO2 = u.USER_NO)
 WHERE C.STATUS = 'Y'
   AND C.USER_NO = ?
+  
+UNION
+
+SELECT 
+       CH_NO
+     , c.USER_NO2 AS "USER_NO"
+     , c.USER_NO AS "SEND_NO"
+    
+     , DECODE(USER_NICK,NULL,USER_ID,USER_NICK) AS "SEND_ID"   
+     , DECODE(LAST_MESSAGE,NULL,'채팅 내용이 없습니다.',LAST_MESSAGE) AS "LAST_MESSAGE"
+     , TO_CHAR(CREATE_DATE,'YYYY"년" MM"월" DD"일"') AS "CREATE_DATE"
+     , TO_CHAR(C.MODIFY_DATE,'YYYY"년" MM"월" DD"일"') AS "MODIFY_DATE"
+     , c.STATUS
+FROM CHATROOM C
+JOIN USER1 u ON (c.USER_NO = u.USER_NO)
+WHERE C.STATUS = 'Y'
+  AND C.USER_NO2 = ?)
 ORDER 
    BY MODIFY_DATE DESC
 </entry>
@@ -77,6 +95,202 @@ FROM USER1
 WHERE USER_ID = ?
   AND STATUS ='Y'
 </entry>
-				
+
+
+
+<entry key="incometotalSelect">
+SELECT
+     SUM(IN_AMOUNT) AS "INCOME"
+  FROM INCOME
+WHERE USER_NO =?
+  AND STATUS = 'Y'
+
+</entry>
+
+
+<entry key="expensestotalSelect">
+SELECT
+     SUM(OUT_AMOUNT) AS "EXPENSES"
+  FROM EXPENSES
+WHERE USER_NO =?
+  AND STATUS = 'Y'
+
+</entry>
+
+
+
+<entry key="selectMonthtotalIncome">
+
+
+SELECT DECODE(SUM(IN_AMOUNT),NULL,0 , SUM(IN_AMOUNT)) AS "INCOME"
+FROM (
+  SELECT IN_AMOUNT,
+ TO_CHAR(IN_DATE,'FMYYYY-MM')
+FROM INCOME
+WHERE USER_NO =?
+  AND TO_CHAR(IN_DATE,'FMYYYY-MM') = ?
+  AND STATUS ='Y')
+
+
+
+</entry>
+
+
+
+<entry key="selectMonthtotalExpenses">
+
+
+SELECT DECODE(SUM(OUT_AMOUNT),NULL,0 , SUM(OUT_AMOUNT)) AS "EXPENSES"
+FROM (
+  SELECT OUT_AMOUNT,
+ TO_CHAR(OUT_DATE,'FMYYYY-MM')
+FROM EXPENSES
+WHERE USER_NO =?
+  AND TO_CHAR(OUT_DATE,'FMYYYY-MM') = ?
+  AND STATUS ='Y')
+
+</entry>
+
+
+
+<entry key="selectIncomeList">
+SELECT
+       INCOME_NO
+     , IN_AMOUNT
+     , TO_CHAR(IN_DATE,'YYYY/MM/DD') AS "IN_DATE"
+     , IN_DES
+     , CATEGORY_NAME
+     , STATUS
+FROM INCOME
+JOIN CATEGORY USING(CATEGORY_NO)
+WHERE USER_NO =?
+  AND TO_CHAR(IN_DATE,'FMYYYY-MM') = ?
+  AND STATUS ='Y'
+ORDER 
+   BY IN_DATE DESC
+
+</entry>
+
+
+<entry key="selectExpensesList">
+SELECT
+       OUT_NO
+     , OUT_AMOUNT
+     , TO_CHAR(OUT_DATE,'YYYY/MM/DD') AS "OUT_DATE"
+     , OUT_DES
+     , CATEGORY_NAME
+     , STATUS
+FROM EXPENSES
+JOIN CATEGORY USING(CATEGORY_NO)
+WHERE USER_NO =?
+  AND TO_CHAR(OUT_DATE,'FMYYYY-MM') = ?
+  AND STATUS ='Y'
+ORDER 
+   BY OUT_DATE DESC
+
+</entry>
+
+
+<entry key="categoryList">
+SELECT
+       CATEGORY_NO
+     , CATEGORY_NAME
+  FROM CATEGORY
+  
+
+</entry>
+
+
+
+<entry key="insertIncome">
+INSERT 
+  INTO INCOME
+     ( INCOME_NO
+     , IN_AMOUNT
+     , IN_DATE
+     , IN_DES
+     , CATEGORY_NO
+     , USER_NO
+     )
+VALUES
+     ( SEQ_INCOME.NEXTVAL
+     , ?
+     , TO_DATE(?)
+     , ?
+     , ?
+     , ?
+     )
+
+</entry>
+
+
+
+<entry key="insertExpenses">
+INSERT 
+  INTO EXPENSES
+     ( OUT_NO
+     , OUT_AMOUNT
+     , OUT_DATE
+     , OUT_DES
+     , CATEGORY_NO
+     , USER_NO
+     )
+VALUES
+     ( SEQ_OUTNO.NEXTVAL
+     , ?
+     , TO_DATE(?)
+     , ?
+     , ?
+     , ?
+     )
+
+</entry>
+
+
+
+<entry key="deleteincome">
+DELETE INCOME
+WHERE INCOME_NO =?
+
+</entry>
+
+<entry key="deleteExpenses">
+DELETE EXPENSES
+WHERE OUT_NO =?
+
+</entry>
+
+
+<entry key="insertChatRoom">
+INSERT 
+  INTO CHATROOM
+     ( CH_NO
+     , USER_NO
+     , USER_NO2
+     )
+VALUES
+     ( SEQ_CHNO.NEXTVAL
+     , ?
+     , ?
+     )
+</entry>
+			
+			
+			
+			
+			
+			
+<entry key="selectChatRoomCount">
+SELECT CH_NO AS "COUNT"
+FROM (
+SELECT CH_NO FROM CHATROOM
+WHERE USER_NO= ? OR USER_NO2=?
+
+INTERSECT
+
+SELECT CH_NO FROM CHATROOM
+WHERE USER_NO=? OR USER_NO2=?
+)
+</entry>	
 	
 </properties>

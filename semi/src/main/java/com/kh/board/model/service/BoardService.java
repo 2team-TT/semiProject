@@ -679,6 +679,40 @@ Connection conn = getConnection();
 		return result;
 	}
 
+
+	
+	
+	public ArrayList<Board> mainbestfood(){
+		Connection conn = getConnection();
+		
+		ArrayList<Board> list= new BoardDao().mainbestfood(conn);
+		
+		close(conn);
+		
+		return list;
+	}
+	
+	
+	public ArrayList<Board> mainbestUsed(){
+		Connection conn = getConnection();
+		
+		ArrayList<Board> list= new BoardDao().mainbestUsed(conn);
+		
+		close(conn);
+		
+		return list;
+	}
+	
+	
+	public ArrayList<Board> selectUserBoardList(PageInfo pi, int writerNo){
+		Connection conn = getConnection();
+		
+		ArrayList<Board> list = new BoardDao().selectUserBoardList(conn, pi, writerNo);
+		
+		close(conn);
+		
+		return list;
+	}
 	
 }
 

@@ -1070,7 +1070,7 @@ public ArrayList<Board> selectHoneyBoardList(Connection conn, PageInfo pi){
 				b.setBoardContent(rset.getString("board_content"));
 				b.setBoardWriter(rset.getString("user_id"));
 				b.setUserId(rset.getString("user_no"));
-				b.setUserNick(rset.getString("user_nick"));
+		
 				b.setViewCount(rset.getInt("view_count"));
 				b.setReplyCount(rset.getInt("reply_count"));
 				b.setLikesCount(rset.getInt("likes_count"));
@@ -1796,6 +1796,178 @@ public ArrayList<Board> selectHoneyBoardList(Connection conn, PageInfo pi){
 			}
 			return result;
 		}
+		
+		
+		public ArrayList<Board> mainbestfood(Connection conn){
+			
+			ArrayList<Board> list = new ArrayList<Board>();
+			
+			PreparedStatement pstmt = null;
+			
+			ResultSet rset = null;
+			
+			String sql = prop.getProperty("mainbestfood");
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+	
+			
+				rset = pstmt.executeQuery();
+				
+				while(rset.next()) {
+					Board b = new Board();
+					
+					b.setBoardNo(rset.getInt("Board_no"));
+					b.setBoardTitle(rset.getString("board_title"));
+					b.setViewCount(rset.getInt("view_count"));
+					b.setReplyCount(rset.getInt("REPLY_COUNT"));
+					b.setLikesCount(rset.getInt("LIKES_COUNT"));
+					b.setCreateDate(rset.getString("create_date"));
+					b.setTitleImg(rset.getString("title_img"));
+					
+					list.add(b);
+				}
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				close(rset);
+				close(pstmt);
+			}
+			
+			return list;
+			
+			
+		}
+		
+		
+		
+		
+		
+		public ArrayList<Board> mainbestUsed(Connection conn){
+			
+			ArrayList<Board> list = new ArrayList<Board>();
+			
+			PreparedStatement pstmt = null;
+			
+			ResultSet rset = null;
+			
+			String sql = prop.getProperty("mainbestUsed");
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+			
+			
+				rset = pstmt.executeQuery();
+				
+				while(rset.next()) {
+					Board b = new Board();
+					
+					b.setBoardNo(rset.getInt("Board_no"));
+					b.setBoardTitle(rset.getString("board_title"));
+					
+					b.setModelName(rset.getString("model_no"));
+					b.setPrice(rset.getInt("price"));
+					b.setModelStatus(rset.getString("model_status"));
+					b.setTradingArea(rset.getString("trading_area"));
+					b.setTradingMethod(rset.getString("trading_method"));
+					
+					
+					b.setCreateDate(rset.getString("create_date"));
+					b.setTitleImg(rset.getString("title_img"));
+					
+					list.add(b);
+				}
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				close(rset);
+				close(pstmt);
+			}
+			
+			return list;
+			
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		public ArrayList<Board> selectUserBoardList(Connection conn, PageInfo pi, int writerNo){
+			
+			ArrayList<Board> list = new ArrayList<Board>();
+			
+			PreparedStatement pstmt = null;
+			
+			ResultSet rset =null;
+			
+			String sql = prop.getProperty("selectUserBoardList");
+			
+			try {
+				pstmt =conn.prepareStatement(sql);
+				pstmt.setInt(1, writerNo);
+				int startRow =(pi.getCurrentPage()-1)* pi.getBoardLimit()+1;
+				int endRow = startRow + pi.getBoardLimit() -1;
+				pstmt.setInt(2, startRow);
+				pstmt.setInt(3, endRow);
+				
+				rset= pstmt.executeQuery();
+				
+				while(rset.next()) {
+					Board b = new Board();
+					
+					b.setBoardNo(rset.getInt("Board_no"));
+					b.setTagNo(rset.getString("tag_name"));
+					b.setBoardTitle(rset.getString("board_title"));
+					b.setViewCount(rset.getInt("view_count"));
+					b.setReplyCount(rset.getInt("REPLY_COUNT"));
+					b.setLikesCount(rset.getInt("LIKES_COUNT"));
+					b.setCreateDate(rset.getString("create_date"));
+					
+					list.add(b);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				close(rset);
+				close(pstmt);
+			}
+			
+			return list;
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		

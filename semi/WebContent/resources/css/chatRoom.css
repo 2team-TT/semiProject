@@ -151,6 +151,15 @@ body {
 
 }
 
+.chatRoom_section .chatRoom_area .chat_view_area .chat_room .chat_view .none_chat_massage {
+    width: 100%;
+    height: 100%;
+    font-weight: 800;
+    font-size: 35px;
+    text-align: center;
+    line-height: 450px;
+}
+
 .chatRoom_section .chatRoom_area .chat_view_area .chat_room .chat_view .chat_message {
 
     padding: 10px;
@@ -280,9 +289,9 @@ body {
     font-size: 18px;
 }
 
-/* #create_chroom .modal-body #userNo {
+#create_chroom .modal-body #userNo {
     width: 100px;
-} */
+}
 
 #create_chroom .modal-body #user_select:chi {
     min-width: 200px;
@@ -314,12 +323,10 @@ body {
 }
 
 
-
-/* 
 @media(max-width:1250px) {
     .chatRoom_section .chatRoom_area {
         width: 400px;
-        height: 1580px;
+        height: 800px;
         margin: auto;
         padding: 20px;
         display: flex;
@@ -328,4 +335,8 @@ body {
         column-gap: 20px;
         row-gap: 20px;
     }
-} */
+
+    .chatRoom_section .chatRoom_area .chat_view_area {
+        display: none;
+    }
+}

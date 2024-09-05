@@ -14,16 +14,16 @@ import com.kh.board.model.vo.Board;
 import com.kh.board.model.vo.PageInfo;
 
 /**
- * Servlet implementation class HoneyBoardListController
+ * Servlet implementation class UserBoardListController
  */
-@WebServlet("/honeyBoardList.bo")
-public class HoneyBoardListController extends HttpServlet {
+@WebServlet("/UserBoardList.bo")
+public class UserBoardListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public HoneyBoardListController() {
+    public UserBoardListController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,7 +32,12 @@ public class HoneyBoardListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+
+		
+		int writerNo = Integer.parseInt(request.getParameter("writerNo"));
+		
+		
+		
 		int listCount;
 		int currentPage;
 		int pageLimit;
@@ -47,7 +52,7 @@ public class HoneyBoardListController extends HttpServlet {
 		currentPage = Integer.parseInt(request.getParameter("cpage"));
 		pageLimit = 10;
 		boardLimit = 10;
-		System.out.println(currentPage);
+//		System.out.println(currentPage);
 		maxPage = (int)Math.ceil(((double)listCount/boardLimit));
 		
 		startPage= (currentPage-1)/pageLimit *pageLimit+1;
@@ -60,22 +65,13 @@ public class HoneyBoardListController extends HttpServlet {
 		
 		PageInfo pi = new PageInfo(listCount, currentPage,pageLimit, boardLimit, maxPage, startPage, endPage);
 
-		request.setAttribute("honeyPi", pi);
+		request.setAttribute("Pi", pi);
 		
-		ArrayList<Board> list = new BoardService().selectHoneyBoardList(pi);
+		ArrayList<Board> list = new BoardService().selectUserBoardList(pi, writerNo);
 		
-		ArrayList<Board> blist = new BoardService().selectBestHoneyBoardList(pi);
+		request.setAttribute("list", list);
 		
-		request.setAttribute("hList", list);
-		request.setAttribute("bhList", blist);
-		request.getRequestDispatcher("views/board/honeyBoardList.jsp").forward(request, response);
-		
-//		System.out.println(list);
-//		System.out.println(blist);
-		
-		
-		
-		
+		request.getRequestDispatcher("views/board/searchBoardList.jsp").forward(request, response);
 		
 	}
 

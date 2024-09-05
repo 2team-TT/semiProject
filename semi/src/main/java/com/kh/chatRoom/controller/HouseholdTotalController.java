@@ -1,29 +1,25 @@
 package com.kh.chatRoom.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
 import com.kh.chatRoom.model.service.ChatService;
-import com.kh.chatRoom.model.vo.ChatRoom;
 
 /**
- * Servlet implementation class ChatRoomController
+ * Servlet implementation class HouseholdTotalController
  */
-@WebServlet("/chatroom.ch")
-public class ChatRoomController extends HttpServlet {
+@WebServlet("/total.hh")
+public class HouseholdTotalController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ChatRoomController() {
+    public HouseholdTotalController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,10 +28,18 @@ public class ChatRoomController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 	
+		int userNo = Integer.parseInt(request.getParameter("userNo"));
 		
-		request.getRequestDispatcher("views/chatRoom/chatRoom.jsp").forward(request, response);
+		int income = new ChatService().incometotalSelect(userNo);
+		int expenses = new ChatService().expensestotalSelect(userNo);
+		
+		int result = income - expenses;
+		
+//		System.out.println(result);
+		
+		response.getWriter().print(result);
+		
 		
 	}
 

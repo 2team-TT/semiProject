@@ -10,8 +10,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import com.kh.chatRoom.model.vo.Category;
 import com.kh.chatRoom.model.vo.ChatMsg;
 import com.kh.chatRoom.model.vo.ChatRoom;
+import com.kh.chatRoom.model.vo.Expenses;
+import com.kh.chatRoom.model.vo.Income;
+import com.kh.chatRoom.model.vo.TotalAmount;
 import com.kh.member.model.vo.User;
 
 import static com.kh.common.JDBCTemplate.*;
@@ -43,7 +47,7 @@ public class ChatDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, userNo);
-			
+			pstmt.setInt(2, userNo);
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
@@ -207,46 +211,427 @@ public class ChatDao {
 	
 	
 	
+	public int incometotalSelect(Connection conn, int userNo) {
+		int result =0;
+		
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset =null;
+		
+		String sql = prop.getProperty("incometotalSelect");
+		
+		try {
+			pstmt =conn.prepareStatement(sql);
+			pstmt.setInt(1 , userNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				result = rset.getInt("income");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	
+	
+	public int expensestotalSelect(Connection conn, int userNo) {
+		int result =0;
+		
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset =null;
+		
+		String sql = prop.getProperty("expensestotalSelect");
+		
+		try {
+			pstmt =conn.prepareStatement(sql);
+			pstmt.setInt(1 , userNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				result = rset.getInt("EXPENSES");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	
+	
+	public int selectMonthtotalIncome(Connection conn, int userNo, String date) {
+		
+		int result= 0;
+		
+		
+		PreparedStatement pstmt = null;
+		
+		
+		ResultSet rset =null;
+		
+		
+		String sql = prop.getProperty("selectMonthtotalIncome");
+		
+		
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, userNo);
+			pstmt.setString(2, date);
+		
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				result = rset.getInt("INCOME");
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return result;
+		
+	}
 	
 	
 	
 	
+	public int selectMonthtotalExpenses(Connection conn, int userNo, String date) {
+		
+		int result= 0;
+		
+		
+		PreparedStatement pstmt = null;
+		
+		
+		ResultSet rset =null;
+		
+		
+		String sql = prop.getProperty("selectMonthtotalExpenses");
+		
+		
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, userNo);
+			pstmt.setString(2, date);
+		
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				result = rset.getInt("EXPENSES");
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return result;
+		
+	}
+	
+	
+	
+	public ArrayList<Income> selectIncomeList(Connection conn, int userNo, String date){
+		ArrayList<Income> list = new ArrayList<Income>();
+		
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectIncomeList");
+		
+		try {
+			pstmt= conn.prepareStatement(sql);
+			pstmt.setInt(1, userNo);
+			pstmt.setString(2, date);
+			
+			rset =pstmt.executeQuery();
+			
+			while(rset.next()) {
+			
+				list.add(new Income(rset.getInt("income_no")
+						, rset.getInt("in_amount")
+						, rset.getString("in_date")
+						, rset.getString("in_des")
+						, rset.getString("category_name")
+						, rset.getString("status")
+						));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}
 	
 	
 	
 	
+	public ArrayList<Expenses> selectExpensesList(Connection conn, int userNo, String date){
+		ArrayList<Expenses> list = new ArrayList<Expenses>();
+		
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectExpensesList");
+		
+		try {
+			pstmt= conn.prepareStatement(sql);
+			pstmt.setInt(1, userNo);
+			pstmt.setString(2, date);
+			
+			rset =pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Expenses(rset.getInt("OUT_NO")
+						, rset.getInt("OUT_AMOUNT")
+						, rset.getString("OUT_DATE")
+						, rset.getString("OUT_DES")
+						, rset.getString("category_name")
+						, rset.getString("status")
+						));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}
 	
 	
 	
 	
+	public ArrayList<Category> categoryList(Connection conn){
+		
+		ArrayList<Category> list = new ArrayList<Category>();
+		
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("categoryList");
+		
+		try {
+			pstmt =conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Category(rset.getInt("category_no"), rset.getString("category_name")));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
+	
+	
+	public int insertIncome(Connection conn, Income in) {
+		int result =0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("insertIncome");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, in.getInAmount());
+			pstmt.setString(2, in.getInDate());
+			pstmt.setString(3, in.getInDes());
+			pstmt.setInt(4, Integer.parseInt(in.getCategory()));
+			pstmt.setInt(5, in.getUserNo());
+			
+			result =pstmt.executeUpdate();
+			
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+				
+		return result;
+	}
 	
 	
 	
 	
+	public int insertExpenses(Connection conn, Expenses ex) {
+		int result =0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("insertExpenses");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, ex.getOutAmount());
+			pstmt.setString(2, ex.getOutDate());
+			pstmt.setString(3, ex.getOutDes());
+			pstmt.setInt(4, Integer.parseInt(ex.getCategory()));
+			pstmt.setInt(5, ex.getUserNo());
+			
+			result =pstmt.executeUpdate();
+			
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+				
+		return result;
+	}
 	
 	
 	
 	
+	public int deleteincome(Connection conn, int inNo) {
+		int result =0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("deleteincome");
+		
+		try {
+			pstmt =conn.prepareStatement(sql);
+			pstmt.setInt(1, inNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	
+	public int deleteExpenses(Connection conn, int outNo) {
+		int result =0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("deleteExpenses");
+		
+		try {
+			pstmt =conn.prepareStatement(sql);
+			pstmt.setInt(1, outNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
 	
 	
 	
+	public int insertChatRoom(Connection conn , int userNo, int sendNo) {
+		int result =0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("insertChatRoom");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, userNo);
+			pstmt.setInt(2, sendNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	
+	public int selectChatRoomCount(Connection conn, int userNo, int sendNo) {
+		int count = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectChatRoomCount");
+		
+		try {
+			pstmt =conn.prepareStatement(sql);
+			pstmt.setInt(1, userNo);
+			pstmt.setInt(2, userNo);
+			pstmt.setInt(3, sendNo);
+			pstmt.setInt(4, sendNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				count = rset.getInt("count");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+			
+		}
+		
+		return count;
+	}
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 }

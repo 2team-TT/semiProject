@@ -1,156 +1,474 @@
-<%@page import="com.kh.member.model.vo.User"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%
-	String contextPath =request.getContextPath();
-
-	User u = (User)session.getAttribute("u");
-
-    String alertMsg = (String)session.getAttribute("alertMsg");
-%>
+<%@page import="com.kh.member.model.vo.User" %>
+    <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+        <% String contextPath=request.getContextPath(); User u=(User)session.getAttribute("u"); String
+            alertMsg=(String)session.getAttribute("alertMsg"); %>
 
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- css 초기화 -->
+            <!DOCTYPE html>
+            <html lang="en">
 
-    <!-- 메타리얼 아이ㅇ콘 -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Document</title>
+                <!-- css 초기화 -->
 
-    <!-- swiper -->
-    <link rel="stylesheet" href="https://unpkg.com/swiper@6.8.4/swiper-bundle.min.css" />
-    <script src="https://unpkg.com/swiper@6.8.4/swiper-bundle.min.js" defer></script>
+                <!-- 메타리얼 아이ㅇ콘 -->
+                <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <!-- lodash -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    
-    <!-- gsap -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js" integrity="sha512-IQLehpLoVS4fNzl7IfH8Iowfm5+RiMGtHykgZJl9AWMgqx0AmJ6cRWcB+GaGVtIsnC4voMfm8f2vwtY+6oPjpQ==" crossorigin="anonymous"></script>
+                <!-- swiper -->
+                <link rel="stylesheet" href="https://unpkg.com/swiper@6.8.4/swiper-bundle.min.css" />
+                <script src="https://unpkg.com/swiper@6.8.4/swiper-bundle.min.js" defer></script>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+                <!-- lodash -->
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"
+                    integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ=="
+                    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+                <!-- gsap -->
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"
+                    integrity="sha512-IQLehpLoVS4fNzl7IfH8Iowfm5+RiMGtHykgZJl9AWMgqx0AmJ6cRWcB+GaGVtIsnC4voMfm8f2vwtY+6oPjpQ=="
+                    crossorigin="anonymous"></script>
+
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
 
 
 
 
-    <!-- css파일 -->
-    <link rel="stylesheet" href="resources/css/menubar.css">
-    <script src="resources/js/menubar.js" defer></script>
-</head>
-<body>
-    
-    <%if(alertMsg!=null){%>
-    <script>
-        alert("<%=alertMsg%>")
 
-    </script>
-        <%session.removeAttribute("alertMsg"); %>
-    <%}%>
+                <!-- css파일 -->
+                <link rel="stylesheet" href="resources/css/menubar.css">
+                <script src="resources/js/menubar.js" defer></script>
+            </head>
 
+            <body>
 
+                <%if(alertMsg!=null){%>
+                    <script>
+                        alert("<%=alertMsg%>")
 
-    <!-- 헤더 -->
-    <header>    
-        <div class="big">
-
-             <!-- 로고 -->
-        <div class="logo" >
-            <img src="./resources/img/KakaoTalk_20240730_090734755.png" alt="">
-            <img src="./resources/img/KakaoTalk_20240730_145616126.png" alt="">
-        </div>
-
-        <!-- 메뉴바 -->
-        <div class="menubar">
-            <!-- 네비 -->
-            <ul class="navi">
-                <li>
-                    <a href="<%=contextPath%>/freeBoardList.bo?cpage=1">커뮤니티</a>
-                  
-                </li>
-                <li>
-                    <a href="">쇼핑</a>
-                </li>
-                <li>
-                    <a href="">부동산 / 이사</a>
-                </li>
-                <li>
-                    <a href="">이벤트</a>
-                </li>
-                <li>
-                    <a href="">정책</a>
-                </li>
-
-            </ul>
+                    </script>
+                    <%session.removeAttribute("alertMsg"); %>
+                        <%}%>
 
 
 
-            <!-- 로그인영역 -->
-            <div class="login">
-			<%if(u==null){ %>
+                            <!-- 헤더 -->
+                            <header>
+                                <div class="big">
 
-                <div class="login__not">
-                    <button type="button" class="btn btn-light" data-toggle="modal" data-target="#loginModal">
-                            로그인
-                      </button>
-                    
-                </div>
+                                    <!-- 로고 -->
+                                    <a class="logo" href="<%=contextPath%>">
+                                        <img src="./resources/img/KakaoTalk_20240730_090734755.png" alt="">
+                                        <img src="./resources/img/KakaoTalk_20240730_145616126.png" alt="">
+                                    </a>
 
-			<%}else{ %>
+                                    <!-- 메뉴바 -->
+                                    <div class="menubar">
+                                        <!-- 네비 -->
+                                        <ul class="navi">
+                                            <li>
+                                                <a href="<%=contextPath%>/freeBoardList.bo?cpage=1">커뮤니티</a>
+
+                                            </li>
+                                            <li>
+                                                <a href="">쇼핑</a>
+                                            </li>
+                                            <li>
+                                                <a href="">부동산 / 이사</a>
+                                            </li>
+                                            <li>
+                                                <a href="">이벤트</a>
+                                            </li>
+                                            <li>
+                                                <a href="">정책</a>
+                                            </li>
+
+                                        </ul>
 
 
-                <div class="profile">
-                    
 
-                    <div class="profile__container">
-                        <div class="profile__container-up">
-                            <div class="profile__container-up-img">
-                                <div class="profile__img"><img src="" alt=""></div>
-                                
+                                        <!-- 로그인영역 -->
+                                        <div class="login">
+                                            <%if(u==null){ %>
+
+                                                <div class="login__not">
+                                                    <button type="button" class="btn btn-light" data-toggle="modal"
+                                                        data-target="#loginModal">
+                                                        로그인
+                                                    </button>
+
+                                                </div>
+
+                                                <%}else{ %>
+
+
+                                                    <div class="profile">
+
+
+                                                        <div class="profile__container">
+                                                            <div class="profile__container-up">
+                                                                <div class="profile__container-up-img">
+                                                                    <div class="profile__img"><img src="" alt=""></div>
+
+                                                                </div>
+                                                                <div class="profile__container-up-text">
+                                                                    <%if(u.getUserNick()==null){ %>
+                                                                        <div class="user__name"><b>
+                                                                                <%=u.getUserId() %>
+                                                                            </b> 님 반갑습니다.</div>
+                                                                        <%}else{ %>
+                                                                            <div class="user__name"><b>
+                                                                                    <%=u.getUserNick() %>
+                                                                                </b> 님 반갑습니다.</div>
+                                                                            <%} %>
+                                                                                <div class="a__box">
+                                                                                    <a href="">쪽지</a>
+                                                                                    <a
+                                                                                        href="<%= contextPath %>/myPageInfo.me">마이페이지</a>
+                                                                                    <a
+                                                                                        href="<%=contextPath%>/logOut.mo">로그아웃</a>
+                                                                                </div>
+
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="profile__container-down">
+                                                                <a
+                                                                    href="<%=contextPath%>/household.hh?userNo=<%=u.getUserNo()%>">가계부</a>
+                                                                <a href="">스케줄 관리</a>
+                                                                <a
+                                                                    href="<%=contextPath%>/chatroom.ch?userNo=<%=u.getUserNo()%>">채팅</a>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <%} %>
+
+
+                                        </div>
+
+                                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    <!-- 검색 -->
+                                    <div class="search">
+
+                                        <!-- 검색 입력칸 -->
+                                        <form class="search__bar" action="search.do" method="get">
+                                            <div class="search__input">
+
+
+                                                <input type="search" name="search" id="search">
+
+                                                <div class="auto__search">
+                                                    <div class="lately__search hidden">최근 검색</div>
+                                                    <div class="cookie__search">
+                                                        <!-- <div class="lately__searchs">
+                                                            <span class="searchs">asdf</span>
+                                                            <span class="material-icons">close</span>
+
+                                                        </div>
+                                                        <div class="lately__searchs">
+                                                            <span class="searchs">asdf</span>
+                                                            <span class="material-icons">close</span>
+
+                                                        </div>
+                                                        <div class="lately__searchs">
+                                                            <span class="searchs">asdf</span>
+                                                            <span class="material-icons">close</span>
+
+                                                        </div>
+                                                        <div class="lately__searchs">
+                                                            <span class="searchs">asdf</span>
+                                                            <span class="material-icons">close</span>
+
+                                                        </div>
+                                                        <div class="lately__searchs">
+                                                            <span class="searchs">asdf</span>
+                                                            <span class="material-icons">close</span>
+
+                                                        </div>
+                                                        <div class="lately__searchs">
+                                                            <span class="searchs">asdf</span>
+                                                            <span class="material-icons">close</span>
+
+                                                        </div>
+                                                        <div class="lately__searchs">
+                                                            <span class="searchs">asdf</span>
+                                                            <span class="material-icons">close</span>
+
+                                                        </div>
+                                                        <div class="lately__searchs">
+                                                            <span class="searchs">asdf</span>
+                                                            <span class="material-icons">close</span>
+
+                                                        </div>
+                                                        <div class="lately__searchs">
+                                                            <span class="searchs">asdf</span>
+                                                            <span class="material-icons">close</span>
+
+                                                        </div> -->
+                                                    </div>
+
+                                                    <!-- 자동완성 넣을 곳 -->
+                                                    <ul class="auto_searchList">
+
+                                                    </ul>
+                                                </div>
+
+
+                                            </div>
+                                            <button class="search__icon material-icons">search</button>
+
+                                        </form>
+
+
+                                        <!-- 인기 검색어 , 추천 리스트 -->
+                                        <div class="search__list">
+
+
+
+                                            <div class="list best">
+
+                                                <div class="list__title"><a href="">인기검색어</a></div>
+
+
+                                                <div class="swiper-container">
+                                                    <div class="swiper-wrapper">
+                                                        <div class="swiper-slide">
+                                                            1
+                                                        </div>
+                                                        <div class="swiper-slide">
+                                                            1
+                                                        </div>
+                                                        <div class="swiper-slide">
+                                                            1
+                                                        </div>
+                                                        <div class="swiper-slide">
+                                                            1
+                                                        </div>
+                                                        <div class="swiper-slide">
+                                                            1
+                                                        </div>
+                                                        <div class="swiper-slide">
+                                                            1
+                                                        </div>
+                                                        <div class="swiper-slide">
+                                                            1
+                                                        </div>
+                                                        <div class="swiper-slide">
+                                                            1
+                                                        </div>
+                                                        <div class="swiper-slide">
+                                                            1
+                                                        </div>
+                                                        <div class="swiper-slide">
+                                                            1
+                                                        </div>
+
+
+
+
+                                                    </div>
+                                                </div>
+
+
+
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+                                </div>
+
+
+
+                                <div class="small">
+
+                                    <div class="small__main">
+
+                                        <div class="small__logo"><a href="<%=contextPath%>">Leave Traces</a></div>
+
+                                        <div class="small_menu">
+
+                                            <div class="material-icons icon search__click">search</div>
+                                            <div class="material-icons icon menu__click">menu</div>
+
+                                        </div>
+
+
+
+
+                                    </div>
+
+
+
+
+                                </div>
+
+
+
+
+
+
+
+
+
+                            </header>
+                            <a class="site_top" onclick=" window.scrollTo({ top: 0, behavior: 'smooth' });">
+                                <span class="material-icons">
+                                    north
+                                </span>
+                            </a>
+
+
+
+
+                            <!-- 로그인 모델 -->
+                            <div class="modal" id="loginModal">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">로그인</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <form action="<%=contextPath %>/login.mo" method="post">
+                                            <!-- Modal body -->
+                                            <div class="modal-body">
+
+
+
+                                                <table class="login_modal">
+
+                                                    <tr>
+                                                        <td>아이디</td>
+                                                        <td>
+                                                            <input type="text" required name="id">
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>비밀번호</td>
+                                                        <td>
+                                                            <input type="password" name="pwd">
+                                                        </td>
+                                                    </tr>
+
+                                                </table>
+
+
+
+
+                                                <div class="login_search">
+                                                    <a href="">아이디 찾기</a>
+                                                    <a href="">비밀번호 찾기</a>
+                                                </div>
+
+                                            </div>
+
+                                            <!-- Modal footer -->
+                                            <div class="modal-footer">
+                                                <button type="submit">로그인</button>
+                                                <a href="<%=contextPath %>/enroll.mo">회원가입</a>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
                             </div>
-                            <div class="profile__container-up-text">
-                            	<%if(u.getUserNick()==null){ %>
-                                <div class="user__name"><b><%=u.getUserId() %></b> 님 반갑습니다.</div>
-                                <%}else{ %>
-                                <div class="user__name"><b><%=u.getUserNick() %></b> 님 반갑습니다.</div>
-                                <%} %>
-                                <div class="a__box">
-                                    <a href="">쪽지</a>
-                                    <a href="<%= contextPath %>/myPageInfo.me">마이페이지</a>
-                                    <a href="<%=contextPath%>/logOut.mo">로그아웃</a>
+
+
+                            <div class="modal" id="loginModal">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">로그인</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <form action="<%=contextPath %>/login.mo" method="post">
+                                            <!-- Modal body -->
+                                            <div class="modal-body">
+
+
+
+                                                <table class="login_modal">
+
+                                                    <tr>
+                                                        <td>아이디</td>
+                                                        <td>
+                                                            <input type="text" required name="id">
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>비밀번호</td>
+                                                        <td>
+                                                            <input type="password" name="pwd">
+                                                        </td>
+                                                    </tr>
+
+                                                </table>
+
+
+
+
+                                                <div class="login_search">
+                                                    <a href="">아이디 찾기</a>
+                                                    <a href="">비밀번호 찾기</a>
+                                                </div>
+
+                                            </div>
+
+                                            <!-- Modal footer -->
+                                            <div class="modal-footer">
+                                                <button type="submit">로그인</button>
+                                                <a href="<%=contextPath %>/enroll.mo">회원가입</a>
+                                            </div>
+                                        </form>
+
+                                    </div>
                                 </div>
-                                
                             </div>
-                           
-                        </div>
-                        <div class="profile__container-down">
-                            <a href="">가계부</a>
-                            <a href="">스케줄 관리</a>
-                            <a href="<%=contextPath%>/chatroom.ch?userNo=<%=u.getUserNo()%>">채팅</a>
-                        </div>
-
-                    </div>
-                </div>
-
-				<%} %>
-
-                
-            </div>
-
-        </div>
-
-
-
-
-       
 
 
 
@@ -164,331 +482,82 @@
 
 
 
+                            <section class="side_menu side_content">
+
+
+                                <div class="side__profile">
+
+                                    <%if(u==null) {%>
+
+                                        <div class="side_login_btn">
+
+                                            <button type="button" class="btn btn-light" data-toggle="modal"
+                                                data-target="#loginModal">
+                                                로그인
+                                            </button>
+
+                                        </div>
 
 
 
+                                        <%}else{ %>
+                                            <div class="profile__img">
+                                                <img src="./resources/img/나노머신.jpg" alt="">
+                                            </div>
+                                            <div class="profile__container">
+                                                <div class="profile__id">asdf 님 반갑습니다.</div>
+                                                <div class="profile__menu">
+                                                    <a href="<%= contextPath %>/myPageInfo.me">마이페이지</a>
+                                                    <a href="<%=contextPath%>/logOut.mo">로그아웃</a>
+                                                </div>
+                                            </div>
+                                            <%} %>
 
 
-
-        <!-- 검색 -->
-        <div class="search" >
-
-            <!-- 검색 입력칸 -->
-            <form class="search__bar" action="search.do" method="get">
-                <div class="search__input">
-                
-                    
-                    <input type="search" name="search" id="search">
-                    
-                    <div class="auto__search">
-                        <div class="lately__search">최근 검색</div>
-                        <div class="cookie__search">
-                            <div class="lately__searchs">
-                                <span class="searchs">asdf</span>
-                                <span class="material-icons">close</span>
-                                
-                            </div>
-                            <div class="lately__searchs">
-                                <span class="searchs">asdf</span>
-                                <span class="material-icons">close</span>
-                                
-                            </div> <div class="lately__searchs">
-                                <span class="searchs">asdf</span>
-                                <span class="material-icons">close</span>
-                                
-                            </div> <div class="lately__searchs">
-                                <span class="searchs">asdf</span>
-                                <span class="material-icons">close</span>
-                                
-                            </div> <div class="lately__searchs">
-                                <span class="searchs">asdf</span>
-                                <span class="material-icons">close</span>
-                                
-                            </div> <div class="lately__searchs">
-                                <span class="searchs">asdf</span>
-                                <span class="material-icons">close</span>
-                                
-                            </div>
-                            <div class="lately__searchs">
-                                <span class="searchs">asdf</span>
-                                <span class="material-icons">close</span>
-                                
-                            </div> <div class="lately__searchs">
-                                <span class="searchs">asdf</span>
-                                <span class="material-icons">close</span>
-                                
-                            </div> <div class="lately__searchs">
-                                <span class="searchs">asdf</span>
-                                <span class="material-icons">close</span>
-                                
-                            </div>
-                        </div>
-
-                        <!-- 자동완성 넣을 곳 -->
-                        <ul class="auto_searchList">
-                          
-                        </ul>
-                    </div>
-                
-                   
-                </div>
-                <button class="search__icon material-icons" >search</button>
-
-            </form>
-
-
-            <!-- 인기 검색어 , 추천 리스트 -->
-            <div class="search__list">
-                
-
-
-                    <div class="list best">
-
-                        <div class="list__title"><a href="">인기검색어</a></div>
-    
-    
-                        <div class="swiper-container">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    1
-                                </div>
-                                <div class="swiper-slide">
-                                    1
-                                </div>
-                                <div class="swiper-slide">
-                                    1
-                                </div>
-                                <div class="swiper-slide">
-                                    1
-                                </div>
-                                <div class="swiper-slide">
-                                    1
-                                </div>
-                                <div class="swiper-slide">
-                                    1
-                                </div>
-                                <div class="swiper-slide">
-                                    1
-                                </div>
-                                <div class="swiper-slide">
-                                    1
-                                </div>
-                                <div class="swiper-slide">
-                                    1
-                                </div>
-                                <div class="swiper-slide">
-                                    1
                                 </div>
 
-          
-                              
-                              
-                            </div>
-                        </div>
 
+                                <div class="side_cont">
+                                    <%if(u==null) {%>
 
 
-                </div>
 
+                                        <%}else{ %>
+                                            <a href="">알림</a>
+                                            <a href="">스계줄관리</a>
+                                            <a href="<%=contextPath%>/household.hh?userNo=<%=u.getUserNo()%>">가계부</a>
+                                            <a href="<%=contextPath%>/chatroom.ch?userNo=<%=u.getUserNo()%>">채팅</a>
 
 
-            </div>
-        </div>
+                                            <%} %>
+                                </div>
 
 
 
 
+                                <ul class="side_navi side">
 
+                                    <div class="side__navi__main">
+                                        <li>
+                                            <a class="side__btn__community"
+                                                href="<%=contextPath%>/freeBoardList.bo?cpage=1">커뮤니티</a>
 
-        </div>
-        
-       
+                                        </li>
+                                        <li>
+                                            <a class="side__btn__shopping" href="">쇼핑</a>
+                                        </li>
+                                        <li>
+                                            <a class="side__btn__house" href="">부동산 / 이사</a>
+                                        </li>
+                                        <li>
+                                            <a>이벤트</a>
+                                        </li>
+                                        <li>
+                                            <a>정책</a>
+                                        </li>
+                                    </div>
 
-        <div class="small">
-
-            <div class="small__main">
-
-                <div class="small__logo">Leave Traces</div>
-    
-                <div class="small_menu">
-                    
-                    <div class="material-icons icon search__click">search</div>
-                    <div class="material-icons icon menu__click">menu</div>
-    
-                </div>
-
-
-
-
-            </div>
-
-
-
-
-        </div>
-
-
-
-       
-
-
-
-
-
-
-    </header>
-
-
-
-
-    <!-- 로그인 모델 -->
-    <div class="modal" id="loginModal">
-        <div class="modal-dialog">
-          <div class="modal-content">
-          
-            <!-- Modal Header -->
-            <div class="modal-header">
-              <h4 class="modal-title">로그인</h4>
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <form action="<%=contextPath %>/login.mo" method="post">
-            <!-- Modal body -->
-            <div class="modal-body">
-                
-
-                    
-                    <table class="login_modal">
-
-                        <tr>
-                            <td>아이디</td>
-                            <td>
-                                <input type="text" required name="id">
-                            </td>
-                        </tr>
-                        
-                        <tr>
-                            <td>비밀번호</td>
-                            <td>
-                                <input type="password"  name="pwd">
-                            </td>
-                        </tr>
-
-                    </table>
-
-                    
-
-
-                <div class="login_search">
-                    <a href="">아이디 찾기</a>
-                    <a href="">비밀번호 찾기</a>
-                </div>
-
-            </div>
-            
-            <!-- Modal footer -->
-            <div class="modal-footer">
-                <button type="submit">로그인</button>
-                <a href="<%=contextPath %>/enroll.mo" >회원가입</a>
-            </div>
-         </form>
-            
-          </div>
-        </div>
-      </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <section class="side_menu side_content">
-
-
-        <div class="side__profile">
-        
-        	<%if(u==null) {%>
-                
-            <div class="side_login_btn">
-
-                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#loginModal">
-                    로그인
-              </button>
-
-            </div>
-
-
-
-        	<%}else{ %>	
-            <div class="profile__img">
-                <img src="./resources/img/나노머신.jpg" alt="">
-            </div>
-            <div class="profile__container">
-                <div class="profile__id">asdf 님 반갑습니다.</div>
-                <div class="profile__menu">
-                    <a href="<%= contextPath %>/myPageInfo.me">마이페이지</a>
-                    <a href="<%=contextPath%>/logOut.mo">로그아웃</a>
-                </div>
-            </div>
-			<%} %>
-	
-
-        </div>
-
-
-		<%if(u==null) {%>
-        <div class="side_content">
-
-           <a href="">알림</a>
-           <a href="">스계줄관리</a>
-           <a href="">가계부</a>
-           <a href="">채팅</a>
-
-        </div>
-        <%}else{ %>
-            <div class="side_content">
-
-                <a href="">알림</a>
-                <a href="">스계줄관리</a>
-                <a href="">가계부</a>
-                <a href="">채팅</a>
-     
-             </div>
-
-		<%} %>
-        
-
-        <ul class="side_navi side">
-
-            <div class="side__navi__main">
-                <li>
-                    <a class="side__btn__community" href="<%=contextPath%>/freeBoardList.bo?cpage=1">커뮤니티</a>
-                    
-                </li>
-                <li>
-                    <a class="side__btn__shopping" href="">쇼핑</a>
-                </li>
-                <li>
-                    <a class="side__btn__house" href="">부동산 / 이사</a>
-                </li>
-                <li>
-                    <a>이벤트</a>
-                </li>
-                <li>
-                    <a>정책</a>
-                </li>
-            </div>
-                
-            <!-- <div class="side__navi__community">
+                                    <!-- <div class="side__navi__community">
                 <li>
                     <div>꿀팁</div>
                     
@@ -538,262 +607,347 @@
             </div> -->
 
 
-        </ul>
+                                </ul>
 
 
-        <ul class="side_footer">
-            <li><a href="">공지사항</a></li>
-            <li><a href="">고객센터</a></li>
-            <li><a href="">문의</a></li>
+                                <ul class="side_footer">
+                                    <li><a href="">공지사항</a></li>
+                                    <li><a href="">고객센터</a></li>
+                                    <li><a href="">문의</a></li>
 
-        </ul>
+                                </ul>
 
-        <button class="side__btn out material-icons">logout</button>
-       
-    </section>
+                                <button class="side__btn out material-icons">logout</button>
 
-    
+                            </section>
 
-    <!-- 사이드 검색창 -->
-    <section class="side__search side_content">
 
-        <h2>검색</h2>
 
-        <div class="side__searchbar">
-            <form action="search.do">
-                <div class="side_input_search">
-                    <input type="search" name="search" id="side_search">
+                            <!-- 사이드 검색창 -->
+                            <section class="side__search side_content">
 
+                                <h2>검색</h2>
 
-                    <button class="side_search__icon material-icons" >search</button>
+                                <div class="side__searchbar">
+                                    <form action="search.do">
+                                        <div class="side_input_search">
+                                            <input type="search" name="search" id="side_search">
 
-                </div>
-              
 
+                                            <button class="side_search__icon material-icons">search</button>
 
-            </form>
+                                        </div>
 
-        
 
 
-        </div>
-        
-        <div class="auto__search">
-            <!-- <div class="lately__search">최근 검색</div> -->
-           <div class="auto_side_search"></div>
+                                    </form>
 
-        </div>
 
 
 
-        <div class="side__manysearch">
+                                </div>
 
-            <div class="side_best">인기검색어</div>
-            <div class="side_hot">핫 키워드</div>
-        </div>
+                                <div class="auto__search">
+                                    <div class="lately__search hidden">최근 검색</div>
+                                    <div class="cookie__search">
 
-        <div class="side_search_list">
+                                        <!-- <div class="lately__searchs">
+                                            <span class="searchs">asdf</span>
+                                            <span class="material-icons">close</span>
 
-            <ul class="side_best_list">
-                <li> 
-                    <a href="">1.asdfasdfasdfas</a>
-                </li>
-                <li> 
-                    <a href="">2.asdfasdfasdfas</a>
-                </li>
-                <li> 
-                    <a href="">3.asdfasdfasdfas</a>
-                </li>
-                <li> 
-                    <a href="">4.asdfasdfasdfas</a>
-                </li>
-                <li> 
-                    <a href="">5.asdfasdfasdfas</a>
-                </li>
-            </ul>
+                                        </div> -->
+                                    </div>
+                                    <div class="auto_side_search"></div>
 
+                                </div>
 
-            <ul class="side_hot_list">
-                <li> 
-                    <a href="">1.asdfㅁㄴㅇㄻㄴㅇㄹsdfasdfas</a>
-                </li>
-                <li> 
-                    <a href="">2.asdfasdfasdfas</a>
-                </li>
-                <li> 
-                    <a href="">3.asdfasdfasdfas</a>
-                </li>
-                <li> 
-                    <a href="">4.asdfasdfasdfas</a>
-                </li>
-                <li> 
-                    <a href="">5.asdfasdfasdfas</a>
-                </li>
-            </ul>
 
 
+                                <div class="side__manysearch">
 
-        </div>
+                                    <div class="side_best">인기검색어</div>
+                                    <!-- <div class="side_hot">핫 키워드</div> -->
+                                </div>
 
-        <button class="side__btn out material-icons">logout</button>
+                                <div class="side_search_list">
 
-    </section>
+                                    <ul class="side_best_list">
+                                        <li>
+                                            <a href="<%=contextPath%>/search.do?search=">1.asdfasdfasdfas</a>
+                                        </li>
+                                        <li>
+                                            <a href="">2.asdfasdfasdfas</a>
+                                        </li>
+                                        <li>
+                                            <a href="">3.asdfasdfasdfas</a>
+                                        </li>
+                                        <li>
+                                            <a href="">4.asdfasdfasdfas</a>
+                                        </li>
+                                        <li>
+                                            <a href="">5.asdfasdfasdfas</a>
+                                        </li>
+                                    </ul>
 
 
+                                    <!-- <ul class="side_hot_list">
+                                        <li>
+                                            <a href="">1.asdfㅁㄴㅇㄻㄴㅇㄹsdfasdfas</a>
+                                        </li>
+                                        <li>
+                                            <a href="">2.asdfasdfasdfas</a>
+                                        </li>
+                                        <li>
+                                            <a href="">3.asdfasdfasdfas</a>
+                                        </li>
+                                        <li>
+                                            <a href="">4.asdfasdfasdfas</a>
+                                        </li>
+                                        <li>
+                                            <a href="">5.asdfasdfasdfas</a>
+                                        </li>
+                                    </ul> -->
 
 
 
+                                </div>
 
+                                <button class="side__btn out material-icons">logout</button>
 
-    <script>
+                            </section>
 
 
-    
 
-        function bestSwiper(){
-           
-          
-                new Swiper('header .swiper-container',{
-                direction: 'vertical',
-                autoplay:{
-                    delay:4000,
-                },
-                loop:true,
-                observer: true,
-                observeParents: true,
-                loopedSlides: 1 ,
-                loopAdditionalSlides : 1,
-                
-                 });
-                 //console.log(222222222222222222)
-               
-            
-        }
-           
 
-         
-        
 
 
-        function test(){
-                $.ajax({
-                url:"bestsearchList.mo",
-                type:"get",
-                success:function(list){
-                    //console.log(list)
 
-                   
-                    for(let i =0 ;i< list.length; i++){
+                            <script>
 
-                       // console.log(list[i].sName)
-                        
-                         $('.search__list .best .swiper-wrapper').children().eq(i).text(i+1+' '+list[i].sName)    
-                        // console.log( $('.search__list .best .swiper-wrapper').children().eq(i).text())
-                    }
 
 
-                },
-                error:function(){
-                    console.log("인기검색어 불려오기 실패")
-                },
-                complete:function(){
-                    console.log("실행")
-                }
-            })
 
-            }
+                                function bestSwiper() {
 
 
+                                    new Swiper('header .swiper-container', {
+                                        direction: 'vertical',
+                                        autoplay: {
+                                            delay: 4000,
+                                        },
+                                        loop: true,
+                                        observer: true,
+                                        observeParents: true,
+                                        loopedSlides: 1,
+                                        loopAdditionalSlides: 1,
 
-          
+                                    });
+                                    //console.log(222222222222222222)
 
 
-        $(function(){
+                                }
 
 
-            test();
 
 
 
-             setTimeout(function(){
-                bestSwiper()
-            },1000)
 
-            $('#search').keyup(function(){
+                                function test() {
+                                    $.ajax({
+                                        url: "bestsearchList.mo",
+                                        type: "get",
+                                        success: function (list) {
+                                            //console.log(list)
 
-                $.ajax({
-                    url:"searchLikeList.mo",
-                    data:{
-                        searchContent:$('#search').val()
-                    },
-                    type:"get",
-                    success:function(list){
-                        console.log(list)
-                        let value = ""
+                                            let value = ""
+                                            for (let i = 0; i < list.length; i++) {
 
-                        for(let i =0 ;i< list.length; i++){
-                            value += "<li>"+list[i].sName + "</li>"
-                        }
-                        console.log(value)
-                        $('.auto_searchList').html(value);
-                        $('.auto_searchList>li').click(function(){
-                            $('#search').val($(this).text())
-                            console.log($(this).text())
-                            
-                        })
+                                                // console.log(list[i].sName)
+                                                value += " <li>"
+                                                    + "<a href='<%=contextPath%>/search.do?search=" + list[i].sName + "'>" + (i + 1) + ". " + list[i].sName + "</a>"
+                                                    + "</li>"
+                                                $('.search__list .best .swiper-wrapper').children().eq(i).text(i + 1 + ' ' + list[i].sName)
+                                                // console.log( $('.search__list .best .swiper-wrapper').children().eq(i).text())
+                                            }
+                                            $('.side_best_list').html(value)
 
-                    },
-                    error:function(){
-                        console.log("검색 통신 실패")
-                    },
+                                        },
+                                        error: function () {
+                                            console.log("인기검색어 불려오기 실패")
+                                        },
+                                        complete: function () {
+                                            console.log("실행")
+                                        }
+                                    })
 
-                })
+                                }
 
+                                function latelySearch() {
+                                    $.ajax({
+                                        url: "latelySearch.mo",
+                                        success: (list) => {
+                                            // console.log(list)
+                                            if (list) {
+                                                $('.lately__search').removeClass('hidden')
+                                                let value = "";
 
-            })
+                                                for (let i = 0; i < list.length; i++) {
+                                                    value += " <div class='lately__searchs'>"
+                                                        + "<input type='hidden' value=" + list[i].sNo + ">"
+                                                        + "<span class='searchs'>" + list[i].sName + "</span>"
+                                                        + "<span class='material-icons close'>close</span>"
+                                                        + "</div>"
 
 
+                                                }
 
-            $('#side_search').keyup(function(){
+                                                $('.search .auto__search .cookie__search').html(value);
+                                                $('.side__search .auto__search .cookie__search').html(value)
 
-                $.ajax({
-                    url:"searchLikeList.mo",
-                    data:{
-                        searchContent:$('#side_search').val()
-                    },
-                    type:"get",
-                    success:function(list){
-                        console.log(list)
-                        let value = ""
+                                                $('.search .auto__search .cookie__search .lately__searchs').click(function () {
+                                                    $('#search').val($(this).children('.searchs').text())
+                                                    // console.log($(this).text())
 
-                        for(let i =0 ;i< list.length; i++){
-                            value += "<div>"+list[i].sName + "</div>"
-                        }
-                        console.log(value)
-                        $('.auto_side_search').html(value);
-                        $('.auto_side_search>div').click(function(){
-                            $('#side_search').val($(this).text())
-                            console.log($(this).text())
-                            
-                        })
+                                                })
+                                                $('.side__search .auto__search .cookie__search .lately__searchs .searchs').click(function () {
+                                                    $('#side_search').val($(this).children('.searchs').text())
+                                                    // console.log($(this).text())
 
-                    },
-                    error:function(){
-                        console.log("검색 통신 실패")
-                    },
+                                                })
 
-                })
 
+                                                $('.lately__searchs .close').on('click', function () {
+                                                    const sNo = $(this).parent().children('input').val()
 
-            })
+                                                    delectSearch(sNo)
+                                                })
 
 
 
-        })
+                                            }
+                                        },
+                                        error: () => {
 
+                                        }
+                                    })
+                                }
 
-    </script>
 
 
-</body>
-</html>
+                                function delectSearch(sNo) {
+                                    $.ajax({
+                                        url: "delectSearch.mo",
+                                        data: {
+                                            sNo: sNo,
+
+                                        },
+                                        type: "get",
+                                        success: (result) => {
+
+                                            if (result === "yyyy") {
+                                                latelySearch()
+                                            } else {
+
+                                            }
+                                        },
+                                        error: () => { }
+                                    })
+                                }
+
+
+                                $('#search').click(latelySearch())
+                                $('#side_search').click(latelySearch())
+
+
+
+                                $(function () {
+
+
+                                    test();
+                                    // latelySearch()
+
+
+                                    setTimeout(function () {
+                                        bestSwiper()
+                                    }, 1000)
+
+                                    $('#search').keyup(function () {
+
+                                        $.ajax({
+                                            url: "searchLikeList.mo",
+                                            data: {
+                                                searchContent: $('#search').val()
+                                            },
+                                            type: "get",
+                                            success: function (list) {
+                                                // console.log(list)
+                                                let value = ""
+
+                                                for (let i = 0; i < list.length; i++) {
+                                                    value += "<li>" + list[i].sName + "</li>"
+                                                }
+                                                console.log(value)
+                                                $('.auto_searchList').html(value);
+                                                $('.auto_searchList>li').click(function () {
+                                                    $('#search').val($(this).text())
+                                                    // console.log($(this).text())
+
+                                                })
+
+                                            },
+                                            error: function () {
+                                                console.log("검색 통신 실패")
+                                            },
+
+                                        })
+
+
+                                    })
+
+
+
+
+                                    $('#side_search').keyup(function () {
+                                        // console.log($('#side_search').val())
+                                        $.ajax({
+                                            url: "searchLikeList.mo",
+                                            data: {
+                                                searchContent: $('#side_search').val()
+                                            },
+                                            type: "get",
+                                            success: function (list) {
+                                                // console.log(list)
+                                                let value = ""
+
+                                                for (let i = 0; i < list.length; i++) {
+                                                    value += "<div>" + list[i].sName + "</div>"
+                                                }
+                                                // console.log(value)
+                                                $('.auto_side_search').html(value);
+                                                $('.auto_side_search>div').click(function () {
+                                                    $('#side_search').val($(this).text())
+                                                    console.log($(this).text())
+
+                                                })
+
+                                            },
+                                            error: function () {
+                                                console.log("검색 통신 실패")
+                                            },
+
+                                        })
+
+
+                                    })
+
+
+
+                                })
+
+
+                            </script>
+
+
+            </body>
+
+            </html>

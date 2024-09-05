@@ -11,19 +11,19 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.kh.chatRoom.model.service.ChatService;
-import com.kh.chatRoom.model.vo.ChatRoom;
+import com.kh.chatRoom.model.vo.Category;
 
 /**
- * Servlet implementation class ChatRoomController
+ * Servlet implementation class categoryListController
  */
-@WebServlet("/chatroom.ch")
-public class ChatRoomController extends HttpServlet {
+@WebServlet("/categoryList.hh")
+public class categoryListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ChatRoomController() {
+    public categoryListController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,9 +33,9 @@ public class ChatRoomController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-	
-		
-		request.getRequestDispatcher("views/chatRoom/chatRoom.jsp").forward(request, response);
+		ArrayList<Category> list = new ChatService().categoryList();
+		response.setContentType("application/json; charset=utf-8");
+		new Gson().toJson(list, response.getWriter());
 		
 	}
 

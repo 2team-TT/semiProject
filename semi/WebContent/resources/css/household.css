@@ -1,0 +1,273 @@
+.houseHold {
+    width: 100%;
+    margin-top: 370px;
+}
+
+.houseHold .household_area {
+    width: 1000px;
+    margin: auto;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 2px solid #FFA500;
+    padding: 15px;
+
+}
+
+.houseHold .household_area .title {
+    font-size: 25px;
+    font-weight: 900;
+    padding: 15px;
+}
+
+.houseHold .household_area .content_month {
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 2px solid #FFA500;
+    padding: 15px;
+}
+
+.houseHold .household_area .content_month .total_area {
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 2px solid #FFA500;
+    padding: 10px;
+    display: flex;
+    font-weight: 900;
+    font-size: 25px;
+}
+
+.houseHold .household_area .content_month .total_area .total_amount {
+    margin-left: 20px;
+    color: #0077ff;
+}
+
+.houseHold .household_area .content_month .total_area .total_amount.dan {
+    margin-left: 20px;
+    color: #ff1e00;
+}
+
+.houseHold .household_area .content_month .month_branch {
+    display: flex;
+    column-gap: 30px;
+    margin-top: 25px;
+}
+
+.houseHold .household_area .content_month .month_branch>div {
+    display: flex;
+    font-size: 18px;
+    font-weight: 600;
+    column-gap: 5px;
+    cursor: pointer;
+}
+
+.houseHold .household_area .content_month .month_branch>div:hover {
+    color: rgb(150, 148, 148);
+}
+
+.houseHold .household_area .content_month .month_body {
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 2px solid #FFA500;
+    margin-top: 15px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.houseHold .household_area .content_month .month_body .month_box {
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #FFA500;
+    width: 250px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    cursor: pointer;
+}
+
+.houseHold .household_area .content_month .month_body .month_box .total.dan {
+    color: #ff1e00;
+}
+
+.houseHold .household_area .content_month .month_body .month_box .total {
+    color: #0077ff;
+}
+
+.houseHold .household_area .content_month .month_body .month_box .expenses {
+    color: #ff1e00;
+}
+
+.houseHold .household_area .content_month .month_body .month_box .income {
+    color: #0077ff;
+}
+
+.houseHold .household_area .content_month .month_body .month_box:hover {
+    background-color: rgb(255, 231, 231);
+}
+
+.houseHold .household_area .content_month .month_body .month_box>div {
+    font-weight: 600;
+}
+
+
+.houseHold .household_area .content_month .body_content {
+    box-sizing: border-box;
+
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.houseHold .household_area .content_month .body_content.hidden {
+    box-sizing: border-box;
+
+    margin-top: 15px;
+    display: none;
+    justify-content: space-between;
+}
+
+.houseHold .household_area .content_month .body_content .content_box {
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 2px solid #FFA500;
+    padding: 10px;
+    width: 450px;
+}
+
+.houseHold .household_area .content_month .body_content .content_box .content_title {
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+.houseHold .household_area .content_month .body_content .content_box .content_title .add {
+    color: blue;
+}
+
+.houseHold .household_area .content_month .body_content .content_box .content_title .minus {
+    color: red;
+}
+
+.houseHold .household_area .content_month .body_content .content_box .cotent_input {
+    font-weight: 600;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 20px;
+}
+
+.houseHold .household_area .content_month .body_content .content_box .cotent_input .insert {
+    color: #FFA500;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.houseHold .household_area .content_month .body_content .content_box .cotent_input .insert:hover {
+    transform: scale(1.04);
+}
+
+.houseHold .household_area .content_month .body_content .content_box .cotent_input .insert:active {
+    transform: scale(0.96);
+}
+
+
+.houseHold .household_area .content_month .body_content .content_box .content_data {
+    font-weight: 600;
+    margin-top: 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #FFA500;
+    overflow: auto;
+    padding: 10px;
+    display: flex;
+    row-gap: 10px;
+    flex-direction: column;
+    height: content;
+    max-height: 282px;
+
+}
+
+.houseHold .household_area .content_month .body_content .content_box .content_data .data {
+    border-bottom: 1px solid #727272;
+    display: flex;
+    justify-content: space-around;
+    margin: 0 20px;
+}
+
+
+#input_income .modal-body,
+#input_expenses .modal-body {
+    display: flex;
+    justify-content: center;
+    font-weight: 600;
+}
+
+#input_income .modal-body .input_wrapper,
+#input_expenses .modal-body .input_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-weight: 600;
+}
+
+#input_income .modal-body .input_wrapper>form,
+#input_expenses .modal-body .input_wrapper>form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-weight: 600;
+}
+
+#input_income .modal-body .input_wrapper .btn_box,
+#input_expenses .modal-body .input_wrapper .btn_box {
+    display: flex;
+    justify-content: center;
+}
+
+#input_income .modal-body .input_wrapper .house_insert_btn,
+#input_expenses .modal-body .input_wrapper .house_insert_btn {
+    width: 80px;
+    border: 2px solid #FFA500;
+    border-radius: 5px;
+    font-weight: 600;
+    background-color: transparent;
+}
+
+#input_income .modal-body .input_wrapper .house_insert_btn:hover,
+#input_expenses .modal-body .input_wrapper .house_insert_btn:hover {
+    width: 80px;
+    border: 2px solid #FFA500;
+    border-radius: 5px;
+    font-weight: 600;
+    background-color: #fde4e1;
+}
+
+#input_income .modal-body .input_wrapper .house_insert_btn:active,
+#input_expenses .modal-body .input_wrapper .house_insert_btn:active {
+    width: 80px;
+    border: 2px solid #FFA500;
+    border-radius: 5px;
+    font-weight: 600;
+    background-color: #ffd3ce;
+}
+
+
+.houseHold .household_area .content_month .body_content .content_box .content_data::-webkit-scrollbar-track {
+    background-color: #fff;
+
+}
+
+.houseHold .household_area .content_month .body_content .content_box .content_data::-webkit-scrollbar-thumb {
+    height: 15%;
+    background-color: #babac0;
+
+    border-radius: 1rem;
+    border: 4px solid #fff;
+}
+
+.houseHold .household_area .content_month .body_content .content_box .content_data::-webkit-scrollbar {
+    background-color: #fff;
+    width: 1rem;
+}
