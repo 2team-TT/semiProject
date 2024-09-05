@@ -547,13 +547,13 @@
                                             <a class="side__btn__shopping" href="">쇼핑</a>
                                         </li>
                                         <li>
-                                            <a class="side__btn__house" href="">부동산 / 이사</a>
+                                            <a class="side__btn__house" href="<%= contextPath %>/main.prop">부동산 / 이사</a>
                                         </li>
                                         <li>
                                             <a>이벤트</a>
                                         </li>
                                         <li>
-                                            <a>정책</a>
+                                            <a href="<%= contextPath %>/main.wf">정책</a>
                                         </li>
                                     </div>
 
