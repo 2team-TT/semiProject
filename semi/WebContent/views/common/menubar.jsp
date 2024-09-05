@@ -77,7 +77,7 @@
                   
                 </li>
                 <li>
-                    <a href="">쇼핑</a>
+                    <a href="<%= contextPath %>/producutMain.me">쇼핑</a>
                 </li>
                 <li>
                     <a href="">부동산 / 이사</a>
