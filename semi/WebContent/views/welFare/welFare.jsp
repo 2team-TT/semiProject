@@ -125,12 +125,12 @@
                             </div>
                             <div class="filter-subtitle">가구상황별</div>
                             <div class="filter-checkbox-wrapper" id="gaguFilter">
-                                <input type="checkbox" name="byGagu" id="lowIncome" class="filter-checkbox" value="저소득"><label for="lowIncome">저소득</label>
-                                <input type="checkbox" name="byGagu" id="disabledPerson" class="filter-checkbox" value="장애인"><label for="disabledPerson">장애인</label>
-                                <input type="checkbox" name="byGagu" id="singleParentGrandchild" class="filter-checkbox" value="한부모조손"><label for="singleParentGrandchild">한부모 조손</label>
-                                <input type="checkbox" name="byGagu" id="multipleChildren" class="filter-checkbox" value="다자녀"><label for="multipleChildren">다자녀</label>
-                                <input type="checkbox" name="byGagu" id="multicultural" class="filter-checkbox" value="다문화탈북민"><label for="multicultural">다문화탈북민</label>
-                                <input type="checkbox" name="byGagu" id="veterans" class="filter-checkbox" value="보훈대상자"><label for="veterans">보훈대상자</label>
+                                <div><input type="checkbox" name="byGagu" id="lowIncome" class="filter-checkbox" value="저소득"><label for="lowIncome">저소득</label></div>
+                                <div><input type="checkbox" name="byGagu" id="disabledPerson" class="filter-checkbox" value="장애인"><label for="disabledPerson">장애인</label></div>
+                                <div><input type="checkbox" name="byGagu" id="singleParentGrandchild" class="filter-checkbox" value="한부모조손"><label for="singleParentGrandchild">한부모 조손</label></div>
+                                <div><input type="checkbox" name="byGagu" id="multipleChildren" class="filter-checkbox" value="다자녀"><label for="multipleChildren">다자녀</label></div>
+                                <div><input type="checkbox" name="byGagu" id="multicultural" class="filter-checkbox" value="다문화탈북민"><label for="multicultural">다문화탈북민</label></div>
+                                <div><input type="checkbox" name="byGagu" id="veterans" class="filter-checkbox" value="보훈대상자"><label for="veterans">보훈대상자</label></div>
                             </div>
                             <div class="filter-subtitle">관심주제별</div>
                             <div class="filter-checkbox-wrapper" id="interestFilter">
@@ -138,13 +138,11 @@
                                 <input type="checkbox" name="byInterest" id="livingSupport" class="filter-checkbox" value="생활지원"><label for="livingSupport">생활지원</label>
                                 <input type="checkbox" name="byInterest" id="job" class="filter-checkbox" value="일자리"><label for="job">일자리</label>
                                 <input type="checkbox" name="byInterest" id="safetyCrisis" class="filter-checkbox" value="안전위기"><label for="safetyCrisis">안전위기</label>
-                                <input type="checkbox" name="byInterest" id="childcare" class="filter-checkbox" value="보육"><label for="childcare">보육</label>
                                 <input type="checkbox" name="byInterest" id="fosterCare" class="filter-checkbox" value="입양위탁"><label for="fosterCare">입양위탁</label>
                                 <input type="checkbox" name="byInterest" id="microfinance" class="filter-checkbox" value="서민금융"><label for="microfinance">서민금융</label>
                                 <input type="checkbox" name="byInterest" id="mentalHealth" class="filter-checkbox" value="정신건강"><label for="mentalHealth">정신건강</label>
                                 <input type="checkbox" name="byInterest" id="house" class="filter-checkbox" value="주거"><label for="house">주거</label>
                                 <input type="checkbox" name="byInterest" id="culture" class="filter-checkbox" value="문화여가"><label for="culture">문화여가</label>
-                                <input type="checkbox" name="byInterest" id="pregnancy" class="filter-checkbox" value="임신출산"><label for="pregnancy">임신출산</label>
                                 <input type="checkbox" name="byInterest" id="education" class="filter-checkbox" value="교육"><label for="education">교육</label>
                                 <input type="checkbox" name="byInterest" id="protectiveCare" class="filter-checkbox" value="보호돌봄"><label for="protectiveCare">보호돌봄</label>
                                 <input type="checkbox" name="byInterest" id="law" class="filter-checkbox" value="법률"><label for="law">법률</label>
@@ -159,7 +157,6 @@
                 </form>
             </div>
             <div id="main-contents__detail">
-                <button id="testBtn">testBtn</button>
                 <div class="welfare">
                     <div class="welfare__title">예시 타이틀</div>
                     <div class="welfare__detail">
@@ -195,7 +192,7 @@
     <script>
         $(document).ready(function() {
             $.ajax({
-                url: 'test.wf', // Servlet URL 설정
+                url: 'controller.wf', // Servlet URL 설정
                 type: 'GET', // 또는 POST
                 data: {
                     
@@ -241,7 +238,6 @@
                     $('#main-contents__detail').html('<p>데이터를 불러오는데 실패했습니다.</p>');
                 }
             });
-            $('#testBtn').click(function() {});
         });
 
         // 태그의 값이 비어있는지 아닌지 확인하는 기능
@@ -270,7 +266,7 @@
             var formData = $('#searchForm').serialize(); // 폼 데이터 직렬화
 
             $.ajax({
-                url: 'WelfareServlet', // 서블릿 URL
+                url: 'controller.wf', // 서블릿 URL
                 type: 'POST',
                 data: formData,
                 dataType: 'json',
