@@ -9,25 +9,79 @@ img {
 .myinfo {
     background-color: #eee4db7e;
     border: 1px solid orange;
-    height: 80px;
-    padding: 15px;
+    min-height: 60px;
+    padding: 5px;
     border-radius: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
     margin-top: 350px;
-    margin-right: 450px;
-    margin-left: 350px;
+    margin-left: auto; /* 자동 좌우 여백 조정 */
+    margin-right: auto; /* 자동 좌우 여백 조정 */
+    max-width: 1200px;
+    width: 100%;
+    box-sizing: border-box;
 }
+
+
 /* 마이페이지 bar css */
-.myinfo .info--group{
+.myinfo .info--group {
     display: flex;
-    width: 1150px;
     justify-content: space-between;
     flex-wrap: wrap;
-    /* margin-right: 100px; */
+    width: 100%; /* 부모 요소의 너비를 기준으로 채워지도록 설정 */
 }
+
+.info--list {
+    flex: 1; /* 모든 리스트 요소들이 동일한 비율로 공간을 차지 */
+    min-width: 180px; /* 최소 너비 설정 */
+    text-align: center; /* 텍스트 중앙 정렬 */
+    padding: 6px; /* 내부 여백 추가 */
+    box-sizing: border-box; /* 패딩을 포함한 너비 계산 */
+}
+
+/* 반응형 웹을 위한 미디어 쿼리 */
+@media (max-width: 768px) {
+    .info--list {
+        flex-basis: 45%; /* 화면이 작아지면 45% 너비를 가지도록 설정 */
+        margin-left: 5%;
+        margin-right: 5%;
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .info--list {
+        flex-basis: 100%; /* 화면이 더 작아지면 100% 너비를 가지도록 설정 */
+        margin-left: 2%;
+        margin-right: 2%;
+        width: 96%;
+    }
+}
+
+
+/* 페이지 업 css */
+#to-top{
+    width: 45px;
+    height: 45px;
+    background-color: rgb(241, 222, 185);
+    color: #333;
+    border: 2px solid #fff;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 9;
+    transform: translateX(100px);
+}
+
+
+
 /* 마이페이지 bar div list css */
 .myinfo .info--group .info--list a {
     /* 기본 스타일 */
@@ -97,161 +151,218 @@ img {
 /* 마이페이지 섹션 타이틀 공통 */
 
 /* 컨텐츠 영역 width */
-.myinfo--info{
+.myinfo--info {
     display: flex;
-    width: 1150px;
+    flex-direction: column; /* 세로 방향으로 배치 */
+    align-items: center; /* 가운데 정렬 */
+    width: 100%; /* 부모 요소의 너비에 맞게 설정 */
+    max-width: 1250px; /* 최대 너비 제한 */
+    padding: 0 20px; /* 좌우 패딩 추가 */
 }
 
-.myinfo--page .myinfo--common{
-    /* display: flex; */
-    flex-wrap: wrap;
+.myinfo--page .myinfo--common {
     width: 100%;
-    /* justify-content: space-between; */
+    flex-wrap: wrap;
+    box-sizing: border-box;
 }
 
-.myinfo--common .common--title{
+.myinfo--common .common--title {
     font-family: "roboto", sans-serif;
     font-size: 40px;
     font-weight: bolder;
-    margin-top: 60px;
-    margin-bottom: 60px;
+    margin: 40px 0; /* 상하 마진 */
+    text-align: left; /* 텍스트를 왼쪽 정렬 */
 }
+
 
 /* 마이페이지 내정보 페이지 섹션 */
 
-.myinfo--page{
+.myinfo--page {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 30px; /* 각 섹션 사이 간격 추가 */
+    width: 100%; /* 부모 요소의 너비를 100%로 설정 */
 }
 
-.myinfo--page .myinfo--info{
-   
-}
 
-/* .myinfo--info--info{
-    display: flex;
-    flex-direction: column;
-    margin-top: 60px;
-} */
-.myinfo--baseinfo{
+.myinfo--baseinfo {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-right: 100px;
+    width: 100%; /* 부모 요소의 너비에 맞게 설정 */
+    gap: 20px; /* 요소 사이 간격 추가 */
 }
 
-.myinfo--page .baseinfo--group{
+.myinfo--page .baseinfo--group {
     border: 1px dotted gray;
-    width: 394px;
-    height: 96px;
-    padding: 5px;
-    margin: 5px;
+    flex-basis: calc(50% - 20px); /* 각 그룹이 50% 너비를 차지하도록 설정 */
+    padding: 10px;
+    margin: 0;
     overflow: hidden;
 }
 
-.myinfo--page .info--annotation{
-    font-family: "roboto", sans-serif;
-    color: rgba(0, 0, 0, 0.5);
-    font-size: 12px;
+@media (max-width: 768px) {
+    .myinfo--page .baseinfo--group {
+        flex-basis: calc(100% - 20px); /* 화면이 작아지면 100% 너비를 차지 */
+    }
+
+    .myinfo--common .common--title {
+        font-size: 32px; /* 작은 화면에서 폰트 크기 조정 */
+        margin: 30px 0;
+    }
 }
 
-.myinfo--page .info--content{
-    margin-top: 15px;
-    font-size: 28px;
-}
-.myinfo--page .info--content.addressInfo{
-    font-size: 15px;
-}
-
-/* 마이페이지 알림 기능 설정 섹션 */
-.myinfo--page .myinfo--alarm{
-    
+@media (max-width: 480px) {
+    .myinfo--common .common--title {
+        font-size: 28px;
+        margin: 20px 0;
+    }
 }
 
-.myinfo--page .alarm--list{
-    margin-top: 25px;
-}
-
-
-/* 마이페이지 결제 정보 설정 섹션 */
-.myinfo--page .myinfo--info .myinfo--common .info--annotation{
-    font-size: 14px;
-}
-/* 결제관련 버튼이지만 마이페이지 내에서 공통적으로 쓰일 버튼 css */
-.myinfo--page .myinfo--info .myinfo--common .payment--btn{
+/* 결제 관련 버튼 공통 CSS */
+.myinfo--page .myinfo--info .myinfo--common .payment--btn {
     background-color: black;
-    margin-top: 60px;
-    margin-bottom: 60px;
-    width: 160px;
+    margin: 40px 0;
+    width: 100%;
+    max-width: 200px; /* 버튼의 최대 너비 설정 */
     height: 48px;
-    border: 1px solid 333;
+    border: 1px solid #333;
     border-radius: 8px;
     color: white;
-    padding: 0;
     cursor: pointer;
+    text-align: center;
+    line-height: 48px; /* 버튼 내용 중앙 정렬 */
 }
+
 
 /* 내 게시글 테이블 css
    bootstrap 활용
 */
-.mytable *{
-    /* border: 1px solid #333; */
-    /* margin: 5px; */
+/* 기본 테이블 스타일링 */
+.mytable * {
+    /* 기본 테이블 스타일 유지 */
 }
-.mytable thead{
+
+.mytable thead {
     background-color: rgb(223, 202, 164);
     text-align: center;
 }
 
-/* 내 게시글 페이징 css
-   내 게시글, 내 댓글, 좋아요 한 글 공통
-*/
-
-.myinfo--page .page-btn{
+/* 버튼 스타일링 */
+.myinfo--page .page-btn {
     width: 25px;
     height: 25px;
     padding: 0;
 }
 
-/* .myinfo--page .myinfo--info .myinfo--common .btn1{
-    background-color: #333;
-    width: 40px;
-    height: 40px;
-    border: 1px solid 333;
-    border-radius: 8px;
-    color: white;
-    padding: 0;    
-} */
-
-.myinfo--page .myinfo--info .myinfo--common .btn1{
+/* 버튼 스타일 수정 */
+.myinfo--page .myinfo--info .myinfo--common .btn1 {
     border-radius: 8px;
     border: 1px solid #333;
     background-color: #dbd6b560;
 }
 
-/* 테이블에 마진을 줘서 페이지 간격 맞춤 css */
-.table--margin{
-    margin-right: 100px;
+/* 테이블 마진 조정 */
+.table--margin {
+    margin-right: 0; /* 고정 마진 제거 */
+    padding: 0 10px; /* 좌우 패딩 추가 */
 }
 
-/* css 리셋 후 테이블 내 글자 정렬 */
+/* 테이블 내 글자 정렬 */
 .myinfo--page .myinfo--info .mytable td,
 .myinfo--page .myinfo--info .mytable th {
-    text-align:justify
+    text-align: left; /* 텍스트를 좌측 정렬 */
 }
 
-/* 제목테이블 헤드 센터로 하는 css */
-.myinfo--page .myinfo--info .mytable .th--align--center{
+/* 제목 테이블 헤드 중앙 정렬 */
+.myinfo--page .myinfo--info .mytable .th--align--center {
     text-align: center;
 }
 
-/* 테이블 호버 css */
+/* 테이블 호버 효과 */
 .myinfo--page .myinfo--info .mytable tbody tr:hover {
     cursor: pointer;
     color: #000;
     opacity: 0.6;
 }
+
+/* 반응형 웹을 위한 미디어 쿼리 추가 */
+@media (max-width: 1024px) {
+    .myinfo--page {
+        padding: 0 15px; /* 페이지 좌우 패딩 추가 */
+    }
+
+    .table--margin {
+        margin-right: 0;
+        padding: 0 5px; /* 작은 화면에서 패딩 조정 */
+    }
+
+    .myinfo--page .myinfo--info .mytable td,
+    .myinfo--page .myinfo--info .mytable th {
+        font-size: 14px; /* 작은 화면에서 글자 크기 조정 */
+    }
+
+    .myinfo--page .myinfo--info .myinfo--common .btn1 {
+        width: 100%;
+        max-width: 120px; /* 버튼의 최대 너비 설정 */
+        height: 35px;
+        font-size: 14px; /* 버튼 텍스트 크기 조정 */
+    }
+
+    .myinfo--page .page-btn {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .myinfo--page .myinfo--info {
+        flex-direction: column; /* 작은 화면에서 열 방향으로 배치 */
+    }
+
+    .table--margin {
+        margin-right: 0;
+        padding: 0;
+    }
+
+    .myinfo--page .myinfo--info .mytable {
+        font-size: 12px; /* 작은 화면에서 글자 크기 조정 */
+    }
+
+    .myinfo--page .page-btn {
+        width: 18px;
+        height: 18px;
+    }
+
+    .myinfo--page .myinfo--info .myinfo--common .btn1 {
+        width: 100%;
+        height: 30px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .myinfo--page {
+        padding: 0 5px; /* 모바일에서 패딩 최소화 */
+    }
+
+    .myinfo--page .myinfo--info .mytable {
+        font-size: 10px; /* 모바일 화면에서 글자 크기 조정 */
+    }
+
+    .myinfo--page .page-btn {
+        width: 16px;
+        height: 16px;
+    }
+
+    .myinfo--page .myinfo--info .myinfo--common .btn1 {
+        width: 100%;
+        height: 25px;
+        font-size: 10px;
+    }
+}
+
 
 
 /* 주문 조회 관련 css */
@@ -326,10 +437,12 @@ img {
 }
 
 
-/* 마이페이지 고객센터부분 css */
+/* 마이페이지 고객센터 부분 CSS */
 
-/* 고객센터용 소제목 css */
-.myinfo--page .myinfo--info .myinfo--common .subheading{
+/* 마이페이지 고객센터 부분 CSS */
+
+/* 고객센터용 소제목 CSS */
+.myinfo--page .myinfo--info .myinfo--common .subheading {
     /* border: 1px solid #000; */
     background-color: #E3C4A7;
     padding: 15px;
@@ -341,46 +454,43 @@ img {
     font-size: 17px;
 }
 
-
 /* 컨텐츠를 둘러싸는 div */
-.myinfo--page .myinfo--info .myinfo--common .slide--group{
+.myinfo--page .myinfo--info .myinfo--common .slide--group {
     display: flex;
     flex-wrap: wrap;
     /* flex-direction: column; */
 }
-/* QNA타이틀 css */
-.myinfo--page .myinfo--info .myinfo--common .slide--group h5{
+
+/* QNA 타이틀 CSS */
+.myinfo--page .myinfo--info .myinfo--common .slide--group h5 {
     background-color: #b9b9b92f;
-    margin: 0;
-    width: 100%;
-    margin-right: 100px;
+    margin: 0; /* 마진 제거 */
+    width: 100%; /* 부모 컨테이너의 너비에 맞게 설정 */
     border: 1px solid #000;
     border-radius: 5px;
     padding: 5px;
-    font-size: 17px;
+    font-size: 17px; /* 폰트 크기 조정 */
+    box-sizing: border-box; /* 패딩과 테두리 포함 너비 계산 */
 }
 
-/* 고객센터 slide용 div css */
-.myinfo--page .myinfo--info .myinfo--common .slide--group .slide--div{
+/* 고객센터 슬라이드용 div CSS */
+.myinfo--page .myinfo--info .myinfo--common .slide--group .slide--div {
     background-color: rgba(236, 189, 57, 0.103);
     border: 1px solid rgba(69, 70, 66, 0.548);
-    width: 100%;
-    margin-right: 100px;
-    /* height: 30px; */
+    width: 100%; /* 부모 컨테이너의 너비에 맞게 설정 */
+    margin-right: 0; /* 오른쪽 마진 제거 */
     line-height: 30px;
     border-radius: 5px;
     cursor: pointer;
     padding-left: 15px;
 }
 
-/* 고객센터 slide용 p(답변부분) css */
-.myinfo--page .myinfo--info .myinfo--common .slide--group .slide--p{
+/* 고객센터 슬라이드용 p (답변 부분) CSS */
+.myinfo--page .myinfo--info .myinfo--common .slide--group .slide--p {
     border: 1px solid lightgray;
-    width: 100%;
-    margin-right: 100px;
-    /* height: 100px; */
+    width: 100%; /* 부모 컨테이너의 너비에 맞게 설정 */
+    margin-right: 0; /* 오른쪽 마진 제거 */
     border-radius: 10px;
-    /* margin-top: 5px; */
     margin-bottom: 0;
     padding: 15px;
     text-align: justify;
@@ -388,16 +498,74 @@ img {
     display: none;
 }
 
-/* 문의 내역 테이블 css는 마이테이블 결제내역 css 재활용 */
-.myinfo--page .myinfo--info .myinfo--common .table--margin .p--question{
-    transition: transform 2s;
+/* 문의 내역 테이블 CSS */
+.myinfo--page .myinfo--info .myinfo--common .table--margin {
+    width: 100%; /* 부모 컨테이너의 너비에 맞게 설정 */
 }
 
-/* 문의 tr 클릭시 나올 답변 css */
-.myinfo--page .myinfo--info .myinfo--common .table--margin .p--answer{
+/* 문의 tr 클릭 시 나올 답변 CSS */
+.myinfo--page .myinfo--info .myinfo--common .table--margin .p--answer {
     display: none;
     cursor: default;
+    width: 100%; /* 부모 컨테이너의 너비에 맞게 설정 */
 }
+
+/* 반응형 웹을 위한 미디어 쿼리 */
+@media (max-width: 768px) {
+    /* 태블릿 및 작은 화면 장치에 대한 스타일 조정 */
+    .myinfo--page .myinfo--info .myinfo--common .subheading {
+        font-size: 14px; /* 폰트 크기 조정 */
+        padding: 8px; /* 패딩 조정 */
+    }
+
+    .myinfo--page .myinfo--info .myinfo--common .slide--group {
+        flex-direction: column; /* 작은 화면에서 세로로 배치 */
+    }
+
+    .myinfo--page .myinfo--info .myinfo--common .slide--group .slide--div,
+    .myinfo--page .myinfo--info .myinfo--common .slide--group .slide--p,
+    .myinfo--page .myinfo--info .myinfo--common .table--margin {
+        width: 100%; /* 작은 화면에서 전체 너비 */
+        margin-right: 0; /* 오른쪽 마진 제거 */
+    }
+
+    .myinfo--page .myinfo--info .myinfo--common .slide--group h5 {
+        font-size: 14px; /* 폰트 크기 조정 */
+        padding: 8px; /* 패딩 조정 */
+    }
+}
+
+@media (max-width: 480px) {
+    /* 모바일 장치에 대한 스타일 조정 */
+    .myinfo--page .myinfo--info .myinfo--common .subheading {
+        font-size: 12px; /* 폰트 크기 조정 */
+        padding: 6px; /* 패딩 조정 */
+    }
+
+    .myinfo--page .myinfo--info .myinfo--common .slide--group h5 {
+        font-size: 12px; /* 폰트 크기 조정 */
+        padding: 6px; /* 패딩 조정 */
+    }
+
+    .myinfo--page .myinfo--info .myinfo--common .slide--group .slide--div,
+    .myinfo--page .myinfo--info .myinfo--common .slide--group .slide--p,
+    .myinfo--page .myinfo--info .myinfo--common .table--margin {
+        width: 100%; /* 모바일 화면에서 전체 너비 */
+        margin: 0; /* 마진 제거 */
+    }
+
+    .myinfo--page .myinfo--info .myinfo--common .slide--div {
+        line-height: 20px; /* 줄 높이 조정 */
+        padding-left: 5px; /* 패딩 조정 */
+    }
+
+    .myinfo--page .myinfo--info .myinfo--common .slide--group .slide--p {
+        padding: 5px; /* 패딩 조정 */
+        font-size: 12px; /* 폰트 크기 조정 */
+    }
+}
+
+
 
 /* 장바구니 css */
 
@@ -464,7 +632,7 @@ img {
 
 /* 찜하기의 리스트들을 담을 div css */
 .myinfo--page .myinfo--info .myinfo--common .wishlist--group{
-    margin-right: 100px;
+    /* margin-right: 100px; */
     /* display: flex; */
     flex-wrap: wrap;
 }
@@ -580,3 +748,16 @@ img {
 .myinfo--page .myinfo--info .myinfo--common .rvp--group .rvp--item .rvp--img span:hover {
     cursor: pointer;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

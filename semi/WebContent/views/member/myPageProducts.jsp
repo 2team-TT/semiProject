@@ -7,12 +7,17 @@
 	// 상품명, 가격, 판매자, 별점, 상품내용, 유저번호, 찜한 날짜
 	ArrayList<Product> recentlyList = (ArrayList<Product>)request.getAttribute("recentlyList");
 	// 상품명, 가격, 상품 조회 날짜
+	
+	
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>마이페이지 - 상품</title>
+<script>
+    var contextPath = '<%= request.getContextPath() %>';
+</script>
 </head>
 <body>
 	<%@ include file="../common/myPageCommon.jsp" %>
@@ -51,7 +56,7 @@
 			                		<%int i=1; %>		                		
 			                		<%for(Product p : list){ %>
 		                                <tr>
-		                                    <td><input type="checkbox" class="rowCheckbox"></td>
+		                                    <td><input type="checkbox" name="pnos" value="<%= p.getpNo() %>" class="rowCheckbox"></td>
 		                                    <td>
 		                                        <div class="item--description">
 		                                            <div class="forImage">
@@ -76,7 +81,7 @@
                         </table>
                         
                         <br><br>
-                        <button class="wishlistBtn btn btn-outline-secondary btn-sm" onclick="deleteSelectedRows()">삭제</button>
+                        <button class="wishlistBtn btn btn-outline-secondary btn-sm" onclick="deleteSelectedRows('wishlist')">삭제</button>
                     </div>
                 </div>
             </div>
@@ -100,10 +105,10 @@
                 	<!-- 최근 본 상품이 존재 할 경우 -->
                 	<%int i=1;%>
                 	<%for(Product rp : recentlyList){ %>
-                    <div class="rvp--item" onclick="location.href='javascript:void(0)'"> <!-- 최근본 상품 각각의 div-->
+                    <div class="rvp--item" data-pno="<%= rp.getpNo() %>" onclick="location.href='javascript:void(0)'"> <!-- 최근본 상품 각각의 div-->
                         <div class="rvp--img"> <!-- 이미지 안에 X표시를 넣기 위한 div-->
                             <img src="./resources/images/cat<%= i %>.jpg">
-                            <span class="rvp--span material-symbols-outlined">
+                            <span class="rvp--span material-symbols-outlined" onclick="deleteRecentProduct(<%= rp.getpNo() %>)">
                                 close
                                 </span>
                         </div>

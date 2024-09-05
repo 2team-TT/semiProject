@@ -119,7 +119,8 @@ public class ProductDao {
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
-				list.add(new Product(rset.getString("p_name")
+				list.add(new Product(rset.getInt("p_no")
+								   , rset.getString("p_name")
 								   , rset.getString("p_seller")
 								   , rset.getInt("price")
 								   , rset.getDouble("rating")
@@ -156,7 +157,8 @@ public class ProductDao {
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
-				list.add(new Product(rset.getString("p_name")
+				list.add(new Product(rset.getInt("p_no")
+								   , rset.getString("p_name")
 								   , rset.getInt("price")
 								   , rset.getString("lately_date")
 						));
@@ -172,5 +174,50 @@ public class ProductDao {
 		return list;
 	}//selectMyRecentlyProductsList() end
 	
+	// 찜한 상품 삭제
+	public int deleteMywishlistProduct(Connection conn, int userNo, int pno) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = prop.getProperty("deleteMywishlistProduct");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, userNo);
+			pstmt.setInt(2, pno);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+		
+	}//deleteMywishlistProduct() end
+	
+	// 최근 본 상품 삭제
+	public int deleteRecentlyViewedProduct(Connection conn, int userNo, int pNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = prop.getProperty("deleteRecentlyViewedProduct");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, userNo);
+			pstmt.setInt(2, pNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+		
+	}//deleteRecentlyViewedProduct() end
 
 }//Product 클래스 end
