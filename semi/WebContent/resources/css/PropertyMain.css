@@ -1,0 +1,614 @@
+/* 기본 초기화 */
+section#sectionTop>*{
+    box-sizing: border-box;
+}
+::before,
+::after{
+    box-sizing: border-box;
+}
+a{
+    text-decoration: none;
+    color: #333;
+}
+
+#propertyTopRoot{
+    /* margin-top: 350px; */
+}
+/* 전체 메뉴바 */
+#propertyTopRoot .menuWrap{
+    margin: 0;
+    width: 100%;
+    height: 100%;    
+    position: relative;
+    /* border: 1px solid #33333350; */
+}
+/* 전체 메뉴바 */
+#propertyTopRoot .menuWrap .menuWrap__inner{
+    display: flex;
+    width: 100%;
+    height: 60px;
+    background-color: #ffe4c4;
+}
+/* 전체 메뉴바 버튼 */
+#propertyTopRoot .menuWrap .menuWrap__inner .popup-trigger,
+#propertyTopRoot .menuWrap .menuWrap__inner .building-type{
+    display: inline-block;
+    width: 150px;
+    height: 60px;
+    font-size: 14px;
+    text-align: center;
+    padding: 17px 15px 16px;
+    background-color: #fff;
+    color: #333;
+    border: 0px solid #FFB676;
+    border-bottom: 3px solid #FFB676;
+    /* border-style: inset; */
+    margin: 0 12px;
+    font-weight: 500;
+    transition: 
+        background-color .2s,
+        color .2s,
+        border .2s,
+        font-size .4s,
+        font-weight .4s,
+        transform .2s;
+}
+/* 전체 메뉴바 선택시 버튼 */
+#propertyTopRoot .menuWrap .menuWrap__inner .popup-trigger.isSelected,
+#propertyTopRoot .menuWrap .menuWrap__inner .building-type.isSelected{
+    font-size: 16px;
+    color: #FFB676;
+    border: 0px solid #FFB676;
+    border-bottom: 5px solid #FFB676;
+    font-weight: 700;
+}
+/* 전체 메뉴바 첫번째 버튼 */
+#propertyTopRoot .menuWrap .menuWrap__inner .popup-trigger:first-child,
+#propertyTopRoot .menuWrap .menuWrap__inner .building-type:first-child{
+    margin-left: 100px;
+}
+/* 전체 메뉴바 선택시 버튼 호버 */
+#propertyTopRoot .menuWrap .menuWrap__inner .popup-trigger.isSelected:hover,
+#propertyTopRoot .menuWrap .menuWrap__inner .building-type.isSelected:hover{
+    font-size: 17px;
+    color: #FFB676;
+    border: 0px solid #FFB676;
+    border-bottom: 5px solid #FFB676;
+    font-weight: 700;
+}
+/* 전체 메뉴바 버튼 선택시 버튼 호버 */
+#propertyTopRoot .menuWrap .menuWrap__inner .popup-trigger.isNotSelected:hover,
+#propertyTopRoot .menuWrap .menuWrap__inner .building-type.isNotSelected:hover{
+    background-color: #eeeeee;
+    color: #FFB676;
+    border-bottom: 5px solid #FFA500;
+    text-align: center;
+    font-weight: 700;
+    font-size: 15px;
+}
+/* 전체 메뉴바 버튼 선택하지않을시 버튼 호버 */
+#propertyTopRoot .menuWrap .menuWrap__inner .popup-trigger.isNotSelected:hover,
+#propertyTopRoot .menuWrap .menuWrap__inner .building-type.isNotSelected:hover{
+    background-color: #eeeeee;
+    color: #FFB676;
+    border-bottom: 3px solid #FFA500;
+    text-align: center;
+    font-weight: 700;
+}
+/* 전체 메뉴바 클릭 */
+#propertyTopRoot .menuWrap .menuWrap__inner .popup-trigger:active,
+#propertyTopRoot .menuWrap .menuWrap__inner .building-type:active{
+    background-color: #fff3dd;
+    color: #FFA500;
+}
+/* 전체 메뉴바 팝업 내용 모음 */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup__content-Wrap{
+    position: absolute;
+}
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup__content-detail .filter_popup__content-inner:first-child{
+    margin-top: 30px;
+}
+/* 하층 메뉴바 팝업 전체 버튼 */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup button{
+    position: relative;
+    width: 75px;
+    height: 40px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    
+    transition: 
+        background-color .2s,
+        color .2s,
+        border .2s,
+        font-size .4s,
+        font-weight .4s,
+        transform .2s
+    ;
+}
+/* 하층 메뉴바 팝업 전체 버튼 호버 */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup .filter_popup__content-Wrap button:hover{
+/*     
+    background-color: #FFEECC;
+    color: #333;
+    font-weight: 700;
+    border: 3px solid #FFA500;
+      */
+}
+/* 하층 메뉴바 팝업 전체 버튼 클릭 */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup .filter_popup__content-Wrap button:active{
+/*     
+    background-color: #FFB676;
+    color: #333;
+    font-weight: 700;
+    border: 3px solid #ff7300;
+      */
+}
+.btn.isNotSelected{
+    background-color: #fff;
+    border: 3px solid #FFB676;
+}
+.btn.isSelected{
+    background-color: #ffe4c4;
+    border: 3px solid #FFB676;
+}
+.btn.isNotSelected:hover{
+    background-color: #ffe4c4;
+    font-weight: 700;
+}
+.btn.isSelected:hover{
+    background-color: #fff3dd;
+    font-weight: 700;
+}
+.btn.isNotSelected:active{
+    background-color: #FFEECC;
+    border: 3px solid #ff7300;
+}
+.btn.isSelected:active{
+    background-color: #fff;
+    border: 3px solid #ff7300;
+    
+}
+/* 하층 메뉴바 팝업 전체 내부제목 */
+#propertyTopRoot .menuBtmWrap .content_title{
+    font-size: 22px;
+    padding: 12px;
+    padding-left: 22px;
+    /* background-color: #FFB676; */
+}
+/* 하층 메뉴바 팝업 전체 버튼 모음 */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup__content-Wrap .btnWrap{
+    padding: 0 30px;
+}
+
+/* 하층 메뉴바 팝업 */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup{
+    position: absolute;
+    border: 1px solid #33333333;
+}
+/* 하층 메뉴바 비활성화(disabled)상태 */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup.disabled{
+    display: none;
+}
+/* 하층 메뉴바 팝업 */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup{
+    position: absolute;
+    z-index: 50;
+}
+/* 하층 메뉴바 팝업 타이틀 */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup .filter_popup__title{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    z-index: 48;
+    padding-left: 20px;
+    font-size: 22px;
+    background-color: #FFEECC;
+}
+/* 하층 메뉴바 팝업 타이틀 X버튼 */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup .filter_popup__exitBtn{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    font-size: 22px;
+    background-color: #FFEECC;
+    /* border-left: 1px solid #33333333; */
+    cursor: pointer;
+    right: 0;
+    z-index: 49;
+    transition: 
+        background-color .2s,
+        transform .2s;
+}
+/* 하층 메뉴바 팝업 타이틀 X버튼 호버 */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup .filter_popup__exitBtn:hover{
+    background-color: #ffe4c4;
+}
+/* 하층 메뉴바 팝업 내용 */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup .filter_popup__content{
+    position: relative;
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* 하층 메뉴바 팝업 거래방식 */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup.filter_popup--deal{
+    top: 60px;
+    left: 100px;
+    width: 250px;
+    height: 200px;
+}
+/* 하층 메뉴바 팝업 거래방식 월세 전세 버튼 */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup__content-deal .price-spanBtn{
+    padding: 10px 30px;
+    border-radius: 1000px;
+    background-color: #FFEECC;
+    cursor: pointer;
+    border: 0px solid #FFA500;
+    color: #333;
+    font-weight: 500;
+    transition: 
+        background-color .2s,
+        color .2s,
+        font-weight .2s,
+        transform .2s;
+}
+/* 하층 메뉴바 팝업 거래방식 월세 전세 버튼 호버 */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup__content-deal .price-spanBtn:hover{
+    background-color: #FFB676;
+}
+/* 하층 메뉴바 팝업 거래방식 월세 전세 버튼 클릭 */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup__content-deal .price-spanBtn:active{
+    background-color: #FFA500;
+    /* font-weight: 700; */
+}
+/* 하층 메뉴바 팝업 거래방식 월세 전세 버튼 선택시 */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup__content-deal .price-spanBtn.isPressedBtn{
+    background-color: #FFA500;
+    /* font-weight: 500; */
+}
+/* 하층 메뉴바 팝업 거래방식 월세 전세 버튼 선택시 호버 */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup__content-deal .price-spanBtn.isPressedBtn:hover{
+    background-color: #FFA500;
+    font-weight: 700;
+}
+
+/* 하층 메뉴바 팝업 거래방식 하단설명 */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup__content .filter-popup__content-description{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    opacity: .4;
+    /* background-color: #FFB676; */
+    padding: 13px;
+    color: #333;
+}
+/* 하층 메뉴바 팝업 가격 */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup.filter_popup--price{
+    top: 60px;
+    left: 275px;
+    width: 450px;
+    height: 535px;
+}
+/* 하층 메뉴바 팝업 가격 내용 모음 */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup--price .filter_popup__content-price .filter_popup__content-inner .price_btnWrap{
+    margin: 0 30px;
+}
+/* 하층 메뉴바 팝업 가격 내용 종합 */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup--price .filter_popup__content-price .filter_popup__content-inner .price-result{
+    margin: 15px 0;
+}
+/* 하층 메뉴바 팝업 가격 내용 전체 버튼 */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup--price .filter_popup__content-price .filter_popup__content-inner .price_btnWrap .btn-price{
+    width: 70px;
+}
+/* 하층 메뉴바 팝업 가격 내용 버튼(전세가격 마지막버튼) */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup--price .filter_popup__content-price .filter_popup__content-inner#filter_popup__content-jeonse .price_btnWrap .btn-price:last-of-type{
+    font-size: 14px;
+}
+
+/* 하층 메뉴바 팝업 면적 */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup--size{
+    top: 60px;
+    left: 448px;
+    width: 400px;
+    height: 250px;
+}
+
+/* 하층 메뉴바 팝업 입주가능일 */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup--date{
+    top: 60px;
+    left: 622px;
+    width: 480px;
+    height: 250px;
+}
+
+/* 하층 메뉴바 팝업 추가필터 */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup--detail{
+    top: 60px;
+    left: 796px;
+}
+/* 하층 메뉴바 팝업 추가필터 내용 */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup--detail .filter_popup__content{
+    padding: 10px 0 0 0;
+}
+/* 하층 메뉴바 팝업 추가필터 내용 내부전체(트렌지션효과) */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup--detail .filter_popup__content *{
+    transition: 
+            height .3s,
+            opacity .2s,
+            border .1s,
+            visibility .1s;
+}
+/* 하층 메뉴바 팝업 추가필터 내용 모음 */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup--detail .filter_popup__content-detail .detail-wrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* 하층 메뉴바 팝업 추가필터 내용 모음(평수, 방향, 주차대수, 세대수) */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup--detail .filter_popup__content-detail #pyeongWrap,
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup--detail .filter_popup__content-detail #roomsWrap,
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup--detail .filter_popup__content-detail #directionWrap,
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup--detail .filter_popup__content-detail #parkingWrap,
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup--detail .filter_popup__content-detail #householdsWrap{
+    flex-direction: column;
+}
+/* 하층 메뉴바 팝업 추가필터 내용 버튼 */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup--detail .filter_popup__content-detail .btn-detail{
+    width: 95px;
+    height: 40px;
+    margin: 0 5px;
+    transition: 
+        background-color .2s,
+        color .2s,
+        border .2s,
+        font-size .4s,
+        font-weight .4s,
+        transform .2s
+    ;
+}
+/* 하층 메뉴바 팝업 추가필터 내용 내부 모음(비활성화) */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup--detail .filter_popup__content .filter_popup__content-detail .detail-wrap{
+    /* border-top: 1px solid #33333333; */
+    visibility: hidden;
+    height: 0px;
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+} 
+/* 하층 메뉴바 팝업 추가필터 내용 내부 모음(활성화) */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup--detail .filter_popup__content .filter_popup__content-detail .detail-wrap.filter-area-activated{
+    visibility: visible;
+    opacity: 1;
+} 
+/* 하층 메뉴바 팝업 추가필터 내용 내부 층수(활성화) */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup--detail .filter_popup__content .filter_popup__content-detail #floorWrap.detail-wrap.filter-area-activated{height: 30px;} 
+/* 하층 메뉴바 팝업 추가필터 내용 내부 평수(활성화) */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup--detail .filter_popup__content .filter_popup__content-detail #pyeongWrap.detail-wrap.filter-area-activated{height: 80px;} 
+/* 하층 메뉴바 팝업 추가필터 내용 내부 방욕실수(활성화) */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup--detail .filter_popup__content .filter_popup__content-detail #roomsWrap.detail-wrap.filter-area-activated{height: 50px;} 
+/* 하층 메뉴바 팝업 추가필터 내용 내부 방향(활성화) */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup--detail .filter_popup__content .filter_popup__content-detail #directionWrap.detail-wrap.filter-area-activated{height: 80px;} 
+/* 하층 메뉴바 팝업 추가필터 내용 내부 난방(활성화) */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup--detail .filter_popup__content .filter_popup__content-detail #heatingWrap.detail-wrap.filter-area-activated{height: 30px;} 
+/* 하층 메뉴바 팝업 추가필터 내용 내부 엘리베이터(활성화) */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup--detail .filter_popup__content .filter_popup__content-detail #elevatorWrap.detail-wrap.filter-area-activated{height: 30px;} 
+/* 하층 메뉴바 팝업 추가필터 내용 내부 세대수(활성화) */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup--detail .filter_popup__content .filter_popup__content-detail #householdsWrap.detail-wrap.filter-area-activated{height: 80px;} 
+/* 하층 메뉴바 팝업 추가필터 내용 내부 주차대수(활성화) */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup--detail .filter_popup__content .filter_popup__content-detail #parkingWrap.detail-wrap.filter-area-activated{height: 120px;}
+
+/* 하층 메뉴바 팝업 추가필터 내용 내부 전체(활성화) */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup--detail .filter_popup__content .filter_popup__content-detail .detail-wrap.filter-area-activated{margin: 20px 0;}
+
+/* 하층 메뉴바 팝업 추가필터 내용 내부 전체 버튼 호버 */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup--detail .filter_popup__content-detail .btn-detail:hover{
+    background-color: #FFEECC;
+    color: #333;
+    font-weight: 700;
+    border: 3px solid #FFA500;
+}
+/* 하층 메뉴바 팝업 추가필터 내용 내부 전체 버튼 클릭 */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup--detail .filter_popup__content-detail .btn-detail:active{
+    background-color: #FFB676;
+    color: #333;
+    font-weight: 700;
+    border: 3px solid #ff7300;
+}
+/* 하층 메뉴바 팝업 추가필터 내용 내부 전체 div버튼 */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup--detail .filter_popup__content-detail .detail-divBtn{
+    position: relative;
+    border-top: 1px solid #33333333;
+    padding: 10px;
+    cursor: pointer;
+    transition: 
+            border 0s;
+}
+/* 하층 메뉴바 팝업 추가필터 내용 내부 전체 div버튼(활성화) */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup--detail .filter_popup__content-detail .detail-divBtn.filter-divBtn-activated{
+    border-bottom: 1px solid #33333333;
+}
+/* 하층 메뉴바 팝업 추가필터 내용 내부 평수 내부 */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup--detail .filter_popup__content-detail #pyeongWrap .pyeongWrapInner{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+}
+/* 하층 메뉴바 팝업 추가필터 내용 전체 라디오인풋 */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup--detail .filter_popup__content-detail .radio_label{
+    padding-left: 5px;
+}
+/* 하층 메뉴바 팝업 추가필터 내용 방향 전체라디오 */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup--detail .filter_popup__content-detail #roomsWrap #roomsAll{
+    width: 20px;
+    height: 20px;
+}
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup--detail .filter_popup__content-detail #roomsWrap #roomsAllWrap .radio_label{
+    font-size: 18px;
+    line-height: 18px;
+    margin: 0 0 10px 0;
+}
+/* 하층 메뉴바 팝업 추가필터 내용 방욕실수 라디오인풋 */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup--detail .filter_popup__content-detail #roomsWrap .radio_label{
+    margin-right: 20px;
+}
+/* 하층 메뉴바 팝업 추가필터 내용 방향 내부 */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup--detail .filter_popup__content-detail #directionWrap .directionWrapInner{
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+}
+/* 하층 메뉴바 팝업 추가필터 내용 방향 전체라디오 */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup--detail .filter_popup__content-detail #directionWrap #directionAll{
+    width: 20px;
+    height: 20px;
+}
+/* 하층 메뉴바 팝업 추가필터 내용 방향 전체라벨 */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup--detail .filter_popup__content-detail #directionWrap #directionAllWrap .radio_label{
+    font-size: 18px;
+    line-height: 18px;
+    margin: 0;
+}
+/* 하층 메뉴바 팝업 추가필터 내용 방향 내부 전체 라디오 */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup--detail .filter_popup__content-detail #directionWrap .directionWrapInner .radio_label{
+    margin-right: 50px;
+}
+/* 하층 메뉴바 팝업 추가필터 내용 방향 내부 엘리베이터 버튼 */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup--detail .filter_popup__content-detail #elevatorWrap .btn-detail{  
+    width: 165px;
+    height: 40px;
+}
+/* 하층 메뉴바 팝업 추가필터 내용 방향 내부 전체 라디오 */
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup--detail .filter_popup__content-detail .householdsWrapInner,
+#propertyTopRoot .menuBtmWrap .menuBtmWrap__inner .filter_popup--detail .filter_popup__content-detail .parkingWrapInner{
+    margin: 5px;
+}
+
+body{
+    position: relative;
+    width: 1920px;
+    height: 1080px;
+}
+#propertyMainRoot{
+    position: relative;
+    max-width: 550px;
+    height: calc(1080px - 120px); /* body - 상단메뉴바 */
+    background-color: #fff;
+    border: 1px solid #33333333;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, .2);
+    opacity: 1;
+    transition: 
+                width .1s,
+                opacity .1s,
+                visibility .2s,
+                transform .2s;
+}
+#propertyMainRoot.isFolded{
+    opacity: 0;
+    width: 0px;
+    visibility: hidden;
+}
+.propertyListWrap{
+    /* position: absolute; */
+    
+    z-index: 47;
+}
+.propertyList{
+    padding: 0;
+}
+.propertyListWrap__content{
+    /* padding: 8px; */
+}
+#propertyMainRoot{
+    overflow-y: scroll;
+}
+#propertyMainRoot::-webkit-scrollbar{
+    width: 16px;
+}
+#propertyMainRoot::-webkit-scrollbar-thumb{
+    height: 30%;
+    background: #FFB676;
+    border-radius: 10px;
+}
+#propertyMainRoot::-webkit-scrollbar-track{
+    background: #fff3dd
+}
+.propertyPrev{
+    display: flex;
+    padding: 16px;
+    background-color: #fff;
+    border-bottom: 1px solid #33333333;
+    transition: 
+                background-color .2s,
+                transform .2s;
+}
+.propertyPrev:hover{
+    background-color: #fff3dd;
+}
+.propertyPrev:active{
+    background-color: #FFEECC;
+}
+.propertyImgContent{
+    position: relative;
+    width: 170px;
+    height: 170px;
+}
+.propertyImgContent img{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 170px;
+    height: 170px;
+    transform: translate(50, 50);
+    object-fit: cover;
+    margin: auto;
+}
+.marginSmallDiv{
+    margin-right: 16px;
+}
+.propertyDetailContent{
+    padding: 12px;
+    width: 300px;
+    /* height: 170px; */
+}
+.propertyDetailContentInner{
+    display: flex;
+    flex-direction: column;
+}
+#propertyListCloseBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 30px;
+    height: 50px;
+    background-color: #fff;
+    border: 1px solid #33333333;
+    border-left: none;
+    border-radius: 0px 30px 30px 0px;
+    box-shadow: 3px 2px 3px rgba(0, 0, 0, .1);
+    left: 548px;
+    top: 200px;
+    cursor: pointer;
+    transition: 
+                transform .1s,
+                left .1s;
+}
+#propertyListCloseBtn.fold{
+    left: 0px;
+}

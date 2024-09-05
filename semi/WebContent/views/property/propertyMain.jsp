@@ -320,6 +320,7 @@
                                                    + '</li>'
                                     <% }else{ %>
 	                                    <% for(Property pp : ppList) {%>
+	                                    	<% String propType = ""; %>
 		                                    properties += '<li>'
 				                                        + '<a href="javascript:void(0)" class="propertyPrev">'
 				                                        + '<div class="propertyImgContent">'
@@ -333,9 +334,14 @@
 				                                        + '</div>'
 				                                        + '<div class="propertyDetailContentInner propertyDetailContentMiddle">'
 				                                        + '<p class="propertyDetailContentInner__price"><%= pp.getPpPrice() %></p>'
-				                                        + '<p class="propertyDetailContentInner__type"><%= pp.getType() %></p>'
+				                                        <% if(pp.getType() == 311 || pp.getType() == 321){%>
+				                                        	<% propType = "아파트"; %>
+				                                        <% } else if(pp.getType() == 312){%>
+				                                        	<% propType = "주택"; %>
+				                                        <% }%>
+				                                        + '<p class="propertyDetailContentInner__type"><%= propType %></p>'
 				                                        <% if(pp.getMoveDate() != null && pp.getMoveDate().length() != 0){ %>
-				                                        + 	'<p class="propertyDetailContentInner__move-in-date"><%= pp.getMoveDate() %></p>'
+				                                        + 	'<p class="propertyDetailContentInner__move-in-date">입주가능일 : <%= pp.getMoveDate() %></p>'
 				                                        <% } %>
 				                                        <% if(pp.getPyeong() != 0){%>
 				                                        + 	'<p class="propertyDetailContentInner__pyeong"><%= pp.getPyeong() %>평</p>'
@@ -349,7 +355,7 @@
 				                                        + '<p class="propertyDetailContentInner__info"><%= pp.getPpInfo() %></p>'
 				                                        <% } %>
 				                                        + '<p class="propertyDetailContentInner__brokerage"><%= pp.getBrokerage() %></p>'
-				                                        + '<p class="propertyDetailContentInner__uploadDate"><%= pp.getPpDate() %></p>'
+				                                        + '<p class="propertyDetailContentInner__uploadDate">등록일 : <%= pp.getPpDate() %></p>'
 				                                        + '</div>'
 				                                        + '</div>'
 				                                        + '</a>'

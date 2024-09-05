@@ -84,13 +84,13 @@
                     <a href="<%= contextPath %>/producutMain.me">쇼핑</a>
                 </li>
                 <li>
-                    <a href="">부동산 / 이사</a>
+                    <a href="<%= contextPath %>/main.prop">부동산 / 이사</a>
                 </li>
                 <li>
                     <a href="">이벤트</a>
                 </li>
                 <li>
-                    <a href="">정책</a>
+                    <a href="<%= contextPath %>/main.wf">정책</a>
                 </li>
 
                                         </ul>
