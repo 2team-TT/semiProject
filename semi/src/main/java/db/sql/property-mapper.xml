@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="selectPropertyListCount">
+		SELECT COUNT(*) count
+		  FROM PROPERTY
+		 WHERE STATUS = 'Y'
+	</entry>
+	<entry key="selectPropertyList">
+		SELECT *
+		  FROM (
+		        SELECT ROWNUM RNUM, A.*
+		         FROM (
+		                SELECT 
+		                	   PP_NO
+		                	 , PP_NAME
+		                	 , TAG_NO
+		                	 , B_NAME
+		                	 , PP_PRICE
+		                	 , PP_LOCATION
+		                	 , PP_OPTION
+		                	 , PP_INFO
+		                	 , TO_CHAR(PP_DATE, 'RRRR"년"MM"월"DD"일"') "PP_DATE"
+		                	 , PD_NO
+		                	 , COST
+		                	 , FLOOR
+		                	 , PYEONG
+		                	 , ROOMS
+                             , TO_CHAR(MOVE_DATE, 'RRRR"년"MM"월"DD"일"') "MOVE_DATE"
+		                	 , PP_IMG_NO
+                             , ORIGIN_NAME
+                             , CHANGE_NAME
+                             , FILEPATH
+		                  FROM PROPERTY P
+		                  JOIN PROPERTY_DETAIL PD USING(PP_NO)
+		                  JOIN PP_IMG I USING(PP_NO)
+		                  JOIN BROKERAGE B USING(B_NO)
+		                 WHERE P.STATUS = 'Y'
+		                 ORDER
+		                    BY PP_NO DESC
+		               ) A
+		        )
+		 WHERE RNUM BETWEEN ? AND ?
+	</entry>
+</properties>
