@@ -68,26 +68,26 @@
                                         <img src="./resources/img/KakaoTalk_20240730_145616126.png" alt="">
                                     </a>
 
-                                    <!-- 메뉴바 -->
-                                    <div class="menubar">
-                                        <!-- 네비 -->
-                                        <ul class="navi">
-                                            <li>
-                                                <a href="<%=contextPath%>/freeBoardList.bo?cpage=1">커뮤니티</a>
-
-                                            </li>
-                                            <li>
-                                                <a href="">쇼핑</a>
-                                            </li>
-                                            <li>
-                                                <a href="">부동산 / 이사</a>
-                                            </li>
-                                            <li>
-                                                <a href="">이벤트</a>
-                                            </li>
-                                            <li>
-                                                <a href="">정책</a>
-                                            </li>
+        <!-- 메뉴바 -->
+        <div class="menubar">
+            <!-- 네비 -->
+            <ul class="navi">
+                <li>
+                    <a href="<%=contextPath%>/freeBoardList.bo?cpage=1">커뮤니티</a>
+                  
+                </li>
+                <li>
+                    <a href="<%= contextPath %>/producutMain.me">쇼핑</a>
+                </li>
+                <li>
+                    <a href="">부동산 / 이사</a>
+                </li>
+                <li>
+                    <a href="">이벤트</a>
+                </li>
+                <li>
+                    <a href="">정책</a>
+                </li>
 
                                         </ul>
 

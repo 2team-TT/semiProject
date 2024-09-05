@@ -1,0 +1,354 @@
+/* to-top 아이콘 작동 여부 확인 css */
+body{
+    height: 3000px;
+}
+
+/* 공통 적용 css */
+
+/* 이미지는 전부 블락 처리 */
+img {
+    display: block;
+}
+
+/* a태그 텍스트 데코레이션 전부 제거 */
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+/* 상품 섹션 공통 네비바 css */
+
+.product {
+    background-color: #eee4db7e;
+    border: 1px solid orange;
+    min-height: 60px;
+    padding: 5px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 350px;
+    margin-left: auto; /* 자동 좌우 여백 조정 */
+    margin-right: auto; /* 자동 좌우 여백 조정 */
+    max-width: 1200px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.product .product--group {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%; /* 부모 요소의 너비를 기준으로 채워지도록 설정 */
+}
+
+.product .product--group .group--list {
+    flex: 1; /* Flexbox 아이템이 가능한 공간을 차지하도록 설정 */
+    min-width: 150px; /* 각 그룹의 최소 너비를 설정 */
+    text-align: center;
+}
+
+/* 반응형 웹을 위한 미디어 쿼리 추가 */
+@media (max-width: 768px) {
+    .product {
+        margin: 100px auto 0;
+        width: 90%;
+    }
+
+    .group--list {
+        flex-basis: 45%; /* 두 줄로 나열되도록 설정 */
+    }
+}
+
+@media (max-width: 480px) {
+    .product {
+        margin: 50px auto 0;
+        width: 95%;
+    }
+
+    .group--list {
+        flex-basis: 100%; /* 화면이 작아지면 한 줄로 나열되도록 설정 */
+    }
+}
+
+/* 상품 네비바 리스트 a태그 css */
+
+.product .product--group .group--list a{
+    font-weight: bolder;
+    display: inline-block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease; /* 애니메이션 추가 */
+    padding: 10px 15px; /* 패딩 추가로 여백 확보 */
+    border-radius: 5px; /* 부드러운 모서리 */
+}
+
+/* 상품 네비바 리스트 a태그  호버시 css */
+.product .product--group .group--list a:hover{
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
+    background-color: #ffe8ca; /* 배경색 변경 */
+    color: #000; /* 글자색 변경 */
+    transform: translateY(-2px);
+    
+}
+
+.sub--category {
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    min-height: 60px;
+    padding: 5px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px; /* 기존 네비바와 간격 조정 */
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.sub--category .sub--category-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
+
+.sub--category .sub--category-group .sub--category-list {
+    flex: 1;
+    min-width: 120px; /* 버튼 최소 너비 설정 */
+    text-align: center;
+    margin: 5px; /* 버튼 간격 조정 */
+}
+
+.sub--category .sub--category-group .sub--category-list a {
+    font-weight: bolder;
+    display: inline-block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+/* 추가 네비바 리스트 a태그 호버시 css */
+.sub--category .sub--category-group .sub--category-list a:hover {
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #e0e0e0;
+    color: #000;
+    transform: translateY(-2px);
+}
+
+/* 반응형 웹을 위한 미디어 쿼리 추가 */
+@media (max-width: 768px) {
+    .sub--category .sub--category-group {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .sub--category .sub--category-group .sub--category-list {
+        flex-basis: 100%;
+    }
+}
+
+/* 각 섹션에 공통적인 css 적용 */
+
+/* 베스트 상품 페이지 css */
+
+
+/* 각각의 베스트 섹션 공통 css */
+.best-products{
+    margin-top: 20px; /* 기존 네비바와 간격 조정 */
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
+    width: 100%;
+    box-sizing: border-box; /* 패딩과 보더가 요소의 총 너비에 포함되도록 설정 */
+    
+}
+
+/* 대표 텍스트 공통 css */
+/* best-products__header 컨테이너 스타일링 */
+.best-products__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px; /* 제목과 상품 리스트 간의 간격 조정 */
+}
+
+/* best-products__title 스타일링 */
+.best-products__title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+}
+
+/* best-products__more-button 스타일링 */
+.best-products__more-button {
+    font-size: 0.875rem; /* 글씨 크기 조정 */
+    font-weight: bold;
+    color: #6d4c41; /* 파스텔 톤의 베이지 색상 */
+    text-decoration: none;
+    background-color: transparent;
+    border: 1px solid #6d4c41; /* 더 얇은 테두리 */
+    border-radius: 5px;
+    padding: 5px 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.best-products__more-button:hover {
+    background-color: #6d4c41; /* 호버 시 배경색 변경 */
+    color: #fff; /* 호버 시 글자색 변경 */
+}
+
+
+/* 상품 아이템 스타일링 */
+.product-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #fff;
+    text-align: center;
+    margin-bottom: 20px; /* 아이템 간의 간격 조정 */
+    position: relative; /* 아이콘을 절대 위치로 배치하기 위한 설정 */
+}
+
+/* 상품 이미지 스타일링 */
+.product-item__image {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.product-item__image img {
+    width: 100%;
+    border-radius: 8px;
+    display: block;
+}
+
+/* 아이콘 스타일링 */
+.product-item__icon {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 40px; /* 아이콘의 가로 크기 */
+    height: 40px; /* 아이콘의 세로 크기 */
+    background-color: rgba(255, 255, 255, 0.7); /* 반투명 배경 */
+    border-radius: 50%; /* 원 모양 */
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* 애니메이션 추가 */
+    cursor: pointer; /* 커서를 포인터 모양으로 변경 */
+}
+
+.product-item__icon i {
+    font-size: 1.5rem; /* 아이콘 크기 조정 */
+    transition: color 0.3s ease; /* 애니메이션 추가 */
+}
+
+/* 기본 상태: 빈 하트 */
+.product-item__icon i.favorite_border {
+    color: #e74c3c; /* 기본 빈 하트 색상 */
+}
+
+/* 찜 상태: 채워진 하트 */
+.product-item__icon i.favorite {
+    color: #c0392b; /* 찜 상태 하트 색상 */
+}
+
+/* 마우스를 올렸을 때 효과 */
+.product-item__icon:hover {
+    background-color: rgba(255, 255, 255, 0.9); /* 호버 시 배경색 변화 */
+    transform: scale(1.1); /* 아이콘 크기 살짝 확대 */
+}
+
+/* 상품명, 가격, 평점 스타일링 */
+.product-item__name {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.product-item__price {
+    font-size: 0.875rem;
+    color: #333;
+}
+
+.product-item__rating {
+    font-size: 0.875rem;
+    color: #f39c12; /* 평점 색상 */
+}
+
+/* Toast Container */
+#toast-container {
+    position: absolute; /* 아이콘 아래에 위치시키기 위한 설정 */
+    z-index: 9999; /* 다른 요소 위에 표시되도록 설정 */
+    padding: 0;
+}
+
+/* Toast */
+.toast {
+    background-color: #fff9e6; /* 연한 노란색 파스텔 톤 */
+    color: #333; /* 텍스트 색상 */
+    border: 1px solid #e5e5e5; /* 연한 회색 테두리 */
+    border-radius: 5px; /* 모서리 둥글게 */
+    padding: 1px; /* 여백 설정 */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* 그림자 효과 */
+    white-space: nowrap; /* 텍스트가 한 줄로 표시되도록 설정 */
+    display: inline-block; /* 텍스트 길이에 맞춰 배경 크기 조정 */
+    width: auto; /* width를 auto로 설정하여 텍스트 길이에 맞춤 */
+    box-sizing: border-box; /* padding과 border를 요소 크기에 포함 */
+}
+
+
+/* 6개 이상의 아이템 노출 시 히든속성 부여 */
+.hidden-item {
+    display: none;
+}
+
+
+
+/* Toast Body */
+.toast-body {
+    display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 페이지 업 css */
+#to-top{
+    width: 45px;
+    height: 45px;
+    background-color: rgb(241, 222, 185);
+    color: #333;
+    border: 2px solid #fff;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 9;
+    transform: translateX(100px);
+}
