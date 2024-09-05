@@ -237,3 +237,4 @@ $('.auto_searchList>li').click(function () {
     console.log($(this).text())
 
 })
+
