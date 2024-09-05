@@ -1,46 +1,46 @@
-// ScrollToPlugin을 GSAP에 등록
-// 이 코드는 ScrollToPlugin을 사용하기 위해 반드시 필요.
-gsap.registerPlugin(ScrollToPlugin);
+// // ScrollToPlugin을 GSAP에 등록
+// // 이 코드는 ScrollToPlugin을 사용하기 위해 반드시 필요.
+// gsap.registerPlugin(ScrollToPlugin);
 
-// '#to-top' ID를 가진 요소를 선택하여 toTopEl 변수에 저장
-// 이 요소는 페이지 상단으로 스크롤할 때 나타나는 버튼.
-const toTopEl = document.querySelector('#to-top');
+// // '#to-top' ID를 가진 요소를 선택하여 toTopEl 변수에 저장
+// // 이 요소는 페이지 상단으로 스크롤할 때 나타나는 버튼.
+// const toTopEl = document.querySelector('#to-top');
 
-// 사용자가 스크롤을 할 때마다 이벤트가 발생하도록 설정
-// _.throttle()은 스크롤 이벤트의 빈도를 제한하여 성능을 최적화하는 역할을 함.
-window.addEventListener('scroll', _.throttle(function() {
-    // 현재 스크롤 위치를 콘솔에 출력하여 확인
-    console.log(window.scrollY);
+// // 사용자가 스크롤을 할 때마다 이벤트가 발생하도록 설정
+// // _.throttle()은 스크롤 이벤트의 빈도를 제한하여 성능을 최적화하는 역할을 함.
+// window.addEventListener('scroll', _.throttle(function() {
+//     // 현재 스크롤 위치를 콘솔에 출력하여 확인
+//     console.log(window.scrollY);
 
-    // 스크롤 위치가 500픽셀을 넘으면 toTopEl 요소를 화면에 나타나도록 설정
-    if (window.scrollY > 500) {
-        // GSAP을 사용해 toTopEl 버튼을 x축으로 0 위치로 이동시켜 화면에 나타나게 함.
-        gsap.to(toTopEl, {
-            duration: 0.2, // 애니메이션 지속 시간 (0.2초)
-            x: 0 // x축 위치를 0으로 설정하여 버튼이 화면에 나타남.
-        });
-    } else {
-        // 스크롤 위치가 500픽셀 이하이면 toTopEl 요소를 화면에서 숨김.
-        // x축 위치를 100으로 이동시켜 화면 밖으로 사라지게 함.
-        gsap.to(toTopEl, {
-            duration: 0.2, // 애니메이션 지속 시간 (0.2초)
-            x: 100 // x축 위치를 100으로 설정하여 버튼이 화면 밖으로 이동.
-        });
-    }
-}, 300)); // 300ms(0.3초)마다 스크롤 이벤트를 처리하도록 제한
+//     // 스크롤 위치가 500픽셀을 넘으면 toTopEl 요소를 화면에 나타나도록 설정
+//     if (window.scrollY > 500) {
+//         // GSAP을 사용해 toTopEl 버튼을 x축으로 0 위치로 이동시켜 화면에 나타나게 함.
+//         gsap.to(toTopEl, {
+//             duration: 0.2, // 애니메이션 지속 시간 (0.2초)
+//             x: 0 // x축 위치를 0으로 설정하여 버튼이 화면에 나타남.
+//         });
+//     } else {
+//         // 스크롤 위치가 500픽셀 이하이면 toTopEl 요소를 화면에서 숨김.
+//         // x축 위치를 100으로 이동시켜 화면 밖으로 사라지게 함.
+//         gsap.to(toTopEl, {
+//             duration: 0.2, // 애니메이션 지속 시간 (0.2초)
+//             x: 100 // x축 위치를 100으로 설정하여 버튼이 화면 밖으로 이동.
+//         });
+//     }
+// }, 300)); // 300ms(0.3초)마다 스크롤 이벤트를 처리하도록 제한
 
-// toTopEl 버튼이 클릭되었을 때의 이벤트 처리
-toTopEl.addEventListener('click', function() {
-    // 클릭 이벤트가 발생했음을 콘솔에 출력하여 확인
-    console.log('Button clicked'); 
+// // toTopEl 버튼이 클릭되었을 때의 이벤트 처리
+// toTopEl.addEventListener('click', function() {
+//     // 클릭 이벤트가 발생했음을 콘솔에 출력하여 확인
+//     console.log('Button clicked'); 
 
-    // GSAP을 사용해 페이지를 상단으로 스크롤
-    gsap.to(window, {
-        duration: 0.7, // 애니메이션 지속 시간 (0.7초)
-        scrollTo: { y: 0, autoKill: false } // y축 위치를 0으로 설정하여 페이지 상단으로 스크롤
-        // autoKill: false는 사용자가 중간에 스크롤을 시도해도 애니메이션이 중단되지 않도록 함.
-    });
-});
+//     // GSAP을 사용해 페이지를 상단으로 스크롤
+//     gsap.to(window, {
+//         duration: 0.7, // 애니메이션 지속 시간 (0.7초)
+//         scrollTo: { y: 0, autoKill: false } // y축 위치를 0으로 설정하여 페이지 상단으로 스크롤
+//         // autoKill: false는 사용자가 중간에 스크롤을 시도해도 애니메이션이 중단되지 않도록 함.
+//     });
+// });
 
 // 내 정보 셀렉트 박스 체크 상태 유지
 document.addEventListener('DOMContentLoaded', () => {

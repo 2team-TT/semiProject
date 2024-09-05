@@ -54,8 +54,8 @@
 </section>
 
 
-<div id="to-top">
+<!-- <div id="to-top">
     <div class="material-icons">arrow_upward</div>
-</div>
+</div> -->
 </body>
 </html>
