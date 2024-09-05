@@ -33,9 +33,9 @@ public class searchListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
-		String content = request.getParameter("searchContent");
 		
+		String content = request.getParameter("searchContent");
+//		System.out.println(content);
 		ArrayList<Search> list = new UserService().selectLikeSearchList(content);
 		
 		if(!list.isEmpty()){

@@ -158,6 +158,7 @@ public class UserDao {
 				s.setCount(rset.getInt("AS_COUNT"));
 				list.add(s);
 			}
+//			System.out.println(list);
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -412,12 +413,63 @@ public class UserDao {
 	
 	
 	
+	public ArrayList<Search> selectUserSearchLately(Connection conn, User u){
+		ArrayList<Search> list = new ArrayList<Search>();
+		
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectUserSearchLately");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, u.getUserNo());
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Search s = new Search();
+				s.setsNo(rset.getInt("s_no"));
+				s.setsName(rset.getString("s_name"));
+				
+				list.add(s);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
 	
 	
 	
 	
-	
-	
+	public int deleteSearch(Connection conn, int sNo, int userNo) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql =prop.getProperty("deleteSearch");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, sNo);
+			pstmt.setInt(2, userNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
 	
 	
 	

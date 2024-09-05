@@ -1,0 +1,161 @@
+.chatpop {
+    width: 360px;
+    height: 500px;
+    border: 2px solid #FFA500;
+    border-radius: 5px;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+}
+
+.chatpop .alert {
+    position: fixed;
+    width: 98%;
+    height: 70px;
+    margin: auto;
+    display: none;
+}
+
+.chatpop .chatpop_header {
+    width: 360px;
+    height: 70px;
+    font-weight: 600;
+    font-size: 18px;
+    text-align: center;
+    line-height: 70px;
+    background-color: #FFA500;
+}
+
+.chatpop .chatpop_body {
+    width: 360px;
+    height: 430px;
+
+}
+
+.chatpop .line {
+    border: 1px solid #FFA500;
+    box-sizing: border-box;
+
+}
+
+.chatpop .chatpop_body .chat_view {
+    width: 360px;
+    height: 340px;
+    display: flex;
+    flex-direction: column-reverse;
+    overflow: auto;
+    overflow-x: hidden;
+    padding: 10px;
+    box-sizing: border-box;
+    padding-right: 20px;
+    row-gap: 10px;
+    background-color: #fff0d4;
+}
+
+.chatpop .chatpop_body .chat_view .chat_message {
+    border: 1px solid #FFA500;
+    border-radius: 5px;
+    padding: 5px;
+    width: max-content;
+    max-width: 300px;
+    box-sizing: border-box;
+
+}
+
+.chatpop .chatpop_body .chat_view .chat_message .send_user {
+    font-weight: 600;
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+.chatpop .chatpop_body .chat_view .chat_message .message {
+    margin-top: 5px;
+    overflow-wrap: anywhere;
+}
+
+.chatpop .chatpop_body .chat_view .chat_message.right {
+    border: 1px solid #FFA500;
+    border-radius: 5px;
+    padding: 5px;
+    width: max-content;
+    max-width: 300px;
+    box-sizing: border-box;
+    margin-left: auto;
+}
+
+
+.chatpop .chatpop_body .chat_view .chat_message.right .send_user {
+    display: none;
+}
+
+
+.chatpop .chatpop_body .chat_view::-webkit-scrollbar {
+    background-color: #fff;
+    width: 1rem;
+}
+
+.chatpop .chatpop_body .chat_view::-webkit-scrollbar-track {
+    background-color: #fff;
+}
+
+.chatpop .chatpop_body .chat_view::-webkit-scrollbar-thumb {
+    height: 15%;
+    background-color: #babac0;
+
+    border-radius: 1rem;
+    border: 4px solid #fff;
+}
+
+
+.chatpop .chatpop_body .chat_input {
+    width: 360px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    box-sizing: border-box;
+    align-items: center;
+    column-gap: 10px;
+    background-color: #ffeac4;
+
+}
+
+.chatpop .chatpop_body .chat_input #chat_textarea {
+    flex-grow: 1;
+    height: 60px;
+    resize: none;
+
+}
+
+
+.chatpop .chatpop_body .chat_input .textarea_btn {
+    box-sizing: border-box;
+    border: 1px solid #FFA500;
+    border-radius: 5px;
+    resize: none;
+    height: 35px;
+    width: 50px;
+    background-color: transparent;
+    cursor: pointer;
+    transition: .4s;
+
+}
+
+.chatpop .chatpop_body .chat_input .textarea_btn:hover {
+    box-sizing: border-box;
+    border: 1px solid #FFA500;
+    border-radius: 5px;
+    resize: none;
+    height: 35px;
+    width: 50px;
+    background-color: rgb(255, 219, 219);
+    cursor: pointer;
+}
+
+.chatpop .chatpop_body .chat_input .textarea_btn:active {
+    resize: none;
+    height: 35px;
+    width: 50px;
+    background-color: rgb(255, 186, 186);
+    cursor: pointer;
+}

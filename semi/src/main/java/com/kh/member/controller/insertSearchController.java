@@ -58,11 +58,11 @@ public class insertSearchController extends HttpServlet {
 			
 			
 			result1 = new UserService().searchCountUp(search, userNo);
-			System.out.println("첫번째 업데이트"+result1);
+//			System.out.println("첫번째 업데이트"+result1);
 			if(result1==0) {
 				
 				result1 = new UserService().insertSearch(search, userNo);
-				System.out.println("두번째 업데이트"+result1);
+//				System.out.println("두번째 업데이트"+result1);
 			}
 			
 			

@@ -11,19 +11,19 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.kh.chatRoom.model.service.ChatService;
-import com.kh.chatRoom.model.vo.ChatRoom;
+import com.kh.chatRoom.model.vo.Income;
 
 /**
- * Servlet implementation class ChatRoomController
+ * Servlet implementation class selectIncomeController
  */
-@WebServlet("/chatroom.ch")
-public class ChatRoomController extends HttpServlet {
+@WebServlet("/selectIncome.hh")
+public class selectIncomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ChatRoomController() {
+    public selectIncomeController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,9 +33,15 @@ public class ChatRoomController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-	
+		int userNo = Integer.parseInt(request.getParameter("userNo"));
+		String date = request.getParameter("date");
 		
-		request.getRequestDispatcher("views/chatRoom/chatRoom.jsp").forward(request, response);
+//		System.out.println(userNo + "       "+ date);
+		
+		ArrayList<Income> list = new ChatService().selectIncomeList(userNo, date);
+		
+		response.setContentType("application/json; charset=utf-8");
+		new Gson().toJson(list, response.getWriter());
 		
 	}
 

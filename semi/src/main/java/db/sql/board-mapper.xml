@@ -492,9 +492,8 @@ SELECT
      , TAG_NO
      , BOARD_TITLE
      , BOARD_CONTENT
-     , USER_ID
+     , DECODE(USER_NICK,NULL,USER_ID,USER_NICK) AS "USER_ID"
      , USER_NO
-     , USER_NICK
      , VIEW_COUNT
      , REPLY_COUNT
      , LIKES_COUNT
@@ -831,8 +830,80 @@ UPDATE BOARD
    SET STATUS = 'N'
  WHERE BOARD_NO =?
 	</entry>
+	
+	
+	
+	
+	
+<entry key="mainbestfood">
+SELECT *
+FROM (
+SELECT 
+       BOARD_NO
+     , BOARD_TITLE
+     , VIEW_COUNT
+     , REPLY_COUNT
+     , LIKES_COUNT
+     , TO_CHAR(CREATE_DATE, 'YYYY-MM-DD') AS "CREATE_DATE"
+     , FILEPATH ||  CHANGE_NAME AS "TITLE_IMG"
+FROM BOARD
+JOIN BOARD_IMG USING(BOARD_NO) 
+WHERE TAG_NO = 130
+  AND BOARD.STATUS = 'Y'
+      ORDER 
+         BY VIEW_COUNT DESC
+)
+WHERE ROWNUM <![CDATA[ < ]]> 4
+
+	</entry>
 
 
-
+	<entry key="mainbestUsed">
+SELECT *
+	FROM (SELECT 
+			       BOARD_NO
+			     , BOARD_TITLE
+			     , MODEL_NO
+			     , PRICE
+			     , MODEL_STATUS
+                 , TRADING_AREA
+                 , TRADING_METHOD
+			     , TO_CHAR(CREATE_DATE, 'YYYY-MM-DD') AS "CREATE_DATE"
+			     , FILEPATH ||  CHANGE_NAME AS "TITLE_IMG"
+			FROM BOARD
+			JOIN BOARD_IMG USING(BOARD_NO) 
+            JOIN BOARD_USED USING(BOARD_NO)
+			WHERE TAG_NO = 140
+			  AND BOARD.STATUS = 'Y'
+	        ORDER 
+	           BY VIEW_COUNT DESC)
+	 WHERE ROWNUM <![CDATA[ < ]]>4
+	
+	</entry>
 				
+				
+				
+				
+				
+<entry key="selectUserBoardList">
+	SELECT *
+	FROM(SELECT ROWNUM AS "RNUM", A.*
+	FROM (SELECT 
+			       BOARD_NO
+                 , TAG_NAME
+			     , BOARD_TITLE
+			     , VIEW_COUNT
+			     , REPLY_COUNT
+			     , LIKES_COUNT
+			     , TO_CHAR(CREATE_DATE, 'YYYY-MM-DD') AS "CREATE_DATE"
+			FROM BOARD
+            JOIN TAG USING(TAG_NO)
+			WHERE STATUS  ='Y'
+              AND TAG_NO BETWEEN 101 AND 199
+              AND BOARD_WRITER =?
+	        ORDER 
+	           BY VIEW_COUNT DESC) A)
+	 WHERE RNUM BETWEEN ? AND ?
+	</entry>
+
 </properties>
