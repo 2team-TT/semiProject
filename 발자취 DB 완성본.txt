@@ -148,7 +148,14 @@ INSERT INTO USER1 VALUES(SEQ_USERNO.NEXTVAL, 'user01', 'pass01', '김지영', nu
 INSERT INTO USER1 VALUES(SEQ_USERNO.NEXTVAL, 'user02', 'pass02', '김종열', null, null, '010-2222-2222', null, DEFAULT, DEFAULT, DEFAULT );
 INSERT INTO USER1 VALUES(SEQ_USERNO.NEXTVAL, 'user03', 'pass03', '박경원', null, null, '010-3333-3333', null, DEFAULT, DEFAULT, DEFAULT );
 INSERT INTO USER1 VALUES(SEQ_USERNO.NEXTVAL, 'user04', 'pass04', '이미예', null, null, '010-4444-4444', null, DEFAULT, DEFAULT, DEFAULT );
-INSERT INTO USER1 VALUES(SEQ_USERNO.NEXTVAL, 'user05', 'pass05', '김시연', null, null, '010-5555-5555', null, DEFAULT, DEFAULT, DEFAULT );
+INSERT INTO USER1 VALUES(SEQ_USERNO.NEXTVAL, 'fwfewe001', 'asfd!', '김시연', null, null, '010-5555-6666', null, DEFAULT, DEFAULT, DEFAULT );
+INSERT INTO USER1 VALUES(SEQ_USERNO.NEXTVAL, 'uweewt882', 'pass05', '차은우', null, null, '010-5555-7775', null, DEFAULT, DEFAULT, DEFAULT );
+INSERT INTO USER1 VALUES(SEQ_USERNO.NEXTVAL, 'grgrgq48', 'pass05', '카리나', null, null, '010-5555-5885', null, DEFAULT, DEFAULT, DEFAULT );INSERT INTO USER1 VALUES(SEQ_USERNO.NEXTVAL, 'user05', 'pass05', '김시연', null, null, '010-5555-5555', null, DEFAULT, DEFAULT, DEFAULT );
+INSERT INTO USER1 VALUES(SEQ_USERNO.NEXTVAL, 'awgerw88', 'pass05', '김지훈', null, null, '010-5110-5355', null, DEFAULT, DEFAULT, DEFAULT );
+INSERT INTO USER1 VALUES(SEQ_USERNO.NEXTVAL, 'rbbb99', 'pass05', '이순재', null, null, '010-5575-5595', null, DEFAULT, DEFAULT, DEFAULT );
+INSERT INTO USER1 VALUES(SEQ_USERNO.NEXTVAL, 'fffeeww88', 'pass05', '유재석', null, null, '010-5355-6555', null, DEFAULT, DEFAULT, DEFAULT );
+INSERT INTO USER1 VALUES(SEQ_USERNO.NEXTVAL, 'fyuyu8', 'pass05', '하하', null, null, '010-5555-5255', null, DEFAULT, DEFAULT, DEFAULT );
+
 
 
 --2. 카테고리
@@ -639,19 +646,19 @@ COMMENT ON COLUMN BOARD_IMG.STATUS IS '게시글 사진 상태값';
 
 -- 게시판 사진 임의 데이터 : 외래키 데이터 2번째
 INSERT INTO BOARD_IMG
-VALUES (SEQ_BINO.NEXTVAL, 1, 'original_image1.jpg', 'change_image1.jpg', '/images/board/2024/08/', DEFAULT, '1', DEFAULT);
+VALUES (SEQ_BINO.NEXTVAL, 1, 'original_image1.jpg', '파일명.png', '/resources/bImg/', DEFAULT, '1', DEFAULT);
 
 INSERT INTO BOARD_IMG
-VALUES (SEQ_BINO.NEXTVAL, 2, 'original_image2.png', 'change_image2.png', '/images/board/2024/08/', DEFAULT, '1', DEFAULT);
+VALUES (SEQ_BINO.NEXTVAL, 2, 'original_image2.png', 'change_image2.png', '/resources/bImg/', DEFAULT, '1', DEFAULT);
 
 INSERT INTO BOARD_IMG
-VALUES (SEQ_BINO.NEXTVAL, 3, 'original_image3.gif', 'change_image3.gif', '/images/board/2024/08/', DEFAULT, '1', DEFAULT);
+VALUES (SEQ_BINO.NEXTVAL, 3, 'original_image3.gif', 'change_image3.gif', '/resources/bImg/', DEFAULT, '1', DEFAULT);
 
 INSERT INTO BOARD_IMG
-VALUES (SEQ_BINO.NEXTVAL, 4, 'original_image4.bmp', 'change_image4.bmp', '/images/board/2024/08/', DEFAULT, '1', DEFAULT);
+VALUES (SEQ_BINO.NEXTVAL, 4, 'original_image4.bmp', 'change_image4.bmp', '/resources/bImg/', DEFAULT, '1', DEFAULT);
 
 INSERT INTO BOARD_IMG
-VALUES (SEQ_BINO.NEXTVAL, 5, 'original_image5.jpg', 'change_image5.jpg', '/images/board/2024/08/', DEFAULT, '1', DEFAULT);
+VALUES (SEQ_BINO.NEXTVAL, 5, 'original_image5.jpg', 'change_image5.jpg', '/resources/bImg/', DEFAULT, '1', DEFAULT);
 
 
 
@@ -849,6 +856,26 @@ INSERT INTO PRODUCT (P_NO, TAG_NO, P_NAME, P_SELLER, PRICE, DISCOUNT, SELL_STATU
 VALUES(SEQ_PRO_NO.NEXTVAL, 213, '게이밍의자', '로지텍', 180000, 1 , '입고예정', 0, '게임할때 편한의자', '3000원'  );
 INSERT INTO PRODUCT (P_NO, TAG_NO, P_NAME, P_SELLER, PRICE, DISCOUNT, SELL_STATUS, STOCK, P_CONTENT, D_PRICE )
 VALUES(SEQ_PRO_NO.NEXTVAL, 245, '곰팡이 한팡 제거제', '투팡', 5000, 1 , '판매중', 100, '욕실 곰팡이 한방 제거', '3000원'  );
+INSERT INTO PRODUCT (P_NO, TAG_NO, P_NAME, P_SELLER, PRICE, DISCOUNT, SELL_STATUS, STOCK, P_CONTENT, D_PRICE )
+VALUES(SEQ_PRO_NO.NEXTVAL, 216, '눌러붙지 않는 후라이팬', '쿠팡', 15000, 0.8 , '판매중', 150, '어떤 음식이든 눌러붙지 않는 완벽한 코팅', '3000원'  );
+INSERT INTO PRODUCT (P_NO, TAG_NO, P_NAME, P_SELLER, PRICE, DISCOUNT, SELL_STATUS, STOCK, P_CONTENT, D_PRICE )
+VALUES(SEQ_PRO_NO.NEXTVAL, 214, '르반 세라믹식탁 세트 4인용 원목 직각 1400 의자2 벤치', '폴인퍼니', 686000, 1 , '판매중', 100, '내추럴한 분위기 연출이 가능한 책생', '50000원'  );
+INSERT INTO PRODUCT (P_NO, TAG_NO, P_NAME, P_SELLER, PRICE, DISCOUNT, SELL_STATUS, STOCK, P_CONTENT, D_PRICE )
+VALUES(SEQ_PRO_NO.NEXTVAL, 223, '오스본가구 원조 라티나 구스다운 4인용 소파', '오스본', 409000, 0.9 , '판매중', 100, '단단하면서도 푹신한 쿠션감이 좋고, 등받이 각도를 조절할 수 있습니다.', '50000원'  );
+INSERT INTO PRODUCT (P_NO, TAG_NO, P_NAME, P_SELLER, PRICE, DISCOUNT, SELL_STATUS, STOCK, P_CONTENT, D_PRICE )
+VALUES(SEQ_PRO_NO.NEXTVAL , 219, '더온 발열도시락(6종) 원터치', '더온', 39900, 1, '판매중', 155, '발열전투식량 군납업체가 만든 간편식 군대밥 비상식량', '무료배송'  );
+INSERT INTO PRODUCT (P_NO, TAG_NO, P_NAME, P_SELLER, PRICE, DISCOUNT, SELL_STATUS, STOCK, P_CONTENT, D_PRICE )
+VALUES(SEQ_PRO_NO.NEXTVAL , 238, '유탕고구마 1kg 대용량', '푸드야', 11000, 1, '판매중', 95, '간단하게 먹을 수 있는 튀김 고구마', '3000원'  );
+INSERT INTO PRODUCT (P_NO, TAG_NO, P_NAME, P_SELLER, PRICE, DISCOUNT, SELL_STATUS, STOCK, P_CONTENT, D_PRICE )
+VALUES(SEQ_PRO_NO.NEXTVAL , 247, '차이나타오 크리스마스조명', '차이나타오', 24800, 0.6, '판매중', 515, '유선무선 둘다 사용 가능, 전원을 켜지 않아도 인테리어 소품으로 굿', '무료배송'  );
+INSERT INTO PRODUCT (P_NO, TAG_NO, P_NAME, P_SELLER, PRICE, DISCOUNT, SELL_STATUS, STOCK, P_CONTENT, D_PRICE )
+VALUES(SEQ_PRO_NO.NEXTVAL , 238, '인조잔디 롤조경', '쉼터프', 275000, 1, '판매중', 555, '롤 조경 베란다 마당 옥상 테라스 매트 시공', '무료배송'  );
+INSERT INTO PRODUCT (P_NO, TAG_NO, P_NAME, P_SELLER, PRICE, DISCOUNT, SELL_STATUS, STOCK, P_CONTENT, D_PRICE )
+VALUES(SEQ_PRO_NO.NEXTVAL , 227, '오동나무 우드 블라인드 거실 베란다 창문', '창안애', 9800, 1, '판매중', 355, '햇빛차단도 잘 되고 올리고 내리기 편하고 바람도 잘 통합니다.', '무료배송'  );
+INSERT INTO PRODUCT (P_NO, TAG_NO, P_NAME, P_SELLER, PRICE, DISCOUNT, SELL_STATUS, STOCK, P_CONTENT, D_PRICE )
+VALUES(SEQ_PRO_NO.NEXTVAL , 246, '캠트레이 20가지 컬러', '캠브로', 13000, 1, '판매중', 355, '충경에 강하고 가벼운 유리섬유로 제작, 얼룩과 냄새베임에 강합니다.', '무료배송'  );
+INSERT INTO PRODUCT (P_NO, TAG_NO, P_NAME, P_SELLER, PRICE, DISCOUNT, SELL_STATUS, STOCK, P_CONTENT, D_PRICE )
+VALUES(SEQ_PRO_NO.NEXTVAL , 216, '땡스소윤 냉동용기 사장님패키기 28p', '땡스소윤', 109000, 1, '판매중', 55, '어떤 냉동실에도 맞춘 듯 스마트하게', '무료배송'  );
 
 
 
@@ -987,11 +1014,11 @@ COMMENT ON COLUMN PR_IMG.FILEPATH IS '파일경로';
 COMMENT ON COLUMN PR_IMG.UPLOAD_DATE IS '업로드날짜';
 COMMENT ON COLUMN PR_IMG.STATUS IS '상태';
 -- 리뷰 사진 샘플 데이터 (2번째 외래키)
-INSERT INTO PR_IMG VALUES(SEQ_PRODUCT_REVIEW_IMG_NO.NEXTVAL, 1, 'worth_it.png', '20240811010203.png', '/resources/img/',  DEFAULT, DEFAULT);
-INSERT INTO PR_IMG VALUES(SEQ_PRODUCT_REVIEW_IMG_NO.NEXTVAL, 2, 'expensive.jpg', '20240811010204.jpg', '/resources/img/',  DEFAULT, DEFAULT);
-INSERT INTO PR_IMG VALUES(SEQ_PRODUCT_REVIEW_IMG_NO.NEXTVAL, 3, 'boom.gif', '20240811010205.gif', '/resources/img/',  DEFAULT, 'N');
-INSERT INTO PR_IMG VALUES(SEQ_PRODUCT_REVIEW_IMG_NO.NEXTVAL, 2, 'expensive.jpg', '20240811010204.jpg', '/resources/img/',  DEFAULT, DEFAULT);
-INSERT INTO PR_IMG VALUES(SEQ_PRODUCT_REVIEW_IMG_NO.NEXTVAL, 3, 'boom.gif', '20240811010205.gif', '/resources/img/',  DEFAULT, 'N');
+INSERT INTO PR_IMG VALUES(SEQ_PRODUCT_REVIEW_IMG_NO.NEXTVAL, 1, 'worth_it.png', '20240811010203.png', '/resources/bImg/',  DEFAULT, DEFAULT);
+INSERT INTO PR_IMG VALUES(SEQ_PRODUCT_REVIEW_IMG_NO.NEXTVAL, 2, 'expensive.jpg', '20240811010204.jpg', '/resources/bImg/',  DEFAULT, DEFAULT);
+INSERT INTO PR_IMG VALUES(SEQ_PRODUCT_REVIEW_IMG_NO.NEXTVAL, 3, 'boom.gif', '20240811010205.gif', '/resources/bImg/',  DEFAULT, 'N');
+INSERT INTO PR_IMG VALUES(SEQ_PRODUCT_REVIEW_IMG_NO.NEXTVAL, 2, 'expensive.jpg', '20240811010204.jpg', '/resources/bImg/',  DEFAULT, DEFAULT);
+INSERT INTO PR_IMG VALUES(SEQ_PRODUCT_REVIEW_IMG_NO.NEXTVAL, 3, 'boom.gif', '20240811010205.gif', '/resources/bImg/',  DEFAULT, 'N');
 
 
 
@@ -1020,19 +1047,19 @@ COMMENT ON COLUMN PRODUCT_IMG.UPLOAD_DATE IS '업로드날짜';
 COMMENT ON COLUMN PRODUCT_IMG.STATUS IS '상태';
 
 INSERT INTO PRODUCT_IMG (P_IMG_NO, P_NO, ORIGIN_NAME, CHANGE_NAME, FILEPATH , FILE_LEVEL)
-VALUES(SEQ_PRODUCT_IMG.NEXTVAL , 1, '첫번째 사진','첫번째 수정명', '파일경로', 1 );
+VALUES(SEQ_PRODUCT_IMG.NEXTVAL , 1, '첫번째 사진','첫번째 수정명', '/resources/bImg/', 1 );
 
 INSERT INTO PRODUCT_IMG (P_IMG_NO, P_NO, ORIGIN_NAME, CHANGE_NAME, FILEPATH , FILE_LEVEL)
-VALUES(SEQ_PRODUCT_IMG.NEXTVAL , 1, '두번째 사진','두번째 수정명', '파일경로', 2 );
+VALUES(SEQ_PRODUCT_IMG.NEXTVAL , 2, '두번째 사진','두번째 수정명', '/resources/bImg/', 2 );
 
 INSERT INTO PRODUCT_IMG (P_IMG_NO, P_NO, ORIGIN_NAME, CHANGE_NAME, FILEPATH , FILE_LEVEL)
-VALUES(SEQ_PRODUCT_IMG.NEXTVAL , 1, '세번째 사진','세번째 수정명', '파일경로', 2 );
+VALUES(SEQ_PRODUCT_IMG.NEXTVAL , 3, '세번째 사진','세번째 수정명', '/resources/bImg/', 2 );
 
 INSERT INTO PRODUCT_IMG (P_IMG_NO, P_NO, ORIGIN_NAME, CHANGE_NAME, FILEPATH , FILE_LEVEL)
-VALUES(SEQ_PRODUCT_IMG.NEXTVAL , 2, '네번째 사진','네번째 수정명', '파일경로', 2 );
+VALUES(SEQ_PRODUCT_IMG.NEXTVAL , 4, '네번째 사진','네번째 수정명', '/resources/bImg/', 2 );
 
 INSERT INTO PRODUCT_IMG (P_IMG_NO, P_NO, ORIGIN_NAME, CHANGE_NAME, FILEPATH , FILE_LEVEL)
-VALUES(SEQ_PRODUCT_IMG.NEXTVAL , 1, '다섯번째 사진','다섯번째 수정명', '파일경로', 2 );
+VALUES(SEQ_PRODUCT_IMG.NEXTVAL , 5, '다섯번째 사진','다섯번째 수정명', '/resources/bImg/', 2 );
 
 
 
@@ -1437,19 +1464,19 @@ NOCACHE;
 
 
 INSERT INTO B_IMG (B_IMG_NO, B_NO, ORIGIN_NAME, CHANGE_NAME, FILEPATH , FILE_LEVEL)
-VALUES(SEQ_B_IMG.NEXTVAL , 1, '첫번째 중개업사진','첫번째 수정명', '파일경로', 1 );
+VALUES(SEQ_B_IMG.NEXTVAL , 1, '첫번째 중개업사진','첫번째 수정명', '/resources/bImg/', 1 );
 
 INSERT INTO B_IMG (B_IMG_NO, B_NO, ORIGIN_NAME, CHANGE_NAME, FILEPATH , FILE_LEVEL)
-VALUES(SEQ_B_IMG.NEXTVAL , 1, '두번째 중개업사진','두번째 수정명', '파일경로', 2 );
+VALUES(SEQ_B_IMG.NEXTVAL , 1, '두번째 중개업사진','두번째 수정명', '/resources/bImg/', 2 );
 
 INSERT INTO B_IMG (B_IMG_NO, B_NO, ORIGIN_NAME, CHANGE_NAME, FILEPATH , FILE_LEVEL)
-VALUES(SEQ_B_IMG.NEXTVAL , 1, '세번째 중개업사진','세번째 수정명', '파일경로', 2 );
+VALUES(SEQ_B_IMG.NEXTVAL , 1, '세번째 중개업사진','세번째 수정명', '/resources/bImg/', 2 );
 
 INSERT INTO B_IMG (B_IMG_NO, B_NO, ORIGIN_NAME, CHANGE_NAME, FILEPATH , FILE_LEVEL)
-VALUES(SEQ_B_IMG.NEXTVAL , 2, '네번째 중개업사진','네번째 수정명', '파일경로', 2 );
+VALUES(SEQ_B_IMG.NEXTVAL , 2, '네번째 중개업사진','네번째 수정명', '/resources/bImg/', 2 );
 
 INSERT INTO B_IMG (B_IMG_NO, B_NO, ORIGIN_NAME, CHANGE_NAME, FILEPATH , FILE_LEVEL)
-VALUES(SEQ_B_IMG.NEXTVAL , 1, '다섯번째 중개업사진','다섯번째 수정명', '파일경로', 2 );
+VALUES(SEQ_B_IMG.NEXTVAL , 1, '다섯번째 중개업사진','다섯번째 수정명', '/resources/bImg/', 2 );
 
 
 -- 중개업 리뷰 테이블
@@ -1530,19 +1557,19 @@ COMMENT ON COLUMN BR_IMG.STATUS IS '중개업 리뷰 사진 상태';
 
 -- 중개업 리뷰 사진 임의 데이터 : 2번 데이터 외래키 값이므로 알맞게 변경
 INSERT INTO BR_IMG
-VALUES (SEQ_BRINO.NEXTVAL, 1, 'office1.jpg', 'office1_resized.jpg', '/uploads/2024/08/', DEFAULT, DEFAULT);
+VALUES (SEQ_BRINO.NEXTVAL, 1, 'office1.jpg', 'office1_resized.jpg', '/resources/bImg/', DEFAULT, DEFAULT);
 
 INSERT INTO BR_IMG
-VALUES (SEQ_BRINO.NEXTVAL, 2, 'interior1.jpg', 'interior1_edited.jpg', '/uploads/2024/08/', DEFAULT, DEFAULT);
+VALUES (SEQ_BRINO.NEXTVAL, 2, 'interior1.jpg', 'interior1_edited.jpg', '/resources/bImg/', DEFAULT, DEFAULT);
 
 INSERT INTO BR_IMG
-VALUES (SEQ_BRINO.NEXTVAL, 3, 'building_front.jpg', 'building_front_optimized.jpg', '/uploads/2024/08/', DEFAULT, DEFAULT);
+VALUES (SEQ_BRINO.NEXTVAL, 3, 'building_front.jpg', 'building_front_optimized.jpg', '/resources/bImg/', DEFAULT, DEFAULT);
 
 INSERT INTO BR_IMG
-VALUES (SEQ_BRINO.NEXTVAL, 4, 'room_view.jpg', 'room_view_final.jpg', '/uploads/2024/08/', DEFAULT, DEFAULT);
+VALUES (SEQ_BRINO.NEXTVAL, 4, 'room_view.jpg', 'room_view_final.jpg', '/resources/bImg/', DEFAULT, DEFAULT);
 
 INSERT INTO BR_IMG
-VALUES (SEQ_BRINO.NEXTVAL, 5, 'amenities.jpg', 'amenities_enhanced.jpg', '/uploads/2024/08/', DEFAULT, DEFAULT);
+VALUES (SEQ_BRINO.NEXTVAL, 5, 'amenities.jpg', 'amenities_enhanced.jpg', '/resources/bImg/', DEFAULT, DEFAULT);
 
 
 
@@ -1684,11 +1711,11 @@ COMMENT ON COLUMN PP_IMG.FILE_LEVEL IS '파일레벨';
 COMMENT ON COLUMN PP_IMG.UPLOAD_DATE IS '업로드날짜';
 COMMENT ON COLUMN PP_IMG.STATUS IS '상태';
 -- 매물 사진 샘플 데이터 (2번째 외래키)
-INSERT INTO PP_IMG VALUES(SEQ_PROPERTY_IMG_NO.NEXTVAL, 1, 'hightower.png', '20240811010206.png', '/resources/img/', '2', DEFAULT, DEFAULT);
-INSERT INTO PP_IMG VALUES(SEQ_PROPERTY_IMG_NO.NEXTVAL, 2, 'apartment.jpg', '20240811010207.jpg', '/resources/img/', '2', DEFAULT, DEFAULT);
-INSERT INTO PP_IMG VALUES(SEQ_PROPERTY_IMG_NO.NEXTVAL, 3, 'cat.gif', '20240811010208.gif', '/resources/img/', '2', DEFAULT, 'N');
-INSERT INTO PP_IMG VALUES(SEQ_PROPERTY_IMG_NO.NEXTVAL, 4, 'apartment.jpg', '20240811010207.jpg', '/resources/img/', '2', DEFAULT, DEFAULT);
-INSERT INTO PP_IMG VALUES(SEQ_PROPERTY_IMG_NO.NEXTVAL, 5, 'cat.gif', '20240811010208.gif', '/resources/img/', '2', DEFAULT, 'N');
+INSERT INTO PP_IMG VALUES(SEQ_PROPERTY_IMG_NO.NEXTVAL, 1, 'hightower.png', '20240811010206.png', '/resources/bImg/', '2', DEFAULT, DEFAULT);
+INSERT INTO PP_IMG VALUES(SEQ_PROPERTY_IMG_NO.NEXTVAL, 2, 'apartment.jpg', '20240811010207.jpg', '/resources/bImg/', '2', DEFAULT, DEFAULT);
+INSERT INTO PP_IMG VALUES(SEQ_PROPERTY_IMG_NO.NEXTVAL, 3, 'cat.gif', '20240811010208.gif', '/resources/bImg/', '2', DEFAULT, 'N');
+INSERT INTO PP_IMG VALUES(SEQ_PROPERTY_IMG_NO.NEXTVAL, 4, 'apartment.jpg', '20240811010207.jpg', '/resources/bImg/', '2', DEFAULT, DEFAULT);
+INSERT INTO PP_IMG VALUES(SEQ_PROPERTY_IMG_NO.NEXTVAL, 5, 'cat.gif', '20240811010208.gif', '/resources/bImg/', '2', DEFAULT, 'N');
 
 
 -- 정부기관 테이블

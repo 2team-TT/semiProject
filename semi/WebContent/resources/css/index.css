@@ -534,6 +534,9 @@
     font-weight: 900;
     margin-top: 5px;
     margin-left: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .board_content .content_cook_used .cook_used_area .cook_used_box .cook_box_content .cook_box_enrollDate {
@@ -678,6 +681,9 @@
     margin-left: 5px;
     font-weight: 700;
     font-size: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 
@@ -844,12 +850,21 @@
     margin-top: 8px;
     margin-left: 5px;
     font-size: 14px;
+
 }
 
 .property .property_area .property_slide_area .swiper-slide .text_area>div:nth-child(1),
 .property .property_area .property_slide_area .swiper-slide .text_area>div:nth-child(2) {
     font-size: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 
+.property .property_area .property_slide_area .swiper-slide .text_area>div:nth-child(3) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .property .property_area .property_slide_area .swiper-slide .text_area>div>p {

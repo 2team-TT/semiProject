@@ -37,7 +37,7 @@ public class MainProductselectLIstController extends HttpServlet {
 		
 		ArrayList<Product> list = new ProductService().mainSelectListProduct();
 		
-		
+//		System.out.println(list);
 		response.setContentType("aplication/json; charset=utf-8");
 		
 		new Gson().toJson(list, response.getWriter());
