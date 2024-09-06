@@ -28,6 +28,9 @@ public class Product {
 	 
 	 private String latelyDate; // 최근 본 상품 날짜
 	 
+	 private String filePath; // 상품 이미지 경로
+	 private String changeName; // 상품 이미지 파일명
+	 
 	 public Product() {}
 
 	public Product(int pNo, int tagNo, String pName, String pSeller, int price, int discount, String sellStatus,
@@ -91,6 +94,19 @@ public class Product {
 		this.pName = pName;
 		this.price = price;
 		this.rating = rating;
+	}
+	
+	
+
+	public Product(int pNo, int tagNo, String pName, int price, double rating, String filePath, String changeName) {
+		super();
+		this.pNo = pNo;
+		this.tagNo = tagNo;
+		this.pName = pName;
+		this.price = price;
+		this.rating = rating;
+		this.filePath = filePath;
+		this.changeName = changeName;
 	}
 
 	public int getpNo() {
@@ -257,6 +273,24 @@ public class Product {
 
 	public void setLatelyDate(String latelyDate) {
 		this.latelyDate = latelyDate;
+	}
+	
+	
+
+	public String getFilePath() {
+		return filePath;
+	}
+
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
+
+	public String getChangeName() {
+		return changeName;
+	}
+
+	public void setChangeName(String changeName) {
+		this.changeName = changeName;
 	}
 
 	
