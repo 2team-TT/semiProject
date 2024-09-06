@@ -40,9 +40,12 @@
     <%@ include file="../common/menubar.jsp" %> 
     <%
     String loginUserId = (u != null) ? u.getUserId() : "";
+    Integer loginUserNo = (u != null) ? u.getUserNo() : 0;
 	%>
 
 	<input type="hidden" id="loginUserId" value="<%= loginUserId %>">
+	<input type="hidden" id="loginUserNo" value="<%= loginUserNo %>">
+	
 
 	
     <!-- 상품 섹션 공통 네비바 -->
