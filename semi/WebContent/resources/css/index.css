@@ -704,6 +704,8 @@
     margin-left: 2px;
     font-weight: 700;
     font-size: 15px;
+    display: flex;
+    align-items: center;
 }
 
 .shopping_content .shopping_area .shopping_silde .swiper-slide .slide_shop_span span:nth-child(1) {
@@ -814,7 +816,6 @@
 
 .property .property_area .property_slide_area .swiper-slide .img_area {
     border-radius: 5px;
-    background-color: #ff0000;
     height: 100%;
     width: 70%;
     overflow: hidden;
@@ -840,9 +841,9 @@
 
 .property .property_area .property_slide_area .swiper-slide .text_area>div {
     font-weight: 700;
-    margin-top: 10px;
+    margin-top: 8px;
     margin-left: 5px;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .property .property_area .property_slide_area .swiper-slide .text_area>div:nth-child(1),
@@ -853,15 +854,16 @@
 
 .property .property_area .property_slide_area .swiper-slide .text_area>div>p {
     font-weight: 700;
-    margin-top: 10px;
+    margin-top: 5px;
     margin-left: 5px;
-    font-size: 14px;
+    font-size: 10px;
     width: 90%;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
     word-break: break-all;
 
 
@@ -926,6 +928,11 @@
     font-weight: 900;
 }
 
+.brokerage .brokerage_area .brokerage_title>.property_title.hidden,
+.brokerage .brokerage_area .brokerage_title>.move_title.hidden {
+    display: none;
+}
+
 .brokerage .brokerage_area .brokerage_choose {
     margin-top: 15px;
     margin-left: 35px;
@@ -960,9 +967,14 @@
     position: relative;
 }
 
-.brokerage .brokerage_area .brokerage_slide_area .swiper-container.move_slide {
+.brokerage .brokerage_area .brokerage_slide_area .swiper-container.move_slide.hidden {
     display: none;
 }
+
+.brokerage .brokerage_area .brokerage_slide_area .swiper-container.property_slide.hidden {
+    display: none;
+}
+
 
 
 .brokerage .brokerage_area .brokerage_slide_area .swiper-container {

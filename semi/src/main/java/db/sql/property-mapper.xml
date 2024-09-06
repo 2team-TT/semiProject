@@ -42,4 +42,48 @@
 		        )
 		 WHERE RNUM BETWEEN ? AND ?
 	</entry>
+	
+		
+		
+<entry key="selelctMainPropertyList">
+SELECT
+       P.PP_NO
+     , PP_NAME
+     , TAG_NAME
+     , PP_PRICE
+     , PP_LOCATION
+     , PP_COUNT
+     , DECODE(PP_OPTION,NULL,'없음',PP_OPTION) AS "PP_OPTION"
+     , DECODE(PP_INFO,NULL,'없음',PP_INFO) AS "PP_INFO"
+     , FILEPATH || CHANGE_NAME AS "FILEPATH"
+FROM PROPERTY P
+JOIN TAG USING (TAG_NO)
+JOIN PP_IMG I ON (P.PP_NO = I.PP_NO)
+WHERE P.STATUS = 'Y'
+ORDER BY PP_COUNT DESC
+</entry>
+	
+	
+	
+	
+	
+<entry key="mainSelectBrokeragePo">
+SELECT
+       B.B_NO
+     , B_NAME
+     , B_TYPE
+     , DECODE(B_BR_BEST,NULL,' ',B_BR_BEST) AS "B_BR_BEST"
+     , FILEPATH || CHANGE_NAME AS "FILEPATH"
+FROM BROKERAGE B
+JOIN B_IMG I ON (B.B_NO=I.B_NO)
+WHERE B.STATUS ='Y'
+</entry>
+		
+	
+	
+	
+	
+	
+	
+	
 </properties>

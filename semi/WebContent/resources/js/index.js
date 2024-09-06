@@ -191,271 +191,151 @@ console.log(event_area_house);
 
 
 
-new Swiper('.shopping_content .swiper-container', {
-    autoplay: {
-        delay: 3000,
-        disableOnInteraction: false, // 버튼 클릭시 자동멈춤 없애준다
-    },
-    loop: true,
-    slidesPerView: 5,
-    spaceBetween: 10, // 슬라이드 사이 여백
-    navigation: {
-        prevEl: '.shopping_content .swiper-prev',
-        nextEl: '.shopping_content .swiper-next',
-    },
 
 
-    observer: true,
-    observeParents: true,
-    breakpoints: {
-        400: {
 
-            slidesPerView: 2,
 
-        },
-        600: {
-            slidesPerView: 3,
 
-        },
-        800: {
-            slidesPerView: 4,
 
-        },
 
-        1015: {
-            //1000px 이상의 크기에서 옵션 값 
-            slidesPerView: 5,
 
-        },
 
-    }
 
+// const choose_new = document.querySelector('.shopping_content .choose_new');
+// const choose_refur = document.querySelector('.shopping_content .choose_refur');
+// const choose_group = document.querySelector('.shopping_content .choose_group');
+// const choose_discount = document.querySelector('.shopping_content .choose_discount');
 
-});
+// choose_new.style.color = '#333'
 
+// const shopping_title = document.querySelector('.shopping_content .shopping_title');
 
+// const shopping_new_slide = document.querySelector('.shopping_content .shopping_area .shopping_silde.shopping_new_slide');
+// const shopping_refur_slide = document.querySelector('.shopping_content .shopping_area .shopping_silde.shopping_refur_slide');
+// const shopping_group_slide = document.querySelector('.shopping_content .shopping_area .shopping_silde.shopping_group_slide');
+// const shopping_discount_slide = document.querySelector('.shopping_content .shopping_area .shopping_silde.shopping_discount_slide');
 
 
 
 
 
 
+// choose_new.addEventListener("click", function () {
 
-const choose_new = document.querySelector('.shopping_content .choose_new');
-const choose_refur = document.querySelector('.shopping_content .choose_refur');
-const choose_group = document.querySelector('.shopping_content .choose_group');
-const choose_discount = document.querySelector('.shopping_content .choose_discount');
+//     shopping_title.innerHTML = "<a href=''>상품</a>"
 
-choose_new.style.color = '#333'
+//     choose_new.style.color = '#333'
+//     choose_refur.style.color = '#858585'
+//     choose_group.style.color = '#858585'
+//     choose_discount.style.color = '#858585'
 
-const shopping_title = document.querySelector('.shopping_content .shopping_title');
+//     shopping_new_slide.style.display = 'block'
+//     shopping_refur_slide.style.display = 'none'
+//     shopping_group_slide.style.display = 'none'
+//     shopping_discount_slide.style.display = 'none'
 
-const shopping_new_slide = document.querySelector('.shopping_content .shopping_area .shopping_silde.shopping_new_slide');
-const shopping_refur_slide = document.querySelector('.shopping_content .shopping_area .shopping_silde.shopping_refur_slide');
-const shopping_group_slide = document.querySelector('.shopping_content .shopping_area .shopping_silde.shopping_group_slide');
-const shopping_discount_slide = document.querySelector('.shopping_content .shopping_area .shopping_silde.shopping_discount_slide');
+// })
 
 
+// choose_refur.addEventListener("click", function () {
 
+//     shopping_title.innerHTML = "<a href=''>리퍼상품</a>"
 
+//     choose_new.style.color = '#858585'
+//     choose_refur.style.color = '#333'
+//     choose_group.style.color = '#858585'
+//     choose_discount.style.color = '#858585'
 
+//     shopping_new_slide.style.display = 'none'
+//     shopping_refur_slide.style.display = 'block'
+//     shopping_group_slide.style.display = 'none'
+//     shopping_discount_slide.style.display = 'none'
 
-choose_new.addEventListener("click", function () {
+// })
 
-    shopping_title.innerHTML = "<a href=''>상품</a>"
+// choose_group.addEventListener("click", function () {
 
-    choose_new.style.color = '#333'
-    choose_refur.style.color = '#858585'
-    choose_group.style.color = '#858585'
-    choose_discount.style.color = '#858585'
+//     shopping_title.innerHTML = "<a href=''>공동구매</a>"
 
-    shopping_new_slide.style.display = 'block'
-    shopping_refur_slide.style.display = 'none'
-    shopping_group_slide.style.display = 'none'
-    shopping_discount_slide.style.display = 'none'
+//     choose_new.style.color = '#858585'
+//     choose_refur.style.color = '#858585'
+//     choose_group.style.color = '#333'
+//     choose_discount.style.color = '#858585'
 
-})
+//     shopping_new_slide.style.display = 'none'
+//     shopping_refur_slide.style.display = 'none'
+//     shopping_group_slide.style.display = 'block'
+//     shopping_discount_slide.style.display = 'none'
 
+// })
 
-choose_refur.addEventListener("click", function () {
+// choose_discount.addEventListener("click", function () {
 
-    shopping_title.innerHTML = "<a href=''>리퍼상품</a>"
+//     shopping_title.innerHTML = "<a href=''>초특가할인</a>"
 
-    choose_new.style.color = '#858585'
-    choose_refur.style.color = '#333'
-    choose_group.style.color = '#858585'
-    choose_discount.style.color = '#858585'
+//     choose_new.style.color = '#858585'
+//     choose_refur.style.color = '#858585'
+//     choose_group.style.color = '#858585'
+//     choose_discount.style.color = '#333'
 
-    shopping_new_slide.style.display = 'none'
-    shopping_refur_slide.style.display = 'block'
-    shopping_group_slide.style.display = 'none'
-    shopping_discount_slide.style.display = 'none'
+//     shopping_new_slide.style.display = 'none'
+//     shopping_refur_slide.style.display = 'none'
+//     shopping_group_slide.style.display = 'none'
+//     shopping_discount_slide.style.display = 'block'
 
-})
 
-choose_group.addEventListener("click", function () {
+// })
 
-    shopping_title.innerHTML = "<a href=''>공동구매</a>"
 
-    choose_new.style.color = '#858585'
-    choose_refur.style.color = '#858585'
-    choose_group.style.color = '#333'
-    choose_discount.style.color = '#858585'
 
-    shopping_new_slide.style.display = 'none'
-    shopping_refur_slide.style.display = 'none'
-    shopping_group_slide.style.display = 'block'
-    shopping_discount_slide.style.display = 'none'
 
-})
 
-choose_discount.addEventListener("click", function () {
 
-    shopping_title.innerHTML = "<a href=''>초특가할인</a>"
 
-    choose_new.style.color = '#858585'
-    choose_refur.style.color = '#858585'
-    choose_group.style.color = '#858585'
-    choose_discount.style.color = '#333'
 
-    shopping_new_slide.style.display = 'none'
-    shopping_refur_slide.style.display = 'none'
-    shopping_group_slide.style.display = 'none'
-    shopping_discount_slide.style.display = 'block'
 
 
-})
 
+// const property_choose = document.querySelector('.brokerage_area .property_choose');
+// const move_choose = document.querySelector('.brokerage_area .move_choose');
 
 
-new Swiper('.property .swiper-container.property_slide', {
-    autoplay: {
-        delay: 4000,
-        disableOnInteraction: false, // 버튼 클릭시 자동멈춤 없애준다
-    },
-    loop: true,
-    slidesPerView: 2,
-    spaceBetween: 10, // 슬라이드 사이 여백
+// property_choose.style.color = '#333'
 
-    navigation: {
-        prevEl: '.property_slide_area .swiper-prev',
-        nextEl: '.property_slide_area .swiper-next',
-    },
+// const brokerage_title = document.querySelector('.brokerage_area .brokerage_title');
 
-    observer: true,
-    observeParents: true,
-    breakpoints: {
-        200: {
+// const property_slide = document.querySelector('.brokerage_area .brokerage_slide_area .swiper-container.property_slide');
+// const move_slide = document.querySelector('.brokerage_area .brokerage_slide_area .swiper-container.move_slide');
 
-            slidesPerView: 1,
 
-        },
-        //     600 : {
-        //     slidesPerView: 3,
 
-        //     },
-        // 	800 : {
-        //     slidesPerView: 4,
 
-        //     },
+// property_choose.addEventListener("click", function () {
 
-        1015: {
+//     brokerage_title.innerHTML = "<a href=''>부동산 중개소</a>"
 
-            slidesPerView: 2,
 
-        },
+//     move_choose.style.color = '#858585'
+//     property_choose.style.color = '#333'
 
-    }
+//     move_slide.style.display = 'none'
+//     property_slide.style.display = 'block'
 
 
-});
 
+// })
 
 
-new Swiper('.brokerage .brokerage_slide_area .swiper-container', {
-    autoplay: {
-        delay: 4000,
-        disableOnInteraction: false, // 버튼 클릭시 자동멈춤 없애준다
-    },
-    loop: true,
-    slidesPerView: 3,
-    spaceBetween: 10, // 슬라이드 사이 여백
+// move_choose.addEventListener("click", function () {
 
-    navigation: {
-        prevEl: '.brokerage_slide_area .swiper-prev',
-        nextEl: '.brokerage_slide_area .swiper-next',
-    },
+//     brokerage_title.innerHTML = "<a href=''>이사 중개소</a>"
 
-    observer: true,
-    observeParents: true,
-    breakpoints: {
-        200: {
 
-            slidesPerView: 2,
+//     move_choose.style.color = '#333'
+//     property_choose.style.color = '#858585'
 
-        },
-        600: {
-            slidesPerView: 2,
+//     move_slide.style.display = 'block';
+//     property_slide.style.display = 'none'
 
-        },
-        800: {
-            slidesPerView: 3,
 
-        },
-
-        //      1000 : {
-
-        //      slidesPerView: 2,
-
-        //      },
-
-    }
-
-
-});
-
-
-
-const property_choose = document.querySelector('.brokerage_area .property_choose');
-const move_choose = document.querySelector('.brokerage_area .move_choose');
-
-
-property_choose.style.color = '#333'
-
-const brokerage_title = document.querySelector('.brokerage_area .brokerage_title');
-
-const property_slide = document.querySelector('.brokerage_area .brokerage_slide_area .swiper-container.property_slide');
-const move_slide = document.querySelector('.brokerage_area .brokerage_slide_area .swiper-container.move_slide');
-
-
-
-
-property_choose.addEventListener("click", function () {
-
-    brokerage_title.innerHTML = "<a href=''>부동산 중개소</a>"
-
-
-    move_choose.style.color = '#858585'
-    property_choose.style.color = '#333'
-
-    move_slide.style.display = 'none'
-    property_slide.style.display = 'block'
-
-
-
-})
-
-
-move_choose.addEventListener("click", function () {
-
-    brokerage_title.innerHTML = "<a href=''>이사 중개소</a>"
-
-
-    move_choose.style.color = '#333'
-    property_choose.style.color = '#858585'
-
-    move_slide.style.display = 'block';
-    property_slide.style.display = 'none'
-
-
-})
+// })

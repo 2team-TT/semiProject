@@ -109,4 +109,34 @@ public class ProductService {
 		return list;
 	}//selectProductRefurbishedBest() end
 
+	
+	
+	
+	
+	
+	
+	public ArrayList<Product> mainSelectListProduct(){
+		Connection conn = getConnection();
+		
+		ArrayList<Product> list = new ProductDao().mainSelectListProduct(conn);
+		close(conn);
+		return list;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
 }//ProductService 클래스 end
