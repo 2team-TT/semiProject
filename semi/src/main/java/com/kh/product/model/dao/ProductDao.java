@@ -220,6 +220,103 @@ public class ProductDao {
 		
 	}//deleteRecentlyViewedProduct() end
 	
+	// 전체 상품 베스트 가져오기
+	public ArrayList<Product> selectProductBestOfAll(Connection conn){
+		ArrayList<Product> list = new ArrayList<Product>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectProductBestOfAll");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Product(rset.getInt("p_no")
+								   , rset.getInt("tag_no")
+								   , rset.getString("p_name")
+								   , rset.getInt("price")
+								   , rset.getDouble("rating")
+						));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}//selectProductBestOfAll() end
+	
+	// 일반 상품 베스트 가져오기
+	public ArrayList<Product> selectProductCommonBest(Connection conn){
+		ArrayList<Product> list = new ArrayList<Product>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectProductCommonBest");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Product(rset.getInt("p_no")
+						   , rset.getInt("tag_no")
+						   , rset.getString("p_name")
+						   , rset.getInt("price")
+						   , rset.getDouble("rating")
+				));
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+		
+		
+	}//selectProductCommonBest() end
+	
+	// 리퍼 상품 베스트 가져오기
+	public ArrayList<Product> selectProductRefurbishedBest(Connection conn){
+		ArrayList<Product> list = new ArrayList<Product>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectProductRefurbishedBest");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Product(rset.getInt("p_no")
+						   , rset.getInt("tag_no")
+						   , rset.getString("p_name")
+						   , rset.getInt("price")
+						   , rset.getDouble("rating")
+				));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+			
+		}
+		
+		return list;
+	}
+
+	
 	
 	
 	public ArrayList<Product> mainSelectListProduct(Connection conn){

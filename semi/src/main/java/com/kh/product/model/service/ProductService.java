@@ -79,6 +79,37 @@ public class ProductService {
 		return result;
 	}//deleteRecentlyViewedProduct() end
 	
+	// 전체 상품 베스트 가져오기
+	public ArrayList<Product> selectProductBestOfAll(){
+		Connection conn = getConnection();
+		ArrayList<Product> list = new ProductDao().selectProductBestOfAll(conn);
+		
+		close(conn);
+		
+		return list;
+	}//selectProductBestOfAll() end
+	
+	// 일반 상품 베스트 가져오기
+	public ArrayList<Product> selectProductCommonBest(){
+		Connection conn = getConnection();
+		ArrayList<Product> list = new ProductDao().selectProductCommonBest(conn);
+		
+		close(conn);
+		
+		return list;
+	}
+	
+	// 리퍼 상품 베스트 가져오기
+	public ArrayList<Product> selectProductRefurbishedBest(){
+		Connection conn = getConnection();
+		ArrayList<Product> list = new ProductDao().selectProductRefurbishedBest(conn);
+		
+		close(conn);
+		
+		return list;
+	}//selectProductRefurbishedBest() end
+
+	
 	
 	
 	
