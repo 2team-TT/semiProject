@@ -24,43 +24,43 @@
 <body>
     <section id="section1">
         <ul>
-            <li class="section-nav">
+            <li class="section-nav" id="shortCut1">
                 <div class="section-nav__content">
                     <img src="./resources/img/img1.daumcdn.jpg" alt="">
                 </div>
                 <div class="section-nav__content"><a href="javascript:void(0)">asdf</a></div>
             </li>
-            <li class="section-nav">
+            <li class="section-nav" id="shortCut2">
                 <div class="section-nav__content">
                     <img src="./resources/img/img1.daumcdn.jpg" alt="">
                 </div>
                 <div class="section-nav__content"><a href="javascript:void(0)">asdf</a></div>
             </li>
-            <li class="section-nav">
+            <li class="section-nav" id="shortCut3">
                 <div class="section-nav__content">
                     <img src="./resources/img/img1.daumcdn.jpg" alt="">
                 </div>
                 <div class="section-nav__content"><a href="javascript:void(0)">asdf</a></div>
             </li>
-            <li class="section-nav">
+            <li class="section-nav" id="shortCut4">
                 <div class="section-nav__content">
                     <img src="./resources/img/img1.daumcdn.jpg" alt="">
                 </div>
                 <div class="section-nav__content"><a href="javascript:void(0)">asdf</a></div>
             </li>
-            <li class="section-nav">
+            <li class="section-nav" id="shortCut5">
                 <div class="section-nav__content">
                     <img src="./resources/img/img1.daumcdn.jpg" alt="">
                 </div>
                 <div class="section-nav__content"><a href="javascript:void(0)">asdf</a></div>
             </li>
-            <li class="section-nav">
+            <li class="section-nav" id="shortCut6">
                 <div class="section-nav__content">
                     <img src="./resources/img/img1.daumcdn.jpg" alt="">
                 </div>
                 <div class="section-nav__content"><a href="javascript:void(0)">asdf</a></div>
             </li>
-            <li class="section-nav">
+            <li class="section-nav" id="shortCut7">
                 <div class="section-nav__content">
                     <img src="./resources/img/img1.daumcdn.jpg" alt="">
                 </div>
@@ -77,25 +77,25 @@
                     <div class="filter-inner">
                         <div class="filter-title">거주지</div>
                         <div id="filter-residence">
-                            <select name="residence" class="filter-city">
-                                <option value="seoul" hidden selected>시/도 선택</option>
-                                <option value="seoul">서울특별시</option>
-                                <option value="busan">부산광역시</option>
-                                <option value="daegu">대구광역시</option>
-                                <option value="incheon">인천광역시</option>
-                                <option value="gwangju">광주광역시</option>
-                                <option value="daejeon">대전광역시</option>
-                                <option value="ulsan">울산광역시</option>
-                                <option value="sejoing">세종특별자치시</option>
-                                <option value="gyeonggi">경기도</option>
-                                <option value="chungcheongbuk">충청북도</option>
-                                <option value="chungcheongnam">충청남도</option>
-                                <option value="jeollanam">전라남도</option>
-                                <option value="gyeongsangbuk">경상북도</option>
-                                <option value="gyeongsangnam">경상남도</option>
-                                <option value="jeju">제주특별자치도</option>
-                                <option value="gangwon">강원특별자치도</option>
-                                <option value="jeonbuk">전북특별자치도</option>
+                            <select name="region" class="filter-city">
+                                <option value="" hidden selected>시/도 선택</option>
+                                <option value="서울특별시">서울특별시</option>
+                                <option value="부산광역시">부산광역시</option>
+                                <option value="대구광역시">대구광역시</option>
+                                <option value="인천광역시">인천광역시</option>
+                                <option value="광주광역시">광주광역시</option>
+                                <option value="대전광역시">대전광역시</option>
+                                <option value="울산광역시">울산광역시</option>
+                                <option value="세종특별자치시">세종특별자치시</option>
+                                <option value="경기도">경기도</option>
+                                <option value="충청북도">충청북도</option>
+                                <option value="충청남도">충청남도</option>
+                                <option value="전라남도">전라남도</option>
+                                <option value="경상북도">경상북도</option>
+                                <option value="경상남도">경상남도</option>
+                                <option value="제주특별자치도">제주특별자치도</option>
+                                <option value="강원특별자치도">강원특별자치도</option>
+                                <option value="전북특별자치도">전북특별자치도</option>
                             </select>
                         </div>
                     </div>
@@ -105,9 +105,9 @@
                     <div class="filter-inner">
                         <div class="filter-title">부서</div>
                         <div class="filter-checkbox-wrapper" id="deptFilter">
-                            <input type="checkbox" name="byDept" id="searchCentralMinistry" class="filter-checkbox" value="1"><label for="searchCentralMinistry">중앙부처</label>
-                            <input type="checkbox" name="byDept" id="searchGovernment" class="filter-checkbox" value="2"><label for="searchGovernment">지자체</label>
-                            <input type="checkbox" name="byDept" id="searchPrivateSector" class="filter-checkbox" value="3"><label for="searchPrivateSector">민간</label>
+                            <input type="radio" name="tabId" id="searchCentralMinistry" class="filter-checkbox" value="1" checked><label for="searchCentralMinistry">중앙부처</label>
+                            <input type="radio" name="tabId" id="searchGovernment" class="filter-checkbox" value="2"><label for="searchGovernment">지자체</label>
+                            <input type="radio" name="tabId" id="searchPrivateSector" class="filter-checkbox" value="3"><label for="searchPrivateSector">민간</label>
                         </div>
                     </div>
                     <div class="filter-inner-big">
@@ -115,42 +115,43 @@
                         <div class="filter-exception">
                             <div class="filter-subtitle">생애주기별</div>
                             <div class="filter-checkbox-wrapper" id="lifeCycleFilter">
-                                <input type="checkbox" name="byLifeCycle" id="preg" class="filter-checkbox" value="임신출산"><label for="preg">임신 출산</label>
-                                <input type="checkbox" name="byLifeCycle" id="infant" class="filter-checkbox" value="영유아"><label for="infant">영유아</label>
-                                <input type="checkbox" name="byLifeCycle" id="children" class="filter-checkbox" value="아동"><label for="children">아동</label>
-                                <input type="checkbox" name="byLifeCycle" id="teen" class="filter-checkbox" value="청소년"><label for="teen">청소년</label>
-                                <input type="checkbox" name="byLifeCycle" id="youth" class="filter-checkbox" value="청년"><label for="youth">청년</label>
-                                <input type="checkbox" name="byLifeCycle" id="middleAged" class="filter-checkbox" value="중장년"><label for="middleAged">중장년</label>
-                                <input type="checkbox" name="byLifeCycle" id="elder" class="filter-checkbox" value="노인"><label for="elder">노인</label>
+                                <input type="checkbox" name="period" id="preg" class="filter-checkbox" value="임신 · 출산"><label for="preg">임신 출산</label>
+                                <input type="checkbox" name="period" id="infant" class="filter-checkbox" value="영유아"><label for="infant">영유아</label>
+                                <input type="checkbox" name="period" id="children" class="filter-checkbox" value="아동"><label for="children">아동</label>
+                                <input type="checkbox" name="period" id="teen" class="filter-checkbox" value="청소년"><label for="teen">청소년</label>
+                                <input type="checkbox" name="period" id="youth" class="filter-checkbox" value="청년"><label for="youth">청년</label>
+                                <input type="checkbox" name="period" id="middleAged" class="filter-checkbox" value="중장년"><label for="middleAged">중장년</label>
+                                <input type="checkbox" name="period" id="elder" class="filter-checkbox" value="노인"><label for="elder">노인</label>
                             </div>
                             <div class="filter-subtitle">가구상황별</div>
                             <div class="filter-checkbox-wrapper" id="gaguFilter">
-                                <div><input type="checkbox" name="byGagu" id="lowIncome" class="filter-checkbox" value="저소득"><label for="lowIncome">저소득</label></div>
-                                <div><input type="checkbox" name="byGagu" id="disabledPerson" class="filter-checkbox" value="장애인"><label for="disabledPerson">장애인</label></div>
-                                <div><input type="checkbox" name="byGagu" id="singleParentGrandchild" class="filter-checkbox" value="한부모조손"><label for="singleParentGrandchild">한부모 조손</label></div>
-                                <div><input type="checkbox" name="byGagu" id="multipleChildren" class="filter-checkbox" value="다자녀"><label for="multipleChildren">다자녀</label></div>
-                                <div><input type="checkbox" name="byGagu" id="multicultural" class="filter-checkbox" value="다문화탈북민"><label for="multicultural">다문화탈북민</label></div>
-                                <div><input type="checkbox" name="byGagu" id="veterans" class="filter-checkbox" value="보훈대상자"><label for="veterans">보훈대상자</label></div>
+                                <input type="checkbox" name="daesang" id="lowIncome" class="filter-checkbox" value="저소득"><label for="lowIncome">저소득</label>
+                                <input type="checkbox" name="daesang" id="disabledPerson" class="filter-checkbox" value="장애인"><label for="disabledPerson">장애인</label>
+                                <input type="checkbox" name="daesang" id="singleParentGrandchild" class="filter-checkbox" value="한부모·조손"><label for="singleParentGrandchild">한부모 조손</label>
+                                <br>
+                                <input type="checkbox" name="daesang" id="multipleChildren" class="filter-checkbox" value="다자녀"><label for="multipleChildren">다자녀</label>
+                                <input type="checkbox" name="daesang" id="multicultural" class="filter-checkbox" value="다문화·탈북민"><label for="multicultural">다문화탈북민</label>
+                                <input type="checkbox" name="daesang" id="veterans" class="filter-checkbox" value="보훈대상자"><label for="veterans">보훈대상자</label>
                             </div>
                             <div class="filter-subtitle">관심주제별</div>
                             <div class="filter-checkbox-wrapper" id="interestFilter">
-                                <input type="checkbox" name="byInterest" id="health" class="filter-checkbox" value="신체건강"><label for="health">신체건강</label>
-                                <input type="checkbox" name="byInterest" id="livingSupport" class="filter-checkbox" value="생활지원"><label for="livingSupport">생활지원</label>
-                                <input type="checkbox" name="byInterest" id="job" class="filter-checkbox" value="일자리"><label for="job">일자리</label>
-                                <input type="checkbox" name="byInterest" id="safetyCrisis" class="filter-checkbox" value="안전위기"><label for="safetyCrisis">안전위기</label>
-                                <input type="checkbox" name="byInterest" id="fosterCare" class="filter-checkbox" value="입양위탁"><label for="fosterCare">입양위탁</label>
-                                <input type="checkbox" name="byInterest" id="microfinance" class="filter-checkbox" value="서민금융"><label for="microfinance">서민금융</label>
-                                <input type="checkbox" name="byInterest" id="mentalHealth" class="filter-checkbox" value="정신건강"><label for="mentalHealth">정신건강</label>
-                                <input type="checkbox" name="byInterest" id="house" class="filter-checkbox" value="주거"><label for="house">주거</label>
-                                <input type="checkbox" name="byInterest" id="culture" class="filter-checkbox" value="문화여가"><label for="culture">문화여가</label>
-                                <input type="checkbox" name="byInterest" id="education" class="filter-checkbox" value="교육"><label for="education">교육</label>
-                                <input type="checkbox" name="byInterest" id="protectiveCare" class="filter-checkbox" value="보호돌봄"><label for="protectiveCare">보호돌봄</label>
-                                <input type="checkbox" name="byInterest" id="law" class="filter-checkbox" value="법률"><label for="law">법률</label>
+                                <input type="checkbox" name="subject" id="health" class="filter-checkbox" value="신체건강"><label for="health">신체건강</label>
+                                <input type="checkbox" name="subject" id="livingSupport" class="filter-checkbox" value="생활지원"><label for="livingSupport">생활지원</label>
+                                <input type="checkbox" name="subject" id="job" class="filter-checkbox" value="일자리"><label for="job">일자리</label>
+                                <input type="checkbox" name="subject" id="safetyCrisis" class="filter-checkbox" value="안전·위기"><label for="safetyCrisis">안전위기</label>
+                                <input type="checkbox" name="subject" id="microfinance" class="filter-checkbox" value="서민금융"><label for="microfinance">서민금융</label>
+                                <br>
+                                <input type="checkbox" name="subject" id="mentalHealth" class="filter-checkbox" value="정신건강"><label for="mentalHealth">정신건강</label>
+                                <input type="checkbox" name="subject" id="house" class="filter-checkbox" value="주거"><label for="house">주거</label>
+                                <input type="checkbox" name="subject" id="culture" class="filter-checkbox" value="문화·여가"><label for="culture">문화여가</label>
+                                <input type="checkbox" name="subject" id="education" class="filter-checkbox" value="교육"><label for="education">교육</label>
+                                <input type="checkbox" name="subject" id="protectiveCare" class="filter-checkbox" value="보호·돌봄"><label for="protectiveCare">보호돌봄</label>
+                                <input type="checkbox" name="subject" id="law" class="filter-checkbox" value="법률"><label for="law">법률</label>
                             </div>
                         </div>
                     </div>
                     <div class="filter-btns">
-                        <button id="filterSubmitBtn" class="btn" onclick="">확인</button>
+                        <button id="submitBtn" class="btn" onclick="submitForm()">확인</button>
                         <button type="reset" class="btn">초기화</button>
                         <button type="button" class="btn" onclick="filterOpen()">취소</button>
                     </div>
@@ -190,18 +191,15 @@
         </div>
     </section>
     <script>
+    	let welFareDetailDefaultLink = "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=";
         $(document).ready(function() {
             $.ajax({
-                url: 'controller.wf', // Servlet URL 설정
-                type: 'GET', // 또는 POST
-                data: {
-                    
-                },
-                dataType: 'json', // 응답 데이터 타입
+                url: 'controller.wf',
+                type: 'GET',
+                dataType: 'json',
                 success: function(response) {
                     $('#main-contents__detail').empty();
                     let welFareList = "";
-                    let welFareDetailDefaultLink = "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=";
                     for(let i=0; i<response.length; i++){
                         let tags = extractFirstTags(response[i].RETURN_STR);
                         
@@ -262,16 +260,24 @@
             return tags;
         }
 
-        function submitSearch() {
-            var formData = $('#searchForm').serialize(); // 폼 데이터 직렬화
-
+        // 필터에 해당되는 폼을 제출
+        $('#submitBtn').on('click', function(e) {
+            e.preventDefault();
+            submitForm();
+        });
+        function submitForm() {
+            var formData = $('#searchForm').serialize(); // 폼의 데이터를 직렬화 한다
             $.ajax({
-                url: 'controller.wf', // 서블릿 URL
+                url: 'controller.wf',
                 type: 'POST',
                 data: formData,
                 dataType: 'json',
                 success: function(response) {
-                    displayResults(response); // 결과 표시 함수
+                	if (response) {
+                        displayResults(response);
+                    } else {
+                        $('#main-contents__detail').html('<p>응답 데이터가 없습니다.</p>');
+                    }
                 },
                 error: function() {
                     $('#main-contents__detail').html('<p>데이터를 불러오는데 실패했습니다.</p>');
@@ -279,12 +285,42 @@
             });
         }
 
+        // 필터링한 이후의 결과를 보여주는 기능
         function displayResults(data) {
             $('#main-contents__detail').empty();
+            let welFareSearchList = "";
             data.forEach(function(item) {
-                $('#main-contents__detail').append('<div>' + item.WLFARE_INFO_NM + '</div>');
-            });
+                let newTags = extractFirstTags(item.RETURN_STR);
+                welFareSearchList += '<div class="welfare">'
+                                    + '<div class="welfare__title">' + item.WLFARE_INFO_NM + '</div>'
+                                    + '<div class="welfare__detail">'
+                                    + '<div class="welfare__detail-description">' + item.WLFARE_INFO_OUTL_CN + '</div>'
+                                    + '<div class="welfare__detail-wrapper">'
+                                    + '<a href=' + welFareDetailDefaultLink + item.WLFARE_INFO_ID + '>' 
+                                    + '<div class="welfare__detail-enroll">신청하기</div>'
+                                    + '</a>'
+                                    + '<div class="welfare__detail-inquiry">' + '문의전화 : ' + item.RPRS_CTADR + '</div>'
+                                    + '</div>' // .welfare__detail-wrapper 닫기
+                                    + '<div class="welfare__detail-tags">' 
+
+                                    // 태그 div 추가 전에 값의 유효성 검사
+                                    if (newTags.INTRS_THEMA_CD) {
+                                        welFareSearchList += '<div class="tags">' + newTags.INTRS_THEMA_CD + '</div>';
+                                    }
+                                    if (newTags.FMLY_CIRC_CD) {
+                                        welFareSearchList += '<div class="tags">' + newTags.FMLY_CIRC_CD + '</div>';
+                                    }
+                                    if (newTags.BKJR_LFTM_CYC_CD) {
+                                        welFareSearchList += '<div class="tags">' + newTags.BKJR_LFTM_CYC_CD + '</div>';
+                                    }
+
+            welFareSearchList    += '</div>' // .welfare__detail-tags 닫기
+                                    + '</div>' // .welfare__detail 닫기
+                                    + '</div>' // .welfare 닫기
+                });
+            $("#main-contents__detail").html(welFareSearchList);
         }
+
     </script>
     
 </body>

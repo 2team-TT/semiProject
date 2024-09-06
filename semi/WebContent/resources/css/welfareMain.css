@@ -1,6 +1,3 @@
-body{
-
-}
 #section1 a,
 #section2 a{
     text-decoration: none;
@@ -43,6 +40,7 @@ body{
     border-radius: 10px;
     max-width: 100%;
     max-height: 100%;
+    overflow: hidden;
 }
 #section1 ul li.section-nav .section-nav__content img{
     transform: translate(50, 50);
@@ -133,7 +131,7 @@ body{
 }
 #section2 #main-contents__filter-place .filter-inner .filter-input{
     position: absolute;
-    padding: 15px 20px;
+    padding: 13px 20px;
     left: 123px;
     border: 3px solid #FECC88;
     background-color: rgba(0, 0, 0, 0);
@@ -182,15 +180,6 @@ body{
     font-size: 12px;
     overflow: auto;
 }
-#gaguFilter{
-    display: flex;
-    text-overflow: ellipsis;    
-}
-#gaguFilter div{
-    width: 110px;
-    height: 30px;
-}
-
 #section2 #main-contents__filter-place .filter-btns{
     position: absolute;
     left: 22px;
@@ -207,7 +196,7 @@ body{
 
 
 #section2 .welfare .welfare__title{
-    width: 30%;
+    width: 40%;
     height: 20px;
     top: -45%;
     bottom: 0;
@@ -255,17 +244,17 @@ body{
 }
 #section2 .welfare .welfare__detail .welfare__detail-wrapper .welfare__detail-enroll{
     width: 65px;
-    
-
     text-align: center;
     background-color: #FFB676;
     border-radius: 20px;
 
     padding: 15px 25px;
-    font-size: 10px;
+    font-size: 15px;
 
     cursor: pointer;
-    
+}
+#section2 .welfare .welfare__detail .welfare__detail-wrapper .welfare__detail-enroll:hover{
+	
 }
 #section2 .welfare .welfare__detail .welfare__detail-wrapper .welfare__detail-inquiry{
     font-size: 10px;
@@ -290,8 +279,8 @@ body{
 }
 #section2 .welfare .welfare__detail .welfare__detail-tags .tags{
     overflow: hidden;
-    width: 50px;
-    height: 10px;
+    /*width: 50px;*/
+    /*height: 10px;*/
     min-width: 50px;
 
     text-align: center;
@@ -304,6 +293,7 @@ body{
     padding: 5px;
 
     margin-left: 10px;
+    display: inline-block;
 }
 #section2 .welfare .welfare__detail .welfare__detail-tags .tags:first-child{
     margin-left: 0px;
