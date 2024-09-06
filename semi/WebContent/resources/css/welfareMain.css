@@ -1,0 +1,310 @@
+body{
+
+}
+#section1 a,
+#section2 a{
+    text-decoration: none;
+    color: #333;
+    display: block;
+}
+#section1{
+    border: 3px solid #FFA500;
+    width: 1000px;
+    margin: 0 auto;
+
+    border-radius: 5px;
+
+    /* margin-top 설정 */
+    margin-top: 350px;
+}
+#section1 img{
+    display: block;
+}
+#section1 ul{
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    margin: 10px;
+}
+#section1 ul li.section-nav{
+    overflow: hidden;
+    margin-right: 22px;
+    cursor: pointer;
+}
+#section1 ul li.section-nav:last-child{
+    margin-right: 0;
+}
+#section1 ul li.section-nav .section-nav__content{
+    text-align: center;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    color: #333;
+    border: 3px solid #FFB676;
+    border-radius: 10px;
+    max-width: 100%;
+    max-height: 100%;
+}
+#section1 ul li.section-nav .section-nav__content img{
+    transform: translate(50, 50);
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+#section2{
+    width: 1000px;
+    height: 75%;
+    border: 3px solid #FFA500;
+    border-radius: 10px;
+    margin: 0 auto;
+    margin-top: 25px;
+}
+#section2 #main-contents{
+    position: relative;
+}
+#section2 #main-contents__title{
+    border-radius: 10px 10px 0 0;
+    width: 30%;
+    padding: 12px 24px;
+    background-color: #FFB676;
+    font-size: 22px;
+    margin: 50px 0 0 75px;
+}
+#section2 #main-contents__detail{
+    margin: 34px 5% 25% 5%;
+}
+#section2 #main-contents__detail:last-child{
+    margin: 34px 5% 25% 5%;
+}
+#section2 #main-contents__filter{
+    text-align: end;
+    border-top: 3px solid #FFB676;
+    border-bottom: 3px solid #FFB676;
+    padding: 10px;
+    padding-right: 30px;
+    color: #333;
+    cursor: pointer;
+}
+#section2 #main-contents__filter-place{
+    z-index: 1;
+
+    top: 45px;
+    width: 100%;
+    height: 300px;
+
+    background-color: #FFEEBB;
+    border: 3px solid #FFB676;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, .3);
+    display: none;
+    flex-direction: column;
+}
+#section2 #main-contents__filter-place .filter-inner{
+    position: relative;
+    width: 400px;
+    height: 50px;
+    margin: 15px 35px;
+    line-height: 50px;
+    
+    
+    background-color: #FECC88;
+    border: 3px solid #FFB676;
+    border-radius: 1000px;
+}
+#section2 #main-contents__filter-place .filter-inner .filter-title{
+    position: absolute;
+    
+    width: 70px;
+    text-align: center;
+    font-weight: 550;
+
+    left: 10px;
+    padding: 0 20px;
+    border-right: 3px solid #FFB676;
+}
+#section2 #main-contents__filter-place .filter-inner #filter-residence{
+    position: absolute;
+    left: 123px;
+    margin-left: 15px;
+}
+#section2 #main-contents__filter-place .filter-inner .filter-input{
+    position: absolute;
+    padding: 15px 20px;
+    left: 123px;
+    border: 3px solid #FECC88;
+    background-color: rgba(0, 0, 0, 0);
+    font-size: 16px;
+}
+#section2 #main-contents__filter-place .filter-inner .filter-input:focus{
+    outline: none;
+}
+#section2 #main-contents__filter-place .filter-inner .filter-checkbox-wrapper{
+    position: absolute;
+    width: 350px;
+    left: 123px;
+    overflow: hidden;
+}
+#section2 #main-contents__filter-place .filter-checkbox-wrapper input{
+    margin-left: 15px;
+}
+#section2 #main-contents__filter-place .filter-inner-big{
+    position: absolute;
+    top: 106px;
+    left: 50%;
+    background-color: #FECC88;
+    border: 3px solid #FFB676;
+    border-radius: 20px;
+    width: 450px;
+    height: 256px;
+}
+#section2 #main-contents__filter-place .filter-inner-big .filter-title{
+    padding: 15px;
+    font-weight: 550;
+    border-bottom: 3px solid #FFB676;
+}
+#section2 #main-contents__filter-place .filter-exception{
+    margin: 15px 5px;
+}
+#section2 #main-contents__filter-place .filter-exception .filter-subtitle{
+    width: 100%;
+    height: 0;
+    margin: 15px 5px;
+    box-sizing: border-box;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 700;
+}
+#section2 #main-contents__filter-place .filter-exception .filter-checkbox-wrapper{
+    font-size: 12px;
+    overflow: auto;
+}
+#gaguFilter{
+    display: flex;
+    text-overflow: ellipsis;    
+}
+#gaguFilter div{
+    width: 110px;
+    height: 30px;
+}
+
+#section2 #main-contents__filter-place .filter-btns{
+    position: absolute;
+    left: 22px;
+}
+#section2 #main-contents__filter-place .filter-btns .btn{
+    margin: 15px 15px;
+    border-radius: 1000px;
+    
+    background-color: #FECC88;
+    border: 3px solid #FFB676;
+    width: 110px;
+    height: 40px;
+}
+
+
+#section2 .welfare .welfare__title{
+    width: 30%;
+    height: 20px;
+    top: -45%;
+    bottom: 0;
+    right: 0;
+    left: 20px;
+    padding: 9px 18px;
+    margin: 2px 0 0 50px;
+    
+    font-size: 18px;
+
+    display: flex;
+    align-items: center;
+
+    background-color: #FFB676;
+    border-radius: 10px 10px 0 0;
+}
+#section2 .welfare .welfare__detail{
+    position: relative;
+    height: 100%;
+    margin-bottom: 30px;
+    padding: 4% 2% 2% 2%;
+    
+    border: 3px solid #FFA500;
+    border-radius: 10px;
+}
+#section2 .welfare .welfare__detail .welfare__detail-description{
+    width: 70%;
+    line-height: 30px;
+    border: 2px solid #FFA500;
+    border-radius: 10px;
+    
+    padding: 10px 30px 50px 30px;
+    font-size: 18px;
+}
+#section2 .welfare .welfare__detail .welfare__detail-wrapper{
+    position: absolute;
+    width: 23.5%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    top: 0;
+    right: 0;
+}
+#section2 .welfare .welfare__detail .welfare__detail-wrapper .welfare__detail-enroll{
+    width: 65px;
+    
+
+    text-align: center;
+    background-color: #FFB676;
+    border-radius: 20px;
+
+    padding: 15px 25px;
+    font-size: 10px;
+
+    cursor: pointer;
+    
+}
+#section2 .welfare .welfare__detail .welfare__detail-wrapper .welfare__detail-inquiry{
+    font-size: 10px;
+    margin-top: 20%;
+}
+#section2 .welfare .welfare__detail .welfare__detail-tags{
+    width: 76%;
+    bottom: 10px;
+    left: 30px;
+    display: flex;
+    justify-content: start;
+
+    border: 2px solid #FFA500;
+    border-radius: 10px;
+
+    font-size: 12px;
+
+    padding: 5px;
+    margin-top: 15px;
+
+    overflow: hidden;
+}
+#section2 .welfare .welfare__detail .welfare__detail-tags .tags{
+    overflow: hidden;
+    width: 50px;
+    height: 10px;
+    min-width: 50px;
+
+    text-align: center;
+    line-height: 10px;
+    font-size: 12px;
+
+    background-color: #FECC88;
+    border: 3px solid #FFB676;
+    border-radius: 20px;
+    padding: 5px;
+
+    margin-left: 10px;
+}
+#section2 .welfare .welfare__detail .welfare__detail-tags .tags:first-child{
+    margin-left: 0px;
+}
