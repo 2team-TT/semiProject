@@ -72,4 +72,38 @@
 		 WHERE USER_NO = ?
 		   AND P_NO = ?
 	</entry>
+	
+	<!-- 전체상품 베스트 가져오기(최대20개) -->
+	<entry key="selectProductBestOfAll">
+		SELECT P_NO, TAG_NO, P_NAME, PRICE, RATING
+		  FROM (SELECT P_NO, TAG_NO, P_NAME, PRICE, RATING
+		          FROM PRODUCT
+		         ORDER BY RATING DESC NULLS LAST
+		       )
+		 WHERE ROWNUM &lt;= 20
+	</entry>
+	
+	<!-- 일반 상품 베스트 가져오기(최대20개) -->
+	<entry key="selectProductCommonBest">
+		SELECT P_NO, TAG_NO, P_NAME, PRICE, RATING
+		  FROM (
+			    SELECT P_NO, TAG_NO, P_NAME, PRICE, RATING
+			    FROM PRODUCT
+			    WHERE TAG_NO BETWEEN 211 AND 219
+			    ORDER BY RATING DESC NULLS LAST
+		       )
+		 WHERE ROWNUM &lt;= 20
+	</entry>
+	
+	<!-- 리퍼 상품 베스트 가져오기(최대20개) -->
+	<entry key="selectProductRefurbishedBest">
+		SELECT P_NO, TAG_NO, P_NAME, PRICE, RATING
+		  FROM (
+			    SELECT P_NO, TAG_NO, P_NAME, PRICE, RATING
+			    FROM PRODUCT
+			    WHERE TAG_NO BETWEEN 221 AND 227
+			    ORDER BY RATING DESC NULLS LAST
+		       )
+		 WHERE ROWNUM &lt;= 20
+	</entry>
 </properties>

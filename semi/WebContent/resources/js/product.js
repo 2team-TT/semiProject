@@ -52,6 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (loginUserId === '') {
             // 로그인 상태가 아닌 경우
+            alert("찜하기는 로그인 후 가능합니다");
             $('#loginModal').modal('show');
             return; // 모달을 열고 함수 종료
         }

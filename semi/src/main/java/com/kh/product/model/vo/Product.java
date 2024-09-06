@@ -76,6 +76,19 @@ public class Product {
 		this.price = price;
 		this.latelyDate = latelyDate;
 	}
+	
+	
+
+	
+
+	public Product(int pNo, int tagNo, String pName, int price, double rating) {
+		super();
+		this.pNo = pNo;
+		this.tagNo = tagNo;
+		this.pName = pName;
+		this.price = price;
+		this.rating = rating;
+	}
 
 	public int getpNo() {
 		return pNo;
