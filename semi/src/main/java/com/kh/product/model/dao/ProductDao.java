@@ -219,5 +219,71 @@ public class ProductDao {
 		return result;
 		
 	}//deleteRecentlyViewedProduct() end
+	
+	
+	
+	public ArrayList<Product> mainSelectListProduct(Connection conn){
+		ArrayList<Product> list = new ArrayList<Product>();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("mainSelectListProduct");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			
+			while(rset.next()) {
+				Product p = new Product();
+				
+				p.setpNo(rset.getInt("p_no"));
+				p.setTagNo(rset.getInt("tag_no"));
+				p.setpName(rset.getString("p_name"));
+				p.setPrice(rset.getInt("price"));
+				p.setStringDiscount(rset.getString("discount"));
+				p.setRating(rset.getInt("rating"));
+				p.setPrCount(rset.getInt("PR_COUNT"));
+				p.setTitleImg(rset.getString("filepath"));
+				
+				list.add(p);
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }//Product 클래스 end

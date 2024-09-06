@@ -21,6 +21,8 @@ public class Property {
 	private String ppDate;			// PROPERTY, 해당 매물 등록일
 									// * 중요!) 입주 가능일이 아님 *
 	
+	private String tagNmae;
+	
 	private int pdNo;				// PROPERTY_DETAIL, 해당 매물 상세정보 기본키
 	private int cost;				// PROPERTY_DETAIL, 해당 매물 관리비
 	private int floor;				// PROPERTY_DETAIL, 해당 매물 층
@@ -128,6 +130,11 @@ public class Property {
 		this.changeName = changeName;
 		this.filePath = filePath;
 	}
+	
+	
+	
+
+	
 
 	public int getPpNo() {
 		return ppNo;
@@ -353,15 +360,27 @@ public class Property {
 		this.status = status;
 	}
 
+	public String getTagNmae() {
+		return tagNmae;
+	}
+
+	public void setTagNmae(String tagNmae) {
+		this.tagNmae = tagNmae;
+	}
+
 	@Override
 	public String toString() {
 		return "Property [ppNo=" + ppNo + ", ppName=" + ppName + ", type=" + type + ", brokerage=" + brokerage
 				+ ", ppPrice=" + ppPrice + ", ppLocation=" + ppLocation + ", count=" + count + ", ppOption=" + ppOption
-				+ ", ppInfo=" + ppInfo + ", ppDate=" + ppDate + ", pdNo=" + pdNo + ", cost=" + cost + ", floor=" + floor
-				+ ", pyeong=" + pyeong + ", rooms=" + rooms + ", direction=" + direction + ", heating=" + heating
-				+ ", elevator=" + elevator + ", households=" + households + ", parking=" + parking + ", moveDate="
-				+ moveDate + ", ppImgNo=" + ppImgNo + ", originalName=" + originalName + ", changeName=" + changeName
-				+ ", filePath=" + filePath + ", fileLevel=" + fileLevel + ", uploadDate=" + uploadDate + ", status="
-				+ status + "]";
+				+ ", ppInfo=" + ppInfo + ", ppDate=" + ppDate + ", tagNmae=" + tagNmae + ", pdNo=" + pdNo + ", cost="
+				+ cost + ", floor=" + floor + ", pyeong=" + pyeong + ", rooms=" + rooms + ", direction=" + direction
+				+ ", heating=" + heating + ", elevator=" + elevator + ", households=" + households + ", parking="
+				+ parking + ", moveDate=" + moveDate + ", ppImgNo=" + ppImgNo + ", originalName=" + originalName
+				+ ", changeName=" + changeName + ", filePath=" + filePath + ", fileLevel=" + fileLevel + ", uploadDate="
+				+ uploadDate + ", status=" + status + "]";
 	}
+	
+	
+	
+
 }

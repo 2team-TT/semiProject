@@ -19,6 +19,9 @@ public class Product {
 	 private int viewCount;
 	 private String regDate; //to_char로 형식 변환할 예정이므로 String형을 쓸 것임
 	 private String status;
+	 private String titleImg;
+	 private String stringDiscount;
+	 
 	 
 	 private int userNo; // 마이페이지 찜하기 유저 넘버
 	 private String cDate; // 찜하기 등록 날짜
@@ -241,6 +244,24 @@ public class Product {
 
 	public void setLatelyDate(String latelyDate) {
 		this.latelyDate = latelyDate;
+	}
+
+	
+	public String getTitleImg() {
+		return titleImg;
+	}
+
+	public void setTitleImg(String titleImg) {
+		this.titleImg = titleImg;
+	}
+
+	
+	public String getStringDiscount() {
+		return stringDiscount;
+	}
+
+	public void setStringDiscount(String stringDiscount) {
+		this.stringDiscount = stringDiscount;
 	}
 
 	@Override

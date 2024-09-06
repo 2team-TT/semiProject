@@ -172,4 +172,34 @@ WHERE S_NO = ?
 </entry>
 
 
+
+<entry key="IdSearch">
+
+SELECT 
+       USER_ID
+FROM USER1
+WHERE USER_NAME =?
+  AND PHONE=?
+  AND STATUS ='Y'
+
+
+ 
+</entry>
+
+<entry key="pwdSearch">
+
+SELECT 
+        USER_PWD
+FROM USER1
+WHERE USER_ID = ?
+  AND USER_NAME =?
+  AND PHONE=?
+  AND STATUS ='Y'
+
+
+ 
+</entry>
+
+
+
 </properties>

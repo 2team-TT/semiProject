@@ -1,0 +1,128 @@
+.searchUserId_wrap {
+    width: 100%;
+    margin-top: 370px;
+}
+
+.searchUserId_wrap .searchUserId_area {
+    width: 800px;
+    border: 2px solid #FFA500;
+    margin: auto;
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.searchUserId_wrap .searchUserId_area .choose_search {
+    margin-top: 20px;
+    display: flex;
+    margin-left: 50px;
+    column-gap: 20px;
+    font-weight: 600;
+}
+
+.searchUserId_wrap .searchUserId_area .choose_search>div:nth-child(2) {
+    border: 1px solid #333;
+}
+
+.searchUserId_wrap .searchUserId_area .choose_search>div:nth-child(1):hover,
+.searchUserId_wrap .searchUserId_area .choose_search>div:nth-child(3):hover {
+    color: #FFA500;
+    cursor: pointer;
+}
+
+
+
+
+
+.searchUserId_wrap .searchUserId_area .searchform {
+    width: 700px;
+    border: 1px solid #FFA500;
+    margin: auto;
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.searchUserId_wrap .searchUserId_area .searchform.id.hidden {
+    width: 700px;
+    border: 1px solid #FFA500;
+    margin: auto;
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: 20px;
+    display: none;
+}
+
+.searchUserId_wrap .searchUserId_area .searchform.pwd.hidden {
+    width: 700px;
+    border: 1px solid #FFA500;
+    margin: auto;
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: 20px;
+    display: none;
+}
+
+.searchUserId_wrap .searchUserId_area .searchform .title {
+    font-size: 25px;
+    font-weight: 900;
+}
+
+.searchUserId_wrap .searchUserId_area .searchform .input_area {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.searchUserId_wrap .searchUserId_area .searchform .input_area>div {
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+    font-weight: 600;
+    font-size: large;
+}
+
+.searchUserId_wrap .searchUserId_area .searchform .search_btn {
+    width: 200px;
+    border: 2px solid #FFA500;
+    border-radius: 5px;
+    margin: auto;
+    margin-top: 30px;
+    font-weight: 600;
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: .4s;
+}
+
+.searchUserId_wrap .searchUserId_area .searchform .search_btn:hover {
+    width: 200px;
+    border: 2px solid #FFA500;
+    border-radius: 5px;
+    margin: auto;
+    margin-top: 30px;
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    background-color: rgb(255, 239, 239);
+}
+
+.searchUserId_wrap .searchUserId_area .searchform .search_btn:active {
+    width: 200px;
+    border: 2px solid #FFA500;
+    border-radius: 5px;
+    margin: auto;
+    margin-top: 30px;
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    background-color: rgb(255, 222, 222);
+}

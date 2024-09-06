@@ -526,15 +526,15 @@
                 <div class="shopping_area">
 
                     <div class="shopping_title">
-                        <a href="">상품</a>
+                        <div>베스트 상품</div>
                     </div>
 
                     <div class="shopping_tag">
-
+                        <!-- 
                         <span class="choose_new">상품</span>
                         <span class="choose_refur">리퍼상품</span>
                         <span class="choose_group">공동구매</span>
-                        <span class="choose_discount">초특가할인</span>
+                        <span class="choose_discount">초특가할인</span> -->
 
                     </div>
 
@@ -704,7 +704,7 @@
 
                     </div>
 
-                    <div class="swiper-container shopping_silde shopping_refur_slide">
+                    <!-- <div class="swiper-container shopping_silde shopping_refur_slide">
                         <div class="swiper-wrapper">
 
                             <a class="swiper-slide" href="javascript:void(0)">
@@ -715,9 +715,9 @@
                                 </div>
                                 <div class="slide_shop_name">1등 리퍼상품</div>
                                 <div class="slide_shop_price">
-                                    <!-- 할인 -->
+                                    
                                     <span>61%</span>
-                                    <!-- 할인 적용된가격 -->
+                                    
                                     <span>>a1500원</span>
 
                                 </div>
@@ -737,9 +737,9 @@
                                 </div>
                                 <div class="slide_shop_name">1등 상품명</div>
                                 <div class="slide_shop_price">
-                                    <!-- 할인 -->
+                                   
                                     <span>61%</span>
-                                    <!-- 할인 적용된가격 -->
+                                    
                                     <span>>a1500원</span>
 
                                 </div>
@@ -759,9 +759,9 @@
                                 </div>
                                 <div class="slide_shop_name">1등 상품명</div>
                                 <div class="slide_shop_price">
-                                    <!-- 할인 -->
+                               
                                     <span>61%</span>
-                                    <!-- 할인 적용된가격 -->
+                             
                                     <span>>a1500원</span>
 
                                 </div>
@@ -781,9 +781,7 @@
                                 </div>
                                 <div class="slide_shop_name">1등 상품명</div>
                                 <div class="slide_shop_price">
-                                    <!-- 할인 -->
                                     <span>61%</span>
-                                    <!-- 할인 적용된가격 -->
                                     <span>>a1500원</span>
 
                                 </div>
@@ -803,9 +801,7 @@
                                 </div>
                                 <div class="slide_shop_name">1등 상품명</div>
                                 <div class="slide_shop_price">
-                                    <!-- 할인 -->
                                     <span>61%</span>
-                                    <!-- 할인 적용된가격 -->
                                     <span>>a1500원</span>
 
                                 </div>
@@ -825,9 +821,7 @@
                                 </div>
                                 <div class="slide_shop_name">1등 상품명</div>
                                 <div class="slide_shop_price">
-                                    <!-- 할인 -->
                                     <span>61%</span>
-                                    <!-- 할인 적용된가격 -->
                                     <span>>a1500원</span>
 
                                 </div>
@@ -847,9 +841,7 @@
                                 </div>
                                 <div class="slide_shop_name">1등 상품명</div>
                                 <div class="slide_shop_price">
-                                    <!-- 할인 -->
                                     <span>61%</span>
-                                    <!-- 할인 적용된가격 -->
                                     <span>>a1500원</span>
 
                                 </div>
@@ -880,9 +872,7 @@
                                 </div>
                                 <div class="slide_shop_name">1등 중동구매</div>
                                 <div class="slide_shop_price">
-                                    <!-- 할인 -->
                                     <span>61%</span>
-                                    <!-- 할인 적용된가격 -->
                                     <span>>a1500원</span>
 
                                 </div>
@@ -902,9 +892,7 @@
                                 </div>
                                 <div class="slide_shop_name">1등 상품명</div>
                                 <div class="slide_shop_price">
-                                    <!-- 할인 -->
                                     <span>61%</span>
-                                    <!-- 할인 적용된가격 -->
                                     <span>>a1500원</span>
 
                                 </div>
@@ -924,9 +912,7 @@
                                 </div>
                                 <div class="slide_shop_name">1등 상품명</div>
                                 <div class="slide_shop_price">
-                                    <!-- 할인 -->
                                     <span>61%</span>
-                                    <!-- 할인 적용된가격 -->
                                     <span>>a1500원</span>
 
                                 </div>
@@ -946,9 +932,7 @@
                                 </div>
                                 <div class="slide_shop_name">1등 상품명</div>
                                 <div class="slide_shop_price">
-                                    <!-- 할인 -->
                                     <span>61%</span>
-                                    <!-- 할인 적용된가격 -->
                                     <span>>a1500원</span>
 
                                 </div>
@@ -968,9 +952,7 @@
                                 </div>
                                 <div class="slide_shop_name">1등 상품명</div>
                                 <div class="slide_shop_price">
-                                    <!-- 할인 -->
                                     <span>61%</span>
-                                    <!-- 할인 적용된가격 -->
                                     <span>>a1500원</span>
 
                                 </div>
@@ -990,9 +972,7 @@
                                 </div>
                                 <div class="slide_shop_name">1등 상품명</div>
                                 <div class="slide_shop_price">
-                                    <!-- 할인 -->
                                     <span>61%</span>
-                                    <!-- 할인 적용된가격 -->
                                     <span>>a1500원</span>
 
                                 </div>
@@ -1012,9 +992,7 @@
                                 </div>
                                 <div class="slide_shop_name">1등 상품명</div>
                                 <div class="slide_shop_price">
-                                    <!-- 할인 -->
                                     <span>61%</span>
-                                    <!-- 할인 적용된가격 -->
                                     <span>>a1500원</span>
 
                                 </div>
@@ -1045,9 +1023,7 @@
                                 </div>
                                 <div class="slide_shop_name">1등 초특가할인</div>
                                 <div class="slide_shop_price">
-                                    <!-- 할인 -->
                                     <span>61%</span>
-                                    <!-- 할인 적용된가격 -->
                                     <span>>a1500원</span>
 
                                 </div>
@@ -1067,9 +1043,7 @@
                                 </div>
                                 <div class="slide_shop_name">1등 상품명</div>
                                 <div class="slide_shop_price">
-                                    <!-- 할인 -->
                                     <span>61%</span>
-                                    <!-- 할인 적용된가격 -->
                                     <span>>a1500원</span>
 
                                 </div>
@@ -1089,9 +1063,7 @@
                                 </div>
                                 <div class="slide_shop_name">1등 상품명</div>
                                 <div class="slide_shop_price">
-                                    <!-- 할인 -->
                                     <span>61%</span>
-                                    <!-- 할인 적용된가격 -->
                                     <span>>a1500원</span>
 
                                 </div>
@@ -1111,9 +1083,7 @@
                                 </div>
                                 <div class="slide_shop_name">1등 상품명</div>
                                 <div class="slide_shop_price">
-                                    <!-- 할인 -->
                                     <span>61%</span>
-                                    <!-- 할인 적용된가격 -->
                                     <span>>a1500원</span>
 
                                 </div>
@@ -1133,9 +1103,7 @@
                                 </div>
                                 <div class="slide_shop_name">1등 상품명</div>
                                 <div class="slide_shop_price">
-                                    <!-- 할인 -->
                                     <span>61%</span>
-                                    <!-- 할인 적용된가격 -->
                                     <span>>a1500원</span>
 
                                 </div>
@@ -1155,9 +1123,7 @@
                                 </div>
                                 <div class="slide_shop_name">1등 상품명</div>
                                 <div class="slide_shop_price">
-                                    <!-- 할인 -->
                                     <span>61%</span>
-                                    <!-- 할인 적용된가격 -->
                                     <span>>a1500원</span>
 
                                 </div>
@@ -1177,9 +1143,7 @@
                                 </div>
                                 <div class="slide_shop_name">1등 상품명</div>
                                 <div class="slide_shop_price">
-                                    <!-- 할인 -->
                                     <span>61%</span>
-                                    <!-- 할인 적용된가격 -->
                                     <span>>a1500원</span>
 
                                 </div>
@@ -1195,9 +1159,7 @@
 
 
 
-                        </div>
-
-                    </div>
+                        </div> -->
 
                     <div class="swiper-prev">
                         <div class="material-icons btn__prev">play_circle_outline</div>
@@ -1208,6 +1170,8 @@
 
 
                     </div>
+                </div>
+
 
 
 
@@ -1362,7 +1326,8 @@
                 <div class="brokerage_area">
 
                     <div class="brokerage_title">
-                        <a href="">부동산</a>
+                        <a href="" class="property_title">부동산</a>
+                        <a href="" class="move_title hidden">이사</a>
                     </div>
 
                     <div class="brokerage_choose">
@@ -1413,7 +1378,7 @@
                         </div>
 
 
-                        <div class="swiper-container move_slide">
+                        <div class="swiper-container move_slide hidden">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
                                     <div class="slide_img">
@@ -1715,6 +1680,310 @@
 
 
 
+                function propertyList() {
+                    $.ajax({
+                        url: "mainProperty.po",
+                        type: "get",
+                        success: (list) => {
+                            // console.log(list)
+                            let value = ""
+                            for (let i = 0; i < list.length; i++) {
+                                value += "<div class='swiper-slide'>"
+                                    + "<input type='hidden' value='" + list[i].ppNo + "'>"
+                                    + "<div class='img_area'>"
+                                    + "<img src='" + list[i].filePath + "' >"
+                                    + "</div>"
+                                    + "<div class='text_area'>"
+                                    + "<div>" + list[i].ppName + "</div>"
+                                    + "<div>" + list[i].ppPrice + "</div>"
+                                    + "<div>" + list[i].ppLocation + "</div>"
+                                    + "<div>" + list[i].tagNmae + "</div>"
+                                    + "<div>옵션<p>-" + list[i].ppOption + "</p>"
+                                    + "</div>"
+                                    + "<div>주변<p>-" + list[i].ppInfo + "</p>"
+                                    + "</div>"
+                                    + "</div>"
+                                    + "</div>"
+                            }
+
+                            $('.property .property_slide .swiper-wrapper').html(value)
+
+
+                            propertyslide()
+
+
+                            $('.property .property_slide .swiper-wrapper .swiper-slide').on('click', function () {
+                                const num = $(this).children("input").val()
+                                // console.log(num)
+                                location.href = ""
+                            })
+
+                        },
+                        error: () => { }
+                    })
+
+                }
+
+
+
+                function propertyslide() {
+                    new Swiper('.property .swiper-container.property_slide', {
+                        autoplay: {
+                            delay: 4000,
+                            disableOnInteraction: false, // 버튼 클릭시 자동멈춤 없애준다
+                        },
+                        loop: true,
+                        slidesPerView: 2,
+                        spaceBetween: 10, // 슬라이드 사이 여백
+
+                        navigation: {
+                            prevEl: '.property_slide_area .swiper-prev',
+                            nextEl: '.property_slide_area .swiper-next',
+                        },
+
+                        observer: true,
+                        observeParents: true,
+                        breakpoints: {
+                            200: {
+
+                                slidesPerView: 1,
+
+                            },
+                            //     600 : {
+                            //     slidesPerView: 3,
+
+                            //     },
+                            // 	800 : {
+                            //     slidesPerView: 4,
+
+                            //     },
+
+                            1015: {
+
+                                slidesPerView: 2,
+
+                            },
+
+                        }
+
+
+                    });
+                }
+
+
+
+                function brokerageList() {
+                    $.ajax({
+                        url: "brokerageList.po",
+                        type: "get",
+                        success: (list) => {
+                            // console.log(list)
+
+                            let val1 = ""
+                            let val2 = ""
+                            for (let i = 0; i < list.length; i++) {
+
+                                if (list[i].type === "1") {
+                                    val1 += "<div class='swiper-slide'>"
+                                        + "<input type='hidden' value='" + list[i].bNo + "'>"
+                                        + "<div class='slide_img'>"
+                                        + "<img src='" + list[i].titleImg + "' >"
+                                        + "</div>"
+                                        + "<div class='slide_title'>" + list[i].bName + "</div>"
+                                        + "<p>" + list[i].bestREply + "</p>"
+                                        + "</div>"
+                                } else {
+                                    val2 += "<div class='swiper-slide'>"
+                                        + "<input type='hidden' value='" + list[i].bNo + "'>"
+                                        + "<div class='slide_img'>"
+                                        + "<img src='" + list[i].titleImg + "' >"
+                                        + "</div>"
+                                        + "<div class='slide_title'>" + list[i].bName + "</div>"
+                                        + "<p>" + list[i].bestREply + "</p>"
+                                        + "</div>"
+                                }
+
+                                $('.brokerage .brokerage_slide_area .property_slide .swiper-wrapper').html(val1)
+                                $('.brokerage .brokerage_slide_area .move_slide .swiper-wrapper').html(val2)
+
+
+                                brokerageSlide()
+                                //     move_choose.style.color = '#858585'
+                                //     property_choose.style.color = '#333'
+                                $('.property_choose').css('color', '#333')
+                                $('.property_choose').on('click', () => {
+                                    $('.brokerage .brokerage_slide_area .property_slide').removeClass('hidden')
+                                    $('.brokerage .brokerage_title .property_title').removeClass('hidden')
+                                    $('.brokerage .brokerage_slide_area .move_slide').addClass('hidden')
+                                    $('.brokerage .brokerage_title .move_title').addClass('hidden')
+                                    $('.move_choose').css('color', '#858585')
+                                    $('.property_choose').css('color', '#333')
+                                })
+
+                                $('.move_choose').on('click', () => {
+                                    $('.brokerage .brokerage_slide_area .move_slide').removeClass('hidden')
+                                    $('.brokerage .brokerage_title .move_title').removeClass('hidden')
+                                    $('.brokerage .brokerage_slide_area .property_slide').addClass('hidden')
+                                    $('.brokerage .brokerage_title .property_title').addClass('hidden')
+                                    $('.property_choose').css('color', '#858585')
+                                    $('.move_choose').css('color', '#333')
+                                })
+
+                                $('.brokerage .brokerage_slide_area .swiper-slide').on('click', function () {
+                                    const num = $(this).children('input').val();
+                                    location.href = ""
+
+                                })
+
+
+
+                            }
+                        }
+
+                    })
+                }
+
+                function brokerageSlide() {
+                    new Swiper('.brokerage .brokerage_slide_area .swiper-container', {
+                        autoplay: {
+                            delay: 4000,
+                            disableOnInteraction: false, // 버튼 클릭시 자동멈춤 없애준다
+                        },
+                        loop: true,
+                        slidesPerView: 3,
+                        spaceBetween: 10, // 슬라이드 사이 여백
+
+                        navigation: {
+                            prevEl: '.brokerage_slide_area .swiper-prev',
+                            nextEl: '.brokerage_slide_area .swiper-next',
+                        },
+
+                        observer: true,
+                        observeParents: true,
+                        breakpoints: {
+                            200: {
+
+                                slidesPerView: 2,
+
+                            },
+                            600: {
+                                slidesPerView: 2,
+
+                            },
+                            800: {
+                                slidesPerView: 3,
+
+                            },
+
+                            //      1000 : {
+
+                            //      slidesPerView: 2,
+
+                            //      },
+
+                        }
+
+
+                    });
+                }
+
+
+
+
+
+                function productList() {
+                    $.ajax({
+                        url: "mainproductList.pd",
+                        type: "get",
+                        success: function (list) {
+                            console.log(list)
+
+                            let value = "";
+                            for (let i = 0; i < list.length; i++) {
+                                value += "<a class='swiper-slide' href='javascript:void(0)" + list[i].pNo + "'>"
+                                    + "<div class='slide_shop_img'>"
+                                    + "<img src='" + list[i].titleImg + "'>"
+                                    + "<div>" + (i + 1) + "</div>"
+                                    + "</div>"
+                                    + "<div class='slide_shop_name'>" + list[i].pName + "</div>"
+                                    + "<div class='slide_shop_price'>"
+                                    + "<span>" + list[i].stringDiscount + "</span>"
+                                    + "<span>" + list[i].price + " 원</span>"
+                                    + "</div>"
+                                    + "<div class='slide_shop_span'>"
+                                    + "<span class='material-icons'>star</span>"
+                                    + "<span>" + list[i].rating + "</span>"
+                                    + "<span class='material-icons icon'>textsms</span>"
+                                    + "<span>" + list[i].prCount + "개</span>"
+                                    + "</div>"
+                                    + "</a>"
+                            }
+                            $('.shopping_content .shopping_silde .swiper-wrapper').html(value)
+                            productSilde()
+                        },
+                    })
+                }
+
+
+
+
+
+
+                function productSilde() {
+                    new Swiper('.shopping_content .swiper-container', {
+                        autoplay: {
+                            delay: 3000,
+                            disableOnInteraction: false, // 버튼 클릭시 자동멈춤 없애준다
+                        },
+                        loop: true,
+                        slidesPerView: 5,
+                        spaceBetween: 10, // 슬라이드 사이 여백
+                        navigation: {
+                            prevEl: '.shopping_content .swiper-prev',
+                            nextEl: '.shopping_content .swiper-next',
+                        },
+
+
+                        observer: true,
+                        observeParents: true,
+                        breakpoints: {
+                            400: {
+
+                                slidesPerView: 2,
+
+                            },
+                            600: {
+                                slidesPerView: 3,
+
+                            },
+                            800: {
+                                slidesPerView: 4,
+
+                            },
+
+                            1015: {
+                                //1000px 이상의 크기에서 옵션 값 
+                                slidesPerView: 5,
+
+                            },
+
+                        }
+
+
+                    });
+                }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1726,6 +1995,9 @@
                     noticList();
                     selectcook();
                     bestUsed();
+                    propertyList();
+                    brokerageList();
+                    productList();
                 })
 
 

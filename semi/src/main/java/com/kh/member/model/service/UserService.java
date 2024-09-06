@@ -227,4 +227,36 @@ public class UserService {
 		
 		return result;
 	}
+	
+	
+	
+	public String IdSearch(String name, String phone) {
+		Connection conn = getConnection();
+		
+		String id = new UserDao().IdSearch(conn, name, phone);
+		close(conn);
+		
+		return id;
+	}
+	
+	
+	public String pwdSearch(User u) {
+		Connection conn = getConnection();
+		
+		String pwd = new UserDao().pwdSearch(conn, u);
+		
+		close(conn);
+		
+		return pwd;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

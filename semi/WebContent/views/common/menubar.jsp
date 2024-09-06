@@ -31,10 +31,10 @@
                     integrity="sha512-IQLehpLoVS4fNzl7IfH8Iowfm5+RiMGtHykgZJl9AWMgqx0AmJ6cRWcB+GaGVtIsnC4voMfm8f2vwtY+6oPjpQ=="
                     crossorigin="anonymous"></script>
 
-                    <!-- GSAP Core -->
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"></script>
-                    <!-- GSAP ScrollToPlugin -->
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/ScrollToPlugin.min.js"></script>
+                <!-- GSAP Core -->
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"></script>
+                <!-- GSAP ScrollToPlugin -->
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/ScrollToPlugin.min.js"></script>
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
                 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -72,26 +72,26 @@
                                         <img src="./resources/img/KakaoTalk_20240730_145616126.png" alt="">
                                     </a>
 
-        <!-- 메뉴바 -->
-        <div class="menubar">
-            <!-- 네비 -->
-            <ul class="navi">
-                <li>
-                    <a href="<%=contextPath%>/freeBoardList.bo?cpage=1">커뮤니티</a>
-                  
-                </li>
-                <li>
-                    <a href="<%= contextPath %>/producutMain.me">쇼핑</a>
-                </li>
-                <li>
-                    <a href="<%= contextPath %>/main.prop">부동산 / 이사</a>
-                </li>
-                <li>
-                    <a href="">이벤트</a>
-                </li>
-                <li>
-                    <a href="<%= contextPath %>/main.wf">정책</a>
-                </li>
+                                    <!-- 메뉴바 -->
+                                    <div class="menubar">
+                                        <!-- 네비 -->
+                                        <ul class="navi">
+                                            <li>
+                                                <a href="<%=contextPath%>/freeBoardList.bo?cpage=1">커뮤니티</a>
+
+                                            </li>
+                                            <li>
+                                                <a href="<%= contextPath %>/producutMain.me">쇼핑</a>
+                                            </li>
+                                            <li>
+                                                <a href="<%= contextPath %>/main.prop">부동산 / 이사</a>
+                                            </li>
+                                            <li>
+                                                <a href="">이벤트</a>
+                                            </li>
+                                            <li>
+                                                <a href="<%= contextPath %>/main.wf">정책</a>
+                                            </li>
 
                                         </ul>
 
@@ -102,8 +102,8 @@
                                             <%if(u==null){ %>
 
                                                 <div class="login__not">
-                                                    <button type="button" class="btn btn-light" data-toggle="modal"
-                                                        data-target="#loginModal">
+                                                    <button type="button" id="login_btn" class="btn btn-light"
+                                                        data-toggle="modal" data-target="#loginModal">
                                                         로그인
                                                     </button>
 
@@ -355,7 +355,7 @@
 
 
                             </header>
-                            
+
 
 
 
@@ -398,8 +398,8 @@
 
 
                                                 <div class="login_search">
-                                                    <a href="">아이디 찾기</a>
-                                                    <a href="">비밀번호 찾기</a>
+                                                    <a href="<%=contextPath%>/searchUseridpwd.mo?num=1">아이디 찾기</a>
+                                                    <a href="<%=contextPath%>/searchUseridpwd.mo?num=2">비밀번호 찾기</a>
                                                 </div>
 
                                             </div>
@@ -956,9 +956,9 @@
 
                                 // 사용자가 스크롤을 할 때마다 이벤트가 발생하도록 설정
                                 // _.throttle()은 스크롤 이벤트의 빈도를 제한하여 성능을 최적화하는 역할을 함.
-                                window.addEventListener('scroll', _.throttle(function() {
+                                window.addEventListener('scroll', _.throttle(function () {
                                     // 현재 스크롤 위치를 콘솔에 출력하여 확인
-                                    console.log(window.scrollY);
+                                    // console.log(window.scrollY);
 
                                     // 스크롤 위치가 500픽셀을 넘으면 toTopEl 요소를 화면에 나타나도록 설정
                                     if (window.scrollY > 500) {
@@ -978,9 +978,9 @@
                                 }, 300)); // 300ms(0.3초)마다 스크롤 이벤트를 처리하도록 제한
 
                                 // toTopEl 버튼이 클릭되었을 때의 이벤트 처리
-                                toTopEl.addEventListener('click', function() {
+                                toTopEl.addEventListener('click', function () {
                                     // 클릭 이벤트가 발생했음을 콘솔에 출력하여 확인
-                                    console.log('Button clicked'); 
+                                    console.log('Button clicked');
 
                                     // GSAP을 사용해 페이지를 상단으로 스크롤
                                     gsap.to(window, {

@@ -475,13 +475,67 @@ public class UserDao {
 	
 	
 	
+	public String IdSearch(Connection conn, String name, String phone) {
+		String id = "";
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("IdSearch");
+		
+		try {
+			pstmt= conn.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setString(2, phone);
+			
+			rset =pstmt.executeQuery();
+			
+			if(rset.next()) {
+				id = rset.getString("user_id");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return id;
+	}
 	
 	
 	
 	
 	
 	
-	
+	public String pwdSearch(Connection conn, User u) {
+		String pwd ="";
+		
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset =null;
+		
+		String sql = prop.getProperty("pwdSearch");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, u.getUserId());
+			pstmt.setString(2, u.getUserName());
+			pstmt.setString(3, u.getPhone());
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				pwd = rset.getString("user_pwd");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return pwd;
+	}
 	
 	
 	

@@ -72,4 +72,29 @@
 		 WHERE USER_NO = ?
 		   AND P_NO = ?
 	</entry>
+	
+	
+	
+<entry key="mainSelectListProduct">
+SELECT *
+FROM (
+SELECT 
+       P.P_NO
+     , TAG_NO
+     , P_NAME
+     , PRICE*(DISCOUNT) AS "PRICE"
+     , DECODE(DISCOUNT,1,' ', (1-DISCOUNT)*100 || '%') AS "DISCOUNT"
+     , RATING
+     , PR_COUNT
+     , FILEPATH || CHANGE_NAME AS "FILEPATH"
+FROM PRODUCT P
+JOIN PRODUCT_IMG I ON(P.P_NO = I.P_NO)
+WHERE P.STATUS ='Y'
+ORDER BY VIEW_COUNT DESC )
+WHERE ROWNUM BETWEEN 1 AND 10
+</entry>
+
+
+
+
 </properties>

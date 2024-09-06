@@ -23,8 +23,6 @@ window.addEventListener('scroll', _.throttle(function () {
             gsap.to('.first', .5, {
                 marginTop: "370px",
             })
-
-            // console.log(window.innerWidth)
         } else {
             gsap.to(big, 0, {
                 height: 0,
@@ -41,6 +39,8 @@ window.addEventListener('scroll', _.throttle(function () {
     }
 
 }))
+
+// console.log(window.innerWidth)
 
 const search__click = document.querySelector('.search__click');
 
