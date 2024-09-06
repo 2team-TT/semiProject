@@ -75,35 +75,58 @@
 	
 	<!-- 전체상품 베스트 가져오기(최대20개) -->
 	<entry key="selectProductBestOfAll">
-		SELECT P_NO, TAG_NO, P_NAME, PRICE, RATING
-		  FROM (SELECT P_NO, TAG_NO, P_NAME, PRICE, RATING
-		          FROM PRODUCT
-		         ORDER BY RATING DESC NULLS LAST
-		       )
+	    SELECT P_NO, TAG_NO, P_NAME, PRICE, RATING, FILEPATH, CHANGE_NAME 
+	      FROM (
+			    SELECT P_NO, TAG_NO, P_NAME, PRICE, RATING, FILEPATH, CHANGE_NAME
+			      FROM (
+	                    SELECT P_NO, TAG_NO, P_NAME, PRICE*DISCOUNT AS "PRICE", RATING, FILEPATH, CHANGE_NAME,
+	                           ROW_NUMBER() OVER (PARTITION BY P_NO ORDER BY RATING DESC NULLS LAST) AS rn
+	                      FROM PRODUCT
+	                      LEFT JOIN PRODUCT_IMG USING(P_NO)
+	                     WHERE TAG_NO BETWEEN 211 AND 249
+	                   ) subquery
+		         WHERE rn = 1
+	  	         ORDER 
+			        BY RATING DESC NULLS LAST
+			   )
 		 WHERE ROWNUM &lt;= 20
 	</entry>
 	
 	<!-- 일반 상품 베스트 가져오기(최대20개) -->
 	<entry key="selectProductCommonBest">
-		SELECT P_NO, TAG_NO, P_NAME, PRICE, RATING
-		  FROM (
-			    SELECT P_NO, TAG_NO, P_NAME, PRICE, RATING
-			    FROM PRODUCT
-			    WHERE TAG_NO BETWEEN 211 AND 219
-			    ORDER BY RATING DESC NULLS LAST
-		       )
+    	SELECT P_NO, TAG_NO, P_NAME, PRICE, RATING, FILEPATH, CHANGE_NAME 
+	      FROM (
+			    SELECT P_NO, TAG_NO, P_NAME, PRICE, RATING, FILEPATH, CHANGE_NAME
+			      FROM (
+	                    SELECT P_NO, TAG_NO, P_NAME, PRICE*DISCOUNT AS "PRICE", RATING, FILEPATH, CHANGE_NAME,
+	                           ROW_NUMBER() OVER (PARTITION BY P_NO ORDER BY RATING DESC NULLS LAST) AS rn
+	                      FROM PRODUCT
+	                      LEFT JOIN PRODUCT_IMG USING(P_NO)
+	                     WHERE TAG_NO BETWEEN 211 AND 219
+	                   ) subquery
+		         WHERE rn = 1
+	  	         ORDER 
+			        BY RATING DESC NULLS LAST
+			   )
 		 WHERE ROWNUM &lt;= 20
 	</entry>
 	
 	<!-- 리퍼 상품 베스트 가져오기(최대20개) -->
 	<entry key="selectProductRefurbishedBest">
-		SELECT P_NO, TAG_NO, P_NAME, PRICE, RATING
-		  FROM (
-			    SELECT P_NO, TAG_NO, P_NAME, PRICE, RATING
-			    FROM PRODUCT
-			    WHERE TAG_NO BETWEEN 221 AND 227
-			    ORDER BY RATING DESC NULLS LAST
-		       )
+	    SELECT P_NO, TAG_NO, P_NAME, PRICE, RATING, FILEPATH, CHANGE_NAME 
+	      FROM (
+			    SELECT P_NO, TAG_NO, P_NAME, PRICE, RATING, FILEPATH, CHANGE_NAME
+			      FROM (
+	                    SELECT P_NO, TAG_NO, P_NAME, PRICE*DISCOUNT AS "PRICE", RATING, FILEPATH, CHANGE_NAME,
+	                           ROW_NUMBER() OVER (PARTITION BY P_NO ORDER BY RATING DESC NULLS LAST) AS rn
+	                      FROM PRODUCT
+	                      LEFT JOIN PRODUCT_IMG USING(P_NO)
+	                     WHERE TAG_NO BETWEEN 221 AND 227
+	                   ) subquery
+		         WHERE rn = 1
+	  	         ORDER 
+			        BY RATING DESC NULLS LAST
+			   )
 		 WHERE ROWNUM &lt;= 20
 	</entry>
 </properties>

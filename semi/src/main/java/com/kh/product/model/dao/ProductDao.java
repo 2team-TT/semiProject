@@ -230,14 +230,30 @@ public class ProductDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rset = pstmt.executeQuery();
+
 			
 			while(rset.next()) {
-				list.add(new Product(rset.getInt("p_no")
-								   , rset.getInt("tag_no")
-								   , rset.getString("p_name")
-								   , rset.getInt("price")
-								   , rset.getDouble("rating")
-						));
+				// 파일 이름을 가져오기
+	            String changeName = rset.getString("CHANGE_NAME");
+	            
+	            // 파일 이름이 null이거나 비어있으면 디폴트 값을 설정
+	            if (changeName == null || changeName.isEmpty()) {
+	                changeName = "default_image.jpg"; // 기본 이미지 파일 이름
+	            }
+	            
+	            // 이미지 경로 설정
+	            String imagePath = "resources/images/" + changeName;
+	            
+	            // Product 객체를 생성하여 리스트에 추가
+	            list.add(new Product(
+	                rset.getInt("p_no"),
+	                rset.getInt("tag_no"),
+	                rset.getString("p_name"),
+	                rset.getInt("price"),
+	                rset.getDouble("rating"),
+	                imagePath,  // 이미지 경로
+	                changeName
+	            ));
 			}
 			
 		} catch (SQLException e) {
@@ -263,14 +279,26 @@ public class ProductDao {
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
-				list.add(new Product(rset.getInt("p_no")
-						   , rset.getInt("tag_no")
-						   , rset.getString("p_name")
-						   , rset.getInt("price")
-						   , rset.getDouble("rating")
-				));
-				
-			}
+	            String changeName = rset.getString("CHANGE_NAME");
+	            
+	            // 파일 이름이 null이거나 비어있으면 디폴트 값을 설정
+	            if (changeName == null || changeName.isEmpty()) {
+	                changeName = "default_image.jpg"; // 기본 이미지 파일 이름
+	            }
+	            
+	            // 이미지 경로 설정
+	            String imagePath = "resources/images/" + changeName;
+	            
+	            list.add(new Product(
+	                rset.getInt("p_no"),
+	                rset.getInt("tag_no"),
+	                rset.getString("p_name"),
+	                rset.getInt("price"),
+	                rset.getDouble("rating"),
+	                imagePath,  // 이미지 경로
+	                changeName
+	            ));
+	        }
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -296,13 +324,26 @@ public class ProductDao {
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
-				list.add(new Product(rset.getInt("p_no")
-						   , rset.getInt("tag_no")
-						   , rset.getString("p_name")
-						   , rset.getInt("price")
-						   , rset.getDouble("rating")
-				));
-			}
+	            String changeName = rset.getString("CHANGE_NAME");
+	            
+	            // 파일 이름이 null이거나 비어있으면 디폴트 값을 설정
+	            if (changeName == null || changeName.isEmpty()) {
+	                changeName = "default_image.jpg"; // 기본 이미지 파일 이름
+	            }
+	            
+	            // 이미지 경로 설정
+	            String imagePath = "resources/images/" + changeName;
+	            
+	            list.add(new Product(
+	                rset.getInt("p_no"),
+	                rset.getInt("tag_no"),
+	                rset.getString("p_name"),
+	                rset.getInt("price"),
+	                rset.getDouble("rating"),
+	                imagePath,  // 이미지 경로
+	                changeName
+	            ));
+	        }
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
