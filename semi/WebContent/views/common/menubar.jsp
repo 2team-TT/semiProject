@@ -544,7 +544,7 @@
 
                                         </li>
                                         <li>
-                                            <a class="side__btn__shopping" href="">쇼핑</a>
+                                            <a class="side__btn__shopping" href="<%= contextPath %>/producutMain.me">쇼핑</a>
                                         </li>
                                         <li>
                                             <a class="side__btn__house" href="<%= contextPath %>/main.prop">부동산 / 이사</a>
