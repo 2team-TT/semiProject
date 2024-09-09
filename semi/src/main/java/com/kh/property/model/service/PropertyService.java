@@ -69,5 +69,14 @@ public class PropertyService {
 		return list;
 	}
 	
-	
+	public ArrayList<Property> mainselectUserProperty(String str){
+		Connection conn = getConnection();
+		
+		ArrayList<Property> list = new PropertyDao().mainselectUserProperty(conn, str);
+		
+		close(conn);
+		
+		return list;
+		
+	}
 }

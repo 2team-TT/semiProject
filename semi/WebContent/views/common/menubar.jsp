@@ -102,6 +102,8 @@
                                             <%if(u==null){ %>
 
                                                 <div class="login__not">
+                                                    <input type="hidden" id="userAddress" value="">
+
                                                     <button type="button" id="login_btn" class="btn btn-light"
                                                         data-toggle="modal" data-target="#loginModal">
                                                         로그인
@@ -113,7 +115,8 @@
 
 
                                                     <div class="profile">
-
+                                                        <input type="hidden" id="userAddress"
+                                                            value="<%=u.getAddress()%>">
 
                                                         <div class="profile__container">
                                                             <div class="profile__container-up">
@@ -544,7 +547,8 @@
 
                                         </li>
                                         <li>
-                                            <a class="side__btn__shopping" href="<%= contextPath %>/producutMain.me">쇼핑</a>
+                                            <a class="side__btn__shopping"
+                                                href="<%= contextPath %>/producutMain.me">쇼핑</a>
                                         </li>
                                         <li>
                                             <a class="side__btn__house" href="<%= contextPath %>/main.prop">부동산 / 이사</a>

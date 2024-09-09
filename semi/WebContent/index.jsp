@@ -1976,7 +1976,52 @@
 
 
 
+                function propertyUserList(str) {
+                    $.ajax({
+                        url: "mainUserProperty.po",
+                        data: {
+                            adderess: str,
+                        },
+                        type: "get",
+                        success: (list) => {
+                            // console.log(list)
+                            let value = ""
+                            for (let i = 0; i < list.length; i++) {
+                                value += "<div class='swiper-slide'>"
+                                    + "<input type='hidden' value='" + list[i].ppNo + "'>"
+                                    + "<div class='img_area'>"
+                                    + "<img src='<%=contextPath%>" + list[i].filePath + "' >"
+                                    + "</div>"
+                                    + "<div class='text_area'>"
+                                    + "<div>" + list[i].ppName + "</div>"
+                                    + "<div>" + list[i].ppPrice + "</div>"
+                                    + "<div>" + list[i].ppLocation + "</div>"
+                                    + "<div>" + list[i].tagNmae + "</div>"
+                                    + "<div>옵션<p>-" + list[i].ppOption + "</p>"
+                                    + "</div>"
+                                    + "<div>주변<p>-" + list[i].ppInfo + "</p>"
+                                    + "</div>"
+                                    + "</div>"
+                                    + "</div>"
+                            }
 
+                            $('.property .property_slide .swiper-wrapper').html(value)
+
+                            $('.property_area .property_title').text('내 주변 매물')
+                            propertyslide()
+
+
+                            $('.property .property_slide .swiper-wrapper .swiper-slide').on('click', function () {
+                                const num = $(this).children("input").val()
+                                // console.log(num)
+                                location.href = ""
+                            })
+
+                        },
+                        error: () => { }
+                    })
+
+                }
 
 
 
@@ -1995,9 +2040,18 @@
                     noticList();
                     selectcook();
                     bestUsed();
-                    propertyList();
                     brokerageList();
                     productList();
+                    // console.log($('#userAddress').val())
+                    if ($('#userAddress').val() === "" || $('#userAddress').val() === null) {
+                        propertyList();
+
+                    } else {
+                        propertyUserList($('#userAddress').val())
+                    }
+
+
+
                 })
 
 
