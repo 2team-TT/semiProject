@@ -502,7 +502,7 @@
 
                                         <%}else{ %>
                                             <div class="profile__img">
-                                                <img src="./resources/img/나노머신.jpg" alt="">
+                                                <img src="" alt="">
                                             </div>
                                             <div class="profile__container">
                                                 <div class="profile__id">asdf 님 반갑습니다.</div>

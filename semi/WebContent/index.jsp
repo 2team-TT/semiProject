@@ -1691,7 +1691,7 @@
                                 value += "<div class='swiper-slide'>"
                                     + "<input type='hidden' value='" + list[i].ppNo + "'>"
                                     + "<div class='img_area'>"
-                                    + "<img src='<%=contextPath%>" + list[i].titleImg + "' >"
+                                    + "<img src='<%=contextPath%>" + list[i].filePath + "' >"
                                     + "</div>"
                                     + "<div class='text_area'>"
                                     + "<div>" + list[i].ppName + "</div>"

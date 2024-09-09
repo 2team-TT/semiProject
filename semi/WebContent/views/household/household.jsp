@@ -202,9 +202,9 @@
                                             <option value=""></option>
                                         </select>
                                     </div>
-                                    <div>날짜 <input type="date" name="date"></div>
-                                    <div>금액 <input type="number" name="amount"></div>
-                                    <div>설명 <input type="text" name="des"></div>
+                                    <div>날짜 <input type="date" name="date" required></div>
+                                    <div>금액 <input type="number" name="amount" required></div>
+                                    <div>설명 <input type="text" name="des" required></div>
                                     <div class="btn_box">
                                         <button class="house_insert_btn" type="submit">추가</button>
                                     </div>
@@ -379,7 +379,7 @@
                             let value = ""
                             let total = 0
                             for (let i = 0; i < list.length; i++) {
-                                value = "<div class='data'>"
+                                value += "<div class='data'>"
                                     + "<span>" + list[i].inDate + "</span>"
                                     + "<span>" + list[i].category + "</span>"
                                     + "<span>" + list[i].inDes + "</span>"
@@ -444,7 +444,7 @@
                             let value = ""
                             let total = 0
                             for (let i = 0; i < list.length; i++) {
-                                value = "<div class='data'>"
+                                value += "<div class='data'>"
                                     + "<span>" + list[i].outDate + "</span>"
                                     + "<span>" + list[i].category + "</span>"
                                     + "<span>" + list[i].outDes + "</span>"

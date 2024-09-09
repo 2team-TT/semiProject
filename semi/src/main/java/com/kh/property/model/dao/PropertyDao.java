@@ -189,4 +189,105 @@ public class PropertyDao {
 	
 	
 	
+public ArrayList<Property> searchPropertyService(Connection conn, String search){
+		
+		ArrayList<Property> list = new ArrayList<Property>();
+		
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("searchPropertyService");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+search+"%");
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Property pp = new Property();
+				pp.setPpNo(rset.getInt("pp_no"));
+				pp.setPpName(rset.getString("pp_name"));
+				pp.setTagNmae(rset.getString("TAG_NAME"));
+				pp.setPpPrice(rset.getString("pp_price"));
+				pp.setPpLocation(rset.getString("PP_LOCATION"));
+				pp.setCount(rset.getInt("pp_count"));
+				pp.setPpOption(rset.getString("pp_option"));
+				pp.setPpInfo(rset.getString("pp_info"));
+				pp.setFilePath(rset.getString("filepath"));
+				
+				list.add(pp);
+			
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+		
+	}
+	
+	
+
+
+	public ArrayList<Brokerage> searchBrokerageList(Connection conn, String search){
+		ArrayList<Brokerage> list = new ArrayList<Brokerage>();
+		
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset =null;
+		
+		String sql = prop.getProperty("searchBrokerageList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+search+"%");
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()){
+				Brokerage b = new Brokerage();
+				b.setbNo(rset.getInt("b_no"));
+				b.setbName(rset.getString("b_name"));
+				b.setType(rset.getString("b_type"));
+				b.setBestREply(rset.getString("b_br_best"));
+				b.setTitleImg(rset.getString("filepath"));
+				
+				list.add(b);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

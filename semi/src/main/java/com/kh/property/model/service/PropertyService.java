@@ -51,7 +51,23 @@ public class PropertyService {
 	}
 	
 	
+	public ArrayList<Property> searchPropertyService(String search){
+		Connection conn = getConnection();
+		
+		ArrayList<Property> list = new PropertyDao().searchPropertyService(conn, search);
+		close(conn);
+		return list;
+	}
 	
+	public ArrayList<Brokerage> searchBrokerageList(String search){
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Brokerage> list = new PropertyDao().searchBrokerageList(conn, search);
+		
+		close(conn);
+		return list;
+	}
 	
 	
 }

@@ -127,7 +127,13 @@ public class ProductService {
 	
 	
 	
-	
+	public ArrayList<Product> searchProductList(String search){
+		Connection conn = getConnection();
+		
+		ArrayList<Product> list = new ProductDao().searchProductList(conn, search);
+		close(conn);
+		return list;
+	}
 	
 	
 	
