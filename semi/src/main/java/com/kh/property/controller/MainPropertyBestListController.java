@@ -38,7 +38,7 @@ public class MainPropertyBestListController extends HttpServlet {
 		ArrayList<Property> list = new PropertyService().selelctMainPropertyList();
 		
 //		System.out.println(list.size());
-		
+//		System.out.println(list);
 		response.setContentType("aplication/json; charset=utf-8");
 		new Gson().toJson(list,response.getWriter());
 	

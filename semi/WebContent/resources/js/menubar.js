@@ -36,11 +36,23 @@ window.addEventListener('scroll', _.throttle(function () {
                 marginTop: "230px",
             })
         }
+    } else {
+        gsap.to(big, 0, {
+            height: 0,
+            display: "none",
+        })
+        gsap.to(small, 0, {
+            height: "100px",
+            display: "flex",
+        })
+        gsap.to('.first', .5, {
+            marginTop: "230px",
+        })
     }
 
 }))
 
-// console.log(window.innerWidth)
+console.log(window.innerWidth)
 
 const search__click = document.querySelector('.search__click');
 

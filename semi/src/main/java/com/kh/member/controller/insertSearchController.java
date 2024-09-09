@@ -14,6 +14,11 @@ import com.kh.board.model.vo.Board;
 import com.kh.member.model.service.UserService;
 import com.kh.member.model.vo.Search;
 import com.kh.member.model.vo.User;
+import com.kh.product.model.service.ProductService;
+import com.kh.product.model.vo.Product;
+import com.kh.property.model.service.PropertyService;
+import com.kh.property.model.vo.Brokerage;
+import com.kh.property.model.vo.Property;
 
 /**
  * Servlet implementation class insertSearchController
@@ -87,8 +92,14 @@ public class insertSearchController extends HttpServlet {
 			//나중에 상품이랑 부동산
 			
 			ArrayList<Board> bList = new BoardService().searchBoardList(search);
+			ArrayList<Product> pList = new ProductService().searchProductList(search);
+			ArrayList<Property> ppList = new PropertyService().searchPropertyService(search);
+			ArrayList<Brokerage> bkList = new PropertyService().searchBrokerageList(search);
 			request.setAttribute("search", search);
 			request.setAttribute("blist", bList);
+			request.setAttribute("pList", pList);
+			request.setAttribute("ppList", ppList);
+			request.setAttribute("bkList", bkList);
 			
 			request.getRequestDispatcher("views/common/searchListView.jsp").forward(request, response);
 		}
