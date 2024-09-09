@@ -204,7 +204,7 @@
 }
 
 .boardDetilView_section .deteil_area .deteil_content_area>.content img {
-   width: 550px;
+   width: 100%;
 }
 
 .boardDetilView_section .deteil_area .deteil_content_area>.likesbtn {
