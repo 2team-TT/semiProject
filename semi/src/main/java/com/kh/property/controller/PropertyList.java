@@ -45,7 +45,8 @@ public class PropertyList extends HttpServlet {
 		listCount = new PropertyService().selectPropertyListCount();
 		currentPage = Integer.parseInt(request.getParameter("cPage")); 
 		detailLimit = Integer.parseInt(request.getParameter("limit"));
-		pageLimit = 10;
+//		pageLimit = 10;
+		pageLimit = 50;
 		
 		maxPage = (int)Math.ceil((double)listCount / detailLimit);
 		startPage = (currentPage - 1) / pageLimit * pageLimit + 1;

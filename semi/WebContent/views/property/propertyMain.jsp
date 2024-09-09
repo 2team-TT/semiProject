@@ -324,8 +324,7 @@
 		                                    properties += '<li>'
 				                                        + '<a href="javascript:void(0)" class="propertyPrev">'
 				                                        + '<div class="propertyImgContent">'
-				                                        /* + '<img class="propertyImg" src="<%= request.getContextPath() %><%= pp.getFilePath() %><%= pp.getChangeName() %>" alt="">' */
-				                                        + '<img class="propertyImg" src="https://d2u3dcdbebyaiu.cloudfront.net/uploads/atch_img/58/653c9848333a40e925e26c102d5618ee_res.jpeg" alt="">'
+				                                        + '<img class="propertyImg" src="<%= request.getContextPath() %><%= pp.getFilePath() %><%= pp.getChangeName() %>" alt="">'
 				                                        + '</div>'
 				                                        + '<div class="marginSmallDiv"></div>'
 				                                        + '<div class="propertyDetailContent">'
@@ -374,10 +373,7 @@
                      -->
                 </div>
             </div>
-            <!-- TODO: ajax으로 페이징 처리 버튼 만들기, 부동산 관련 api 연동하기 -->
-            <div class="other">
-                asdasd
-            </div>
+            <!-- <div class="other"></div> -->
         </div>
         <div id="propertyListCloseBtn">
             ◀
