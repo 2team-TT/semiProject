@@ -575,7 +575,8 @@
                                 },
                                 type: "post",
                                 success: function (userNo) {
-                                    if (userNo === 0) {
+                                    console.log(userNo)
+                                    if (userNo === "0") {
                                         alert('없는 아이디입니다. 다시 입력해주세요')
                                     } else {
 

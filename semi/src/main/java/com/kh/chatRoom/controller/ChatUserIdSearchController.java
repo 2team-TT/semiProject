@@ -33,7 +33,7 @@ public class ChatUserIdSearchController extends HttpServlet {
 		String userId = request.getParameter("userId");
 		
 		int userNo = new ChatService().selectUserId(userId);
-		
+//		System.out.println(userNo);
 		response.getWriter().print(userNo);
 	}
 

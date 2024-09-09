@@ -581,6 +581,8 @@
                           alert('등록에 실패했습니다.')
                         }
 
+
+
                       },
                       error: function () {
                         console.log('fffff')
