@@ -180,9 +180,6 @@ function loadPage(page, type) {
 
 // 최근 본 상품을 삭제하는 함수
 function deleteRecentProduct(pno) {
-  if (!confirm("정말로 이 상품을 최근 본 상품 목록에서 삭제하시겠습니까?")) {
-      return; // 사용자가 취소를 선택하면 함수 종료
-  }
 
   $.ajax({
       type: "POST",
