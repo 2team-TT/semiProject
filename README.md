@@ -63,10 +63,11 @@ ERD Cloud : [ERD Cloud](https://www.erdcloud.com/d/oNPhvb358vH8eqLWH)
 **조장 : 김지영**
 * **메인 페이지**
 
+https://github.com/user-attachments/assets/e67526ab-b779-4210-a0d4-aeece092ff07
 
 ![Document - Chrome 2024-09-10 17-18-57](https://github.com/user-attachments/assets/ff3ea515-79c6-44e5-9370-09490e08ef87)
 
-  <img width=500 src="https://github.com/user-attachments/assets/ff3ea515-79c6-44e5-9370-09490e08ef87" alt="클릭시 해당 글 가기">
+  <img width=700 src="https://github.com/user-attachments/assets/ff3ea515-79c6-44e5-9370-09490e08ef87" alt="클릭시 해당 글 가기">
 
 * **회원가입**
 
