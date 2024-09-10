@@ -36,7 +36,13 @@
   - **찜하기**
 * **반응형 웹 구현**
 
-
+조원 : 박경원
+* **복지(정책) 페이지**
+* - **실제 정책 조회(복지로 API접근)**
+  - **정책 필터별 조회**
+  - **신청 정책 페이지 연결**
+* **부동산 페이지**
+* - **부동산 조회 기능**
 
 # ⚙개발환경
 ***
@@ -152,6 +158,28 @@ ERD Cloud : [ERD Cloud](https://www.erdcloud.com/d/oNPhvb358vH8eqLWH)
 - 반응형 웹 </br>
   <img src="https://github.com/2team-TT/semiProject/blob/main/assets/gifs/%EB%B0%98%EC%9D%91%ED%98%95%EC%9B%B9%ED%95%A9%EB%B3%B8(%ED%81%AC%EA%B8%B050%25).gif" alt="반응형웹">
 
+<br/><br/>
+
+**조원 : 박경원**
+* **복지(정책) 페이지**
+- 비동기식으로 실제 정책 조회 및 필터 기능 구현<br/>
+
+  <img src="https://github.com/user-attachments/assets/e37b6505-ecc7-483f-8b31-98499f60d50c">
+
+<br/><br/>
+
+- '신청하기' 클릭시 실제 신청 페이지로 이동하는 기능 구현<br/>
+
+  <img src="https://github.com/user-attachments/assets/57309c89-ef41-42e9-ab93-78096aa4255d">
+
+<br/><br/><br/><br/><br/>
+
+<h4>부동산 페이지</h4>
+
+- DB내에 있는 부동산 데이터를 조회하는 기능 구현<br/>
+
+  <img src="https://github.com/user-attachments/assets/f4d92ad5-1fc5-4df7-95c6-cb1e5b8acd14">
+  
 <br/><br/>
 
 # 📚최종보고서
