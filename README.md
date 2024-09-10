@@ -66,7 +66,7 @@ ERD Cloud : [ERD Cloud](https://www.erdcloud.com/d/oNPhvb358vH8eqLWH)
 
 ![Document - Chrome 2024-09-10 17-18-57](https://github.com/user-attachments/assets/ff3ea515-79c6-44e5-9370-09490e08ef87)
 
-
+  <img src="[https://github.com/2team-TT/semiProject/blob/main/assets/gifs/%ED%81%B4%EB%A6%AD%EC%8B%9C%20%ED%95%B4%EB%8B%B9%20%EA%B2%8C%EC%8B%9C%EA%B8%80%20%EA%B0%80%EA%B8%B0(50%25).gif](https://github.com/user-attachments/assets/ff3ea515-79c6-44e5-9370-09490e08ef87)" alt="클릭시 해당 글 가기">
 
 * **회원가입**
 
