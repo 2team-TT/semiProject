@@ -63,43 +63,46 @@ ERD Cloud : [ERD Cloud](https://www.erdcloud.com/d/oNPhvb358vH8eqLWH)
 **조장 : 김지영**
 * **메인 페이지**
 
-  
-![Document - Chrome 2024-09-10 12-05-13](https://github.com/user-attachments/assets/1f3052ae-f276-4bce-b233-2a1c9fff477c)
+
+![Document - Chrome 2024-09-10 17-18-57](https://github.com/user-attachments/assets/ff3ea515-79c6-44e5-9370-09490e08ef87)
+
 
 
 * **회원가입**
 
   
-![Document - Chrome 2024-09-10 12-05-13](https://github.com/user-attachments/assets/03232c4a-f106-4322-b40c-f32bf1f2f13d)
+![Document - Chrome 2024-09-10 17-21-08](https://github.com/user-attachments/assets/ccd80030-b334-487a-9d3f-94cc4a957062)
 
 * **아이디/비밀번호 찾기**
   
-![Document - Chrome 2024-09-10 12-15-34](https://github.com/user-attachments/assets/17dcfee1-97ff-4420-9d1f-c6e9ed5e6c78)
 
+![Document - Chrome 2024-09-10 17-23-41](https://github.com/user-attachments/assets/e472c1c2-76a0-4eec-bbf4-504b6bd15011)
 
 
 * **검색**
   
-![Document - Chrome 2024-09-10 12-13-09](https://github.com/user-attachments/assets/e9291248-48bf-4e61-a460-9acefc274b77)
+![Document - Chrome 2024-09-10 17-25-45](https://github.com/user-attachments/assets/95aec9e3-bb11-4325-904f-d19079f6a245)
 
 * **게시글**
 
-  
-![Document - Chrome 2024-09-10 12-28-34](https://github.com/user-attachments/assets/3a738d1c-324e-4b7d-b17d-bed661c79d17)
+  ![Document - Chrome 2024-09-10 17-27-41](https://github.com/user-attachments/assets/a6aa6596-1604-46a9-ae00-179daa43ac6f)
+
 
 * **가계부**
 
-  
-![Document - Chrome 2024-09-10 12-35-43](https://github.com/user-attachments/assets/444a3b63-8b4c-4a22-a046-3eec923e3c6f)
+  ![Document - Chrome 2024-09-10 17-32-14](https://github.com/user-attachments/assets/612613f3-7852-4964-b5a5-c92ef7c63fe1)
+
 
 * **채팅**
 
   
-![Document - Chrome 2024-09-10 12-39-46](https://github.com/user-attachments/assets/d8951667-6528-40fc-be04-e2faaa56fd7c)
+![Document - Chrome 2024-09-10 17-35-14](https://github.com/user-attachments/assets/c99745c5-f93c-4975-aa84-00c8b03dea31)
 
 
-![Document - Chrome 2024-09-10 12-40-39](https://github.com/user-attachments/assets/61671492-60dd-4986-b1cc-0e5ae74927c0)
+![Document - Chrome 2024-09-10 17-35-55](https://github.com/user-attachments/assets/d1ad7cb0-771d-41fe-9be0-cbabf3d531e9)
 
+
+![Document - Chrome 2024-09-10 17-36-57](https://github.com/user-attachments/assets/69a088ac-8976-42b2-88ea-ef920b90b314)
 
 
 **조원 : 김종열**
