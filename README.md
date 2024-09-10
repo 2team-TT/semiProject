@@ -87,7 +87,7 @@ ERD Cloud : [ERD Cloud](https://www.erdcloud.com/d/oNPhvb358vH8eqLWH)
 
 # 📚최종보고서
 
-최종 보고서 : [최종보고서](https://www.erdcloud.com/d/oNPhvb358vH8eqLWH)
+최종 보고서 : [세미 최종보고서.pdf](https://github.com/user-attachments/files/16939530/1.pdf)
 
 
 
